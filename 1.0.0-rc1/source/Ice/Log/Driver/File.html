@@ -1,0 +1,178 @@
+<html>
+
+
+    <head>
+        <link rel="stylesheet" type="text/css" href="../../../../asset/static/prettify.css" />
+        <link rel="stylesheet" type="text/css" href="../../../../asset/static/style.css" />
+        
+        
+        <script src="../../../../asset/static/jquery.min.js"></script>
+        <script src="../../../../asset/static/prettify.js"></script>
+        <script src="../../../../asset/api_definition.js"></script>
+
+        <script>var ZepCurrentPath = '../../../../'</script>
+
+        <script src="../../../../asset/static/script.js"></script>
+
+                
+    </head>
+
+
+    <body onload="prettyPrint()">
+        <div id="top-bar">
+            <div id="top-left">
+                Zephir Documentation <span class="version">v1.0.1</span>
+            </div>
+            <div id="top-right">
+
+            </div>
+        </div>
+
+        <div id="body">
+
+            <div id="body-left">
+
+                <div class="header-search">
+
+                    <input class="search-box" placeholder="Search for a class or namespace " type="text" />
+             
+                    <div id="menu-wrapper">
+
+
+                    </div>
+
+                </div>
+
+            </div>
+            <div id="body-right">
+                <div class="content">
+                    
+<div class="breadcrumb">
+    
+    <ul>
+        
+        <li><a href="../../../../index.html">Home</a></li>
+        
+                <li><a href="../../../../classes.html">Classes</a></li>
+                <li><a href="../../../../class/Ice/Log/Driver/File.html">Ice\Log\Driver\File</a></li>
+                <li><a >Source</a></li>
+                
+    </ul>
+    
+</div>
+<div class="class-header source clearfix">
+    
+    <div class="access-buttons">
+        <a class="zep-button" href="../../../../class/Ice/Log/Driver/File.html">Class</a>
+
+                <a class="zep-button" href="https://github.com/ice/framework/tree/master/ice/log/driver/file.zep">Github</a>
+            </div>
+    
+    <div class="class-full-name">
+        
+        <span class="class-type">Class</span>
+        
+                <span class="namespace-piece">
+            <a href="../../../../namespace/Ice.html">Ice</a>
+        </span>
+                <span class="namespace-piece">
+            <a href="../../../../namespace/Ice/Log.html">Log</a>
+        </span>
+                <span class="namespace-piece">
+            <a href="../../../../namespace/Ice/Log/Driver.html">Driver</a>
+        </span>
+                <h1 class="class-name">File</h1>
+    </div>
+    
+</div>
+
+
+<pre class="zephir-source-file prettyprint linenums">
+namespace Ice\Log\Driver;
+
+use Ice\Log\Driver;
+use Ice\Exception;
+
+/**
+ * File driver for the Logger.
+ *
+ * @package     Ice/Log
+ * @category    Library
+ * @author      Ice Team
+ * @copyright   (c) 2014-2015 Ice Team
+ * @license     http://iceframework.org/license
+ */
+class File extends Driver
+{
+
+    protected _file;
+
+    /**
+     * Logger file constructor.
+     *
+     * @param string file Filename to log messages to (complete path)
+     * @throws Exception When logfile cannot be created or is not writeable
+     */
+    public function __construct(string file)
+    {
+        if !file_exists(file) {
+            if !touch(file) {
+                throw new Exception("Log file " . file . " cannot be created");
+            }
+        }
+        if !is_writable(file) {
+            throw new Exception("Log file " . file . " is not writeable");
+        }
+        
+        let this->_file = file;
+    }
+
+    /**
+     * Logs with an arbitrary level.
+     *
+     * @param mixed level
+     * @param string message
+     * @param array context
+     * @return void
+     */
+    public function log(var level, string message, array context = []) -> void
+    {
+        var line;
+
+        let line = "[" . date("Y-m-d H:i:s") . "] " . strtoupper(level) . ": " . this->interpolate(message, context) . PHP_EOL;
+
+        file_put_contents(this->_file, line, FILE_APPEND);
+    }
+
+    /**
+     * Interpolates context values into the message placeholders.
+     *
+     * @param string message
+     * @param array context
+     * @return string
+     */
+    protected function interpolate(string message, array context = []) -> string
+    {
+        var replace, key, value;
+
+        // Build a replacement array with braces around the context keys
+        let replace = [];
+
+        for key, value in context {
+            let replace["{" . key . "}"] = value;
+        }
+
+        // Interpolate replacement values into the message and return
+        return strtr(message, replace);
+    }
+}
+</pre>                </div>
+            </div>
+
+        </div>
+
+    </body>
+
+
+
+</html>

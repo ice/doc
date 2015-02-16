@@ -1,0 +1,215 @@
+<html>
+
+
+    <head>
+        <link rel="stylesheet" type="text/css" href="../../asset/static/prettify.css" />
+        <link rel="stylesheet" type="text/css" href="../../asset/static/style.css" />
+        
+        
+        <script src="../../asset/static/jquery.min.js"></script>
+        <script src="../../asset/static/prettify.js"></script>
+        <script src="../../asset/api_definition.js"></script>
+
+        <script>var ZepCurrentPath = '../../'</script>
+
+        <script src="../../asset/static/script.js"></script>
+
+                
+    </head>
+
+
+    <body onload="prettyPrint()">
+        <div id="top-bar">
+            <div id="top-left">
+                Zephir Documentation <span class="version">v1.0.1</span>
+            </div>
+            <div id="top-right">
+
+            </div>
+        </div>
+
+        <div id="body">
+
+            <div id="body-left">
+
+                <div class="header-search">
+
+                    <input class="search-box" placeholder="Search for a class or namespace " type="text" />
+             
+                    <div id="menu-wrapper">
+
+
+                    </div>
+
+                </div>
+
+            </div>
+            <div id="body-right">
+                <div class="content">
+                    
+<div class="breadcrumb">
+    
+    <ul>
+        
+        <li><a href="../../index.html">Home</a></li>
+        
+                <li><a href="../../classes.html">Classes</a></li>
+                <li><a href="../../class/Ice/Session.html">Ice\Session</a></li>
+                <li><a >Source</a></li>
+                
+    </ul>
+    
+</div>
+<div class="class-header source clearfix">
+    
+    <div class="access-buttons">
+        <a class="zep-button" href="../../class/Ice/Session.html">Class</a>
+
+                <a class="zep-button" href="https://github.com/ice/framework/tree/master/ice/session.zep">Github</a>
+            </div>
+    
+    <div class="class-full-name">
+        
+        <span class="class-type">Class</span>
+        
+                <span class="namespace-piece">
+            <a href="../../namespace/Ice.html">Ice</a>
+        </span>
+                <h1 class="class-name">Session</h1>
+    </div>
+    
+</div>
+
+
+<pre class="zephir-source-file prettyprint linenums">
+namespace Ice;
+
+/**
+ * Session helper.
+ *
+ * @package     Ice/Session
+ * @category    Helper
+ * @author      Ice Team
+ * @copyright   (c) 2014-2015 Ice Team
+ * @license     http://iceframework.org/license
+ */
+class Session extends Arr
+{
+
+    protected _started = false;
+
+    /**
+     * Session constructor. Start the session.
+     */
+    public function __construct()
+    {
+        this->start();
+
+        //let this->_data = &_SESSION;
+    }
+
+    /**
+     * Start the session.
+     *
+     * @return boolean
+     */
+    public function start() -> boolean
+    {
+        if !headers_sent() {
+            session_start();
+            let this->_started = true;
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Check whether the session was started.
+     *
+     * @return boolean
+     */
+    public function isStarted() -> boolean
+    {
+        return this->_started;
+    }
+
+    /**
+     * Get session id.
+     *
+     * @return string
+     */
+    public function getId() -> string
+    {
+        return session_id();
+    }
+
+    /**
+     * Regenerate session id.
+     *
+     * @return boolean
+     */
+    public function regenerate() -> boolean
+    {
+        return session_regenerate_id();
+    }
+
+    /**
+     * Destroy the session.
+     *
+     * @return boolean
+     */
+    public function destroy() -> boolean
+    {
+        let this->_started = false;
+        return session_destroy();
+    }
+
+    /**
+     * Check whether session has the key.
+     * No support for passing variables by reference yet zephir/issues/203
+     */
+    public function has(string key) -> boolean
+    {
+        return isset _SESSION[key];
+    }
+
+    /**
+     * Retrieve a single key from the session.
+     */
+    public function get(string key, var defaultValue = null)
+    {
+        var value;
+
+        if fetch value, _SESSION[key] {
+            return value;
+        }
+
+        return defaultValue;
+    }
+
+    /**
+     * Assigns a value to the specified session key.
+     */
+    public function set(string key, var value)
+    {
+        let _SESSION[key] = value;
+    }
+
+    /**
+     * Remove session key.
+     */
+    public function remove(string key)
+    {
+        unset _SESSION[key];
+    }
+}
+</pre>                </div>
+            </div>
+
+        </div>
+
+    </body>
+
+
+
+</html>

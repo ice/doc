@@ -1,0 +1,885 @@
+<html>
+
+
+    <head>
+        <link rel="stylesheet" type="text/css" href="../../asset/static/prettify.css" />
+        <link rel="stylesheet" type="text/css" href="../../asset/static/style.css" />
+        
+        
+        <script src="../../asset/static/jquery.min.js"></script>
+        <script src="../../asset/static/prettify.js"></script>
+        <script src="../../asset/api_definition.js"></script>
+
+        <script>var ZepCurrentPath = '../../'</script>
+
+        <script src="../../asset/static/script.js"></script>
+
+                
+    </head>
+
+
+    <body onload="prettyPrint()">
+        <div id="top-bar">
+            <div id="top-left">
+                Zephir Documentation <span class="version">v1.0.1</span>
+            </div>
+            <div id="top-right">
+
+            </div>
+        </div>
+
+        <div id="body">
+
+            <div id="body-left">
+
+                <div class="header-search">
+
+                    <input class="search-box" placeholder="Search for a class or namespace " type="text" />
+             
+                    <div id="menu-wrapper">
+
+
+                    </div>
+
+                </div>
+
+            </div>
+            <div id="body-right">
+                <div class="content">
+                    
+<div class="breadcrumb">
+    
+    <ul>
+        
+        <li><a href="../../index.html">Home</a></li>
+        
+                <li><a href="../../classes.html">Classes</a></li>
+                <li><a >Ice\Crypt</a></li>
+                
+    </ul>
+    
+</div>
+<div class="class-header clearfix">
+    
+    
+    <div class="access-buttons">
+        <a class="zep-button" href="../../source/Ice/Crypt.html">Source</a>
+
+                <a class="zep-button" href="https://github.com/ice/framework/tree/master/ice/crypt.zep">Github</a>
+            </div>
+    
+    <div class="class-full-name">
+        
+        <span class="class-type">Class</span>
+        
+                <span class="namespace-piece">
+            <a href="../../namespace/Ice.html">Ice</a>
+        </span>
+                <h1 class="class-name">Crypt</h1>
+    </div>
+
+</div>
+
+
+<div class="hidden-anchor"  id="methods"></div>
+<div class="methods-summary standard-bandeau">Methods</div>
+<ul class="method-summary-list">
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-__construct">__construct</a></span>(<span class="param-data-type">string</span>  <span class="param-name">$key</span>)
+                <div class="summary-text">Create a new encrypter instance.</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        string
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-encrypt">encrypt</a></span>(<span class="param-data-type">string</span>  <span class="param-name">$text</span>)
+                <div class="summary-text">Encrypt the given value.</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        string
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-generateInputVector">generateInputVector</a></span>()
+                <div class="summary-text">Generate an input vector.</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        string
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-_encrypt">_encrypt</a></span>(<span class="param-data-type">string</span>  <span class="param-name">$value</span>,<span class="param-data-type">string</span>  <span class="param-name">$iv</span>)
+                <div class="summary-text">Actually encrypt the value using the given Iv with the openssl library encrypt function.</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        string
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-decrypt">decrypt</a></span>(<span class="param-data-type">string</span>  <span class="param-name">$text</span>)
+                <div class="summary-text">Decrypt the given value.</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        string
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-_decrypt">_decrypt</a></span>(<span class="param-data-type">string</span>  <span class="param-name">$value</span>,<span class="param-data-type">string</span>  <span class="param-name">$iv</span>)
+                <div class="summary-text">Actually decrypt the value using the given Iv with the openssl library decrypt function.</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        array
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-getJsonPayload">getJsonPayload</a></span>(<span class="param-data-type">string</span>  <span class="param-name">$text</span>)
+                <div class="summary-text">Get the JSON array from the given payload.</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        string
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-hash">hash</a></span>(<span class="param-data-type">string</span>  <span class="param-name">$value</span>)
+                <div class="summary-text">Create a MAC for the given value.</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        string
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-addPadding">addPadding</a></span>(<span class="param-data-type">string</span>  <span class="param-name">$value</span>)
+                <div class="summary-text">Add PKCS7 padding to a given value.</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        string
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-stripPadding">stripPadding</a></span>(<span class="param-data-type">string</span>  <span class="param-name">$value</span>)
+                <div class="summary-text">Remove the padding from the given value.</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        bool
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-paddingIsValid">paddingIsValid</a></span>(<span class="param-data-type">int</span>  <span class="param-name">$pad</span>,<span class="param-data-type">string</span>  <span class="param-name">$value</span>)
+                <div class="summary-text">Determine if the given padding for a value is valid.</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        bool
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-invalidPayload">invalidPayload</a></span>(<span class="param-data-type">array</span>  <span class="param-name">$data</span>)
+                <div class="summary-text">Verify that the encryption payload is valid.</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        int
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-getIvSize">getIvSize</a></span>()
+                <div class="summary-text">Get the IV size for the cipher.</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-setKey">setKey</a></span>(<span class="param-data-type">string</span>  <span class="param-name">$key</span>)
+                <div class="summary-text">Set the encryption key.</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-setCipher">setCipher</a></span>(<span class="param-data-type">string</span>  <span class="param-name">$cipher</span>)
+                <div class="summary-text">Set the encryption cipher.</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-setMode">setMode</a></span>(<span class="param-data-type">string</span>  <span class="param-name">$mode</span>)
+                <div class="summary-text">Set the encryption mode.</div>
+            </div>
+
+</li>
+    </ul>
+
+<div class="hidden-anchor"  id="methods-details"></div>
+<div class="methods-summary standard-bandeau">Methods Details</div>
+<ul class="method-details-list">
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-__construct"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">__construct</h3>(<span class="param-data-type">string</span>  <span class="param-name">$key</span>)
+                
+                                
+                    <div>
+                    Create a new encrypter instance.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-encrypt"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">encrypt</h3>(<span class="param-data-type">string</span>  <span class="param-name">$text</span>)
+                
+                                
+                    <div>
+                    Encrypt the given value.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-generateInputVector"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-protected">protected</span>
+                
+                                
+                function <h3 class="method-name">generateInputVector</h3>()
+                
+                                
+                    <div>
+                    Generate an input vector.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-_encrypt"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-protected">protected</span>
+                
+                                
+                function <h3 class="method-name">_encrypt</h3>(<span class="param-data-type">string</span>  <span class="param-name">$value</span>,<span class="param-data-type">string</span>  <span class="param-name">$iv</span>)
+                
+                                
+                    <div>
+                    Actually encrypt the value using the given Iv with the openssl library encrypt function.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-decrypt"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">decrypt</h3>(<span class="param-data-type">string</span>  <span class="param-name">$text</span>)
+                
+                                
+                    <div>
+                    Decrypt the given value.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-_decrypt"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-protected">protected</span>
+                
+                                
+                function <h3 class="method-name">_decrypt</h3>(<span class="param-data-type">string</span>  <span class="param-name">$value</span>,<span class="param-data-type">string</span>  <span class="param-name">$iv</span>)
+                
+                                
+                    <div>
+                    Actually decrypt the value using the given Iv with the openssl library decrypt function.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-getJsonPayload"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-protected">protected</span>
+                
+                                
+                function <h3 class="method-name">getJsonPayload</h3>(<span class="param-data-type">string</span>  <span class="param-name">$text</span>)
+                
+                                
+                    <div>
+                    Get the JSON array from the given payload.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-hash"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-protected">protected</span>
+                
+                                
+                function <h3 class="method-name">hash</h3>(<span class="param-data-type">string</span>  <span class="param-name">$value</span>)
+                
+                                
+                    <div>
+                    Create a MAC for the given value.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-addPadding"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-protected">protected</span>
+                
+                                
+                function <h3 class="method-name">addPadding</h3>(<span class="param-data-type">string</span>  <span class="param-name">$value</span>)
+                
+                                
+                    <div>
+                    Add PKCS7 padding to a given value.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-stripPadding"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-protected">protected</span>
+                
+                                
+                function <h3 class="method-name">stripPadding</h3>(<span class="param-data-type">string</span>  <span class="param-name">$value</span>)
+                
+                                
+                    <div>
+                    Remove the padding from the given value.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-paddingIsValid"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-protected">protected</span>
+                
+                                
+                function <h3 class="method-name">paddingIsValid</h3>(<span class="param-data-type">int</span>  <span class="param-name">$pad</span>,<span class="param-data-type">string</span>  <span class="param-name">$value</span>)
+                
+                                
+                    <div>
+                    Determine if the given padding for a value is valid.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-invalidPayload"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-protected">protected</span>
+                
+                                
+                function <h3 class="method-name">invalidPayload</h3>(<span class="param-data-type">array</span>  <span class="param-name">$data</span>)
+                
+                                
+                    <div>
+                    Verify that the encryption payload is valid.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-getIvSize"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-protected">protected</span>
+                
+                                
+                function <h3 class="method-name">getIvSize</h3>()
+                
+                                
+                    <div>
+                    Get the IV size for the cipher.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-setKey"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">setKey</h3>(<span class="param-data-type">string</span>  <span class="param-name">$key</span>)
+                
+                                
+                    <div>
+                    Set the encryption key.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-setCipher"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">setCipher</h3>(<span class="param-data-type">string</span>  <span class="param-name">$cipher</span>)
+                
+                                
+                    <div>
+                    Set the encryption cipher.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-setMode"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">setMode</h3>(<span class="param-data-type">string</span>  <span class="param-name">$mode</span>)
+                
+                                
+                    <div>
+                    Set the encryption mode.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    </ul>                </div>
+            </div>
+
+        </div>
+
+    </body>
+
+
+
+</html>

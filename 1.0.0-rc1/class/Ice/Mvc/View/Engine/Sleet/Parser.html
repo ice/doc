@@ -1,0 +1,603 @@
+<html>
+
+
+    <head>
+        <link rel="stylesheet" type="text/css" href="../../../../../../asset/static/prettify.css" />
+        <link rel="stylesheet" type="text/css" href="../../../../../../asset/static/style.css" />
+        
+        
+        <script src="../../../../../../asset/static/jquery.min.js"></script>
+        <script src="../../../../../../asset/static/prettify.js"></script>
+        <script src="../../../../../../asset/api_definition.js"></script>
+
+        <script>var ZepCurrentPath = '../../../../../../'</script>
+
+        <script src="../../../../../../asset/static/script.js"></script>
+
+                
+    </head>
+
+
+    <body onload="prettyPrint()">
+        <div id="top-bar">
+            <div id="top-left">
+                Zephir Documentation <span class="version">v1.0.1</span>
+            </div>
+            <div id="top-right">
+
+            </div>
+        </div>
+
+        <div id="body">
+
+            <div id="body-left">
+
+                <div class="header-search">
+
+                    <input class="search-box" placeholder="Search for a class or namespace " type="text" />
+             
+                    <div id="menu-wrapper">
+
+
+                    </div>
+
+                </div>
+
+            </div>
+            <div id="body-right">
+                <div class="content">
+                    
+<div class="breadcrumb">
+    
+    <ul>
+        
+        <li><a href="../../../../../../index.html">Home</a></li>
+        
+                <li><a href="../../../../../../classes.html">Classes</a></li>
+                <li><a >Ice\Mvc\View\Engine\Sleet\Parser</a></li>
+                
+    </ul>
+    
+</div>
+<div class="class-header clearfix">
+    
+    
+    <div class="access-buttons">
+        <a class="zep-button" href="../../../../../../source/Ice/Mvc/View/Engine/Sleet/Parser.html">Source</a>
+
+                <a class="zep-button" href="https://github.com/ice/framework/tree/master/ice/mvc/view/engine/sleet/parser.zep">Github</a>
+            </div>
+    
+    <div class="class-full-name">
+        
+        <span class="class-type">Class</span>
+        
+                <span class="namespace-piece">
+            <a href="../../../../../../namespace/Ice.html">Ice</a>
+        </span>
+                <span class="namespace-piece">
+            <a href="../../../../../../namespace/Ice/Mvc.html">Mvc</a>
+        </span>
+                <span class="namespace-piece">
+            <a href="../../../../../../namespace/Ice/Mvc/View.html">View</a>
+        </span>
+                <span class="namespace-piece">
+            <a href="../../../../../../namespace/Ice/Mvc/View/Engine.html">Engine</a>
+        </span>
+                <span class="namespace-piece">
+            <a href="../../../../../../namespace/Ice/Mvc/View/Engine/Sleet.html">Sleet</a>
+        </span>
+                <h1 class="class-name">Parser</h1>
+    </div>
+
+</div>
+
+
+<div class="hidden-anchor"  id="methods"></div>
+<div class="methods-summary standard-bandeau">Methods</div>
+<ul class="method-summary-list">
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-__construct">__construct</a></span>()
+                <div class="summary-text">Sleet parser constructor. Fetch Ice\Tag methods.</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        string
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-text">text</a></span>(<span class="param-data-type">string</span>  <span class="param-name">$text</span>)
+                <div class="summary-text">Parse text, line by line.</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        string
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-line">line</a></span>(<span class="param-data-type">string</span>  <span class="param-name">$line</span>,<span class="param-data-type">int</span>  <span class="param-name">$no</span>)
+                <div class="summary-text">Parse one line - detect the expressions.</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        string
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-parse">parse</a></span>(<span class="param-data-type">string</span>  <span class="param-name">$expression</span>)
+                <div class="summary-text">Parse one sleet expression.</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        string
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-parseControl">parseControl</a></span>(<span class="param-data-type">variable</span>  <span class="param-name">$control</span>,<span class="param-data-type">variable</span>  <span class="param-name">$expression</span>)
+                <div class="summary-text">Parse control expression.</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        string
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-parseEcho">parseEcho</a></span>(<span class="param-data-type">variable</span>  <span class="param-name">$expression</span>)
+                <div class="summary-text">Parse echo expression.</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        string
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-parseSet">parseSet</a></span>(<span class="param-data-type">variable</span>  <span class="param-name">$expression</span>)
+                <div class="summary-text">Parse set expression.</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        string
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-parseUse">parseUse</a></span>(<span class="param-data-type">variable</span>  <span class="param-name">$expression</span>)
+                <div class="summary-text">Parse use expression.</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        string
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-_parse">_parse</a></span>(<span class="param-data-type">variable</span>  <span class="param-name">$tokens</span>)
+                <div class="summary-text">Internal tokens parse.</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-_token">_token</a></span>(<span class="param-data-type">variable</span>  <span class="param-name">$token</span>,<span class="param-data-type">variable</span>  <span class="param-name">$prev</span>,<span class="param-data-type">variable</span>  <span class="param-name">$next</span>)
+                <div class="summary-text">Internal token parse.</div>
+            </div>
+
+</li>
+    </ul>
+
+<div class="hidden-anchor"  id="methods-details"></div>
+<div class="methods-summary standard-bandeau">Methods Details</div>
+<ul class="method-details-list">
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-__construct"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">__construct</h3>()
+                
+                                
+                    <div>
+                    Sleet parser constructor. Fetch Ice\Tag methods.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-text"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">text</h3>(<span class="param-data-type">string</span>  <span class="param-name">$text</span>)
+                
+                                
+                    <div>
+                    Parse text, line by line.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-line"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">line</h3>(<span class="param-data-type">string</span>  <span class="param-name">$line</span>,<span class="param-data-type">int</span>  <span class="param-name">$no</span>)
+                
+                                
+                    <div>
+                    Parse one line - detect the expressions.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-parse"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">parse</h3>(<span class="param-data-type">string</span>  <span class="param-name">$expression</span>)
+                
+                                
+                    <div>
+                    Parse one sleet expression.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-parseControl"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-private">private</span>
+                
+                                
+                function <h3 class="method-name">parseControl</h3>(<span class="param-data-type">variable</span>  <span class="param-name">$control</span>,<span class="param-data-type">variable</span>  <span class="param-name">$expression</span>)
+                
+                                
+                    <div>
+                    Parse control expression.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-parseEcho"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-private">private</span>
+                
+                                
+                function <h3 class="method-name">parseEcho</h3>(<span class="param-data-type">variable</span>  <span class="param-name">$expression</span>)
+                
+                                
+                    <div>
+                    Parse echo expression.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-parseSet"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-private">private</span>
+                
+                                
+                function <h3 class="method-name">parseSet</h3>(<span class="param-data-type">variable</span>  <span class="param-name">$expression</span>)
+                
+                                
+                    <div>
+                    Parse set expression.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-parseUse"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-private">private</span>
+                
+                                
+                function <h3 class="method-name">parseUse</h3>(<span class="param-data-type">variable</span>  <span class="param-name">$expression</span>)
+                
+                                
+                    <div>
+                    Parse use expression.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-_parse"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-private">private</span>
+                
+                                
+                function <h3 class="method-name">_parse</h3>(<span class="param-data-type">variable</span>  <span class="param-name">$tokens</span>)
+                
+                                
+                    <div>
+                    Internal tokens parse.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-_token"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-private">private</span>
+                
+                                
+                function <h3 class="method-name">_token</h3>(<span class="param-data-type">variable</span>  <span class="param-name">$token</span>,<span class="param-data-type">variable</span>  <span class="param-name">$prev</span>,<span class="param-data-type">variable</span>  <span class="param-name">$next</span>)
+                
+                                
+                    <div>
+                    Internal token parse.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    </ul>                </div>
+            </div>
+
+        </div>
+
+    </body>
+
+
+
+</html>

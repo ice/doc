@@ -1,0 +1,228 @@
+<html>
+
+
+    <head>
+        <link rel="stylesheet" type="text/css" href="../../../asset/static/prettify.css" />
+        <link rel="stylesheet" type="text/css" href="../../../asset/static/style.css" />
+        
+        
+        <script src="../../../asset/static/jquery.min.js"></script>
+        <script src="../../../asset/static/prettify.js"></script>
+        <script src="../../../asset/api_definition.js"></script>
+
+        <script>var ZepCurrentPath = '../../../'</script>
+
+        <script src="../../../asset/static/script.js"></script>
+
+                
+    </head>
+
+
+    <body onload="prettyPrint()">
+        <div id="top-bar">
+            <div id="top-left">
+                Zephir Documentation <span class="version">v1.0.1</span>
+            </div>
+            <div id="top-right">
+
+            </div>
+        </div>
+
+        <div id="body">
+
+            <div id="body-left">
+
+                <div class="header-search">
+
+                    <input class="search-box" placeholder="Search for a class or namespace " type="text" />
+             
+                    <div id="menu-wrapper">
+
+
+                    </div>
+
+                </div>
+
+            </div>
+            <div id="body-right">
+                <div class="content">
+                    
+<div class="breadcrumb">
+    
+    <ul>
+        
+        <li><a href="../../../index.html">Home</a></li>
+        
+                <li><a href="../../../classes.html">Classes</a></li>
+                <li><a href="../../../class/Ice/Log/Driver.html">Ice\Log\Driver</a></li>
+                <li><a >Source</a></li>
+                
+    </ul>
+    
+</div>
+<div class="class-header source clearfix">
+    
+    <div class="access-buttons">
+        <a class="zep-button" href="../../../class/Ice/Log/Driver.html">Class</a>
+
+                <a class="zep-button" href="https://github.com/ice/framework/tree/master/ice/log/driver.zep">Github</a>
+            </div>
+    
+    <div class="class-full-name">
+        
+        <span class="class-type">Class</span>
+        
+                <span class="namespace-piece">
+            <a href="../../../namespace/Ice.html">Ice</a>
+        </span>
+                <span class="namespace-piece">
+            <a href="../../../namespace/Ice/Log.html">Log</a>
+        </span>
+                <h1 class="class-name">Driver</h1>
+    </div>
+    
+</div>
+
+
+<pre class="zephir-source-file prettyprint linenums">
+namespace Ice\Log;
+
+use Ice\Log;
+
+/**
+ * This is a simple Logger implementation that other Loggers can inherit from.
+ * It simply delegates all log-level-specific methods to the `log` method to reduce boilerplate code that a simple
+ * Logger that does the same thing with messages regardless of the error level has to implement.
+ *
+ * @package     Ice/Log
+ * @category    Library
+ * @author      Ice Team
+ * @copyright   (c) 2014-2015 Ice Team
+ * @license     http://iceframework.org/license
+ */
+abstract class Driver implements LoggerInterface
+{
+    /**
+     * System is unusable.
+     *
+     * @param string message
+     * @param array context
+     * @return void
+     */
+    public function emergency(string message, array context = []) -> void
+    {
+        this->log(Log::EMERGENCY, message, context);
+    }
+
+    /**
+     * Action must be taken immediately.
+     *
+     * Example: Entire website down, database unavailable, etc. This should trigger the SMS alerts and wake you up.
+     *
+     * @param string message
+     * @param array context
+     * @return void
+     */
+    public function alert(string message, array context = []) -> void
+    {
+        this->log(Log::ALERT, message, context);
+    }
+
+    /**
+     * Critical conditions.
+     *
+     * Example: Application component unavailable, unexpected exception.
+     *
+     * @param string message
+     * @param array context
+     * @return void
+     */
+    public function critical(string message, array context = []) -> void
+    {
+        this->log(Log::CRITICAL, message, context);
+    }
+
+    /**
+     * Runtime errors that do not require immediate action but should typically be logged and monitored.
+     *
+     * @param string message
+     * @param array context
+     * @return void
+     */
+    public function error(string message, array context = []) -> void
+    {
+        this->log(Log::ERROR, message, context);
+    }
+
+    /**
+     * Exceptional occurrences that are not errors.
+     *
+     * Example: Use of deprecated APIs, poor use of an API, undesirable things that are not necessarily wrong.
+     *
+     * @param string message
+     * @param array context
+     * @return void
+     */
+    public function warning(string message, array context = []) -> void
+    {
+        this->log(Log::WARNING, message, context);
+    }
+
+    /**
+     * Normal but significant events.
+     *
+     * @param string message
+     * @param array context
+     * @return void
+     */
+    public function notice(string message, array context = []) -> void
+    {
+        this->log(Log::NOTICE, message, context);
+    }
+
+    /**
+     * Interesting events.
+     *
+     * Example: User logs in, SQL logs.
+     *
+     * @param string message
+     * @param array context
+     * @return void
+     */
+    public function info(string message, array context = []) -> void
+    {
+        this->log(Log::INFO, message, context);
+    }
+
+    /**
+     * Detailed debug information.
+     *
+     * @param string message
+     * @param array context
+     * @return void
+     */
+    public function debug(string message, array context = []) -> void
+    {
+        this->log(Log::DEBUG, message, context);
+    }
+
+    /**
+     * Logs with an arbitrary level.
+     *
+     * @param mixed level
+     * @param string message
+     * @param array context
+     * @return void
+     */
+    public abstract function log(var level, string message, array context = []) -> void;
+}
+</pre>                </div>
+            </div>
+
+        </div>
+
+    </body>
+
+
+
+</html>

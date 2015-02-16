@@ -1,0 +1,1907 @@
+<html>
+
+
+    <head>
+        <link rel="stylesheet" type="text/css" href="../../asset/static/prettify.css" />
+        <link rel="stylesheet" type="text/css" href="../../asset/static/style.css" />
+        
+        
+        <script src="../../asset/static/jquery.min.js"></script>
+        <script src="../../asset/static/prettify.js"></script>
+        <script src="../../asset/api_definition.js"></script>
+
+        <script>var ZepCurrentPath = '../../'</script>
+
+        <script src="../../asset/static/script.js"></script>
+
+                
+    </head>
+
+
+    <body onload="prettyPrint()">
+        <div id="top-bar">
+            <div id="top-left">
+                Zephir Documentation <span class="version">v1.0.1</span>
+            </div>
+            <div id="top-right">
+
+            </div>
+        </div>
+
+        <div id="body">
+
+            <div id="body-left">
+
+                <div class="header-search">
+
+                    <input class="search-box" placeholder="Search for a class or namespace " type="text" />
+             
+                    <div id="menu-wrapper">
+
+
+                    </div>
+
+                </div>
+
+            </div>
+            <div id="body-right">
+                <div class="content">
+                    
+<div class="breadcrumb">
+    
+    <ul>
+        
+        <li><a href="../../index.html">Home</a></li>
+        
+                <li><a href="../../classes.html">Classes</a></li>
+                <li><a >Ice\Tag</a></li>
+                
+    </ul>
+    
+</div>
+<div class="class-header clearfix">
+    
+    
+    <div class="access-buttons">
+        <a class="zep-button" href="../../source/Ice/Tag.html">Source</a>
+
+                <a class="zep-button" href="https://github.com/ice/framework/tree/master/ice/tag.zep">Github</a>
+            </div>
+    
+    <div class="class-full-name">
+        
+        <span class="class-type">Class</span>
+        
+                <span class="namespace-piece">
+            <a href="../../namespace/Ice.html">Ice</a>
+        </span>
+                <h1 class="class-name">Tag</h1>
+    </div>
+
+</div>
+
+
+<div class="hidden-anchor"  id="methods"></div>
+<div class="methods-summary standard-bandeau">Methods</div>
+<ul class="method-summary-list">
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-getDi">getDi</a></span>()
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-getValues">getValues</a></span>()
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-setDocType">setDocType</a></span>(<span class="param-data-type">variable</span>  <span class="param-name">$docType</span>)
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-setTitle">setTitle</a></span>(<span class="param-data-type">variable</span>  <span class="param-name">$title</span>)
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-getTitle">getTitle</a></span>()
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-setTitleSeparator">setTitleSeparator</a></span>(<span class="param-data-type">variable</span>  <span class="param-name">$titleSeparator</span>)
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-getTitleSeparator">getTitleSeparator</a></span>()
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-setEscape">setEscape</a></span>(<span class="param-data-type">variable</span>  <span class="param-name">$escape</span>)
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-__construct">__construct</a></span>()
+                <div class="summary-text">Tag constructor. Fetch Di and set it as a property.</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-appendTitle">appendTitle</a></span>(<span class="param-data-type">string</span>  <span class="param-name">$title</span>,<span class="param-data-type">string</span>  <span class="param-name">$separator</span>)
+                <div class="summary-text">Appends a text to current document title.</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-prependTitle">prependTitle</a></span>(<span class="param-data-type">string</span>  <span class="param-name">$title</span>,<span class="param-data-type">string</span>  <span class="param-name">$separator</span>)
+                <div class="summary-text">Prepends a text to current document title.</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        string
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-textField">textField</a></span>(<span class="param-data-type">array</span>  <span class="param-name">$parameters</span>)
+                <div class="summary-text">Builds a HTML INPUT[type="text"] tag.</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        string
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-passwordField">passwordField</a></span>(<span class="param-data-type">array</span>  <span class="param-name">$parameters</span>)
+                <div class="summary-text">Builds a HTML INPUT[type="password"] tag.</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        string
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-hiddenField">hiddenField</a></span>(<span class="param-data-type">array</span>  <span class="param-name">$parameters</span>)
+                <div class="summary-text">Builds a HTML INPUT[type="hidden"] tag.</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        string
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-fileField">fileField</a></span>(<span class="param-data-type">array</span>  <span class="param-name">$parameters</span>)
+                <div class="summary-text">Builds a HTML INPUT[type="file"] tag.</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        string
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-submitButton">submitButton</a></span>(<span class="param-data-type">array</span>  <span class="param-name">$parameters</span>)
+                <div class="summary-text">Builds a HTML INPUT[type="submit"] tag.</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        string
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-button">button</a></span>(<span class="param-data-type">array</span>  <span class="param-name">$parameters</span>)
+                <div class="summary-text">Builds a HTML BUTTON tag.</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        string
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-checkField">checkField</a></span>(<span class="param-data-type">array</span>  <span class="param-name">$parameters</span>)
+                <div class="summary-text">Builds a HTML INPUT[type="checkbox"] tag.</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        string
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-input">input</a></span>(<span class="param-data-type">string</span>  <span class="param-name">$type</span>,<span class="param-data-type">array</span>  <span class="param-name">$parameters</span>)
+                <div class="summary-text">Builds generic INPUT tags.</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        string
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-form">form</a></span>(<span class="param-data-type">array</span>  <span class="param-name">$parameters</span>)
+                <div class="summary-text">Builds a HTML FORM tag.</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        string
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-textArea">textArea</a></span>(<span class="param-data-type">array</span>  <span class="param-name">$parameters</span>)
+                <div class="summary-text">Builds a HTML TEXTAREA tag.</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        string
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-image">image</a></span>(<span class="param-data-type">array</span>  <span class="param-name">$parameters</span>)
+                <div class="summary-text">Alias of the `img` method.</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        string
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-img">img</a></span>(<span class="param-data-type">array</span>  <span class="param-name">$parameters</span>)
+                <div class="summary-text">Builds HTML IMG tags.</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        string
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-linkTo">linkTo</a></span>(<span class="param-data-type">array</span>  <span class="param-name">$parameters</span>)
+                <div class="summary-text">Alias of the `a` method.</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        string
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-a">a</a></span>(<span class="param-data-type">array</span>  <span class="param-name">$parameters</span>)
+                <div class="summary-text">Builds a HTML A tag using framework conventions.</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        string
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-link">link</a></span>(<span class="param-data-type">array</span>  <span class="param-name">$parameters</span>)
+                <div class="summary-text">Builds a LINK[rel="stylesheet"] tag.</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        string
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-script">script</a></span>(<span class="param-data-type">array</span>  <span class="param-name">$parameters</span>)
+                <div class="summary-text">Builds a SCRIPT[type="javascript"] tag.</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        string
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-style">style</a></span>(<span class="param-data-type">array</span>  <span class="param-name">$parameters</span>)
+                <div class="summary-text">Builds a STYLE tag.</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-select">select</a></span>(<span class="param-data-type">array</span>  <span class="param-name">$parameters</span>)
+                <div class="summary-text">Builds a SELECT tag.</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        string
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-tagHtml">tagHtml</a></span>(<span class="param-data-type">string</span>  <span class="param-name">$name</span>,<span class="param-data-type">array</span>  <span class="param-name">$parameters</span>,<span class="param-data-type">array</span>  <span class="param-name">$defaultParams</span>,<span class="param-data-type">array</span>  <span class="param-name">$skip</span>,<span class="param-data-type">string</span>  <span class="param-name">$content</span>,<span class="param-data-type">bool</span>  <span class="param-name">$close</span>,<span class="param-data-type">bool</span>  <span class="param-name">$eol</span>,<span class="param-data-type">bool</span>  <span class="param-name">$single</span>)
+                <div class="summary-text">Builds a HTML tag.</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        string
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-endTag">endTag</a></span>(<span class="param-data-type">string</span>  <span class="param-name">$name</span>,<span class="param-data-type">bool</span>  <span class="param-name">$eol</span>)
+                <div class="summary-text">Builds a HTML close tag.</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        string
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-prepareTag">prepareTag</a></span>(<span class="param-data-type">string</span>  <span class="param-name">$name</span>,<span class="param-data-type">array</span>  <span class="param-name">$attributes</span>,<span class="param-data-type">array</span>  <span class="param-name">$skip</span>,<span class="param-data-type">bool</span>  <span class="param-name">$single</span>)
+                <div class="summary-text">Renders parameters keeping order in html attributes.</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        bool
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-hasValue">hasValue</a></span>(<span class="param-data-type">string</span>  <span class="param-name">$name</span>)
+                <div class="summary-text">Check if a helper has a default value set using Ice\Tag::setValues or value from _POST.</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-setValue">setValue</a></span>(<span class="param-data-type">string</span>  <span class="param-name">$id</span>,<span class="param-data-type">variable</span>  <span class="param-name">$value</span>)
+                <div class="summary-text">Assigns default values to generated tags by helpers.</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-setValues">setValues</a></span>(<span class="param-data-type">array</span>  <span class="param-name">$values</span>,<span class="param-data-type">bool</span>  <span class="param-name">$merge</span>)
+                <div class="summary-text">Assigns default values to generated tags by helpers.</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-getValue">getValue</a></span>(<span class="param-data-type">string</span>  <span class="param-name">$name</span>)
+                <div class="summary-text">Every helper calls this function to check whether a component has a predefined value using Ice\Tag::setValue</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        string
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-friendlyTitle">friendlyTitle</a></span>(<span class="param-data-type">string</span>  <span class="param-name">$text</span>,<span class="param-data-type">string</span>  <span class="param-name">$separator</span>,<span class="param-data-type">bool</span>  <span class="param-name">$lowercase</span>,<span class="param-data-type">variable</span>  <span class="param-name">$replace</span>)
+                <div class="summary-text">Converts texts into URL-friendly titles.</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        string
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-getDocType">getDocType</a></span>()
+                <div class="summary-text">Get the document type declaration of content.</div>
+            </div>
+
+</li>
+    </ul>
+
+<div class="hidden-anchor"  id="methods-details"></div>
+<div class="methods-summary standard-bandeau">Methods Details</div>
+<ul class="method-details-list">
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-getDi"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">getDi</h3>()
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-getValues"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">getValues</h3>()
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-setDocType"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">setDocType</h3>(<span class="param-data-type">variable</span>  <span class="param-name">$docType</span>)
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-setTitle"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">setTitle</h3>(<span class="param-data-type">variable</span>  <span class="param-name">$title</span>)
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-getTitle"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">getTitle</h3>()
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-setTitleSeparator"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">setTitleSeparator</h3>(<span class="param-data-type">variable</span>  <span class="param-name">$titleSeparator</span>)
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-getTitleSeparator"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">getTitleSeparator</h3>()
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-setEscape"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">setEscape</h3>(<span class="param-data-type">variable</span>  <span class="param-name">$escape</span>)
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-__construct"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">__construct</h3>()
+                
+                                
+                    <div>
+                    Tag constructor. Fetch Di and set it as a property.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-appendTitle"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">appendTitle</h3>(<span class="param-data-type">string</span>  <span class="param-name">$title</span>,<span class="param-data-type">string</span>  <span class="param-name">$separator</span>)
+                
+                                
+                    <div>
+                    Appends a text to current document title.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-prependTitle"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">prependTitle</h3>(<span class="param-data-type">string</span>  <span class="param-name">$title</span>,<span class="param-data-type">string</span>  <span class="param-name">$separator</span>)
+                
+                                
+                    <div>
+                    Prepends a text to current document title.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-textField"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">textField</h3>(<span class="param-data-type">array</span>  <span class="param-name">$parameters</span>)
+                
+                                
+                    <div>
+                    Builds a HTML INPUT[type="text"] tag.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-passwordField"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">passwordField</h3>(<span class="param-data-type">array</span>  <span class="param-name">$parameters</span>)
+                
+                                
+                    <div>
+                    Builds a HTML INPUT[type="password"] tag.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-hiddenField"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">hiddenField</h3>(<span class="param-data-type">array</span>  <span class="param-name">$parameters</span>)
+                
+                                
+                    <div>
+                    Builds a HTML INPUT[type="hidden"] tag.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-fileField"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">fileField</h3>(<span class="param-data-type">array</span>  <span class="param-name">$parameters</span>)
+                
+                                
+                    <div>
+                    Builds a HTML INPUT[type="file"] tag.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-submitButton"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">submitButton</h3>(<span class="param-data-type">array</span>  <span class="param-name">$parameters</span>)
+                
+                                
+                    <div>
+                    Builds a HTML INPUT[type="submit"] tag.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-button"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">button</h3>(<span class="param-data-type">array</span>  <span class="param-name">$parameters</span>)
+                
+                                
+                    <div>
+                    Builds a HTML BUTTON tag.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-checkField"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">checkField</h3>(<span class="param-data-type">array</span>  <span class="param-name">$parameters</span>)
+                
+                                
+                    <div>
+                    Builds a HTML INPUT[type="checkbox"] tag.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-input"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-private">private</span>
+                
+                                
+                function <h3 class="method-name">input</h3>(<span class="param-data-type">string</span>  <span class="param-name">$type</span>,<span class="param-data-type">array</span>  <span class="param-name">$parameters</span>)
+                
+                                
+                    <div>
+                    Builds generic INPUT tags.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-form"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">form</h3>(<span class="param-data-type">array</span>  <span class="param-name">$parameters</span>)
+                
+                                
+                    <div>
+                    Builds a HTML FORM tag.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-textArea"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">textArea</h3>(<span class="param-data-type">array</span>  <span class="param-name">$parameters</span>)
+                
+                                
+                    <div>
+                    Builds a HTML TEXTAREA tag.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-image"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">image</h3>(<span class="param-data-type">array</span>  <span class="param-name">$parameters</span>)
+                
+                                
+                    <div>
+                    Alias of the `img` method.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-img"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">img</h3>(<span class="param-data-type">array</span>  <span class="param-name">$parameters</span>)
+                
+                                
+                    <div>
+                    Builds HTML IMG tags.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-linkTo"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">linkTo</h3>(<span class="param-data-type">array</span>  <span class="param-name">$parameters</span>)
+                
+                                
+                    <div>
+                    Alias of the `a` method.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-a"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">a</h3>(<span class="param-data-type">array</span>  <span class="param-name">$parameters</span>)
+                
+                                
+                    <div>
+                    Builds a HTML A tag using framework conventions.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-link"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">link</h3>(<span class="param-data-type">array</span>  <span class="param-name">$parameters</span>)
+                
+                                
+                    <div>
+                    Builds a LINK[rel="stylesheet"] tag.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-script"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">script</h3>(<span class="param-data-type">array</span>  <span class="param-name">$parameters</span>)
+                
+                                
+                    <div>
+                    Builds a SCRIPT[type="javascript"] tag.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-style"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">style</h3>(<span class="param-data-type">array</span>  <span class="param-name">$parameters</span>)
+                
+                                
+                    <div>
+                    Builds a STYLE tag.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-select"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">select</h3>(<span class="param-data-type">array</span>  <span class="param-name">$parameters</span>)
+                
+                                
+                    <div>
+                    Builds a SELECT tag.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-tagHtml"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">tagHtml</h3>(<span class="param-data-type">string</span>  <span class="param-name">$name</span>,<span class="param-data-type">array</span>  <span class="param-name">$parameters</span>,<span class="param-data-type">array</span>  <span class="param-name">$defaultParams</span>,<span class="param-data-type">array</span>  <span class="param-name">$skip</span>,<span class="param-data-type">string</span>  <span class="param-name">$content</span>,<span class="param-data-type">bool</span>  <span class="param-name">$close</span>,<span class="param-data-type">bool</span>  <span class="param-name">$eol</span>,<span class="param-data-type">bool</span>  <span class="param-name">$single</span>)
+                
+                                
+                    <div>
+                    Builds a HTML tag.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-endTag"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">endTag</h3>(<span class="param-data-type">string</span>  <span class="param-name">$name</span>,<span class="param-data-type">bool</span>  <span class="param-name">$eol</span>)
+                
+                                
+                    <div>
+                    Builds a HTML close tag.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-prepareTag"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">prepareTag</h3>(<span class="param-data-type">string</span>  <span class="param-name">$name</span>,<span class="param-data-type">array</span>  <span class="param-name">$attributes</span>,<span class="param-data-type">array</span>  <span class="param-name">$skip</span>,<span class="param-data-type">bool</span>  <span class="param-name">$single</span>)
+                
+                                
+                    <div>
+                    Renders parameters keeping order in html attributes.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-hasValue"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">hasValue</h3>(<span class="param-data-type">string</span>  <span class="param-name">$name</span>)
+                
+                                
+                    <div>
+                    Check if a helper has a default value set using Ice\Tag::setValues or value from _POST.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-setValue"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">setValue</h3>(<span class="param-data-type">string</span>  <span class="param-name">$id</span>,<span class="param-data-type">variable</span>  <span class="param-name">$value</span>)
+                
+                                
+                    <div>
+                    Assigns default values to generated tags by helpers.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-setValues"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">setValues</h3>(<span class="param-data-type">array</span>  <span class="param-name">$values</span>,<span class="param-data-type">bool</span>  <span class="param-name">$merge</span>)
+                
+                                
+                    <div>
+                    Assigns default values to generated tags by helpers.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-getValue"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">getValue</h3>(<span class="param-data-type">string</span>  <span class="param-name">$name</span>)
+                
+                                
+                    <div>
+                    Every helper calls this function to check whether a component has a predefined value using Ice\Tag::setValue                    </div>
+                    <div>
+                    or value from _POST.                    </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-friendlyTitle"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">friendlyTitle</h3>(<span class="param-data-type">string</span>  <span class="param-name">$text</span>,<span class="param-data-type">string</span>  <span class="param-name">$separator</span>,<span class="param-data-type">bool</span>  <span class="param-name">$lowercase</span>,<span class="param-data-type">variable</span>  <span class="param-name">$replace</span>)
+                
+                                
+                    <div>
+                    Converts texts into URL-friendly titles.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-getDocType"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">getDocType</h3>()
+                
+                                
+                    <div>
+                    Get the document type declaration of content.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    </ul>                </div>
+            </div>
+
+        </div>
+
+    </body>
+
+
+
+</html>

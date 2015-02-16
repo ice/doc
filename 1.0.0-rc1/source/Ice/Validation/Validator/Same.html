@@ -1,0 +1,189 @@
+<html>
+
+
+    <head>
+        <link rel="stylesheet" type="text/css" href="../../../../asset/static/prettify.css" />
+        <link rel="stylesheet" type="text/css" href="../../../../asset/static/style.css" />
+        
+        
+        <script src="../../../../asset/static/jquery.min.js"></script>
+        <script src="../../../../asset/static/prettify.js"></script>
+        <script src="../../../../asset/api_definition.js"></script>
+
+        <script>var ZepCurrentPath = '../../../../'</script>
+
+        <script src="../../../../asset/static/script.js"></script>
+
+                
+    </head>
+
+
+    <body onload="prettyPrint()">
+        <div id="top-bar">
+            <div id="top-left">
+                Zephir Documentation <span class="version">v1.0.1</span>
+            </div>
+            <div id="top-right">
+
+            </div>
+        </div>
+
+        <div id="body">
+
+            <div id="body-left">
+
+                <div class="header-search">
+
+                    <input class="search-box" placeholder="Search for a class or namespace " type="text" />
+             
+                    <div id="menu-wrapper">
+
+
+                    </div>
+
+                </div>
+
+            </div>
+            <div id="body-right">
+                <div class="content">
+                    
+<div class="breadcrumb">
+    
+    <ul>
+        
+        <li><a href="../../../../index.html">Home</a></li>
+        
+                <li><a href="../../../../classes.html">Classes</a></li>
+                <li><a href="../../../../class/Ice/Validation/Validator/Same.html">Ice\Validation\Validator\Same</a></li>
+                <li><a >Source</a></li>
+                
+    </ul>
+    
+</div>
+<div class="class-header source clearfix">
+    
+    <div class="access-buttons">
+        <a class="zep-button" href="../../../../class/Ice/Validation/Validator/Same.html">Class</a>
+
+                <a class="zep-button" href="https://github.com/ice/framework/tree/master/ice/validation/validator/same.zep">Github</a>
+            </div>
+    
+    <div class="class-full-name">
+        
+        <span class="class-type">Class</span>
+        
+                <span class="namespace-piece">
+            <a href="../../../../namespace/Ice.html">Ice</a>
+        </span>
+                <span class="namespace-piece">
+            <a href="../../../../namespace/Ice/Validation.html">Validation</a>
+        </span>
+                <span class="namespace-piece">
+            <a href="../../../../namespace/Ice/Validation/Validator.html">Validator</a>
+        </span>
+                <h1 class="class-name">Same</h1>
+    </div>
+    
+</div>
+
+
+<pre class="zephir-source-file prettyprint linenums">
+namespace Ice\Validation\Validator;
+
+use Ice\Validation;
+use Ice\Validation\Validator;
+
+/**
+ * Same validator.
+ *
+ * @package     Ice/Validation
+ * @category    Security
+ * @author      Ice Team
+ * @copyright   (c) 2014-2015 Ice Team
+ * @license     http://iceframework.org/license
+ */
+class Same extends Validator
+{
+
+    /**
+     * Validate the validator
+     *
+     * @param Validation validation
+     * @param string field
+     * @return boolean
+     */
+    public function validate(<Validation> validation, string! field) -> boolean
+    {
+        var value, allowEmpty, label, message, i18n, replace, other, valueOther, labelOther;
+
+        let value = validation->getValue(field);
+
+        if this->has(1) {
+            let allowEmpty = this->get(1);
+        } else {
+            let allowEmpty = this->get("allowEmpty");
+        }
+
+        if allowEmpty && (value === "" || value === null) {
+            return true;
+        }
+
+        if this->has(0) {
+            let other = this->get(0);
+        } else {
+            let other = this->get("other");
+        }
+
+        if validation->hasValue(other) {
+            let valueOther = validation->getValue(other);
+        } else {
+
+            let valueOther = other;
+        }
+
+        if value != valueOther {
+            if this->has("label") {
+                let label = this->get("label");
+            } else {
+                let label = validation->getLabel(field);
+            }
+
+            if this->has("labelOther") {
+                let labelOther = this->get("labelOther");
+            } else {
+                let labelOther = validation->getLabel(other);
+            }
+
+            if this->has("message") {
+                let message = this->get("message");
+            } else {
+                let message = validation->getDefaultMessage("same");
+            }
+
+            // Translate strings
+            if validation->getTranslate() === true && validation->getDi()->has("i18n") {
+                let i18n = validation->getDi()->get("i18n"),
+                    label = i18n->translate(label),
+                    labelOther = i18n->translate(labelOther),
+                    message = i18n->translate(message);
+            }
+
+            let replace = [":field": label, ":other": labelOther];
+
+            validation->addMessage(field, strtr(message, replace));
+            return false;
+        }
+
+        return true;
+    }
+}
+</pre>                </div>
+            </div>
+
+        </div>
+
+    </body>
+
+
+
+</html>

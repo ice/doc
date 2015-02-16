@@ -1,0 +1,496 @@
+<html>
+
+
+    <head>
+        <link rel="stylesheet" type="text/css" href="../../../asset/static/prettify.css" />
+        <link rel="stylesheet" type="text/css" href="../../../asset/static/style.css" />
+        
+        
+        <script src="../../../asset/static/jquery.min.js"></script>
+        <script src="../../../asset/static/prettify.js"></script>
+        <script src="../../../asset/api_definition.js"></script>
+
+        <script>var ZepCurrentPath = '../../../'</script>
+
+        <script src="../../../asset/static/script.js"></script>
+
+                
+    </head>
+
+
+    <body onload="prettyPrint()">
+        <div id="top-bar">
+            <div id="top-left">
+                Zephir Documentation <span class="version">v1.0.1</span>
+            </div>
+            <div id="top-right">
+
+            </div>
+        </div>
+
+        <div id="body">
+
+            <div id="body-left">
+
+                <div class="header-search">
+
+                    <input class="search-box" placeholder="Search for a class or namespace " type="text" />
+             
+                    <div id="menu-wrapper">
+
+
+                    </div>
+
+                </div>
+
+            </div>
+            <div id="body-right">
+                <div class="content">
+                    
+<div class="breadcrumb">
+    
+    <ul>
+        
+        <li><a href="../../../index.html">Home</a></li>
+        
+                <li><a href="../../../classes.html">Classes</a></li>
+                <li><a >Ice\Auth\Driver</a></li>
+                
+    </ul>
+    
+</div>
+<div class="class-header clearfix">
+    
+    
+    <div class="access-buttons">
+        <a class="zep-button" href="../../../source/Ice/Auth/Driver.html">Source</a>
+
+                <a class="zep-button" href="https://github.com/ice/framework/tree/master/ice/auth/driver.zep">Github</a>
+            </div>
+    
+    <div class="class-full-name">
+        
+        <span class="class-type">Class</span>
+        
+                <span class="namespace-piece">
+            <a href="../../../namespace/Ice.html">Ice</a>
+        </span>
+                <span class="namespace-piece">
+            <a href="../../../namespace/Ice/Auth.html">Auth</a>
+        </span>
+                <h1 class="class-name">Driver</h1>
+    </div>
+
+</div>
+
+
+<div class="hidden-anchor"  id="methods"></div>
+<div class="methods-summary standard-bandeau">Methods</div>
+<ul class="method-summary-list">
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-__construct">__construct</a></span>(<span class="param-data-type">array</span>  <span class="param-name">$options</span>)
+                <div class="summary-text">Loads services and configuration options.</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        bool
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-checkHash">checkHash</a></span>(<span class="param-data-type">string</span>  <span class="param-name">$password</span>,<span class="param-data-type">string</span>  <span class="param-name">$hash</span>)
+                <div class="summary-text">Checks a plain text password and its hash version to check if the password matches.</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-completeLogin">completeLogin</a></span>(<span class="param-data-type">variable</span>  <span class="param-name">$user</span>,<span class="param-data-type">array</span>  <span class="param-name">$roles</span>)
+                <div class="summary-text">Complete the login for a user by setting session data and eg. incrementing the logins.</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-getOption">getOption</a></span>(<span class="param-data-type">string</span>  <span class="param-name">$key</span>,<span class="param-data-type">variable</span>  <span class="param-name">$defaultValue</span>)
+                <div class="summary-text">Get option value with key.</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-getUser">getUser</a></span>(<span class="param-data-type">variable</span>  <span class="param-name">$defaultValue</span>)
+                <div class="summary-text">Gets the currently logged in user from the session. Returns NULL if no user is currently logged in.</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-hash">hash</a></span>(<span class="param-data-type">string</span>  <span class="param-name">$password</span>)
+                <div class="summary-text">Perform a hmac hash, using the configured method.</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-loggedIn">loggedIn</a></span>(<span class="param-data-type">string</span>  <span class="param-name">$role</span>)
+                <div class="summary-text">Check if there is an active session. Optionally allows checking for a specific role.</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        bool
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-logout">logout</a></span>(<span class="param-data-type">bool</span>  <span class="param-name">$destroy</span>,<span class="param-data-type">bool</span>  <span class="param-name">$logoutAll</span>)
+                <div class="summary-text">Log out a user by removing the related session variables.</div>
+            </div>
+
+</li>
+    </ul>
+
+<div class="hidden-anchor"  id="methods-details"></div>
+<div class="methods-summary standard-bandeau">Methods Details</div>
+<ul class="method-details-list">
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-__construct"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">__construct</h3>(<span class="param-data-type">array</span>  <span class="param-name">$options</span>)
+                
+                                
+                    <div>
+                    Loads services and configuration options.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-checkHash"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">checkHash</h3>(<span class="param-data-type">string</span>  <span class="param-name">$password</span>,<span class="param-data-type">string</span>  <span class="param-name">$hash</span>)
+                
+                                
+                    <div>
+                    Checks a plain text password and its hash version to check if the password matches.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-completeLogin"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-protected">protected</span>
+                
+                                
+                function <h3 class="method-name">completeLogin</h3>(<span class="param-data-type">variable</span>  <span class="param-name">$user</span>,<span class="param-data-type">array</span>  <span class="param-name">$roles</span>)
+                
+                                
+                    <div>
+                    Complete the login for a user by setting session data and eg. incrementing the logins.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-getOption"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">getOption</h3>(<span class="param-data-type">string</span>  <span class="param-name">$key</span>,<span class="param-data-type">variable</span>  <span class="param-name">$defaultValue</span>)
+                
+                                
+                    <div>
+                    Get option value with key.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-getUser"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">getUser</h3>(<span class="param-data-type">variable</span>  <span class="param-name">$defaultValue</span>)
+                
+                                
+                    <div>
+                    Gets the currently logged in user from the session. Returns NULL if no user is currently logged in.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-hash"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">hash</h3>(<span class="param-data-type">string</span>  <span class="param-name">$password</span>)
+                
+                                
+                    <div>
+                    Perform a hmac hash, using the configured method.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-loggedIn"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">loggedIn</h3>(<span class="param-data-type">string</span>  <span class="param-name">$role</span>)
+                
+                                
+                    <div>
+                    Check if there is an active session. Optionally allows checking for a specific role.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-logout"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">logout</h3>(<span class="param-data-type">bool</span>  <span class="param-name">$destroy</span>,<span class="param-data-type">bool</span>  <span class="param-name">$logoutAll</span>)
+                
+                                
+                    <div>
+                    Log out a user by removing the related session variables.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    </ul>                </div>
+            </div>
+
+        </div>
+
+    </body>
+
+
+
+</html>

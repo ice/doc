@@ -1,0 +1,209 @@
+<html>
+
+
+    <head>
+        <link rel="stylesheet" type="text/css" href="../../../asset/static/prettify.css" />
+        <link rel="stylesheet" type="text/css" href="../../../asset/static/style.css" />
+        
+        
+        <script src="../../../asset/static/jquery.min.js"></script>
+        <script src="../../../asset/static/prettify.js"></script>
+        <script src="../../../asset/api_definition.js"></script>
+
+        <script>var ZepCurrentPath = '../../../'</script>
+
+        <script src="../../../asset/static/script.js"></script>
+
+                
+    </head>
+
+
+    <body onload="prettyPrint()">
+        <div id="top-bar">
+            <div id="top-left">
+                Zephir Documentation <span class="version">v1.0.1</span>
+            </div>
+            <div id="top-right">
+
+            </div>
+        </div>
+
+        <div id="body">
+
+            <div id="body-left">
+
+                <div class="header-search">
+
+                    <input class="search-box" placeholder="Search for a class or namespace " type="text" />
+             
+                    <div id="menu-wrapper">
+
+
+                    </div>
+
+                </div>
+
+            </div>
+            <div id="body-right">
+                <div class="content">
+                    
+<div class="breadcrumb">
+    
+    <ul>
+        
+        <li><a href="../../../index.html">Home</a></li>
+        
+                <li><a href="../../../classes.html">Classes</a></li>
+                <li><a href="../../../class/Ice/Validation/Validator.html">Ice\Validation\Validator</a></li>
+                <li><a >Source</a></li>
+                
+    </ul>
+    
+</div>
+<div class="class-header source clearfix">
+    
+    <div class="access-buttons">
+        <a class="zep-button" href="../../../class/Ice/Validation/Validator.html">Class</a>
+
+                <a class="zep-button" href="https://github.com/ice/framework/tree/master/ice/validation/validator.zep">Github</a>
+            </div>
+    
+    <div class="class-full-name">
+        
+        <span class="class-type">Class</span>
+        
+                <span class="namespace-piece">
+            <a href="../../../namespace/Ice.html">Ice</a>
+        </span>
+                <span class="namespace-piece">
+            <a href="../../../namespace/Ice/Validation.html">Validation</a>
+        </span>
+                <h1 class="class-name">Validator</h1>
+    </div>
+    
+</div>
+
+
+<pre class="zephir-source-file prettyprint linenums">
+namespace Ice\Validation;
+
+use Ice\Validation;
+
+/**
+ * Validator is a base class for validators.
+ *
+ * @package     Ice/Validation
+ * @category    Security
+ * @author      Ice Team
+ * @copyright   (c) 2014-2015 Ice Team
+ * @license     http://iceframework.org/license
+ */
+abstract class Validator
+{
+    
+    protected _options = [];
+
+    const ALL = 0;
+    const NUMERIC = 1;
+    const STRINGS = 2;
+
+    /**
+     * Validator constructor.
+     *
+     * @param array options
+     */
+    public function __construct(array options = [])
+    {
+        let this->_options = options;
+    }
+
+    /**
+     * Validate the validator
+     *
+     * @param Validation validation
+     * @param string field
+     */
+    public abstract function validate(<Validation> validation, string! field);
+
+    /**
+     * Whether or not an option exists by key.
+     *
+     * @param string key The option key
+     * @return boolean
+     */
+    public function has(var key) -> boolean
+    {
+        return isset this->_options[key];
+    }
+
+    /**
+     * Retrieve a single option.
+     *
+     * @param string key The data key
+     * @param mixed defaultValue The value to return if data key does not exist
+     * @return mixed
+     */
+    public function get(var key, var defaultValue = null)
+    {
+        var value;
+
+        if fetch value, this->_options[key] {
+            return value;
+        }
+
+        return defaultValue;
+    }
+
+    /**
+     * Assigns a value to the specified option.
+     *
+     * @param string key The data key
+     * @param mixed value
+     * @return void
+     */
+    public function set(var key, var value)
+    {
+        let this->_options[key] = value;
+    }
+
+    /**
+     * Get options by type.
+     *
+     * @param int keys Type of options
+     * @param array options
+     */
+    public function getOptions(keys = self::ALL, array options = [])
+    {
+        var key, value;
+
+        for key, value in this->_options {
+            switch keys {
+                case self::NUMERIC: 
+                    if typeof key == "integer" {
+                        let options[key] = value;
+                    }
+                break;
+                case self::STRINGS: 
+                    if typeof key == "string" {
+                        let options[key] = value;
+                    }
+                break;
+                default:
+                    let options[key] = value;
+                break;
+            }
+        }
+
+        return options;
+    }
+}
+</pre>                </div>
+            </div>
+
+        </div>
+
+    </body>
+
+
+
+</html>
