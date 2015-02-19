@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" type="text/css" href="../../asset/static/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="../../asset/static/css/tomorrow.min.css" id="tomorrow" />
+        <link rel="stylesheet" type="text/css" href="../../asset/static/css/tomorrow-night.min.css" id="tomorrow-night" disabled />
+        <link rel="stylesheet" type="text/css" href="../../asset/static/css/style.css" />
+    </head>
+    <body>
+        <header class="navbar navbar-default navbar-fixed-top">
+            <div id="top-bar" class="container-fluid">
+                <div id="top-left" class="navbar-header">
+                    <a href="../../index.html" class="navbar-brand">
+                        Ice Documentation <span class="version">1.0.0</span>
+                    </a>
+                </div>
+                <div id="top-right" class="collapse navbar-collapse">
+
+                </div>
+            </div>
+        </header>
+        <div id="body" class="container-fluid">
+            <div class="row">
+                <div id="body-left" class="col-lg-3 col-sm-4">
+                    <div class="header-search">
+                        <input class="search-box form-control" placeholder="Search for a class or namespace " type="text" />
+                        <div id="menu-wrapper">
+                        </div>
+                    </div>
+                </div>
+                <div id="body-right" class="col-lg-9 col-sm-8">
+                    <div class="content">
+                        
+<div>
+    
+    <ul class="breadcrumb">
+        
+        <li><a href="../../index.html">Home</a></li>
+        
+                <li><a href="../../classes.html">Classes</a></li>
+                <li><a href="../../class/Ice/Filter.html">Ice\Filter</a></li>
+                <li><a >Source</a></li>
+                
+    </ul>
+    
+</div>
+<div class="class-header source clearfix">
+    
+    <div class="access-buttons pull-right">
+        <a class="zep-button btn btn-default" href="../../class/Ice/Filter.html">Class</a>
+
+                <a class="zep-button btn btn-default" href="https://github.com/ice/framework/tree/dev/ice/filter.zep">Github</a>
+            </div>
+    
+    <div class="class-full-name">
+        
+        <span class="class-type">Class</span>
+        
+                <span class="namespace-piece">
+            <a href="../../namespace/Ice.html">Ice</a>
+        </span>
+                <h1 class="class-name">Filter</h1>
+    </div>
+    
+</div>
+
+
+<pre class="zephir-source-file"><code>
+namespace Ice;
+
+/**
+ * Filter component provides a set of commonly needed data filters.
+ *
+ * @package     Ice/Filter
+ * @category    Security
+ * @author      Ice Team
+ * @copyright   (c) 2014-2015 Ice Team
+ * @license     http://iceframework.org/license
+ */
+class Filter
+{
+
+    protected _filters;
+
+    /**
+     * Adds a user-defined filter.
+     *
+     * @param string name
+     * @param callable body
+     */
+    public function add(string! name, body)
+    {
+        if typeof body != "object" {
+            throw new Exception("Filter must be an object");
+        }
+
+        let this->_filters[name] = body;
+    }
+
+    /**
+     * Sanitizes a value with a specified single or set of filters.
+     *
+     * @param mixed value
+     * @param mixed filters
+     * @return mixed
+     */
+    public function sanitize(var value, var filters)
+    {
+        var filter;
+
+        if typeof filters == "string" {
+            let filters = explode("|", filters);
+        }
+
+        if typeof filters == "array" {
+            for filter in filters {
+                let value = this->_sanitize(value, filter);
+            }
+        }
+        
+        return value;
+    }
+
+    /**
+     * Internal sanitize.
+     *
+     * @param mixed value
+     * @param string filter
+     * @return mixed
+     */
+    protected function _sanitize(string value, string! filter)
+    {
+        var custom;
+
+        // Try a user-defined filter first
+        if fetch custom, this->_filters[filter] {
+            // If the filter is a closure we call it in the PHP userland
+            if custom instanceof \Closure {
+                return call_user_func_array(custom, [value]);
+            }
+
+            return custom->sanitize(value);
+        }
+
+        switch filter {
+            case "cssmin":
+                let custom = create_instance("Ice\\Filter\\Css"),
+                    this->_filters["cssmin"] = custom;
+                return custom->sanitize(value);
+            case "jsmin":
+                let custom = create_instance("Ice\\Filter\\Js"),
+                    this->_filters["jsmin"] = custom;
+                return custom->sanitize(value);
+
+            case "camelize":
+                return value->camelize();
+            case "uncamelize":
+                return value->uncamelize();
+            case "human":
+                // Replace CamelCase and under_scores to spaces
+                return ucfirst(trim(str_replace("_", " ", strtolower(preg_replace("/(?<=\\w)(?=[A-Z])/", " $1", value)))));
+            case "lower":
+                return function_exists("mb_strtolower") ? mb_strtolower(value) : strtolower(value);
+            case "upper":
+                return function_exists("mb_strtoupper") ? mb_strtoupper(value) : strtoupper(value);
+
+            case "alnum":
+                return preg_replace("/[^a-z0-9]/i", "", value);
+            case "alpha":
+                return preg_replace("/[^a-z]/i", "", value);
+            case "email":
+                return filter_var(value, FILTER_SANITIZE_EMAIL);
+            case "float":
+                return filter_var(value, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+            case "int":
+                return filter_var(value, FILTER_SANITIZE_NUMBER_INT);
+            case "string":
+                return filter_var(value, FILTER_SANITIZE_STRING);
+
+            case "repeats":
+            case "strip_repeats":
+                // Remove repeating, more than 2 spaces to space, more than 3 br to 2 br, more than 3 the same char to 3 chars
+                return preg_replace(["/[ ]{2,}/", "/((\\r\\n|\\n\\r|\\n|\\r){3,})/", "~(.?)\\1{3,}~"], [" ", PHP_EOL . PHP_EOL, "$1$1$1"], value);
+            case "e":
+            case "escape":
+            case "strip_special":
+                // Convert special characters to HTML entities
+                return htmlspecialchars((string) value, ENT_QUOTES | ENT_HTML5);
+            case "unescape":
+            case "unstrip_special":
+                return htmlspecialchars_decode(value, ENT_QUOTES | ENT_HTML5);
+
+            default:
+                throw new Exception(sprintf("Filter '%s' is not supported", filter));
+        }
+    }
+}
+</code></pre>                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="../../asset/static/js/jquery.min.js"></script>
+        <script src="../../asset/static/js/bootstrap.min.js"></script>
+        <script src="../../asset/static/js/highlight.pack.js"></script>
+        <script src="../../asset/static/js/jquery.slimscroll.min.js"></script>
+        <script src="../../asset/api_definition.js"></script>
+
+        <script>var ZepCurrentPath = '../../'</script>
+        <script src="../../asset/static/js/script.js"></script>
+        <script type="text/javascript">
+            $(window).on("load resize", function() {
+                $('#menu-wrapper').slimscroll({ height: $(window).height(), size: '3px' });
+            });
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function() { $('pre code').each(function(i, block) { hljs.highlightBlock(block); }); });
+            if ($('.zephir-source-file').length) {
+                $('link[id]').each(function(i, link) {
+                    link.disabled = (link.id != 'tomorrow-night');
+                });
+            }
+        </script>
+            </body>
+</html>

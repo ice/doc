@@ -1,0 +1,20 @@
+<span class="small"><?php
+
+/* @var $method \Zephir\ClassMethod */
+
+    if($method->getParameters()){
+        $i=0;
+        foreach($method->getParameters() as $param){
+
+            echo $i > 0 ? ', ' : '';
+            
+            if($param['data-type']){
+                ?><span class="param-data-type text-danger"><?=$param['data-type']?></span><?php
+            }
+
+            ?>  <span class="param-name text-info"><strong>$<?=$param['name']?></strong></span><?php
+            $i++;
+        }
+    }
+?>
+</span>

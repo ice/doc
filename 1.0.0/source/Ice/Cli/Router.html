@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" type="text/css" href="../../../asset/static/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="../../../asset/static/css/tomorrow.min.css" id="tomorrow" />
+        <link rel="stylesheet" type="text/css" href="../../../asset/static/css/tomorrow-night.min.css" id="tomorrow-night" disabled />
+        <link rel="stylesheet" type="text/css" href="../../../asset/static/css/style.css" />
+    </head>
+    <body>
+        <header class="navbar navbar-default navbar-fixed-top">
+            <div id="top-bar" class="container-fluid">
+                <div id="top-left" class="navbar-header">
+                    <a href="../../../index.html" class="navbar-brand">
+                        Ice Documentation <span class="version">1.0.0</span>
+                    </a>
+                </div>
+                <div id="top-right" class="collapse navbar-collapse">
+
+                </div>
+            </div>
+        </header>
+        <div id="body" class="container-fluid">
+            <div class="row">
+                <div id="body-left" class="col-lg-3 col-sm-4">
+                    <div class="header-search">
+                        <input class="search-box form-control" placeholder="Search for a class or namespace " type="text" />
+                        <div id="menu-wrapper">
+                        </div>
+                    </div>
+                </div>
+                <div id="body-right" class="col-lg-9 col-sm-8">
+                    <div class="content">
+                        
+<div>
+    
+    <ul class="breadcrumb">
+        
+        <li><a href="../../../index.html">Home</a></li>
+        
+                <li><a href="../../../classes.html">Classes</a></li>
+                <li><a href="../../../class/Ice/Cli/Router.html">Ice\Cli\Router</a></li>
+                <li><a >Source</a></li>
+                
+    </ul>
+    
+</div>
+<div class="class-header source clearfix">
+    
+    <div class="access-buttons pull-right">
+        <a class="zep-button btn btn-default" href="../../../class/Ice/Cli/Router.html">Class</a>
+
+                <a class="zep-button btn btn-default" href="https://github.com/ice/framework/tree/dev/ice/cli/router.zep">Github</a>
+            </div>
+    
+    <div class="class-full-name">
+        
+        <span class="class-type">Class</span>
+        
+                <span class="namespace-piece">
+            <a href="../../../namespace/Ice.html">Ice</a>
+        </span>
+                <span class="namespace-piece">
+            <a href="../../../namespace/Ice/Cli.html">Cli</a>
+        </span>
+                <h1 class="class-name">Router</h1>
+    </div>
+    
+</div>
+
+
+<pre class="zephir-source-file"><code>
+namespace Ice\Cli;
+
+use Ice\Exception;
+
+/**
+ * Router is the standard framework router. Routing is the process of taking a command-line arguments and decomposing it
+ * into parameters to determine which module, task, and action of that task should receive the request.
+ *
+ * @package     Ice/Router
+ * @category    Component
+ * @author      Ice Team
+ * @copyright   (c) 2014-2015 Ice Team
+ * @license     http://iceframework.org/license
+ */
+class Router
+{
+
+    protected _defaultModule = "shell" { get, set };
+    protected _defaultHandler = "main" { get, set };
+    protected _defaultAction = "main" { get, set };
+
+    protected _module { get };
+    protected _handler { get };
+    protected _action { get };
+    protected _params = [] { get };
+
+    /**
+     * Set defaults values
+     *
+     * @param array defaults
+     */
+    public function setDefaults(array! defaults)
+    {
+        var module, handler, action;
+
+        if fetch module, defaults["module"] {
+            let this->_defaultModule = module;
+        }
+
+        if fetch handler, defaults["handler"] {
+            let this->_defaultHandler = handler;
+        }
+
+        if fetch action, defaults["action"] {
+            let this->_defaultAction = action;
+        }
+    }
+
+    /**
+     * Handles routing information received from command-line arguments.
+     *
+     * <pre><code>
+     *  php index.php --module=shell --handler=main --action=main --id=1 --param="some value"
+     * </code></pre>
+     *
+     * @param array arguments
+     * @return array
+     */
+    public function handle(arguments = null) -> array
+    {
+        var params, argument;
+
+        if typeof arguments != "array" {
+            throw new Exception("Arguments must be an array");
+        }
+
+        // Set the defaults
+        let this->_module = this->_defaultModule,
+            this->_handler = this->_defaultHandler,
+            this->_action = this->_defaultAction,
+            params = [];
+
+        // Skip the first option, it is always the file executed
+        array_shift(arguments);
+
+        for argument in arguments {
+            // Get the option
+            if substr(argument, 0, 2) !== "--" {
+                // This is a positional argument
+                let params[] = argument;
+                continue;
+            }
+
+            // Remove the "--" prefix
+            let argument = substr(argument, 2);
+
+            if strpos(argument, "=") {
+                // Separate the name and value
+                let argument = explode("=", argument, 2),
+                    params[argument[0]] = argument[1];
+            } else {
+                let params[argument] = null;
+            }
+        }
+
+        if isset params["module"] && params["module"] {
+            let this->_module = params["module"];
+
+            unset params["module"];
+        }
+
+        if isset params["handler"] && params["handler"] {
+            let this->_handler = params["handler"];
+            
+            unset params["handler"];
+        }
+
+        if isset params["action"] && params["action"] {
+            let this->_action = params["action"];
+            
+            unset params["action"];
+        }
+
+        if count(params) {
+            let this->_params = params;
+        }
+
+        return ["module": this->_module, "handler": this->_handler, "action": this->_action, "params": this->_params];
+    }
+}
+</code></pre>                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="../../../asset/static/js/jquery.min.js"></script>
+        <script src="../../../asset/static/js/bootstrap.min.js"></script>
+        <script src="../../../asset/static/js/highlight.pack.js"></script>
+        <script src="../../../asset/static/js/jquery.slimscroll.min.js"></script>
+        <script src="../../../asset/api_definition.js"></script>
+
+        <script>var ZepCurrentPath = '../../../'</script>
+        <script src="../../../asset/static/js/script.js"></script>
+        <script type="text/javascript">
+            $(window).on("load resize", function() {
+                $('#menu-wrapper').slimscroll({ height: $(window).height(), size: '3px' });
+            });
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function() { $('pre code').each(function(i, block) { hljs.highlightBlock(block); }); });
+            if ($('.zephir-source-file').length) {
+                $('link[id]').each(function(i, link) {
+                    link.disabled = (link.id != 'tomorrow-night');
+                });
+            }
+        </script>
+            </body>
+</html>
