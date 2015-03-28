@@ -38,7 +38,7 @@
         <li><a href="../../../../index.html">Home</a></li>
         
                 <li><a href="../../../../classes.html">Classes</a></li>
-                <li><a >Ice\Db\Driver\Mongo</a></li>
+                <li><a >Ice\Db\Driver\Pdo</a></li>
                 
     </ul>
     
@@ -47,9 +47,9 @@
     
     
     <div class="access-buttons pull-right">
-        <a class="zep-button btn btn-default" href="../../../../source/Ice/Db/Driver/Mongo.html">Source</a>
+        <a class="zep-button btn btn-default" href="../../../../source/Ice/Db/Driver/Pdo.html">Source</a>
 
-                <a class="zep-button btn btn-default" href="https://github.com/ice/framework/tree/dev/ice/db/driver/mongo.zep">Github</a>
+                <a class="zep-button btn btn-default" href="https://github.com/ice/framework/tree/dev/ice/db/driver/pdo.zep">Github</a>
             </div>
     
     <div class="class-full-name">
@@ -65,7 +65,7 @@
                 <span class="namespace-piece">
             <a href="../../../../namespace/Ice/Db/Driver.html">Driver</a>
         </span>
-                <h1 class="class-name">Mongo</h1>
+                <h1 class="class-name">Pdo</h1>
     </div>
 
 </div>
@@ -115,21 +115,6 @@
                 
     </div>
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-getError">getError</a></span>(<span class="small"></span>)
-            </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        
-                
-    </div>
-    <div class="method-summary">
         <span class="method-name"><a href="#method-details-getClient">getClient</a></span>(<span class="small"></span>)
             </div>
 </td>
@@ -145,8 +130,8 @@
                 
     </div>
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-__construct">__construct</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$dsn</strong></span>, <span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$dbname</strong></span>, <span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$options</strong></span></span>)
-                <div class="summary-text text-muted">Instantiate mongo connection.</div>
+        <span class="method-name"><a href="#method-details-__construct">__construct</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$dsn</strong></span>, <span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$user</strong></span>, <span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$password</strong></span>, <span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$options</strong></span></span>)
+                <div class="summary-text text-muted">Instantiate pdo connection.</div>
             </div>
 </td>
 </tr>
@@ -162,7 +147,7 @@
     </div>
     <div class="method-summary">
         <span class="method-name"><a href="#method-details-findOne">findOne</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$from</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$filters</strong></span>, <span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$options</strong></span>, <span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$fields</strong></span></span>)
-                <div class="summary-text text-muted">Find one document that match criteria.</div>
+                <div class="summary-text text-muted">Find one row that match criteria.</div>
             </div>
 </td>
 </tr>
@@ -178,7 +163,23 @@
     </div>
     <div class="method-summary">
         <span class="method-name"><a href="#method-details-find">find</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$from</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$filters</strong></span>, <span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$options</strong></span>, <span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$fields</strong></span></span>)
-                <div class="summary-text text-muted">Find all documents that match criteria.</div>
+                <div class="summary-text text-muted">Find all records that match criteria.</div>
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        array
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-where">where</a></span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$filters</strong></span>, <span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$values</strong></span></span>)
+                <div class="summary-text text-muted">Prepare SQL WHERE condition.</div>
             </div>
 </td>
 </tr>
@@ -194,7 +195,7 @@
     </div>
     <div class="method-summary">
         <span class="method-name"><a href="#method-details-select">select</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$from</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$filters</strong></span>, <span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$options</strong></span>, <span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$fields</strong></span></span>)
-                <div class="summary-text text-muted">SELECT document(s) that match criteria.</div>
+                <div class="summary-text text-muted">SELECT record(s) that match criteria.</div>
             </div>
 </td>
 </tr>
@@ -210,7 +211,7 @@
     </div>
     <div class="method-summary">
         <span class="method-name"><a href="#method-details-insert">insert</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$from</strong></span>, <span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$fields</strong></span></span>)
-                <div class="summary-text text-muted">INSERT document into collection.</div>
+                <div class="summary-text text-muted">INSERT record into table.</div>
             </div>
 </td>
 </tr>
@@ -226,7 +227,7 @@
     </div>
     <div class="method-summary">
         <span class="method-name"><a href="#method-details-update">update</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$from</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$filters</strong></span>, <span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$fields</strong></span></span>)
-                <div class="summary-text text-muted">UPDATE documents in the collection.</div>
+                <div class="summary-text text-muted">UPDATE records in the table.</div>
             </div>
 </td>
 </tr>
@@ -242,7 +243,39 @@
     </div>
     <div class="method-summary">
         <span class="method-name"><a href="#method-details-remove">remove</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$from</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$filters</strong></span></span>)
-                <div class="summary-text text-muted">Remove documents from the collection.</div>
+                <div class="summary-text text-muted">Remove records from the table.</div>
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        int
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-getLastInsertId">getLastInsertId</a></span>(<span class="small"></span>)
+                <div class="summary-text text-muted">Get last inserted ID.</div>
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-getError">getError</a></span>(<span class="small"></span>)
+                <div class="summary-text text-muted">Get an error message.</div>
             </div>
 </td>
 </tr>
@@ -309,33 +342,6 @@
         
 <li class="class-method clearfix">
 
-    <div class="hidden-anchor"  id="method-details-getError"></div>
-    
-    <div class="method-details">
-        
-
-        
-
-        <div class="method-details-details">
-            <div class="method-signature">
-
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">getError</span>(<span class="small"></span>)
-                </h3>
-                                
-            </div>
-        </div>
-
-    </div>
-
-</li>
-    
-        
-<li class="class-method clearfix">
-
     <div class="hidden-anchor"  id="method-details-getClient"></div>
     
     <div class="method-details">
@@ -377,11 +383,11 @@
                                 <span class="small visibility-public">public</span>
                 
                                 
-                <span class="small">function</span> <span class="method-name">__construct</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$dsn</strong></span>, <span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$dbname</strong></span>, <span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$options</strong></span></span>)
+                <span class="small">function</span> <span class="method-name">__construct</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$dsn</strong></span>, <span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$user</strong></span>, <span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$password</strong></span>, <span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$options</strong></span></span>)
                 </h3>
                                 
                     <div class="text-muted">
-                    Instantiate mongo connection.                    </div>
+                    Instantiate pdo connection.                    </div>
                     <div>
                                         </div>
                 
@@ -414,7 +420,7 @@
                 </h3>
                                 
                     <div class="text-muted">
-                    Find one document that match criteria.                    </div>
+                    Find one row that match criteria.                    </div>
                     <div>
                                         </div>
                 
@@ -447,13 +453,51 @@
                 </h3>
                                 
                     <div class="text-muted">
-                    Find all documents that match criteria.                    </div>
+                    Find all records that match criteria.                    </div>
                     <div>
                     <pre><code>
+      //SELECT FROM users WHERE a=1 and b="q"
       $db->find("users", array("a" => 1, "b" => "q"));
+     
+      //SELECT FROM users WHERE age>33 
       $db->find("users", array("age" => array(">" => 33)));
+     
+      //SELECT FROM users WHERE a=1 or b=2 
       $db->find("users", array("OR" => array(array("a" => 1), array("b" => 2))));
      </code></pre>                    </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-where"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-private">private</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">where</span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$filters</strong></span>, <span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$values</strong></span></span>)
+                </h3>
+                                
+                    <div class="text-muted">
+                    Prepare SQL WHERE condition.                    </div>
+                    <div>
+                                        </div>
                 
                                 
             </div>
@@ -484,7 +528,7 @@
                 </h3>
                                 
                     <div class="text-muted">
-                    SELECT document(s) that match criteria.                    </div>
+                    SELECT record(s) that match criteria.                    </div>
                     <div>
                                         </div>
                 
@@ -517,7 +561,7 @@
                 </h3>
                                 
                     <div class="text-muted">
-                    INSERT document into collection.                    </div>
+                    INSERT record into table.                    </div>
                     <div>
                                         </div>
                 
@@ -550,7 +594,7 @@
                 </h3>
                                 
                     <div class="text-muted">
-                    UPDATE documents in the collection.                    </div>
+                    UPDATE records in the table.                    </div>
                     <div>
                                         </div>
                 
@@ -583,7 +627,73 @@
                 </h3>
                                 
                     <div class="text-muted">
-                    Remove documents from the collection.                    </div>
+                    Remove records from the table.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-getLastInsertId"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">getLastInsertId</span>(<span class="small"></span>)
+                </h3>
+                                
+                    <div class="text-muted">
+                    Get last inserted ID.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-getError"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">getError</span>(<span class="small"></span>)
+                </h3>
+                                
+                    <div class="text-muted">
+                    Get an error message.                    </div>
                     <div>
                                         </div>
                 

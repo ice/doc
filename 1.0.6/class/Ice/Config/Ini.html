@@ -82,7 +82,7 @@
                 
     </div>
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-__construct">__construct</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$file</strong></span></span>)
+        <span class="method-name"><a href="#method-details-__construct">__construct</a></span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$data</strong></span></span>)
                 <div class="summary-text text-muted">Config ini constructor.</div>
             </div>
 </td>
@@ -98,8 +98,8 @@
                 
     </div>
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-cast">cast</a></span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$value</strong></span></span>)
-                <div class="summary-text text-muted">Return real type from a string, eg. "true" => true.</div>
+        <span class="method-name"><a href="#method-details-cast">cast</a></span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$ini</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$raw</strong></span></span>)
+                <div class="summary-text text-muted">We have to cast values manually because parse_ini_file() has a poor implementation.</div>
             </div>
 </td>
 </tr>
@@ -110,11 +110,11 @@
 
     <div class="method-return">
 
-        array
+        
                 
     </div>
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-arrayMapRecursive">arrayMapRecursive</a></span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$callback</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$data</strong></span></span>)
+        <span class="method-name"><a href="#method-details-map">map</a></span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$ini</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$raw</strong></span></span>)
                 <div class="summary-text text-muted">Map the array recursively.</div>
             </div>
 </td>
@@ -142,7 +142,7 @@
                                 <span class="small visibility-public">public</span>
                 
                                 
-                <span class="small">function</span> <span class="method-name">__construct</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$file</strong></span></span>)
+                <span class="small">function</span> <span class="method-name">__construct</span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$data</strong></span></span>)
                 </h3>
                                 
                     <div class="text-muted">
@@ -172,14 +172,14 @@
             <div class="method-signature">
 
                 <h3>
-                                <span class="small visibility-public">public</span>
+                                <span class="small visibility-private">private</span>
                 
                                 
-                <span class="small">function</span> <span class="method-name">cast</span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$value</strong></span></span>)
+                <span class="small">function</span> <span class="method-name">cast</span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$ini</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$raw</strong></span></span>)
                 </h3>
                                 
                     <div class="text-muted">
-                    Return real type from a string, eg. "true" => true.                    </div>
+                    We have to cast values manually because parse_ini_file() has a poor implementation.                    </div>
                     <div>
                                         </div>
                 
@@ -194,7 +194,7 @@
         
 <li class="class-method clearfix">
 
-    <div class="hidden-anchor"  id="method-details-arrayMapRecursive"></div>
+    <div class="hidden-anchor"  id="method-details-map"></div>
     
     <div class="method-details">
         
@@ -208,7 +208,7 @@
                                 <span class="small visibility-private">private</span>
                 
                                 
-                <span class="small">function</span> <span class="method-name">arrayMapRecursive</span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$callback</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$data</strong></span></span>)
+                <span class="small">function</span> <span class="method-name">map</span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$ini</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$raw</strong></span></span>)
                 </h3>
                                 
                     <div class="text-muted">
