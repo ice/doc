@@ -33,7 +33,7 @@ $docblock =  $method->getParsedDocBlock();
                     <?= $docblock->getSummary() ?>
                     </div>
                     <div>
-                    <?= $docblock->getDescription() ?>
+                    <?= preg_replace(['/&lt;pre&gt;&lt;code&gt;/', '/&lt;\/code&gt;&lt;\/pre&gt;/'], ['<pre><code class="php">', '</code></pre>'], htmlspecialchars($docblock->getDescription(), ENT_QUOTES | ENT_HTML5)) ?>
                     </div>
                 
                 <?php } ?>

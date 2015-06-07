@@ -34,4 +34,4 @@
 </div>
 
 
-<pre class="zephir-source-file"><code><?= file_get_contents(realpath($compilerFile->getFilePath())) ?></code></pre>
+<pre class="zephir-source-file"><code><?= htmlspecialchars(file_get_contents(realpath($compilerFile->getFilePath())), ENT_QUOTES | ENT_HTML5) ?></code></pre>

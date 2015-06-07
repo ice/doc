@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" type="text/css" href="../../../../asset/static/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="../../../../asset/static/css/tomorrow.min.css" id="tomorrow" />
+        <link rel="stylesheet" type="text/css" href="../../../../asset/static/css/tomorrow-night.min.css" id="tomorrow-night" disabled />
+        <link rel="stylesheet" type="text/css" href="../../../../asset/static/css/style.css" />
+    </head>
+    <body>
+        <header class="navbar navbar-default navbar-fixed-top">
+            <div id="top-bar" class="container-fluid">
+                <div id="top-left" class="navbar-header">
+                    <a href="../../../../index.html" class="navbar-brand">
+                                                    ice Documentation <span class="version">v1.0.13</span>
+                                            </a>
+                </div>
+                <div id="top-right" class="collapse navbar-collapse">
+
+                </div>
+            </div>
+        </header>
+        <div id="body" class="container-fluid">
+            <div class="row">
+                <div id="body-left" class="col-lg-3 col-sm-4">
+                    <div class="header-search">
+                        <input class="search-box form-control" placeholder="Search for a class or namespace " type="text" />
+                        <div id="menu-wrapper">
+                        </div>
+                    </div>
+                </div>
+                <div id="body-right" class="col-lg-9 col-sm-8">
+                    <div class="content">
+                        
+<div>
+    
+    <ul class="breadcrumb">
+        
+        <li><a href="../../../../index.html">Home</a></li>
+        
+                <li><a href="../../../../classes.html">Classes</a></li>
+                <li><a href="../../../../class/Ice/Validation/Validator/Same.html">Ice\Validation\Validator\Same</a></li>
+                <li><a >Source</a></li>
+                
+    </ul>
+    
+</div>
+<div class="class-header source clearfix">
+    
+    <div class="access-buttons pull-right">
+        <a class="zep-button btn btn-default" href="../../../../class/Ice/Validation/Validator/Same.html">Class</a>
+
+                <a class="zep-button btn btn-default" href="https://github.com/ice/framework/tree/dev/ice/validation/validator/same.zep">Github</a>
+            </div>
+    
+    <div class="class-full-name">
+        
+        <span class="class-type">Class</span>
+        
+                <span class="namespace-piece">
+            <a href="../../../../namespace/Ice.html">Ice</a>
+        </span>
+                <span class="namespace-piece">
+            <a href="../../../../namespace/Ice/Validation.html">Validation</a>
+        </span>
+                <span class="namespace-piece">
+            <a href="../../../../namespace/Ice/Validation/Validator.html">Validator</a>
+        </span>
+                <h1 class="class-name">Same</h1>
+    </div>
+    
+</div>
+
+
+<pre class="zephir-source-file"><code>
+namespace Ice\Validation\Validator;
+
+use Ice\Validation;
+use Ice\Validation\Validator;
+
+/**
+ * Same validator.
+ *
+ * @package     Ice/Validation
+ * @category    Security
+ * @author      Ice Team
+ * @copyright   (c) 2014-2015 Ice Team
+ * @license     http://iceframework.org/license
+ *
+ * &lt;pre&gt;&lt;code&gt;
+ *  $validation = new Ice\Validation();
+ *  
+ *  $validation-&gt;rules([
+ *      &apos;email&apos; =&gt; &apos;required|email&apos;,
+ *      &apos;repeatEmail&apos; =&gt; &apos;same:email&apos;
+ *  ]);
+ *  
+ *  $valid = $validation-&gt;validate($_POST);
+ *  
+ *  if (!$valid) {
+ *      $messages = $validation-&gt;getMessages();
+ *  }
+ * &lt;code&gt;&lt;pre&gt;
+ */
+class Same extends Validator
+{
+
+    /**
+     * Validate the validator
+     *
+     * @param Validation validation
+     * @param string field
+     * @return boolean
+     */
+    public function validate(&lt;Validation&gt; validation, string! field) -&gt; boolean
+    {
+        var value, allowEmpty, label, message, i18n, replace, other, valueOther, labelOther;
+
+        let value = validation-&gt;getValue(field);
+
+        if this-&gt;has(1) {
+            let allowEmpty = this-&gt;get(1);
+        } else {
+            let allowEmpty = this-&gt;get(&quot;allowEmpty&quot;);
+        }
+
+        if allowEmpty &amp;&amp; (value === &quot;&quot; || value === null) {
+            return true;
+        }
+
+        if this-&gt;has(0) {
+            let other = this-&gt;get(0);
+        } else {
+            let other = this-&gt;get(&quot;other&quot;);
+        }
+
+        if validation-&gt;hasValue(other) {
+            let valueOther = validation-&gt;getValue(other);
+        } else {
+
+            let valueOther = other;
+        }
+
+        if value != valueOther {
+            if this-&gt;has(&quot;label&quot;) {
+                let label = this-&gt;get(&quot;label&quot;);
+            } else {
+                let label = validation-&gt;getLabel(field);
+            }
+
+            if this-&gt;has(&quot;labelOther&quot;) {
+                let labelOther = this-&gt;get(&quot;labelOther&quot;);
+            } else {
+                let labelOther = validation-&gt;getLabel(other);
+            }
+
+            if this-&gt;has(&quot;message&quot;) {
+                let message = this-&gt;get(&quot;message&quot;);
+            } else {
+                let message = validation-&gt;getDefaultMessage(&quot;same&quot;);
+            }
+
+            // Translate strings
+            if validation-&gt;getTranslate() === true &amp;&amp; validation-&gt;getDi()-&gt;has(&quot;i18n&quot;) {
+                let i18n = validation-&gt;getDi()-&gt;get(&quot;i18n&quot;),
+                    label = i18n-&gt;translate(label),
+                    labelOther = i18n-&gt;translate(labelOther),
+                    message = i18n-&gt;translate(message);
+            }
+
+            let replace = [&quot;:field&quot;: label, &quot;:other&quot;: labelOther];
+
+            validation-&gt;addMessage(field, strtr(message, replace));
+            return false;
+        }
+
+        return true;
+    }
+}
+</code></pre>                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="../../../../asset/static/js/jquery.min.js"></script>
+        <script src="../../../../asset/static/js/bootstrap.min.js"></script>
+        <script src="../../../../asset/static/js/highlight.pack.js"></script>
+        <script src="../../../../asset/static/js/jquery.slimscroll.min.js"></script>
+        <script src="../../../../asset/api_definition.js"></script>
+
+        <script>var ZepCurrentPath = '../../../../'</script>
+        <script src="../../../../asset/static/js/script.js"></script>
+        <script type="text/javascript">
+            $(window).on("load resize", function() {
+                $('#menu-wrapper').slimscroll({ height: $(window).height(), size: '3px' });
+            });
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function() { $('pre code').each(function(i, block) { hljs.highlightBlock(block); }); });
+            if ($('.zephir-source-file').length) {
+                $('link[id]').each(function(i, link) {
+                    link.disabled = (link.id != 'tomorrow-night');
+                });
+            }
+        </script>
+            </body>
+</html>

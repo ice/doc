@@ -11,7 +11,11 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="<?= $this->url("/index.html") ?>" class="navbar-brand">
-                        Ice Documentation <span class="version">1.0.0</span>
+                        <?php if ($this->themeOption("title")){ ?>
+                            <?= str_replace( array("%_name_%", "%_version_%") , array($this->projectConfig("name"), $this->projectConfig('version')) , $this->themeOption("title")) ?>
+                        <?php }else{ ?>
+                            <?= $this->projectConfig("name") ?> Documentation <span class="version">v<?php echo $this->projectConfig('version'); ?></span>
+                        <?php } ?>
                     </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">

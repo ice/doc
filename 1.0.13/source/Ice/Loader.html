@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" type="text/css" href="../../asset/static/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="../../asset/static/css/tomorrow.min.css" id="tomorrow" />
+        <link rel="stylesheet" type="text/css" href="../../asset/static/css/tomorrow-night.min.css" id="tomorrow-night" disabled />
+        <link rel="stylesheet" type="text/css" href="../../asset/static/css/style.css" />
+    </head>
+    <body>
+        <header class="navbar navbar-default navbar-fixed-top">
+            <div id="top-bar" class="container-fluid">
+                <div id="top-left" class="navbar-header">
+                    <a href="../../index.html" class="navbar-brand">
+                                                    ice Documentation <span class="version">v1.0.13</span>
+                                            </a>
+                </div>
+                <div id="top-right" class="collapse navbar-collapse">
+
+                </div>
+            </div>
+        </header>
+        <div id="body" class="container-fluid">
+            <div class="row">
+                <div id="body-left" class="col-lg-3 col-sm-4">
+                    <div class="header-search">
+                        <input class="search-box form-control" placeholder="Search for a class or namespace " type="text" />
+                        <div id="menu-wrapper">
+                        </div>
+                    </div>
+                </div>
+                <div id="body-right" class="col-lg-9 col-sm-8">
+                    <div class="content">
+                        
+<div>
+    
+    <ul class="breadcrumb">
+        
+        <li><a href="../../index.html">Home</a></li>
+        
+                <li><a href="../../classes.html">Classes</a></li>
+                <li><a href="../../class/Ice/Loader.html">Ice\Loader</a></li>
+                <li><a >Source</a></li>
+                
+    </ul>
+    
+</div>
+<div class="class-header source clearfix">
+    
+    <div class="access-buttons pull-right">
+        <a class="zep-button btn btn-default" href="../../class/Ice/Loader.html">Class</a>
+
+                <a class="zep-button btn btn-default" href="https://github.com/ice/framework/tree/dev/ice/loader.zep">Github</a>
+            </div>
+    
+    <div class="class-full-name">
+        
+        <span class="class-type">Class</span>
+        
+                <span class="namespace-piece">
+            <a href="../../namespace/Ice.html">Ice</a>
+        </span>
+                <h1 class="class-name">Loader</h1>
+    </div>
+    
+</div>
+
+
+<pre class="zephir-source-file"><code>
+namespace Ice;
+
+/**
+ * PSR-4 autoloader class.
+ *
+ * @package     Ice/Loader
+ * @category    Library
+ * @author      Ice Team
+ * @copyright   (c) 2014-2015 Ice Team
+ * @license     http://iceframework.org/license
+ */
+class Loader
+{
+
+    protected _prefixes = [];
+
+    /**
+     * Register loader with SPL autoloader stack.
+     * 
+     * @return void
+     */
+    public function register()
+    {
+        spl_autoload_register([this, &quot;loadClass&quot;]);
+    }
+
+    /**
+     * Adds a base directory for a namespace prefix.
+     *
+     * @param string prefix The namespace prefix
+     * @param string baseDir A base directory for class files in the namespace
+     * @param bool prepend If true, prepend the base directory to the stack instead of appending it; this causes it to
+     * be searched first rather than last
+     * @return Loader
+     */
+    public function addNamespace(string prefix, string baseDir, boolean prepend = false)
+    {
+        // normalize namespace prefix
+        let prefix = trim(prefix, &quot;\\&quot;) . &quot;\\&quot;;
+
+        // normalize the base directory with a trailing separator
+        let baseDir = rtrim(baseDir, &quot;/&quot;) . DIRECTORY_SEPARATOR,
+            baseDir = rtrim(baseDir, DIRECTORY_SEPARATOR) . &quot;/&quot;;
+
+        // initialize the namespace prefix array
+        if !isset this-&gt;_prefixes[prefix] {
+            let this-&gt;_prefixes[prefix] = [];
+        }
+
+        // retain the base directory for the namespace prefix
+        if prepend {
+            array_unshift(this-&gt;_prefixes[prefix], utf8_encode(baseDir));
+        } else {
+            array_push(this-&gt;_prefixes[prefix], utf8_encode(baseDir));
+        }
+        return this;
+    }
+
+    /**
+     * Loads the class file for a given class name.
+     *
+     * @param string className The fully-qualified class name
+     * @return mixed The mapped file name on success, or boolean false on failure
+     */
+    public function loadClass(string className)
+    {
+        var prefix, pos, relativeClass, mappedFile;
+
+        // the current namespace prefix
+        let prefix = className;
+
+        // work backwards through the namespace names of the fully-qualified
+        // class name to find a mapped file name
+        let pos = strrpos(prefix, &quot;\\&quot;);
+        while pos !== false {
+            // retain the trailing namespace separator in the prefix
+            let prefix = substr(className, 0, pos + 1);
+
+            // the rest is the relative class name
+            let relativeClass = substr(className, pos + 1);
+
+            // try to load a mapped file for the prefix and relative class
+            let mappedFile = this-&gt;loadMappedFile(prefix, relativeClass);
+            if mappedFile {
+                return mappedFile;
+            }
+
+            // remove the trailing namespace separator for the next iteration
+            // of strrpos()
+            let prefix = rtrim(prefix, &quot;\\&quot;);
+            let pos = strrpos(prefix, &quot;\\&quot;);
+        }
+
+        // never found a mapped file
+        return false;
+    }
+
+    /**
+     * Load the mapped file for a namespace prefix and relative class.
+     * 
+     * @param string $prefix The namespace prefix
+     * @param string $relative_class The relative class name
+     * @return mixed Boolean false if no mapped file can be loaded, or the name of the mapped file that was loaded
+     */
+    protected function loadMappedFile(string prefix, string relativeClass)
+    {
+        var baseDir, file;
+
+        // are there any base directories for this namespace prefix?
+        if !isset this-&gt;_prefixes[prefix] {
+            return false;
+        }
+
+        // look through base directories for this namespace prefix
+        for baseDir in this-&gt;_prefixes[prefix] {
+            // replace the namespace prefix with the base directory,
+            // replace namespace separators with directory separators
+            // in the relative class name, append with .php
+            let file = baseDir . str_replace(&quot;\\&quot;, DIRECTORY_SEPARATOR, relativeClass) . &quot;.php&quot;,
+                file = baseDir . str_replace(&quot;\\&quot;, &quot;/&quot;, relativeClass) . &quot;.php&quot;;
+
+            // if the mapped file exists, require it
+            if this-&gt;requireFile(file) {
+                // yes, we&quot;re done
+                return file;
+            }
+        }
+
+        // never found it
+        return false;
+    }
+
+    /**
+     * If a file exists, require it from the file system.
+     * 
+     * @param string $file The file to require
+     * @return bool True if the file exists, false if not
+     */
+    protected function requireFile(string file)
+    {
+        if file_exists(file) {
+            require file;
+            return true;
+        }
+        return false;
+    }
+}
+</code></pre>                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="../../asset/static/js/jquery.min.js"></script>
+        <script src="../../asset/static/js/bootstrap.min.js"></script>
+        <script src="../../asset/static/js/highlight.pack.js"></script>
+        <script src="../../asset/static/js/jquery.slimscroll.min.js"></script>
+        <script src="../../asset/api_definition.js"></script>
+
+        <script>var ZepCurrentPath = '../../'</script>
+        <script src="../../asset/static/js/script.js"></script>
+        <script type="text/javascript">
+            $(window).on("load resize", function() {
+                $('#menu-wrapper').slimscroll({ height: $(window).height(), size: '3px' });
+            });
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function() { $('pre code').each(function(i, block) { hljs.highlightBlock(block); }); });
+            if ($('.zephir-source-file').length) {
+                $('link[id]').each(function(i, link) {
+                    link.disabled = (link.id != 'tomorrow-night');
+                });
+            }
+        </script>
+            </body>
+</html>
