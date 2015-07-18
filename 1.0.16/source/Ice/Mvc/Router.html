@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" type="text/css" href="../../../asset/static/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="../../../asset/static/css/tomorrow.min.css" id="tomorrow" />
+        <link rel="stylesheet" type="text/css" href="../../../asset/static/css/tomorrow-night.min.css" id="tomorrow-night" disabled />
+        <link rel="stylesheet" type="text/css" href="../../../asset/static/css/style.css" />
+    </head>
+    <body>
+        <header class="navbar navbar-default navbar-fixed-top">
+            <div id="top-bar" class="container-fluid">
+                <div id="top-left" class="navbar-header">
+                    <a href="../../../index.html" class="navbar-brand">
+                                                    ice Documentation <span class="version">v1.0.16</span>
+                                            </a>
+                </div>
+                <div id="top-right" class="collapse navbar-collapse">
+
+                </div>
+            </div>
+        </header>
+        <div id="body" class="container-fluid">
+            <div class="row">
+                <div id="body-left" class="col-lg-3 col-sm-4">
+                    <div class="header-search">
+                        <input class="search-box form-control" placeholder="Search for a class or namespace " type="text" />
+                        <div id="menu-wrapper">
+                        </div>
+                    </div>
+                </div>
+                <div id="body-right" class="col-lg-9 col-sm-8">
+                    <div class="content">
+                        
+<div>
+    
+    <ul class="breadcrumb">
+        
+        <li><a href="../../../index.html">Home</a></li>
+        
+                <li><a href="../../../classes.html">Classes</a></li>
+                <li><a href="../../../class/Ice/Mvc/Router.html">Ice\Mvc\Router</a></li>
+                <li><a >Source</a></li>
+                
+    </ul>
+    
+</div>
+<div class="class-header source clearfix">
+    
+    <div class="access-buttons pull-right">
+        <a class="zep-button btn btn-default" href="../../../class/Ice/Mvc/Router.html">Class</a>
+
+                <a class="zep-button btn btn-default" href="https://github.com/ice/framework/tree/dev/ice/mvc/router.zep">Github</a>
+            </div>
+    
+    <div class="class-full-name">
+        
+        <span class="class-type">Class</span>
+        
+                <span class="namespace-piece">
+            <a href="../../../namespace/Ice.html">Ice</a>
+        </span>
+                <span class="namespace-piece">
+            <a href="../../../namespace/Ice/Mvc.html">Mvc</a>
+        </span>
+                <h1 class="class-name">Router</h1>
+    </div>
+    
+</div>
+
+
+<pre class="zephir-source-file"><code>
+namespace Ice\Mvc;
+
+use Ice\Di;
+use Ice\Exception;
+use Ice\Mvc\Route\Collector;
+use Ice\Mvc\Route\Dispatcher\DispatcherInterface;
+
+/**
+ * Router is the standard framework router. Routing is the process of taking a URI endpoint and decomposing it into
+ * parameters to determine which module, controller, and action of that controller should receive the request.
+ *
+ * @package     Ice/Router
+ * @category    Component
+ * @author      Ice Team
+ * @copyright   (c) 2014-2015 Ice Team
+ * @license     http://iceframework.org/license
+ * @uses        FastRoute http:/github.com/nikic/FastRoute
+ */
+class Router
+{
+
+    protected di;
+    protected defaultModule = &quot;default&quot; { get, set };
+    protected defaultHandler = &quot;index&quot; { get, set };
+    protected defaultAction = &quot;index&quot; { get, set };
+
+    protected method { get };
+    protected module{ get };
+    protected handler { get };
+    protected action { get };
+    protected params = [] { get };
+
+    protected ready = false;
+    protected silent = false { set };
+    protected options = [] { get, set };
+    protected routes { get, set };
+    protected collector { get, set };
+    protected dispatcher { get, set };
+
+    const NOT_FOUND = 0;
+    const FOUND = 1;
+    const METHOD_NOT_ALLOWED = 2;
+
+    /**
+     * Router constructor. Fetch Di and set it as a property.
+     */
+    public function __construct()
+    {
+        let this-&gt;di = Di::$fetch();
+    }
+
+    /**
+     * Set defaults values
+     *
+     * @param array defaults
+     */
+    public function setDefaults(array! defaults)
+    {
+        var module, handler, action;
+
+        if fetch module, defaults[&quot;module&quot;] {
+            let this-&gt;defaultModule = module;
+        }
+
+        if fetch handler, defaults[&quot;handler&quot;] {
+            let this-&gt;defaultHandler = handler;
+        }
+
+        if fetch action, defaults[&quot;action&quot;] {
+            let this-&gt;defaultAction = action;
+        }
+    }
+
+    /**
+     * Prepare the FastRoute.
+     */
+    public function fastRoute()
+    {
+        var options, dispatcher, data, collector, parser, generator, route, handler;
+
+        let options = array_merge([
+            &quot;routeParser&quot;: &quot;Ice\\Mvc\\Route\\Parser\\Std&quot;,
+            &quot;dataGenerator&quot;: &quot;Ice\\Mvc\\Route\\DataGenerator\\GroupCount&quot;,
+            &quot;dispatcher&quot;:&quot;Ice\\Mvc\\Route\\Dispatcher\\GroupCount&quot;,
+            &quot;cache&quot;: false
+        ], this-&gt;options);
+
+        let this-&gt;options = options,
+            collector = this-&gt;collector;
+
+        if typeof collector != &quot;object&quot; || typeof collector == &quot;object&quot; &amp;&amp; !(collector instanceof Collector) {
+            fetch parser, options[&quot;routeParser&quot;];
+            fetch generator, options[&quot;dataGenerator&quot;];
+
+            let this-&gt;collector = new Collector(new {parser}(), new {generator}());
+        }
+
+        if !this-&gt;routes {
+            throw new Exception(&quot;There are no routes.&quot;);
+        } else {
+            for route in this-&gt;routes {
+                fetch handler, route[2];
+                this-&gt;collector-&gt;addRoute(route[0], route[1], handler);
+            }
+        }
+
+        let dispatcher = this-&gt;dispatcher;
+
+        if typeof dispatcher != &quot;object&quot; || typeof dispatcher == &quot;object&quot; &amp;&amp; !(dispatcher instanceof DispatcherInterface) {
+            let dispatcher = options[&quot;dispatcher&quot;],
+                this-&gt;dispatcher = new {dispatcher}();
+        }
+
+        if options[&quot;cache&quot;] {
+            if !isset options[&quot;cacheFile&quot;] {
+                throw new Exception(&quot;Must specify &apos;cacheFile&apos; option&quot;);
+            }
+
+            if file_exists(options[&quot;cacheFile&quot;]) {
+                let data = require options[&quot;cacheFile&quot;];
+            } else {
+                let data = this-&gt;collector-&gt;getData();
+
+                file_put_contents(options[&quot;cacheFile&quot;], &quot;&lt;?php return &quot; . var_export(data, true) . &quot;;&quot;);
+            }
+        } else {
+            let data = this-&gt;collector-&gt;getData();
+        }
+
+        this-&gt;dispatcher-&gt;setData(data);
+
+        let this-&gt;ready = true;
+    }
+
+    /**
+     * Handles routing information received from the FastRoute engine.
+     *
+     * @param string uri
+     * @return mixed
+     */
+    public function handle(method = null, uri = null)
+    {
+        var module, handler, action, params, holders, data, route, response;
+
+        let 
+            handler = this-&gt;defaultHandler,
+            action = this-&gt;defaultAction,
+            params = [];
+
+        if !this-&gt;ready {
+            this-&gt;fastRoute();
+        }
+
+        let route = this-&gt;dispatcher-&gt;dispatch(method, uri);
+
+        switch route[0] {
+            case self::NOT_FOUND:
+                if this-&gt;silent {
+                    // 404 Not Found
+                    let response = this-&gt;di-&gt;get(&quot;response&quot;, null, true);
+                    response-&gt;setStatus(404);
+                    response-&gt;setBody(response-&gt;getMessage(404));
+
+                    return response;
+                }
+                throw new Exception(&quot;The requested route could not be found&quot;, self::NOT_FOUND);
+            case self::METHOD_NOT_ALLOWED:
+                if this-&gt;silent {
+                    // 405 Method Not Allowed
+                    let response = this-&gt;di-&gt;get(&quot;response&quot;, null, true);
+                    response-&gt;setStatus(405);
+                    response-&gt;setBody(response-&gt;getMessage(405));
+
+                    return response;
+                }
+                throw new Exception(&quot;A request was made of a resource using a request method not supported by that resource&quot;, self::METHOD_NOT_ALLOWED);
+            case self::FOUND:
+                let holders = route[1],
+                    data = route[2];
+
+                    if !fetch module, holders[&quot;module&quot;] {
+                        if fetch module, data[&quot;module&quot;] {
+                            let module = str_replace(&quot;/&quot;, &quot;&quot;, module);
+                            unset data[&quot;module&quot;];
+                        } else {
+                            let module = this-&gt;defaultModule;
+                        }
+                    }
+
+                    if !fetch handler, holders[&quot;controller&quot;] {
+                        if fetch handler, data[&quot;controller&quot;] {
+                            let handler = str_replace(&quot;/&quot;, &quot;&quot;, handler);
+                            unset data[&quot;controller&quot;];
+                        } else {
+                            let handler = this-&gt;defaultHandler;
+                        }
+                    }
+
+                    if !fetch action, holders[&quot;action&quot;] {
+                        if fetch action, data[&quot;action&quot;] {
+                            let action = str_replace(&quot;/&quot;, &quot;&quot;, action);
+                            unset data[&quot;action&quot;];
+                        } else {
+                            let action = this-&gt;defaultAction;
+                        }
+                    }
+
+                    let params = data;
+            break;
+       }
+
+        let this-&gt;method = method,
+            this-&gt;module = module,
+            this-&gt;handler = handler,
+            this-&gt;action = action,
+            this-&gt;params = params;
+
+        return [&quot;module&quot;: module, &quot;handler&quot;: handler, &quot;action&quot;: action, &quot;params&quot;: params];
+    }
+}
+</code></pre>                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="../../../asset/static/js/jquery.min.js"></script>
+        <script src="../../../asset/static/js/bootstrap.min.js"></script>
+        <script src="../../../asset/static/js/highlight.pack.js"></script>
+        <script src="../../../asset/static/js/jquery.slimscroll.min.js"></script>
+        <script src="../../../asset/api_definition.js"></script>
+
+        <script>var ZepCurrentPath = '../../../'</script>
+        <script src="../../../asset/static/js/script.js"></script>
+        <script type="text/javascript">
+            $(window).on("load resize", function() {
+                $('#menu-wrapper').slimscroll({ height: $(window).height() - 100, size: '3px' });
+            });
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function() { $('pre code').each(function(i, block) { hljs.highlightBlock(block); }); });
+            if ($('.zephir-source-file').length) {
+                $('link[id]').each(function(i, link) {
+                    link.disabled = (link.id != 'tomorrow-night');
+                });
+            }
+        </script>
+            </body>
+</html>
