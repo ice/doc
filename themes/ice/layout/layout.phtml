@@ -50,7 +50,7 @@
         <script src="<?= $this->asset("static/js/script.js") ?>"></script>
         <script type="text/javascript">
             $(window).on("load resize", function() {
-                $('#menu-wrapper').slimscroll({ height: $(window).height(), size: '3px' });
+                $('#menu-wrapper').slimscroll({ height: $(window).height() - 100, size: '3px' });
             });
         </script>
         <script type="text/javascript">

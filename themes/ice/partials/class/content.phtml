@@ -4,6 +4,7 @@
         array("name" => "Classes" , "url" => "/classes.html" ),
         $items[] = array("name" => $fullName)
     );
+    $docblock =  $classDefinition->getParsedDocBlock();
 ?>
 
 <?= $this->partial("partials/breadcrumb.phtml",array("items"=> $items)) ?>
@@ -32,7 +33,14 @@
     </div>
 
 </div>
-
+<?php if ($docblock) { ?>
+    <div class="text-muted">
+    <?= $docblock->getSummary() ?>
+    </div>
+    <div>
+    <?= preg_replace(['/&lt;pre&gt;&lt;code&gt;/', '/&lt;\/code&gt;&lt;\/pre&gt;/'], ['<pre><code class="php">', '</code></pre>'], htmlspecialchars($docblock->getDescription(), ENT_QUOTES | ENT_HTML5)) ?>
+    </div>
+<?php } ?>
 
 <div class="hidden-anchor"  id="methods"></div>
 <div class="methods-summary standard-bandeau">Methods</div>
