@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" type="text/css" href="../../asset/static/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="../../asset/static/css/tomorrow.min.css" id="tomorrow" />
+        <link rel="stylesheet" type="text/css" href="../../asset/static/css/tomorrow-night.min.css" id="tomorrow-night" disabled />
+        <link rel="stylesheet" type="text/css" href="../../asset/static/css/style.css" />
+    </head>
+    <body>
+        <header class="navbar navbar-default navbar-fixed-top">
+            <div id="top-bar" class="container-fluid">
+                <div id="top-left" class="navbar-header">
+                    <a href="../../index.html" class="navbar-brand">
+                                                    ice Documentation <span class="version">v1.0.19</span>
+                                            </a>
+                </div>
+                <div id="top-right" class="collapse navbar-collapse">
+
+                </div>
+            </div>
+        </header>
+        <div id="body" class="container-fluid">
+            <div class="row">
+                <div id="body-left" class="col-lg-3 col-sm-4">
+                    <div class="header-search">
+                        <input class="search-box form-control" placeholder="Search for a class or namespace " type="text" />
+                        <div id="menu-wrapper">
+                        </div>
+                    </div>
+                </div>
+                <div id="body-right" class="col-lg-9 col-sm-8">
+                    <div class="content">
+                        
+<div>
+    
+    <ul class="breadcrumb">
+        
+        <li><a href="../../index.html">Home</a></li>
+        
+                <li><a href="../../classes.html">Classes</a></li>
+                <li><a >Ice\Di</a></li>
+                
+    </ul>
+    
+</div>
+<div class="class-header clearfix">
+    
+    
+    <div class="access-buttons pull-right">
+        <a class="zep-button btn btn-default" href="../../source/Ice/Di.html">Source</a>
+
+                <a class="zep-button btn btn-default" href="https://github.com/ice/framework/tree/dev/ice/di.zep">Github</a>
+            </div>
+    
+    <div class="class-full-name">
+        
+        <span class="class-type">Class</span>
+        
+                <span class="namespace-piece">
+            <a href="../../namespace/Ice.html">Ice</a>
+        </span>
+                <h1 class="class-name">Di</h1>
+    </div>
+
+</div>
+    <div class="text-muted">
+    Component that implements Dependency Injection and a container for the services.    </div>
+    <div>
+        </div>
+
+<div class="hidden-anchor"  id="methods"></div>
+<div class="methods-summary standard-bandeau">Methods</div>
+<table class="method-summary-list table table-striped table-hover">
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-__construct">__construct</a></span>(<span class="small"><span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$data</strong></span></span>)
+                <div class="summary-text text-muted">Di constructor. Sets root path.</div>
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        <a href='../../class/Ice/Di.html'>Ice\Di</a>
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-fetch">fetch</a></span>(<span class="small"></span>)
+                <div class="summary-text text-muted">Return the last DI created.</div>
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-set">set</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$key</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$value</strong></span></span>)
+                <div class="summary-text text-muted">Registers a service in the services container.</div>
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-resolve">resolve</a></span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$service</strong></span></span>)
+                <div class="summary-text text-muted">Resolve service.</div>
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-errors">errors</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$className</strong></span></span>)
+                <div class="summary-text text-muted">Set handlers for error, exeception and shutdown.</div>
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-hook">hook</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$name</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$callback</strong></span>, <span class="param-data-type text-danger">int</span>  <span class="param-name text-info"><strong>$priority</strong></span></span>)
+                <div class="summary-text text-muted">Assign hook.</div>
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-applyHook">applyHook</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$name</strong></span>, <span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$args</strong></span></span>)
+                <div class="summary-text text-muted">Invoke hook.</div>
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        array|null
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-getHooks">getHooks</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$name</strong></span></span>)
+                <div class="summary-text text-muted">Get hook listeners.</div>
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-clearHooks">clearHooks</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$name</strong></span></span>)
+                <div class="summary-text text-muted">Clear hook listeners.</div>
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-__call">__call</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$method</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$arguments</strong></span></span>)
+                <div class="summary-text text-muted">Magic method to get or set services using setters/getters.</div>
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-zephir_init_properties_Ice_Di">zephir_init_properties_Ice_Di</a></span>(<span class="small"></span>)
+            </div>
+</td>
+</tr>
+    </table>
+
+<div class="hidden-anchor"  id="methods-details"></div>
+<div class="methods-summary standard-bandeau">Methods Details</div>
+<ul class="method-details-list list-unstyled">
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-__construct"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">__construct</span>(<span class="small"><span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$data</strong></span></span>)
+                </h3>
+                                
+                    <div class="text-muted">
+                    Di constructor. Sets root path.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-fetch"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                <span class="small visibility-static">static</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">fetch</span>(<span class="small"></span>)
+                </h3>
+                                
+                    <div class="text-muted">
+                    Return the last DI created.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-set"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">set</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$key</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$value</strong></span></span>)
+                </h3>
+                                
+                    <div class="text-muted">
+                    Registers a service in the services container.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-resolve"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">resolve</span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$service</strong></span></span>)
+                </h3>
+                                
+                    <div class="text-muted">
+                    Resolve service.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-errors"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">errors</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$className</strong></span></span>)
+                </h3>
+                                
+                    <div class="text-muted">
+                    Set handlers for error, exeception and shutdown.                    </div>
+                    <div>
+                    Class should contain method handler, errorHandler and shutdownHandler.                    </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-hook"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">hook</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$name</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$callback</strong></span>, <span class="param-data-type text-danger">int</span>  <span class="param-name text-info"><strong>$priority</strong></span></span>)
+                </h3>
+                                
+                    <div class="text-muted">
+                    Assign hook.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-applyHook"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">applyHook</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$name</strong></span>, <span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$args</strong></span></span>)
+                </h3>
+                                
+                    <div class="text-muted">
+                    Invoke hook.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-getHooks"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">getHooks</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$name</strong></span></span>)
+                </h3>
+                                
+                    <div class="text-muted">
+                    Get hook listeners.                    </div>
+                    <div>
+                    Return an array of registered hooks. If `$name` is a valid hook name, only the listeners attached to that hook
+     are returned. Else, all listeners are returned as an associative array whose keys are hook names and whose values
+     are arrays of listeners.                    </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-clearHooks"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">clearHooks</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$name</strong></span></span>)
+                </h3>
+                                
+                    <div class="text-muted">
+                    Clear hook listeners.                    </div>
+                    <div>
+                    Clear all listeners for all hooks. If `$name` is a valid hook name, only the listeners attached to that hook
+     will be cleared.                    </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-__call"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">__call</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$method</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$arguments</strong></span></span>)
+                </h3>
+                                
+                    <div class="text-muted">
+                    Magic method to get or set services using setters/getters.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-zephir_init_properties_Ice_Di"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-internal">internal</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">zephir_init_properties_Ice_Di</span>(<span class="small"></span>)
+                </h3>
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    </ul>                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="../../asset/static/js/jquery.min.js"></script>
+        <script src="../../asset/static/js/bootstrap.min.js"></script>
+        <script src="../../asset/static/js/highlight.pack.js"></script>
+        <script src="../../asset/static/js/jquery.slimscroll.min.js"></script>
+        <script src="../../asset/api_definition.js"></script>
+
+        <script>var ZepCurrentPath = '../../'</script>
+        <script src="../../asset/static/js/script.js"></script>
+        <script type="text/javascript">
+            $(window).on("load resize", function() {
+                $('#menu-wrapper').slimscroll({ height: $(window).height() - 100, size: '3px' });
+            });
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function() { $('pre code').each(function(i, block) { hljs.highlightBlock(block); }); });
+            if ($('.zephir-source-file').length) {
+                $('link[id]').each(function(i, link) {
+                    link.disabled = (link.id != 'tomorrow-night');
+                });
+            }
+        </script>
+            </body>
+</html>
