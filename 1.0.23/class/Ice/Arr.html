@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" type="text/css" href="../../asset/static/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="../../asset/static/css/tomorrow.min.css" id="tomorrow" />
+        <link rel="stylesheet" type="text/css" href="../../asset/static/css/tomorrow-night.min.css" id="tomorrow-night" disabled />
+        <link rel="stylesheet" type="text/css" href="../../asset/static/css/style.css" />
+    </head>
+    <body>
+        <header class="navbar navbar-default navbar-fixed-top">
+            <div id="top-bar" class="container-fluid">
+                <div id="top-left" class="navbar-header">
+                    <a href="../../index.html" class="navbar-brand">
+                                                    ice Documentation <span class="version">v1.0.23</span>
+                                            </a>
+                </div>
+                <div id="top-right" class="collapse navbar-collapse">
+
+                </div>
+            </div>
+        </header>
+        <div id="body" class="container-fluid">
+            <div class="row">
+                <div id="body-left" class="col-lg-3 col-sm-4">
+                    <div class="header-search">
+                        <input class="search-box form-control" placeholder="Search for a class or namespace " type="text" />
+                        <div id="menu-wrapper">
+                        </div>
+                    </div>
+                </div>
+                <div id="body-right" class="col-lg-9 col-sm-8">
+                    <div class="content">
+                        
+<div>
+    
+    <ul class="breadcrumb">
+        
+        <li><a href="../../index.html">Home</a></li>
+        
+                <li><a href="../../classes.html">Classes</a></li>
+                <li><a >Ice\Arr</a></li>
+                
+    </ul>
+    
+</div>
+<div class="class-header clearfix">
+    
+    
+    <div class="access-buttons pull-right">
+        <a class="zep-button btn btn-default" href="../../source/Ice/Arr.html">Source</a>
+
+                <a class="zep-button btn btn-default" href="https://github.com/ice/framework/tree/dev/ice/arr.zep">Github</a>
+            </div>
+    
+    <div class="class-full-name">
+        
+        <span class="class-type">Class</span>
+        
+                <span class="namespace-piece">
+            <a href="../../namespace/Ice.html">Ice</a>
+        </span>
+                <h1 class="class-name">Arr</h1>
+    </div>
+
+</div>
+    <div class="text-muted">
+    Access class as array and the same time as object.    </div>
+    <div>
+        </div>
+
+<div class="hidden-anchor"  id="methods"></div>
+<div class="methods-summary standard-bandeau">Methods</div>
+<table class="method-summary-list table table-striped table-hover">
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-getData">getData</a></span>(<span class="small"></span>)
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-__construct">__construct</a></span>(<span class="small"><span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$data</strong></span></span>)
+                <div class="summary-text text-muted">Arr constructor.</div>
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        bool
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-has">has</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$key</strong></span></span>)
+                <div class="summary-text text-muted">Whether or not an data exists by key.</div>
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-get">get</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$key</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$defaultValue</strong></span>, <span class="param-data-type text-danger">bool</span>  <span class="param-name text-info"><strong>$required</strong></span></span>)
+                <div class="summary-text text-muted">Retrieve a single key from an array.</div>
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-set">set</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$key</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$value</strong></span></span>)
+                <div class="summary-text text-muted">Assigns a value to the specified data.</div>
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-replace">replace</a></span>(<span class="small"><span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$data</strong></span></span>)
+                <div class="summary-text text-muted">Add data to set, replaces the existing data.</div>
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        array
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-all">all</a></span>(<span class="small"></span>)
+                <div class="summary-text text-muted">Fetch all data.</div>
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-setData">setData</a></span>(<span class="small"><span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$data</strong></span></span>)
+                <div class="summary-text text-muted">Set data, clears and overwrites the current data.</div>
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        array
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-keys">keys</a></span>(<span class="small"></span>)
+                <div class="summary-text text-muted">Fetch set data keys.</div>
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-remove">remove</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$key</strong></span></span>)
+                <div class="summary-text text-muted">Remove an data by key.</div>
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-clear">clear</a></span>(<span class="small"></span>)
+                <div class="summary-text text-muted">Clear all values.</div>
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        int
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-count">count</a></span>(<span class="small"></span>)
+                <div class="summary-text text-muted">Count all elements in a data.</div>
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        <a href='../../class/Ice/ArrayIterator.html'>Ice\ArrayIterator</a>
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-getIterator">getIterator</a></span>(<span class="small"></span>)
+                <div class="summary-text text-muted">Get a data iterator.</div>
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-getPath">getPath</a></span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$path</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$defaultValue</strong></span>, <span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$delimiter</strong></span></span>)
+                <div class="summary-text text-muted">Gets a value from an array using a dot separated path.</div>
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        array
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-toArray">toArray</a></span>(<span class="small"></span>)
+                <div class="summary-text text-muted">Converts recursively the object to an array.</div>
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        bool
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-offsetExists">offsetExists</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$offset</strong></span></span>)
+                <div class="summary-text text-muted">Whether or not an offset exists.</div>
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-offsetGet">offsetGet</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$offset</strong></span></span>)
+                <div class="summary-text text-muted">Returns the value at specified offset.</div>
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-offsetSet">offsetSet</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$offset</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$value</strong></span></span>)
+                <div class="summary-text text-muted">Assigns a value to the specified offset.</div>
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-offsetUnset">offsetUnset</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$offset</strong></span></span>)
+                <div class="summary-text text-muted">Unsets an offset.</div>
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        bool
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-__isset">__isset</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$key</strong></span></span>)
+                <div class="summary-text text-muted">Magic isset, whether or not a key exists.</div>
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-__get">__get</a></span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$key</strong></span></span>)
+                <div class="summary-text text-muted">Magic get, returns the value at specified key.</div>
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-__set">__set</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$key</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$value</strong></span></span>)
+                <div class="summary-text text-muted">Magic set, assigns a value to the specified key.</div>
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-__unset">__unset</a></span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$key</strong></span></span>)
+                <div class="summary-text text-muted">Magic unset, unsets a key.</div>
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-zephir_init_properties_Ice_Arr">zephir_init_properties_Ice_Arr</a></span>(<span class="small"></span>)
+            </div>
+</td>
+</tr>
+    </table>
+
+<div class="hidden-anchor"  id="methods-details"></div>
+<div class="methods-summary standard-bandeau">Methods Details</div>
+<ul class="method-details-list list-unstyled">
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-getData"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">getData</span>(<span class="small"></span>)
+                </h3>
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-__construct"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">__construct</span>(<span class="small"><span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$data</strong></span></span>)
+                </h3>
+                                
+                    <div class="text-muted">
+                    Arr constructor.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-has"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">has</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$key</strong></span></span>)
+                </h3>
+                                
+                    <div class="text-muted">
+                    Whether or not an data exists by key.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-get"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">get</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$key</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$defaultValue</strong></span>, <span class="param-data-type text-danger">bool</span>  <span class="param-name text-info"><strong>$required</strong></span></span>)
+                </h3>
+                                
+                    <div class="text-muted">
+                    Retrieve a single key from an array.                    </div>
+                    <div>
+                    If the key does not exist in the array, the default value will be returned.                    </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-set"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">set</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$key</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$value</strong></span></span>)
+                </h3>
+                                
+                    <div class="text-muted">
+                    Assigns a value to the specified data.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-replace"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">replace</span>(<span class="small"><span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$data</strong></span></span>)
+                </h3>
+                                
+                    <div class="text-muted">
+                    Add data to set, replaces the existing data.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-all"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">all</span>(<span class="small"></span>)
+                </h3>
+                                
+                    <div class="text-muted">
+                    Fetch all data.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-setData"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">setData</span>(<span class="small"><span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$data</strong></span></span>)
+                </h3>
+                                
+                    <div class="text-muted">
+                    Set data, clears and overwrites the current data.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-keys"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">keys</span>(<span class="small"></span>)
+                </h3>
+                                
+                    <div class="text-muted">
+                    Fetch set data keys.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-remove"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">remove</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$key</strong></span></span>)
+                </h3>
+                                
+                    <div class="text-muted">
+                    Remove an data by key.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-clear"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">clear</span>(<span class="small"></span>)
+                </h3>
+                                
+                    <div class="text-muted">
+                    Clear all values.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-count"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">count</span>(<span class="small"></span>)
+                </h3>
+                                
+                    <div class="text-muted">
+                    Count all elements in a data.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-getIterator"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">getIterator</span>(<span class="small"></span>)
+                </h3>
+                                
+                    <div class="text-muted">
+                    Get a data iterator.                    </div>
+                    <div>
+                    return ArrayIterator                    </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-getPath"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">getPath</span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$path</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$defaultValue</strong></span>, <span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$delimiter</strong></span></span>)
+                </h3>
+                                
+                    <div class="text-muted">
+                    Gets a value from an array using a dot separated path.                    </div>
+                    <div>
+                    <pre><code class="php">
+      // Get the value of $array[&apos;foo&apos;][&apos;bar&apos;]
+      $value = (new Arr($array))-&gt;getPath(&apos;foo.bar&apos;);
+     </code></pre>
+     
+     <pre><code class="php">
+      // Get the values of &quot;color&quot; in theme
+      $colors = (new Arr($array))-&gt;getPath(&apos;theme..color&apos;);
+     </code></pre>                    </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-toArray"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">toArray</span>(<span class="small"></span>)
+                </h3>
+                                
+                    <div class="text-muted">
+                    Converts recursively the object to an array.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-offsetExists"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">offsetExists</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$offset</strong></span></span>)
+                </h3>
+                                
+                    <div class="text-muted">
+                    Whether or not an offset exists.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-offsetGet"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">offsetGet</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$offset</strong></span></span>)
+                </h3>
+                                
+                    <div class="text-muted">
+                    Returns the value at specified offset.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-offsetSet"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">offsetSet</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$offset</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$value</strong></span></span>)
+                </h3>
+                                
+                    <div class="text-muted">
+                    Assigns a value to the specified offset.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-offsetUnset"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">offsetUnset</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$offset</strong></span></span>)
+                </h3>
+                                
+                    <div class="text-muted">
+                    Unsets an offset.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-__isset"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">__isset</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$key</strong></span></span>)
+                </h3>
+                                
+                    <div class="text-muted">
+                    Magic isset, whether or not a key exists.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-__get"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">__get</span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$key</strong></span></span>)
+                </h3>
+                                
+                    <div class="text-muted">
+                    Magic get, returns the value at specified key.                    </div>
+                    <div>
+                    First check if property exist.                    </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-__set"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">__set</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$key</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$value</strong></span></span>)
+                </h3>
+                                
+                    <div class="text-muted">
+                    Magic set, assigns a value to the specified key.                    </div>
+                    <div>
+                    First check if property exist.                    </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-__unset"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">__unset</span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$key</strong></span></span>)
+                </h3>
+                                
+                    <div class="text-muted">
+                    Magic unset, unsets a key.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-zephir_init_properties_Ice_Arr"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-internal">internal</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">zephir_init_properties_Ice_Arr</span>(<span class="small"></span>)
+                </h3>
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    </ul>                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="../../asset/static/js/jquery.min.js"></script>
+        <script src="../../asset/static/js/bootstrap.min.js"></script>
+        <script src="../../asset/static/js/highlight.pack.js"></script>
+        <script src="../../asset/static/js/jquery.slimscroll.min.js"></script>
+        <script src="../../asset/api_definition.js"></script>
+
+        <script>var ZepCurrentPath = '../../'</script>
+        <script src="../../asset/static/js/script.js"></script>
+        <script type="text/javascript">
+            $(window).on("load resize", function() {
+                $('#menu-wrapper').slimscroll({ height: $(window).height() - 100, size: '3px' });
+            });
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function() { $('pre code').each(function(i, block) { hljs.highlightBlock(block); }); });
+            if ($('.zephir-source-file').length) {
+                $('link[id]').each(function(i, link) {
+                    link.disabled = (link.id != 'tomorrow-night');
+                });
+            }
+        </script>
+            </body>
+</html>
