@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" type="text/css" href="../../asset/static/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="../../asset/static/css/tomorrow.min.css" id="tomorrow" />
+        <link rel="stylesheet" type="text/css" href="../../asset/static/css/tomorrow-night.min.css" id="tomorrow-night" disabled />
+        <link rel="stylesheet" type="text/css" href="../../asset/static/css/style.css" />
+    </head>
+    <body>
+        <header class="navbar navbar-default navbar-fixed-top">
+            <div id="top-bar" class="container-fluid">
+                <div id="top-left" class="navbar-header">
+                    <a href="../../index.html" class="navbar-brand">
+                                                    ice Documentation <span class="version">v1.0.26</span>
+                                            </a>
+                </div>
+                <div id="top-right" class="collapse navbar-collapse">
+
+                </div>
+            </div>
+        </header>
+        <div id="body" class="container-fluid">
+            <div class="row">
+                <div id="body-left" class="col-lg-3 col-sm-4">
+                    <div class="header-search">
+                        <input class="search-box form-control" placeholder="Search for a class or namespace " type="text" />
+                        <div id="menu-wrapper">
+                        </div>
+                    </div>
+                </div>
+                <div id="body-right" class="col-lg-9 col-sm-8">
+                    <div class="content">
+                        
+<div>
+    
+    <ul class="breadcrumb">
+        
+        <li><a href="../../index.html">Home</a></li>
+        
+                <li><a href="../../classes.html">Classes</a></li>
+                <li><a href="../../class/Ice/Dispatcher.html">Ice\Dispatcher</a></li>
+                <li><a >Source</a></li>
+                
+    </ul>
+    
+</div>
+<div class="class-header source clearfix">
+    
+    <div class="access-buttons pull-right">
+        <a class="zep-button btn btn-default" href="../../class/Ice/Dispatcher.html">Class</a>
+
+                <a class="zep-button btn btn-default" href="https://github.com/ice/framework/tree/dev/ice/dispatcher.zep">Github</a>
+            </div>
+    
+    <div class="class-full-name">
+        
+        <span class="class-type">Class</span>
+        
+                <span class="namespace-piece">
+            <a href="../../namespace/Ice.html">Ice</a>
+        </span>
+                <h1 class="class-name">Dispatcher</h1>
+    </div>
+    
+</div>
+
+
+<pre class="zephir-source-file"><code>
+namespace Ice;
+
+use Ice\Mvc\ModuleInterface;
+
+/**
+ * The base class for Ice\Mvc\Dispatcher and Ice\CLI\Dispatcher.
+ * For the response from router and in the specified module, create instance of handler with action and params.
+ *
+ * @package     Ice/Dispatcher
+ * @category    Component
+ * @author      Ice Team
+ * @copyright   (c) 2014-2015 Ice Team
+ * @license     http://iceframework.org/license
+ */
+abstract class Dispatcher 
+{
+
+    protected di;
+    protected defaultNamespace { get, set };
+    protected activeHandler { get };
+    protected lastHandler { get };
+
+    protected loops = 0 { get };
+    protected finished { get };
+    protected forwarded = false { get };
+    protected silent = false { set };
+
+    protected modules = [] { get, set };
+    protected module = null { get, set };
+    protected $namespace = null { get, set };
+    protected handler = null { get, set };
+    protected action = null { get, set };
+
+    protected params = [] { get, set };
+    protected returnedValue = null { get, set };
+
+    protected handlerSuffix = &quot;Handler&quot; { get, set };
+    protected actionSuffix = &quot;Action&quot; { get, set };
+
+    protected previousModule = null;
+    protected previousHandler = null;
+    protected previousAction = null;
+
+    const DISPATCH_CYCLIC = 1;
+    const HANDLER_NOT_FOUND = 2;
+    const ACTION_NOT_FOUND = 3;
+    const INVALID_PARAMS = 4;
+
+    /**
+     * Di constructor. Fetch Di and set it as a property.
+     */
+    public function __construct()
+    {
+        let this-&gt;di = Di::$fetch();
+    }
+
+    /**
+     * Set a param by its name or numeric index.
+     *
+     * @param mixed param
+     * @param mixed value
+     */
+    public function setParam(var param, var value)
+    {
+        let this-&gt;params[param] = value;
+    }
+
+    /**
+     * Gets a param by its name or numeric index.
+     *
+     * @param mixed param
+     * @param mixed defaultValue
+     * @return mixed
+     */
+    public function getParam(param, defaultValue = null)
+    {
+        var value;
+
+        if fetch value, this-&gt;params[param] {
+            return value;
+        }
+        return defaultValue;
+    }
+
+    /**
+     * Returns the current method to be/executed in the dispatcher.
+     *
+     * @return string
+     */
+    public function getActiveMethod() -&gt; string
+    {
+        return this-&gt;action . this-&gt;actionSuffix;
+    }
+
+    /**
+     * Dispatches a handle action taking into account the routing parameters.
+     *
+     * @return object
+     */
+    public function dispatch()
+    {
+        var handler, response, handlerName, actionName, params, handlerSuffix, handlerClass, actionMethod;
+        var fresh, module, modules, moduleNamespace, path, moduleClass, loader;
+
+        let response = this-&gt;di-&gt;get(&quot;response&quot;),
+            fresh = true,
+            handler = null,
+            handlerSuffix = this-&gt;handlerSuffix,
+            this-&gt;finished = false;
+
+        while !this-&gt;finished {
+            let this-&gt;loops++;
+
+            // Throw an exception after 16 consecutive forwards
+            if this-&gt;loops &gt; 16 {
+                if this-&gt;silent {
+                    // 508 Loop Detected
+                    response-&gt;setStatus(508);
+                    response-&gt;setBody(response-&gt;getMessage(508));
+
+                    return response;
+                }
+                throw new Exception(&quot;Dispatcher has detected a cyclic routing causing stability problems&quot;, self::DISPATCH_CYCLIC);
+            }
+
+            let this-&gt;finished = true,
+                modules = this-&gt;modules;
+
+            if modules {
+                if !fetch module, modules[this-&gt;module] {
+                    throw new Exception([&quot;Module &apos;%s&apos; isn&apos;t registered in the application container&quot;, this-&gt;module]);
+                }
+                
+                if typeof module != &quot;array&quot; {
+                    throw new Exception(&quot;Module definition must be an array&quot;);
+                }
+
+                if fetch path, module[&quot;path&quot;] {
+                    if !file_exists(path) {
+                        throw new Exception([&quot;Module definition path &apos;%s&apos; doesn&apos;t exist&quot;, path]);
+                    }
+                }
+
+                if !fetch moduleClass, module[&quot;class&quot;] {
+                    let moduleClass = &quot;Module&quot;;
+                }
+
+                if !fetch moduleNamespace, module[&quot;namespace&quot;] {
+                    let moduleNamespace = moduleClass;
+                }
+
+                let loader = new Loader(),
+                    this-&gt;$namespace = moduleNamespace;
+
+                loader-&gt;addNamespace(moduleNamespace, path)-&gt;register();
+
+                let module = &lt;ModuleInterface&gt; create_instance_params(moduleNamespace . &quot;\\&quot; . moduleClass, [this-&gt;di]);
+
+                module-&gt;registerAutoloaders();
+                module-&gt;registerServices(this-&gt;di);
+            }
+
+            if !this-&gt;defaultNamespace {
+                this-&gt;setDefaultNamespace(this-&gt;$namespace . &quot;\\&quot; . this-&gt;getHandlerSuffix());
+            }
+
+            let handlerName = this-&gt;handler,
+                actionName = this-&gt;action,
+                handlerClass = this-&gt;defaultNamespace . &quot;\\&quot; . ucfirst(camelize(handlerName)) . handlerSuffix;
+
+            if !class_exists(handlerClass) {
+                if this-&gt;silent {
+                    // 404 Not Found
+                    response-&gt;setStatus(404);
+                    response-&gt;setBody(response-&gt;getMessage(404));
+
+                    return response;
+                }
+                throw new Exception([&quot;%s handler class cannot be loaded&quot;, handlerClass], self::HANDLER_NOT_FOUND);
+            }
+
+            let this-&gt;lastHandler = handler,
+                handler = new {handlerClass}(),
+                this-&gt;activeHandler = handler,
+                actionMethod = this-&gt;getActiveMethod();
+
+            if method_exists(handler, &quot;before&quot;) {
+                handler-&gt;before();
+
+                if this-&gt;finished === false {
+                    continue;
+                }
+            }
+
+            // Call the &apos;initialize&apos; method just once per request
+            if fresh === true {
+                if method_exists(handler, &quot;initialize&quot;) {
+                    handler-&gt;initialize();
+                }
+            }
+
+            // Check if the method exists in the handler
+            if !method_exists(handler, actionMethod) {
+                if this-&gt;silent {
+                    // 404 Not Found
+                    response-&gt;setStatus(404);
+                    response-&gt;setBody(response-&gt;getMessage(404));
+
+                    return response;
+                }
+                throw new Exception([&quot;Action &apos;%s&apos; was not found on handler &apos;%s&apos;&quot;, actionName, handlerName], self::ACTION_NOT_FOUND);
+            }
+
+            let params = this-&gt;params;
+            if typeof params != &quot;array&quot; {
+                throw new Exception(&quot;Action parameters must be an array&quot;, self::INVALID_PARAMS);
+            }
+
+            let this-&gt;returnedValue = call_user_func_array([handler, actionMethod], params);
+
+            if this-&gt;finished === false {
+                continue;
+            }
+
+            if method_exists(handler, &quot;after&quot;) {
+                handler-&gt;after();
+
+                if this-&gt;finished === false {
+                    continue;
+                }
+            }
+            let fresh = false;
+        }
+
+        return handler;
+    }
+
+    /**
+     * Forwards the execution flow to another module/controller/action.
+     *
+     * @param array forward
+     * @param boolean force
+     */
+    public function forward(array! forward, boolean force = false)
+    {
+        var module, handler, action, params;
+
+        // Check if we need to forward to another module
+        if fetch module, forward[&quot;module&quot;] {
+            let this-&gt;previousModule = this-&gt;module,
+                this-&gt;module = module;
+        }
+
+        // Check if we need to forward to another handler
+        if fetch handler, forward[&quot;handler&quot;] {
+            let this-&gt;previousHandler = this-&gt;handler,
+                this-&gt;handler = handler;
+        }
+
+        // Check if we need to forward to another action
+        if fetch action, forward[&quot;action&quot;] {
+            let this-&gt;previousAction = this-&gt;action,
+                this-&gt;action = action;
+        }
+
+        // Check if we need to forward changing the current parameters
+        if fetch params, forward[&quot;params&quot;] {
+            let this-&gt;params = params;
+        }
+
+        let this-&gt;finished = false,
+            this-&gt;forwarded = true;
+
+        if force {
+            this-&gt;dispatch();
+        }
+    }
+}
+</code></pre>                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="../../asset/static/js/jquery.min.js"></script>
+        <script src="../../asset/static/js/bootstrap.min.js"></script>
+        <script src="../../asset/static/js/highlight.pack.js"></script>
+        <script src="../../asset/static/js/jquery.slimscroll.min.js"></script>
+        <script src="../../asset/api_definition.js"></script>
+
+        <script>var ZepCurrentPath = '../../'</script>
+        <script src="../../asset/static/js/script.js"></script>
+        <script type="text/javascript">
+            $(window).on("load resize", function() {
+                $('#menu-wrapper').slimscroll({ height: $(window).height() - 100, size: '3px' });
+            });
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function() { $('pre code').each(function(i, block) { hljs.highlightBlock(block); }); });
+            if ($('.zephir-source-file').length) {
+                $('link[id]').each(function(i, link) {
+                    link.disabled = (link.id != 'tomorrow-night');
+                });
+            }
+        </script>
+            </body>
+</html>
