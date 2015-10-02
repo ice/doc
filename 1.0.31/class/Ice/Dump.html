@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" type="text/css" href="../../asset/static/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="../../asset/static/css/tomorrow.min.css" id="tomorrow" />
+        <link rel="stylesheet" type="text/css" href="../../asset/static/css/tomorrow-night.min.css" id="tomorrow-night" disabled />
+        <link rel="stylesheet" type="text/css" href="../../asset/static/css/style.css" />
+    </head>
+    <body>
+        <header class="navbar navbar-default navbar-fixed-top">
+            <div id="top-bar" class="container-fluid">
+                <div id="top-left" class="navbar-header">
+                    <a href="../../index.html" class="navbar-brand">
+                                                    ice Documentation <span class="version">v1.0.31</span>
+                                            </a>
+                </div>
+                <div id="top-right" class="collapse navbar-collapse">
+
+                </div>
+            </div>
+        </header>
+        <div id="body" class="container-fluid">
+            <div class="row">
+                <div id="body-left" class="col-lg-3 col-sm-4">
+                    <div class="header-search">
+                        <input class="search-box form-control" placeholder="Search for a class or namespace " type="text" />
+                        <div id="menu-wrapper">
+                        </div>
+                    </div>
+                </div>
+                <div id="body-right" class="col-lg-9 col-sm-8">
+                    <div class="content">
+                        
+<div>
+    
+    <ul class="breadcrumb">
+        
+        <li><a href="../../index.html">Home</a></li>
+        
+                <li><a href="../../classes.html">Classes</a></li>
+                <li><a >Ice\Dump</a></li>
+                
+    </ul>
+    
+</div>
+<div class="class-header clearfix">
+    
+    
+    <div class="access-buttons pull-right">
+        <a class="zep-button btn btn-default" href="../../source/Ice/Dump.html">Source</a>
+
+                <a class="zep-button btn btn-default" href="https://github.com/ice/framework/tree/dev/ice/dump.zep">Github</a>
+            </div>
+    
+    <div class="class-full-name">
+        
+        <span class="class-type">Class</span>
+        
+                <span class="namespace-piece">
+            <a href="../../namespace/Ice.html">Ice</a>
+        </span>
+                <h1 class="class-name">Dump</h1>
+    </div>
+
+</div>
+    <div class="text-muted">
+    Dumps information about a variable(s)    </div>
+    <div>
+    <pre><code class="php">$foo=123;echo(new\Ice\Dump())-&gt;variable($foo,&quot;foo&quot;);</code></pre><pre><code class="php">$foo=&quot;string&quot;;$bar=[&quot;key&quot;=&gt;&quot;value&quot;];$baz=newstdClass();echo(new\Ice\Dump())-&gt;vars($foo,$bar,$baz);</code></pre>Sleetusage:<pre><code class="php">{{dump(&apos;str&apos;,1,2.5,true,null,[&apos;key&apos;:&apos;value&apos;])}}</code></pre>    </div>
+
+<div class="hidden-anchor"  id="methods"></div>
+<div class="methods-summary standard-bandeau">Methods</div>
+<table class="method-summary-list table table-striped table-hover">
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-getDetailed">getDetailed</a></span>(<span class="small"></span>)
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-setDetailed">setDetailed</a></span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$detailed</strong></span></span>)
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-__construct">__construct</a></span>(<span class="small"><span class="param-data-type text-danger">bool</span>  <span class="param-name text-info"><strong>$detailed</strong></span>, <span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$styles</strong></span></span>)
+                <div class="summary-text text-muted">Dump constructor</div>
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        string
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-all">all</a></span>(<span class="small"></span>)
+                <div class="summary-text text-muted">Alias of vars() method</div>
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        string
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-getStyle">getStyle</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$type</strong></span></span>)
+                <div class="summary-text text-muted">Get style for type</div>
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        array
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-setStyles">setStyles</a></span>(<span class="small"><span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$styles</strong></span></span>)
+                <div class="summary-text text-muted">Set styles for vars type</div>
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        string
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-one">one</a></span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$variable</strong></span>, <span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$name</strong></span></span>)
+                <div class="summary-text text-muted">Alias of variable() method</div>
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        string
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-output">output</a></span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$variable</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$name</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$tab</strong></span></span>)
+                <div class="summary-text text-muted">Prepare an HTML string of information about a single variable.</div>
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        string
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-variable">variable</a></span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$variable</strong></span>, <span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$name</strong></span></span>)
+                <div class="summary-text text-muted">Returns an HTML string of information about a single variable.</div>
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        string
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-vars">vars</a></span>(<span class="small"></span>)
+                <div class="summary-text text-muted">Returns an HTML string of debugging information about any number of</div>
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-zephir_init_properties_Ice_Dump">zephir_init_properties_Ice_Dump</a></span>(<span class="small"></span>)
+            </div>
+</td>
+</tr>
+    </table>
+
+<div class="hidden-anchor"  id="methods-details"></div>
+<div class="methods-summary standard-bandeau">Methods Details</div>
+<ul class="method-details-list list-unstyled">
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-getDetailed"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">getDetailed</span>(<span class="small"></span>)
+                </h3>
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-setDetailed"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">setDetailed</span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$detailed</strong></span></span>)
+                </h3>
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-__construct"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">__construct</span>(<span class="small"><span class="param-data-type text-danger">bool</span>  <span class="param-name text-info"><strong>$detailed</strong></span>, <span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$styles</strong></span></span>)
+                </h3>
+                                
+                    <div class="text-muted">
+                    Dump constructor                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-all"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">all</span>(<span class="small"></span>)
+                </h3>
+                                
+                    <div class="text-muted">
+                    Alias of vars() method                    </div>
+                    <div>
+                    <pre><code class="php">
+      echo (new \Ice\Dump())-&gt;all($foo, $bar, $baz);
+     </code></pre>                    </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-getStyle"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-protected">protected</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">getStyle</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$type</strong></span></span>)
+                </h3>
+                                
+                    <div class="text-muted">
+                    Get style for type                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-setStyles"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">setStyles</span>(<span class="small"><span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$styles</strong></span></span>)
+                </h3>
+                                
+                    <div class="text-muted">
+                    Set styles for vars type                    </div>
+                    <div>
+                    Styles: pre, arr, bool, float, int, null, num, obj, other, res, str                    </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-one"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">one</span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$variable</strong></span>, <span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$name</strong></span></span>)
+                </h3>
+                                
+                    <div class="text-muted">
+                    Alias of variable() method                    </div>
+                    <div>
+                    <pre><code class="php">
+      echo (new \Ice\Dump())-&gt;one($foo, &quot;foo&quot;);
+     </code></pre>                    </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-output"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-protected">protected</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">output</span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$variable</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$name</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$tab</strong></span></span>)
+                </h3>
+                                
+                    <div class="text-muted">
+                    Prepare an HTML string of information about a single variable.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-variable"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">variable</span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$variable</strong></span>, <span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$name</strong></span></span>)
+                </h3>
+                                
+                    <div class="text-muted">
+                    Returns an HTML string of information about a single variable.                    </div>
+                    <div>
+                    <pre><code class="php">
+      $foo = 123;
+      echo (new \Ice\Dump())-&gt;variable($foo, &quot;foo&quot;);
+     </code></pre>                    </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-vars"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">vars</span>(<span class="small"></span>)
+                </h3>
+                                
+                    <div class="text-muted">
+                    Returns an HTML string of debugging information about any number of                    </div>
+                    <div>
+                    variables, each wrapped in a &quot;pre&quot; tag.
+     
+     <pre><code class="php">
+      $foo = &quot;string&quot;;
+      $bar = [&quot;key&quot; =&gt; &quot;value&quot;];
+      $baz = new stdClass();
+      echo (new \Ice\Dump())-&gt;vars($foo, $bar, $baz);
+     </code></pre>                    </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-zephir_init_properties_Ice_Dump"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-internal">internal</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">zephir_init_properties_Ice_Dump</span>(<span class="small"></span>)
+                </h3>
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    </ul>                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="../../asset/static/js/jquery.min.js"></script>
+        <script src="../../asset/static/js/bootstrap.min.js"></script>
+        <script src="../../asset/static/js/highlight.pack.js"></script>
+        <script src="../../asset/static/js/jquery.slimscroll.min.js"></script>
+        <script src="../../asset/api_definition.js"></script>
+
+        <script>var ZepCurrentPath = '../../'</script>
+        <script src="../../asset/static/js/script.js"></script>
+        <script type="text/javascript">
+            $(window).on("load resize", function() {
+                $('#menu-wrapper').slimscroll({ height: $(window).height() - 100, size: '3px' });
+            });
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function() { $('pre code').each(function(i, block) { hljs.highlightBlock(block); }); });
+            if ($('.zephir-source-file').length) {
+                $('link[id]').each(function(i, link) {
+                    link.disabled = (link.id != 'tomorrow-night');
+                });
+            }
+        </script>
+            </body>
+</html>

@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" type="text/css" href="../../../../../../asset/static/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="../../../../../../asset/static/css/tomorrow.min.css" id="tomorrow" />
+        <link rel="stylesheet" type="text/css" href="../../../../../../asset/static/css/tomorrow-night.min.css" id="tomorrow-night" disabled />
+        <link rel="stylesheet" type="text/css" href="../../../../../../asset/static/css/style.css" />
+    </head>
+    <body>
+        <header class="navbar navbar-default navbar-fixed-top">
+            <div id="top-bar" class="container-fluid">
+                <div id="top-left" class="navbar-header">
+                    <a href="../../../../../../index.html" class="navbar-brand">
+                                                    ice Documentation <span class="version">v1.0.31</span>
+                                            </a>
+                </div>
+                <div id="top-right" class="collapse navbar-collapse">
+
+                </div>
+            </div>
+        </header>
+        <div id="body" class="container-fluid">
+            <div class="row">
+                <div id="body-left" class="col-lg-3 col-sm-4">
+                    <div class="header-search">
+                        <input class="search-box form-control" placeholder="Search for a class or namespace " type="text" />
+                        <div id="menu-wrapper">
+                        </div>
+                    </div>
+                </div>
+                <div id="body-right" class="col-lg-9 col-sm-8">
+                    <div class="content">
+                        
+<div>
+    
+    <ul class="breadcrumb">
+        
+        <li><a href="../../../../../../index.html">Home</a></li>
+        
+                <li><a href="../../../../../../classes.html">Classes</a></li>
+                <li><a href="../../../../../../class/Ice/Mvc/View/Engine/Sleet/Parser.html">Ice\Mvc\View\Engine\Sleet\Parser</a></li>
+                <li><a >Source</a></li>
+                
+    </ul>
+    
+</div>
+<div class="class-header source clearfix">
+    
+    <div class="access-buttons pull-right">
+        <a class="zep-button btn btn-default" href="../../../../../../class/Ice/Mvc/View/Engine/Sleet/Parser.html">Class</a>
+
+                <a class="zep-button btn btn-default" href="https://github.com/ice/framework/tree/dev/ice/mvc/view/engine/sleet/parser.zep">Github</a>
+            </div>
+    
+    <div class="class-full-name">
+        
+        <span class="class-type">Class</span>
+        
+                <span class="namespace-piece">
+            <a href="../../../../../../namespace/Ice.html">Ice</a>
+        </span>
+                <span class="namespace-piece">
+            <a href="../../../../../../namespace/Ice/Mvc.html">Mvc</a>
+        </span>
+                <span class="namespace-piece">
+            <a href="../../../../../../namespace/Ice/Mvc/View.html">View</a>
+        </span>
+                <span class="namespace-piece">
+            <a href="../../../../../../namespace/Ice/Mvc/View/Engine.html">Engine</a>
+        </span>
+                <span class="namespace-piece">
+            <a href="../../../../../../namespace/Ice/Mvc/View/Engine/Sleet.html">Sleet</a>
+        </span>
+                <h1 class="class-name">Parser</h1>
+    </div>
+    
+</div>
+
+
+<pre class="zephir-source-file"><code>
+namespace Ice\Mvc\View\Engine\Sleet;
+
+use Ice\Exception;
+
+/**
+ * Sleet file parser.
+ *
+ * @package     Ice/View
+ * @category    Component
+ * @author      Ice Team
+ * @copyright   (c) 2014-2015 Ice Team
+ * @license     http://iceframework.org/license
+ */
+class Parser
+{
+
+    protected functions = [
+        &quot;content&quot;: &quot;$this-&gt;getContent&quot;,
+        &quot;partial&quot;: &quot;$this-&gt;partial&quot;,
+        &quot;load&quot;: &quot;$this-&gt;load&quot;,
+        &quot;dump&quot;: &quot;$this-&gt;dump-&gt;vars&quot;,
+        &quot;version&quot;: &quot;Ice\\Version::get&quot;
+    ];
+
+    protected filters = [
+        &quot;capitalize&quot;: &quot;ucfirst&quot;
+    ];
+
+    protected env = [];
+
+    const NORMAL = 0;
+    const SHORTIF = 1;
+    const INARRAY = 2;
+
+    /**
+     * Sleet parser constructor. Fetch Ice\Tag methods.
+     */
+    public function __construct()
+    {
+        var tag, methods, functions, method;
+
+        let tag = new \ReflectionClass(&quot;Ice\\Tag&quot;),
+            methods = tag-&gt;getMethods(\ReflectionMethod::IS_PUBLIC),
+            functions = [];
+
+        for method in methods {
+            switch method-&gt;name {
+                case &quot;__construct&quot;:
+                    continue;
+                default:
+                    let functions[method-&gt;name] = &quot;$this-&gt;tag-&gt;&quot; . method-&gt;name,
+                        functions[uncamelize(method-&gt;name)] = &quot;$this-&gt;tag-&gt;&quot; . method-&gt;name;
+            }
+        }
+
+        let this-&gt;functions = array_merge(this-&gt;functions, functions),
+            this-&gt;env[] = Parser::NORMAL;
+    }
+
+    /**
+     * Parse text, line by line.
+     *
+     * @param string text
+     * @return string Parsed text
+     */
+    public function text(string text) -&gt; string
+    {
+        var parsed, key, line;
+
+        let parsed = &quot;&quot;;
+
+        for key, line in explode(PHP_EOL, text) {
+            let parsed .= (key ? PHP_EOL : &quot;&quot;) . this-&gt;line(line, key + 1);
+        }
+        return parsed;
+    }
+
+    /**
+     * Parse one line - detect the expressions.
+     *
+     * @param string line
+     * @param int no Line number
+     * @return string Parsed line
+     */
+    public function line(string line, int no = 1) -&gt; string
+    {
+        var pos, start, parsedLine, end, ch;
+        int i;
+
+        let pos = 0,
+            start = strpos(line, &quot;{&quot;),
+            parsedLine = &quot;&quot;;
+
+        while start !== false {
+            let i = start + 1,
+                ch = line[i];
+
+            switch ch {
+                case &apos;{&apos;:
+                    // append string before tokens, search close-symbol of the tag
+                    let parsedLine .= substr(line, pos, (int) (start - pos)),
+                        end = strpos(line, &quot;}}&quot;, start + 2);
+
+                    if end === false {
+                        // If unexpected end of template
+                        throw new Exception(sprintf(&quot;Unclosed tag on the line %d&quot;, no + 1));
+                    }
+
+                    let end = end + 2,
+                        parsedLine .= this-&gt;parse(substr(line, start, (int) (end - start)));
+                break;
+                case &apos;%&apos;:
+                    // append string before tokens, search close-symbol of the tag
+                    let parsedLine .= substr(line, pos, (int) (start - pos)),
+                        end = strpos(line, &quot;%}&quot;, start + 2);
+                   
+                    if end === false {
+                        // If unexpected end of template
+                        throw new Exception(sprintf(&quot;Unclosed tag on the line %d&quot;, no + 1));
+                    }
+
+                    let end = end + 2,
+                        parsedLine .= this-&gt;parse(substr(line, start, (int) (end - start)));
+                break;
+                case &apos;#&apos;:
+                    // append string before comment, search close-symbol of the comment
+                    let parsedLine .= substr(line, pos, (int) (start - pos)),
+                        end = strpos(line, &quot;#}&quot;, start + 2);
+                   
+                    if end === false {
+                        // If unexpected end of template
+                        throw new Exception(sprintf(&quot;Unclosed comment block on the line %d&quot;, no + 1));
+                    }
+
+                    let end = end + 2;
+                break;
+                default:
+                    // Ignore the tag
+                    let parsedLine .= substr(line, pos, (int) (start - pos + 1)),
+                        end = start + 1;
+                break;
+            }
+            // next tokens
+            let pos = end,
+                start = strpos(line, &quot;{&quot;, pos);
+        }
+        // append string after tokens
+        let parsedLine .= substr(line, pos);
+
+        return parsedLine;
+    }
+
+    /**
+     * Parse one sleet expression.
+     *
+     * @param string expression
+     * @return string
+     */
+    public function parse(string expression) -&gt; string
+    {
+        var php, tokenized, tokens, token, first;
+
+        if starts_with(expression, &quot;{{&quot;) {
+            let php = &quot;&lt;?php echo &quot; . substr(expression, 2, -2);
+        } else {
+            let php = &quot;&lt;?php &quot; . substr(expression, 2, -2);
+        }
+
+        let tokenized = token_get_all(php),
+            tokens = [];
+
+        array_shift(tokenized);
+
+        for token in tokenized {
+            if typeof token == &quot;array&quot; &amp;&amp; token[0] == T_WHITESPACE {
+                continue;
+            }
+            let tokens [] = token;
+        }
+
+        let first = array_shift(tokens);
+
+        if typeof first != &quot;array&quot; {
+            throw new Exception(&quot;Unexpected first tag&quot;);
+        }
+
+        if typeof tokens != &quot;array&quot; {
+            throw new Exception(&quot;Unexpected expression&quot;);
+        }
+
+        switch first[0] {
+            case T_ENDIF:
+            case T_ENDFOR:
+            case T_ENDWHILE:
+            case T_ENDSWITCH:
+            case T_ENDFOREACH:
+                return &quot;&lt;?php &quot; . first[1] . &quot; ?&gt;&quot;;
+            case T_BREAK:
+                return &quot;&lt;?php &quot; . first[1] . &quot;; ?&gt;&quot;;
+            case T_ELSE:
+            case T_DEFAULT:
+                return &quot;&lt;?php &quot; . first[1] . &quot;: ?&gt;&quot;;
+            case T_SWITCH:
+            case T_CASE:
+            case T_IF:
+            case T_ELSEIF:
+            case T_DO:
+            case T_FOR:
+            case T_WHILE:
+            case T_FOREACH:
+                return this-&gt;parseControl(first[1], tokens);
+            case T_ECHO:
+                return this-&gt;parseEcho(tokens);
+            case T_VAR:
+                return this-&gt;parseSet(tokens);
+            case T_STRING:
+                if first[1] == &quot;set&quot; {
+                    return this-&gt;parseSet(tokens);
+                }
+                break;
+            case T_USE:
+                return this-&gt;parseUse(tokens);
+        }
+        return &quot;&quot;;
+    }
+
+    /**
+     * Parse control expression.
+     *
+     * @param string control Control structure
+     * @param array expression Tokens
+     * @return string
+     */
+    private function parseControl(control, expression) -&gt; string
+    {
+        return &quot;&lt;?php &quot; . control . &quot;(&quot; . this-&gt;doParse(expression) . &quot;): ?&gt;&quot;;
+    }
+    
+    /**
+     * Parse echo expression.
+     *
+     * @param array expression Tokens
+     * @return string
+     */
+    private function parseEcho($expression) -&gt; string
+    {
+        return &quot;&lt;?php echo &quot; . this-&gt;doParse(expression) . &quot; ?&gt;&quot;;
+    }
+
+    /**
+     * Parse set expression.
+     *
+     * @param array expression Tokens
+     * @return string
+     */
+    private function parseSet($expression) -&gt; string
+    {
+        return &quot;&lt;?php &quot; . this-&gt;doParse(expression) . &quot;; ?&gt;&quot;;
+    }
+
+    /**
+     * Parse use expression.
+     *
+     * @param array expression Tokens
+     * @return string
+     */
+    private function parseUse($expression) -&gt; string
+    {
+        return &quot;&lt;?php use &quot; . this-&gt;doParse(expression) . &quot;; ?&gt;&quot;;
+    }
+
+    /**
+     * Internal tokens parse.
+     *
+     * @param array tokens
+     * @return string
+     */
+    private function doParse(tokens) -&gt; string
+    {
+        var i, parsed, prev, next, token, filter, seek, filters;
+
+        let i = new \ArrayIterator(tokens),
+            parsed = &quot;&quot;,
+            prev = &quot;&quot;;
+
+        while i-&gt;valid() {
+            let token = i-&gt;current(),
+                next = i-&gt;offsetExists(i-&gt;key() + 1) ? i-&gt;offsetGet(i-&gt;key() + 1) : null;
+
+            if next == &quot;|&quot; {
+                let seek = i-&gt;key() + 2,
+                    filter = i-&gt;offsetGet(seek),
+                    filter = isset this-&gt;filters[filter[1]] ? this-&gt;filters[filter[1]] : filter[1],
+                    filters = [&quot;camelize&quot;, &quot;uncamelize&quot;, &quot;human&quot;, &quot;lower&quot;, &quot;upper&quot;, &quot;alnum&quot;, &quot;alpha&quot;, &quot;email&quot;, &quot;float&quot;, &quot;int&quot;, &quot;string&quot;, &quot;strip_repeats&quot;, &quot;e&quot;, &quot;escape&quot;, &quot;strip_special&quot;, &quot;unescape&quot;, &quot;unstrip_special&quot;];
+
+                if in_array(filter, filters) {
+                    let parsed .=  &quot;$this-&gt;filter-&gt;sanitize(&quot; . this-&gt;token(token, prev, next) . &quot;, &apos;&quot; . filter . &quot;&apos;&quot;;
+                } else {
+                    let parsed .= filter . &quot;(&quot; . this-&gt;token(token, prev, next);
+                }
+                
+                let next = i-&gt;offsetExists(seek + 1) ? i-&gt;offsetGet(seek + 1) : null;
+
+                if next == &quot;(&quot; {
+                    let parsed .= &quot;, &quot;,
+                        seek++;
+                } else {
+                    let parsed .= &quot;)&quot;;
+                }
+
+                i-&gt;seek(seek);
+                i-&gt;next();
+                continue;
+            }
+            
+            let parsed .= this-&gt;token(token, prev, next),
+                prev = token;
+
+            i-&gt;next();
+        }
+        return parsed;
+    }
+
+    /**
+     * Internal token parse.
+     *
+     * @param mixed token
+     * @param mixed prev
+     * @param mixed next
+     * @return mixed
+     */
+    private function token(token, prev = null, next = null)
+    {
+        string str;
+
+        if typeof token == &quot;array&quot; {
+            switch token[0] {
+                case T_AS:
+                case T_IS_EQUAL:
+                case T_IS_NOT_EQUAL:
+                case T_IS_IDENTICAL:
+                case T_IS_NOT_IDENTICAL:
+                case T_IS_SMALLER_OR_EQUAL:
+                case T_IS_GREATER_OR_EQUAL:
+                    return &quot; &quot; . token[1] . &quot; &quot;;
+                case T_LOGICAL_OR:
+                    return &quot; || &quot;;
+                case T_LOGICAL_AND:
+                    return &quot; &amp;&amp; &quot;;
+                case T_STRING:
+                    let str = (string) token[1];
+
+                    if next == &quot;(&quot; &amp;&amp; (prev != &quot;.&quot; || typeof prev == &quot;array&quot; &amp;&amp; prev[0] != T_DOUBLE_COLON) {
+                        return isset this-&gt;functions[str] ? this-&gt;functions[str] : str;
+                    }
+                    switch str {
+                        case &quot;in&quot;:
+                            return &quot; as &quot;;
+                        case &quot;is&quot;:
+                            return next == &quot;!&quot; ? &quot; != &quot; : &quot; == &quot;;
+                        case &quot;and&quot;:
+                            return &quot; &amp;&amp; &quot;;
+                        case &quot;or&quot;:
+                            return &quot; || &quot;;
+                        case &quot;not&quot;:
+                            return &quot;!&quot;;
+                        case &quot;false&quot;:
+                        case &quot;true&quot;:
+                        case &quot;null&quot;:
+                            return str;
+                        default:
+                            if prev == &quot;.&quot; || next == &quot;(&quot; || ctype_upper(str[0]) &amp;&amp; next != &quot;|&quot; {
+                                return str;
+                            }
+                            return &quot;$&quot; . str;
+                    }
+                default:
+                    return token[1];
+            }
+        } else {
+            switch token {
+                case &quot;-&quot;:
+                case &quot;+&quot;: 
+                case &quot;*&quot;: 
+                case &quot;/&quot;: 
+                case &quot;%&quot;: 
+                case &quot;=&quot;: 
+                case &quot;&gt;&quot;: 
+                case &quot;&lt;&quot;: 
+                    return &quot; &quot; . token . &quot; &quot;;
+                case &quot;~&quot;:
+                    return &quot; . &quot;;
+                case &quot;,&quot;:
+                    return &quot;, &quot;;
+                case &quot;.&quot;:
+                    return &quot;-&gt;&quot;;
+                case &quot;:&quot;:
+                    switch end(this-&gt;env) {
+                        case Parser::SHORTIF:
+                            array_pop(this-&gt;env);
+                            return &quot; : &quot;;
+                        default:
+                            return &quot; =&gt; &quot;;
+                    }
+                case &quot;?&quot;:
+                    let this-&gt;env[] = Parser::SHORTIF;
+                    return &quot; ? &quot;;
+                case &quot;[&quot;:
+                    let this-&gt;env[] = Parser::INARRAY;
+                    return token;
+                case &quot;]&quot;:
+                    if end(this-&gt;env) == Parser::INARRAY {
+                        array_pop(this-&gt;env);
+                    }
+                    return token;
+                default:
+                    return token;
+            }
+        }
+    }
+}
+</code></pre>                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="../../../../../../asset/static/js/jquery.min.js"></script>
+        <script src="../../../../../../asset/static/js/bootstrap.min.js"></script>
+        <script src="../../../../../../asset/static/js/highlight.pack.js"></script>
+        <script src="../../../../../../asset/static/js/jquery.slimscroll.min.js"></script>
+        <script src="../../../../../../asset/api_definition.js"></script>
+
+        <script>var ZepCurrentPath = '../../../../../../'</script>
+        <script src="../../../../../../asset/static/js/script.js"></script>
+        <script type="text/javascript">
+            $(window).on("load resize", function() {
+                $('#menu-wrapper').slimscroll({ height: $(window).height() - 100, size: '3px' });
+            });
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function() { $('pre code').each(function(i, block) { hljs.highlightBlock(block); }); });
+            if ($('.zephir-source-file').length) {
+                $('link[id]').each(function(i, link) {
+                    link.disabled = (link.id != 'tomorrow-night');
+                });
+            }
+        </script>
+            </body>
+</html>
