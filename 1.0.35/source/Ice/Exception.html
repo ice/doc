@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" type="text/css" href="../../asset/static/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="../../asset/static/css/tomorrow.min.css" id="tomorrow" />
+        <link rel="stylesheet" type="text/css" href="../../asset/static/css/tomorrow-night.min.css" id="tomorrow-night" disabled />
+        <link rel="stylesheet" type="text/css" href="../../asset/static/css/style.css" />
+    </head>
+    <body>
+        <header class="navbar navbar-default navbar-fixed-top">
+            <div id="top-bar" class="container-fluid">
+                <div id="top-left" class="navbar-header">
+                    <a href="../../index.html" class="navbar-brand">
+                                                    ice Documentation <span class="version">v1.0.35</span>
+                                            </a>
+                </div>
+                <div id="top-right" class="collapse navbar-collapse">
+
+                </div>
+            </div>
+        </header>
+        <div id="body" class="container-fluid">
+            <div class="row">
+                <div id="body-left" class="col-lg-3 col-sm-4">
+                    <div class="header-search">
+                        <input class="search-box form-control" placeholder="Search for a class or namespace " type="text" />
+                        <div id="menu-wrapper">
+                        </div>
+                    </div>
+                </div>
+                <div id="body-right" class="col-lg-9 col-sm-8">
+                    <div class="content">
+                        
+<div>
+    
+    <ul class="breadcrumb">
+        
+        <li><a href="../../index.html">Home</a></li>
+        
+                <li><a href="../../classes.html">Classes</a></li>
+                <li><a href="../../class/Ice/Exception.html">Ice\Exception</a></li>
+                <li><a >Source</a></li>
+                
+    </ul>
+    
+</div>
+<div class="class-header source clearfix">
+    
+    <div class="access-buttons pull-right">
+        <a class="zep-button btn btn-default" href="../../class/Ice/Exception.html">Class</a>
+
+                <a class="zep-button btn btn-default" href="https://github.com/ice/framework/tree/dev/ice/exception.zep">Github</a>
+            </div>
+    
+    <div class="class-full-name">
+        
+        <span class="class-type">Class</span>
+        
+                <span class="namespace-piece">
+            <a href="../../namespace/Ice.html">Ice</a>
+        </span>
+                <h1 class="class-name">Exception</h1>
+    </div>
+    
+</div>
+
+
+<pre class="zephir-source-file"><code>
+namespace Ice;
+
+/**
+ * Exception class.
+ *
+ * @package     Ice/Exception
+ * @category    Error
+ * @author      Ice Team
+ * @copyright   (c) 2014-2015 Ice Team
+ * @license     http://iceframework.org/license
+ */
+class Exception extends \Exception
+{
+
+    /**
+     * Creates a new exception.
+     * Translate exception&apos;s message using the [I18n] class.
+     *
+     * @param mixed message Error message
+     * @param mixed code The exception code
+     * @param Exception previous Previous exception
+     */
+    public function __construct(var message = &quot;&quot;, code = 0, &lt;\Exception&gt; previous = null)
+    {
+        var di, values, str;
+
+        let di = Di::$fetch();
+
+        if typeof message == &quot;array&quot; {
+            let values = array_slice(message, 1),
+                str = message[0];
+        } else {
+            let values = null,
+                str = message;
+        }
+
+        // Check if translation module is available.
+        if di-&gt;has(&quot;i18n&quot;) {
+            let message = di-&gt;get(&quot;i18n&quot;, null, true)-&gt;translate(str, values);
+        } elseif (typeof values == &quot;array&quot;) {
+            // Check if values is associative or sequential
+            if count(array_filter(array_keys(values), &quot;is_string&quot;)) {
+                let message = strtr(str, values);
+            } else {
+                let message = call_user_func_array(&quot;sprintf&quot;, message);
+            }
+        }
+
+        parent::__construct((string) message, (int) code, &lt;\Exception&gt; previous);
+    }
+
+    /**
+     * Get the full trace as string.
+     *
+     * @param Exception $e
+     * @return string
+     */
+    public function getFullTraceAsString(&lt;\Exception&gt; e)
+    {
+        var output, frame, args, arg, node;
+        int count = 0;
+
+        let output = &quot;&quot;;
+
+        for frame in e-&gt;getTrace() {
+            let args = &quot;&quot;;
+
+            if isset frame[&quot;args&quot;] {
+                let node = [];
+
+                for arg in frame[&quot;args&quot;] {
+                    switch typeof arg {
+                        case &quot;string&quot;:
+                            let node[] = &quot;&apos;&quot; . arg . &quot;&apos;&quot;;
+                        break;
+                        case &quot;array&quot;:
+                            let node[] = &quot;Array&quot;;
+                        break;
+                        case &quot;NULL&quot;:
+                            let node[] = &quot;NULL&quot;;
+                        break;
+                        case &quot;boolean&quot;:
+                            let node[] = arg ? &quot;true&quot; : &quot;false&quot;;
+                        break;
+                        case &quot;object&quot;:
+                            let node[] = &quot;Object(&quot; . get_class(arg) . &quot;)&quot;;
+                        break;
+                        case &quot;resource&quot;:
+                            let node[] = arg;
+                        break;
+                        default:
+                            let node[] = arg;
+                        break;
+                    }
+                }
+                let args = join(&quot;, &quot;, node);
+            }
+
+            let output .= sprintf(
+                    &quot;#%s %s: %s(%s)\n&quot;,
+                    count, 
+                    (isset frame[&quot;file&quot;] ? frame[&quot;file&quot;] . &quot;(&quot; . frame[&quot;line&quot;] . &quot;)&quot; : &quot;[internal function]&quot;),
+                    (isset frame[&quot;class&quot;] ? frame[&quot;class&quot;] . frame[&quot;type&quot;] . frame[&quot;function&quot;] : frame[&quot;function&quot;]),
+                    args
+                ),
+                count++;
+        }
+        return output;
+    }
+
+    /**
+     * PHP error handler, converts all errors into ErrorExceptions. This handler respects error_reporting settings.
+     *
+     * @throws ErrorException
+     * @return true
+     */
+    public static function errorHandler(int code, string message, string file = null, int line = 0, array context = [])
+    {
+        if error_reporting() &amp; code {
+            // This error is not suppressed by current error reporting settings
+            // Convert the error into an ErrorException
+            throw new \ErrorException(message, code, 0, file, line);
+        }
+        // Do not execute the PHP error handler
+        return true;
+    }
+
+    /**
+     * Inline exception handler, displays the error message, source of the exception, and the stack trace of the error.
+     *
+     * @param Exception $e
+     * @return void
+     */
+    public static function handler(&lt;\Exception&gt; e)
+    {
+        // Create new exceptin by this class
+        create_instance_params(get_called_class(), [e-&gt;getMessage(), e-&gt;getCode(), e]);
+        exit(1);
+    }
+
+    /**
+     * Catches errors that are not caught by the error handler, such as E_PARSE.
+     *
+     * @return  void
+     */
+    public static function shutdownHandler()
+    {
+        var e;
+
+        let e = error_get_last();
+        if typeof e == &quot;array&quot; &amp;&amp; in_array(e[&quot;type&quot;], [E_PARSE, E_ERROR, E_USER_ERROR]) {
+            // Clean the output buffer
+            ob_get_level();
+            ob_clean();
+            // Fake an exception for nice debugging
+            Exception::handler(new \ErrorException(e[&quot;message&quot;], e[&quot;type&quot;], 0, e[&quot;file&quot;], e[&quot;line&quot;]));
+            // Shutdown now to avoid a &quot;death loop&quot;
+            exit(1);
+        }
+    }
+}
+</code></pre>                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="../../asset/static/js/jquery.min.js"></script>
+        <script src="../../asset/static/js/bootstrap.min.js"></script>
+        <script src="../../asset/static/js/highlight.pack.js"></script>
+        <script src="../../asset/static/js/jquery.slimscroll.min.js"></script>
+        <script src="../../asset/api_definition.js"></script>
+
+        <script>var ZepCurrentPath = '../../'</script>
+        <script src="../../asset/static/js/script.js"></script>
+        <script type="text/javascript">
+            $(window).on("load resize", function() {
+                $('#menu-wrapper').slimscroll({ height: $(window).height() - 100, size: '3px' });
+            });
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function() { $('pre code').each(function(i, block) { hljs.highlightBlock(block); }); });
+            if ($('.zephir-source-file').length) {
+                $('link[id]').each(function(i, link) {
+                    link.disabled = (link.id != 'tomorrow-night');
+                });
+            }
+        </script>
+            </body>
+</html>
