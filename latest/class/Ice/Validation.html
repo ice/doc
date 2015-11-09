@@ -66,7 +66,22 @@
     <div class="text-muted">
     Allows to validate array data.    </div>
     <div>
-    <pre><code class="php">$validation=newIce\Validation();$validation-&gt;rules([&apos;fullName&apos;=&gt;&apos;required&apos;,&apos;email&apos;=&gt;&apos;required|email&apos;,&apos;repeatEmail&apos;=&gt;&apos;same:email&apos;,&apos;about&apos;=&gt;&apos;required|length:10,5000&apos;,]);$valid=$validation-&gt;validate($_POST);if(!$valid){$messages=$validation-&gt;getMessages();}</code></pre>    </div>
+    <pre><code class="php">
+  $validation = new Ice\Validation();
+  
+  $validation-&gt;rules([
+      &apos;fullName&apos; =&gt; &apos;required&apos;,
+      &apos;email&apos; =&gt; &apos;required|email&apos;,
+      &apos;repeatEmail&apos; =&gt; &apos;same:email&apos;,
+      &apos;about&apos; =&gt; &apos;required|length:10,5000&apos;,
+  ]);
+  
+  $valid = $validation-&gt;validate($_POST);
+  
+  if (!$valid) {
+      $messages = $validation-&gt;getMessages();
+  }
+ </code></pre>    </div>
 
 <div class="hidden-anchor"  id="methods"></div>
 <div class="methods-summary standard-bandeau">Methods</div>

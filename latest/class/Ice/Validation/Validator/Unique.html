@@ -72,7 +72,24 @@
     <div class="text-muted">
     Unique validator.    </div>
     <div>
-    <pre><code class="php">$validation=newIce\Validation();$validation-&gt;rules([&apos;userName&apos;=&gt;[&apos;unique&apos;=&gt;[&apos;from&apos;=&gt;&apos;users&apos;,&apos;custom&apos;=&gt;&apos;username&apos;],]]);$valid=$validation-&gt;validate($_POST);if(!$valid){$messages=$validation-&gt;getMessages();}</code></pre>    </div>
+    <pre><code class="php">
+  $validation = new Ice\Validation();
+  
+  $validation-&gt;rules([
+      &apos;userName&apos; =&gt; [
+          &apos;unique&apos; =&gt; [
+              &apos;from&apos; =&gt; &apos;users&apos;,
+              &apos;custom&apos; =&gt; &apos;username&apos;
+          ],
+      ]
+  ]);
+  
+  $valid = $validation-&gt;validate($_POST);
+  
+  if (!$valid) {
+      $messages = $validation-&gt;getMessages();
+  }
+ </code></pre>    </div>
 
 <div class="hidden-anchor"  id="methods"></div>
 <div class="methods-summary standard-bandeau">Methods</div>

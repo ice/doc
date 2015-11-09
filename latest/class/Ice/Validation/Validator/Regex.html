@@ -72,7 +72,23 @@
     <div class="text-muted">
     Regex validator.    </div>
     <div>
-    <pre><code class="php">$validation=newIce\Validation();$validation-&gt;rules([&apos;username&apos;=&gt;[&apos;regex&apos;=&gt;[&apos;pattern&apos;=&gt;&apos;/[a-zA-Z][a-zA-Z0-9_-]{3,}/&apos;],]]);$valid=$validation-&gt;validate($_POST);if(!$valid){$messages=$validation-&gt;getMessages();}</code></pre>    </div>
+    <pre><code class="php">
+  $validation = new Ice\Validation();
+  
+  $validation-&gt;rules([
+      &apos;username&apos; =&gt; [
+          &apos;regex&apos; =&gt; [
+              &apos;pattern&apos; =&gt; &apos;/[a-zA-Z][a-zA-Z0-9_-]{3,}/&apos;
+          ],
+      ]
+  ]);
+  
+  $valid = $validation-&gt;validate($_POST);
+  
+  if (!$valid) {
+      $messages = $validation-&gt;getMessages();
+  }
+ </code></pre>    </div>
 
 <div class="hidden-anchor"  id="methods"></div>
 <div class="methods-summary standard-bandeau">Methods</div>

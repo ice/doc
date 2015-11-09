@@ -66,7 +66,22 @@
     <div class="text-muted">
     Dumps information about a variable(s)    </div>
     <div>
-    <pre><code class="php">$foo=123;echo(new\Ice\Dump())-&gt;variable($foo,&quot;foo&quot;);</code></pre><pre><code class="php">$foo=&quot;string&quot;;$bar=[&quot;key&quot;=&gt;&quot;value&quot;];$baz=newstdClass();echo(new\Ice\Dump())-&gt;vars($foo,$bar,$baz);</code></pre>Sleetusage:<pre><code class="php">{{dump(&apos;str&apos;,1,2.5,true,null,[&apos;key&apos;:&apos;value&apos;])}}</code></pre>    </div>
+    <pre><code class="php">
+  $foo = 123;
+  echo (new \Ice\Dump())-&gt;variable($foo, &quot;foo&quot;);
+ </code></pre>
+ 
+ <pre><code class="php">
+  $foo = &quot;string&quot;;
+  $bar = [&quot;key&quot; =&gt; &quot;value&quot;];
+  $baz = new stdClass();
+  echo (new \Ice\Dump())-&gt;vars($foo, $bar, $baz);
+ </code></pre>
+ 
+ Sleet usage:
+ <pre><code class="php">
+  {{ dump(&apos;str&apos;, 1, 2.5, true, null, [&apos;key&apos;: &apos;value&apos;]) }}
+ </code></pre>    </div>
 
 <div class="hidden-anchor"  id="methods"></div>
 <div class="methods-summary standard-bandeau">Methods</div>

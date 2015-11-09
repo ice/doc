@@ -72,7 +72,26 @@
     <div class="text-muted">
     File validator.    </div>
     <div>
-    <pre><code class="php">$validation=newIce\Validation();$validation-&gt;rules([&apos;picture&apos;=&gt;[&apos;file&apos;=&gt;[&apos;maxSize&apos;=&gt;&apos;6M&apos;,&apos;allowedTypes&apos;=&gt;[&apos;image/jpeg&apos;,&apos;image/png&apos;],&apos;minResolution&apos;=&gt;&apos;400x300,&apos;maxResolution&apos;=&gt;&apos;1600x1200&apos;,]]]);$valid=$validation-&gt;validate($_FILES);if(!$valid){$messages=$validation-&gt;getMessages();}</code></pre>    </div>
+    <pre><code class="php">
+  $validation = new Ice\Validation();
+  
+  $validation-&gt;rules([
+      &apos;picture&apos; =&gt; [
+          &apos;file&apos; =&gt; [
+              &apos;maxSize&apos; =&gt; &apos;6M&apos;,
+              &apos;allowedTypes&apos; =&gt; [&apos;image/jpeg&apos;, &apos;image/png&apos;],
+              &apos;minResolution&apos; =&gt; &apos;400x300,
+              &apos;maxResolution&apos; =&gt; &apos;1600x1200&apos;,
+          ]
+      ]
+  ]);
+  
+  $valid = $validation-&gt;validate($_FILES);
+  
+  if (!$valid) {
+      $messages = $validation-&gt;getMessages();
+  }
+ </code></pre>    </div>
 
 <div class="hidden-anchor"  id="methods"></div>
 <div class="methods-summary standard-bandeau">Methods</div>

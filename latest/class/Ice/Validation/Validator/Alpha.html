@@ -72,7 +72,24 @@
     <div class="text-muted">
     Alpha validator.    </div>
     <div>
-    <pre><code class="php">$validation=newIce\Validation();$validation-&gt;rules([&apos;username&apos;=&gt;&apos;alpha&apos;,&apos;prefix&apos;=&gt;[&apos;alpha&apos;=&gt;[&apos;message&apos;=&gt;&apos;Field:fieldmustbealpha&apos;]]]);$valid=$validation-&gt;validate($_POST);if(!$valid){$messages=$validation-&gt;getMessages();}</code></pre>    </div>
+    <pre><code class="php">
+  $validation = new Ice\Validation();
+  
+  $validation-&gt;rules([
+      &apos;username&apos; =&gt; &apos;alpha&apos;,
+      &apos;prefix&apos; =&gt; [
+          &apos;alpha&apos; =&gt; [
+              &apos;message&apos; =&gt; &apos;Field :field must be alpha&apos;
+          ]
+      ]
+  ]);
+  
+  $valid = $validation-&gt;validate($_POST);
+  
+  if (!$valid) {
+      $messages = $validation-&gt;getMessages();
+  }
+ </code></pre>    </div>
 
 <div class="hidden-anchor"  id="methods"></div>
 <div class="methods-summary standard-bandeau">Methods</div>

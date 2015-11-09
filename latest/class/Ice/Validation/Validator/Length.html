@@ -72,7 +72,26 @@
     <div class="text-muted">
     Length validator.    </div>
     <div>
-    <pre><code class="php">$validation=newIce\Validation();$validation-&gt;rules([&apos;title&apos;=&gt;&apos;length:10,100&apos;,&apos;content&apos;=&gt;[&apos;length&apos;=&gt;[&apos;max&apos;=&gt;1000,&apos;messageMin&apos;=&gt;&apos;Toolong!&apos;,&apos;label&apos;=&gt;&apos;Desctiption&apos;]]]);$valid=$validation-&gt;validate($_POST);if(!$valid){$messages=$validation-&gt;getMessages();}</code></pre>    </div>
+    <pre><code class="php">
+  $validation = new Ice\Validation();
+  
+  $validation-&gt;rules([
+      &apos;title&apos; =&gt; &apos;length:10,100&apos;,
+      &apos;content&apos; =&gt; [
+          &apos;length&apos; =&gt; [
+              &apos;max&apos; =&gt; 1000,
+              &apos;messageMin&apos; =&gt; &apos;Too long!&apos;,
+              &apos;label&apos; =&gt; &apos;Desctiption&apos;
+          ]
+      ]
+  ]);
+  
+  $valid = $validation-&gt;validate($_POST);
+  
+  if (!$valid) {
+      $messages = $validation-&gt;getMessages();
+  }
+ </code></pre>    </div>
 
 <div class="hidden-anchor"  id="methods"></div>
 <div class="methods-summary standard-bandeau">Methods</div>

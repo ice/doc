@@ -66,7 +66,47 @@
     <div class="text-muted">
     User authorization library. Handles user login and logout, as well as secure password hashing.    </div>
     <div>
-    <pre><code class="php">$options=[&apos;hash_key&apos;=&gt;&apos;secretkey&apos;];$this-&gt;di-&gt;auth=new\Ice\Auth($options);$login=$this-&gt;auth-&gt;login($this-&gt;request-&gt;getPost(&apos;username&apos;),$this-&gt;request-&gt;getPost(&apos;password&apos;),$this-&gt;request-&gt;getPost(&apos;remember&apos;)?TRUE:FALSE);if(!$login){//Loginfailed,sendbacktoformwitherrormessage}else{//Loginsuccessful}</code></pre><pre><code class="php">if($this-&gt;auth-&gt;loggedIn()){//Userisloggedin,continueon$user=$this-&gt;auth-&gt;getUser();$username=$user-&gt;username;}else{//Userisn&apos;tloggedin,redirecttotheloginform.}</code></pre><pre><code class="php">if($this-&gt;auth-&gt;loggedIn(&apos;admin&apos;)){//Adminprivileges}else{//Noaccess}</code></pre><pre><code class="php">//Logoutauser$this-&gt;auth-&gt;logout();</code></pre>Seetusage:<pre><code class="php">{%ifthis.auth.loggedIn()%}{{this.auth.getUser().username}}{%endif%}</code></pre>    </div>
+    <pre><code class="php">
+  $options = [&apos;hash_key&apos; =&gt; &apos;secret key&apos;];
+  $this-&gt;di-&gt;auth = new \Ice\Auth($options);
+ 
+  $login = $this-&gt;auth-&gt;login($this-&gt;request-&gt;getPost(&apos;username&apos;), $this-&gt;request-&gt;getPost(&apos;password&apos;), $this-&gt;request-&gt;getPost(&apos;remember&apos;) ? TRUE : FALSE);
+  if (!$login) {
+      // Login failed, send back to form with error message
+  } else {
+      // Login successful
+  }
+ </code></pre>
+ 
+ <pre><code class="php">
+  if ($this-&gt;auth-&gt;loggedIn()) {
+      // User is logged in, continue on
+      $user = $this-&gt;auth-&gt;getUser();
+      $username = $user-&gt;username;
+  } else {
+      // User isn&apos;t logged in, redirect to the login form.
+  }
+ </code></pre>
+ 
+ <pre><code class="php">
+  if ($this-&gt;auth-&gt;loggedIn(&apos;admin&apos;)) {
+      // Admin privileges
+  } else {
+      // No access
+  }
+ </code></pre>
+ 
+ <pre><code class="php">
+  // Log out a user
+  $this-&gt;auth-&gt;logout();
+ </code></pre>
+ 
+ Seet usage:
+ <pre><code class="php">
+  {% if this.auth.loggedIn() %}
+      {{ this.auth.getUser().username }}
+  {% endif %}
+ </code></pre>    </div>
 
 <div class="hidden-anchor"  id="methods"></div>
 <div class="methods-summary standard-bandeau">Methods</div>

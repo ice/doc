@@ -72,7 +72,25 @@
     <div class="text-muted">
     Between validator.    </div>
     <div>
-    <pre><code class="php">$validation=newIce\Validation();$validation-&gt;rules([&apos;age&apos;=&gt;&apos;between:18,21&apos;,&apos;height&apos;=&gt;[&apos;between&apos;=&gt;[&apos;min&apos;=&gt;180,&apos;max&apos;=&gt;190,]]]);$valid=$validation-&gt;validate($_POST);if(!$valid){$messages=$validation-&gt;getMessages();}</code></pre>    </div>
+    <pre><code class="php">
+  $validation = new Ice\Validation();
+  
+  $validation-&gt;rules([
+      &apos;age&apos; =&gt; &apos;between:18,21&apos;,
+      &apos;height&apos; =&gt; [
+          &apos;between&apos; =&gt; [
+              &apos;min&apos; =&gt; 180,
+              &apos;max&apos; =&gt; 190,
+          ]
+      ]
+  ]);
+  
+  $valid = $validation-&gt;validate($_POST);
+  
+  if (!$valid) {
+      $messages = $validation-&gt;getMessages();
+  }
+ </code></pre>    </div>
 
 <div class="hidden-anchor"  id="methods"></div>
 <div class="methods-summary standard-bandeau">Methods</div>

@@ -72,7 +72,26 @@
     <div class="text-muted">
     NotIn validator.    </div>
     <div>
-    <pre><code class="php">$validation=newIce\Validation();$validation-&gt;rules([&apos;status&apos;=&gt;&apos;notIn:unactive,removed&apos;,&apos;username&apos;=&gt;[&apos;notIn&apos;=&gt;[&apos;values&apos;=&gt;[&apos;about&apos;,&apos;admin&apos;,&apos;user&apos;,&apos;root&apos;],&apos;message&apos;=&gt;&apos;Field:fieldisreserved&apos;,&apos;label&apos;=&gt;&apos;Nick&apos;],]]);$valid=$validation-&gt;validate($_POST);if(!$valid){$messages=$validation-&gt;getMessages();}</code></pre>    </div>
+    <pre><code class="php">
+  $validation = new Ice\Validation();
+  
+  $validation-&gt;rules([
+      &apos;status&apos; =&gt; &apos;notIn:unactive,removed&apos;,
+      &apos;username&apos; =&gt; [
+          &apos;notIn&apos; =&gt; [
+              &apos;values&apos; =&gt; [&apos;about&apos;, &apos;admin&apos;, &apos;user&apos;, &apos;root&apos;],
+              &apos;message&apos; =&gt; &apos;Field :field is reserved&apos;,
+              &apos;label&apos; =&gt; &apos;Nick&apos;
+          ],
+      ]
+  ]);
+  
+  $valid = $validation-&gt;validate($_POST);
+  
+  if (!$valid) {
+      $messages = $validation-&gt;getMessages();
+  }
+ </code></pre>    </div>
 
 <div class="hidden-anchor"  id="methods"></div>
 <div class="methods-summary standard-bandeau">Methods</div>
