@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.0.35</span>
+                                                    ice Documentation <span class="version">v1.1.1</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -112,7 +112,7 @@ abstract class Adapter implements SocialInterface
         var clientId, clientSecret, redirectUri, tmp;
 
         if !count(config) {
-            let tmp = Di::$fetch()-&gt;get(&quot;config&quot;, null, true)-&gt;get(&quot;auth&quot;);
+            let tmp = Di::$fetch()-&gt;get(&quot;config&quot;)-&gt;get(&quot;auth&quot;);
 
             if tmp &amp;&amp; tmp-&gt;has(this-&gt;provider) {
                 let config = tmp-&gt;get(this-&gt;provider)-&gt;toArray();

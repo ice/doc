@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.0.35</span>
+                                                    ice Documentation <span class="version">v1.1.1</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -81,10 +81,10 @@ namespace Ice;
 class Crypt
 {
 
-    protected key;
-    protected cipher = &quot;aes-256&quot;;
-    protected mode = &quot;cbc&quot;;
-    protected block = 16;
+    protected key { set };
+    protected cipher = &quot;aes-256&quot; { set };
+    protected mode = &quot;cbc&quot; { set };
+    protected block = 16 { set };
 
     /**
      * Create a new encrypter instance.
@@ -92,7 +92,7 @@ class Crypt
      * @param string key
      * @return void
      */
-    public function __construct(string key)
+    public function __construct(string key = null)
     {
         let this-&gt;key = key;
     }
@@ -284,39 +284,6 @@ class Crypt
     protected function getIvSize() -&gt; int
     {
         return openssl_cipher_iv_length(this-&gt;cipher . &quot;-&quot; . this-&gt;mode);
-    }
-
-    /**
-     * Set the encryption key.
-     *
-     * @param string key
-     * @return void
-     */
-    public function setKey(string key)
-    {
-        let this-&gt;key = key;
-    }
-
-    /**
-     * Set the encryption cipher.
-     *
-     * @param string cipher
-     * @return void
-     */
-    public function setCipher(string cipher)
-    {
-        let this-&gt;cipher = cipher;
-    }
-
-    /**
-     * Set the encryption mode.
-     *
-     * @param string mode
-     * @return void
-     */
-    public function setMode(string mode)
-    {
-        let this-&gt;mode = mode;
     }
 }
 </code></pre>                    </div>

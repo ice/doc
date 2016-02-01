@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.0.35</span>
+                                                    ice Documentation <span class="version">v1.1.1</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -101,8 +101,8 @@ class Flash
         var di;
 
         let di = Di::$fetch(),
-            this-&gt;session = di-&gt;get(&quot;session&quot;, null, true),
-            this-&gt;tag = di-&gt;get(&quot;tag&quot;, null, true);
+            this-&gt;session = di-&gt;get(&quot;session&quot;),
+            this-&gt;tag = di-&gt;get(&quot;tag&quot;);
 
         if count(options) {
             let this-&gt;options = options;

@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.0.35</span>
+                                                    ice Documentation <span class="version">v1.1.1</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -819,7 +819,7 @@ class Tag
      */
     public function prepareTag(string! name, array! attributes, array skip = [], boolean single = false) -&gt; string
     {
-        var order, keys, attrs, code, tmp, value, key;
+        var order, keys, attrs, code, type, tmp, value, key;
 
         let order = [&quot;rel&quot;, &quot;type&quot;, &quot;for&quot;, &quot;src&quot;, &quot;href&quot;, &quot;action&quot;, &quot;id&quot;, &quot;name&quot;, &quot;value&quot;, &quot;class&quot;, &quot;style&quot;],
             keys = array_intersect_key(array_flip(order), attributes),
@@ -828,13 +828,20 @@ class Tag
 
         if fetch tmp, attrs[&quot;name&quot;] {
             if this-&gt;hasValue(tmp) {
-                let attrs[&quot;value&quot;] = this-&gt;getValue(tmp);
+                // Set the value from values property or _post
+                fetch type, attrs[&quot;type&quot;];
 
-                if fetch tmp, attrs[&quot;type&quot;] {
-                    // Automatically check inputs
-                    if attrs[&quot;value&quot;] &amp;&amp; (tmp == &quot;checkbox&quot; || tmp == &quot;radio&quot;) {
-                        let attrs[&quot;checked&quot;] = &quot;checked&quot;;
-                    }
+                switch type {
+                    case &quot;radio&quot;:
+                    case &quot;checkbox&quot;:
+                        // Don&apos;t overwrite values for radio/checkbox
+                        if isset attrs[&quot;value&quot;] &amp;&amp; attrs[&quot;value&quot;] == this-&gt;getValue(tmp) {
+                            let attrs[&quot;checked&quot;] = &quot;checked&quot;;
+                        }
+                    break;
+                    default:
+                        let attrs[&quot;value&quot;] = this-&gt;getValue(tmp);
+                    break;
                 }
             }
         }

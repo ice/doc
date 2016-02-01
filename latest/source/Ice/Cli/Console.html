@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.0.35</span>
+                                                    ice Documentation <span class="version">v1.1.1</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -101,7 +101,7 @@ class Console extends Access
     public function __construct(&lt;Di&gt; di = null)
     {
         // Set the dependency injector
-        parent::__construct(di);
+        let this-&gt;di = di;
 
         // Register the console itself as a service
         this-&gt;di-&gt;set(&quot;console&quot;, this);
@@ -117,9 +117,9 @@ class Console extends Access
     {
         var router, response, dispatcher;
 
-        let router = this-&gt;di-&gt;get(&quot;router&quot;, null, true),
+        let router = this-&gt;di-&gt;get(&quot;router&quot;),
             response = router-&gt;handle(arguments),
-            dispatcher = this-&gt;di-&gt;get(&quot;dispatcher&quot;, null, true);
+            dispatcher = this-&gt;di-&gt;get(&quot;dispatcher&quot;);
 
         dispatcher-&gt;setModules(this-&gt;modules);
         dispatcher-&gt;setModule(response[&quot;module&quot;]);

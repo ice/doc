@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.0.35</span>
+                                                    ice Documentation <span class="version">v1.1.1</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -87,18 +87,6 @@ abstract class Service extends Access
 {
 
     private model { set, get };
-
-    /**
-     * Controller constructor. Run onConstruct() if method exist.
-     */
-    public final function __construct()
-    {
-        parent::__construct();
-
-        if method_exists(this, &quot;onConstruct&quot;) {
-            this-&gt;{&quot;onConstruct&quot;}();
-        }
-    }
 
     /**
      * Magic method to call model&apos;s method.

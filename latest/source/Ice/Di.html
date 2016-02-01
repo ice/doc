@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.0.35</span>
+                                                    ice Documentation <span class="version">v1.1.1</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -68,6 +68,9 @@
 <pre class="zephir-source-file"><code>
 namespace Ice;
 
+use ReflectionClass;
+use ReflectionParameter;
+
 /**
  * Component that implements Dependency Injection and a container for the services.
  *
@@ -82,6 +85,7 @@ class Di extends Arr
 
     protected static di;
     protected hooks = [];
+    protected defaults = [] { set };
 
     /**
      * Di constructor. Sets root path.
@@ -90,11 +94,6 @@ class Di extends Arr
      */
     public function __construct(array data = [])
     {
-        // Set the root path
-        if !defined(&quot;__ROOT__&quot;) {
-            define(&quot;__ROOT__&quot;, realpath(&quot;../&quot;), false);
-        }
-
         parent::__construct(data);
 
         let self::di = this;
@@ -111,6 +110,25 @@ class Di extends Arr
     }
 
     /**
+     * Resolves the service based on its configuration.
+     *
+     * @param string key Service name
+     * @param mixed parameters Definition
+     */
+    public function get(string key, var parameters = null)
+    {
+        var predefined;
+
+        if this-&gt;has(key) {
+            return parent::get(key, parameters);
+        } else {
+            fetch predefined, this-&gt;getDefaults()[key];
+
+            return this-&gt;set(key, predefined ? predefined : parameters);
+        }
+    }
+
+    /**
      * Registers a service in the services container.
      *
      * @param string key Service name
@@ -119,8 +137,38 @@ class Di extends Arr
     public function set(string key, var value)
     {
         var service;
+
         let service = this-&gt;resolve(value),
             this-&gt;data[key] = service;
+
+        return service;
+    }
+
+    /**
+     * Get default services.
+     *
+     * @return array
+     */
+    public function getDefaults()
+    {
+        return array_merge([
+            &quot;assets&quot;: &quot;Ice\\Assets&quot;,
+            &quot;cookies&quot;: &quot;Ice\\Cookies&quot;,
+            &quot;crypt&quot;: &quot;Ice\\Crypt&quot;,
+            &quot;dispatcher&quot;: &quot;Ice\\Mvc\\Dispatcher&quot;,
+            &quot;dump&quot;: &quot;Ice\\Dump&quot;,
+            &quot;filter&quot;: &quot;Ice\\Filter&quot;,
+            &quot;flash&quot;: &quot;Ice\\Flash&quot;,
+            &quot;loader&quot;: &quot;Ice\\Loader&quot;,
+            &quot;request&quot;: &quot;Ice\\Http\\Request&quot;,
+            &quot;response&quot;: &quot;Ice\\Http\\Response&quot;,
+            &quot;router&quot;: &quot;Ice\\Mvc\\Router&quot;,
+            &quot;session&quot;: &quot;Ice\\Session&quot;,
+            &quot;tag&quot;: &quot;Ice\\Tag&quot;,
+            &quot;text&quot;: &quot;Ice\\Text&quot;,
+            &quot;url&quot;: &quot;Ice\\Url&quot;,
+            &quot;view&quot;: &quot;Ice\\Mvc\\View&quot;
+        ], this-&gt;defaults);
     }
 
     /**
@@ -133,9 +181,11 @@ class Di extends Arr
     {
         var params;
 
-        if typeof service == &quot;string&quot; {
+        if typeof service == &quot;null&quot; {
+            return null;
+        } elseif typeof service == &quot;string&quot; {
             if class_exists(service) {
-                let service = create_instance(service);
+                let service = this-&gt;build(service);
             }
         } else {
             if typeof service == &quot;object&quot; {
@@ -143,14 +193,10 @@ class Di extends Arr
                     let service = call_user_func(service);
                 }
             } else {
-                // Array definitions store class name at firest parameter
+                // Array definitions store class name at first parameter
                 if typeof service == &quot;array&quot; {
-                    fetch params, service[1];
-                    if typeof params == &quot;array&quot; {
-                        let service = create_instance_params(service[0], params);
-                    } else {
-                        let service = create_instance(service[0]);
-                    }
+                    let params = current(service),
+                        service = this-&gt;build(key(service), params == &quot;array&quot; ? params : [params]);
                 }
             }
         }
@@ -160,6 +206,110 @@ class Di extends Arr
         }
 
         return service;
+    }
+
+    /**
+     * Build an instance of the given class.
+     * 
+     * @param string service
+     * @return mixed
+     */
+    public function build(var service, var parameters = [])
+    {
+        var reflector, constructor, dependencies;
+
+        if typeof service == &quot;object&quot; {
+            if service instanceof \Closure {
+                return call_user_func_array(service, parameters);
+            }
+        }
+
+        let reflector = new ReflectionClass(service);
+
+        if !reflector-&gt;isInstantiable() {
+            throw new Exception([&quot;Service &apos;%s&apos; is not instantiable&quot;, service]);
+        }
+        
+        let constructor = reflector-&gt;getConstructor();
+        
+        if is_null(constructor) {
+            return new {service}();
+        }
+
+        let dependencies = constructor-&gt;getParameters(),
+            parameters = this-&gt;getParameters(dependencies, parameters),
+            dependencies = this-&gt;getDependencies(dependencies, parameters);
+
+        return reflector-&gt;newInstanceArgs(dependencies);
+    }
+    
+    /**
+     * If extra parameters are passed by numeric ID, rekey them by argument name.
+     *
+     * @param array dependencies
+     * @param array parameters
+     * @return array
+     */
+    protected function getParameters(array dependencies, array parameters)
+    {
+        var key, value, dependency;
+
+        for key, value in parameters {
+            if is_numeric(key) {
+                unset parameters[key];
+
+                let dependency = dependencies[key],
+                    parameters[dependency-&gt;name] = value;
+            }
+        }
+
+        return parameters;
+    }
+
+    /**
+     * Build up a list of dependencies for a given methods parameters.
+     *
+     * @param array parameters
+     * @return array
+     */
+    public function getDependencies(array parameters, array primitives = [])
+    {
+        var dependencies, parameter, dependency;
+
+        let dependencies = [];
+        
+        for parameter in parameters {
+            let dependency = parameter-&gt;getClass();
+            
+            if array_key_exists(parameter-&gt;name, primitives) {
+                let dependencies[] = primitives[parameter-&gt;name];
+            } elseif is_null(dependency) {
+                if !parameter-&gt;isOptional() {
+                    let dependencies[] = this-&gt;resolveNonClass(parameter);
+                }
+            } else {
+                let dependencies[] = this-&gt;build(dependency-&gt;name);
+            }
+        }
+        
+        return dependencies;
+    }
+    
+    /**
+     * Determine what to do with a non-class value.
+     *
+     * @param ReflectionParameter parameter
+     * @return mixed
+     *
+     * @throws Exception
+     */
+    public function resolveNonClass(&lt;ReflectionParameter&gt; parameter)
+    {
+        if parameter-&gt;isDefaultValueAvailable() {
+            return parameter-&gt;getDefaultValue();
+        }
+        
+        throw new Exception([&quot;Unresolvable dependency resolving &apos;%s&apos; in class &apos;%s&apos;&quot;, parameter, parameter-&gt;getDeclaringClass()-&gt;getName()]);
     }
 
     /**
@@ -200,6 +350,7 @@ class Di extends Arr
             let this-&gt;hooks[name][priority][] = callback;
         }
     }
+
     /**
      * Invoke hook.
      *
@@ -229,6 +380,7 @@ class Di extends Arr
             }
         }
     }
+
     /**
      * Get hook listeners.
      * Return an array of registered hooks. If `$name` is a valid hook name, only the listeners attached to that hook
@@ -246,6 +398,7 @@ class Di extends Arr
             return this-&gt;hooks;
         }
     }
+
     /**
      * Clear hook listeners.
      * Clear all listeners for all hooks. If `$name` is a valid hook name, only the listeners attached to that hook
@@ -275,26 +428,18 @@ class Di extends Arr
      */
     public function __call(string! method, arguments = null)
     {
-        var service, value;
+        var value;
 
         // If the magic method starts with &quot;get&quot; we try to get a service with that name
         if starts_with(method, &quot;get&quot;) {
-        //if strpos(method, &quot;get&quot;) !== false {
-            let service = lcfirst(substr(method, 3));
-
-            if this-&gt;has(service) {
-                fetch value, arguments[0];
-                return this-&gt;get(service, value);
-            } else {
-                throw new Exception(sprintf(&quot;The &apos;%s&apos; service is required&quot;, service));
-            }
+            fetch value, arguments[0];
+            return this-&gt;get(lcfirst(substr(method, 3)), value);
         }
 
         // If the magic method starts with &quot;set&quot; we try to set a service using that name
         if starts_with(method, &quot;set&quot;) {
             fetch value, arguments[0];
-            this-&gt;set(lcfirst(substr(method, 3)), value);
-            return null;
+            return this-&gt;set(lcfirst(substr(method, 3)), value);
         }
 
         // The method doesn&apos;t start with set/get throw an exception

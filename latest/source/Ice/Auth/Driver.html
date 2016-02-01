@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.0.35</span>
+                                                    ice Documentation <span class="version">v1.1.1</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -109,9 +109,9 @@ abstract class Driver
 
         let di = Di::$fetch(),
             this-&gt;options = array_merge(this-&gt;options, options),
-            this-&gt;session = di-&gt;get(&quot;session&quot;, null, true),
-            this-&gt;cookies = di-&gt;get(&quot;cookies&quot;, null, true),
-            this-&gt;request = di-&gt;get(&quot;request&quot;, null, true);
+            this-&gt;session = di-&gt;get(&quot;session&quot;),
+            this-&gt;cookies = di-&gt;get(&quot;cookies&quot;),
+            this-&gt;request = di-&gt;get(&quot;request&quot;);
     }
 
     /**

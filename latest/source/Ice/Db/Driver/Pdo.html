@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.0.35</span>
+                                                    ice Documentation <span class="version">v1.1.1</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -104,7 +104,7 @@ class Pdo implements DbInterface
      */
     public function __construct(string dsn, string user = NULL, string password = NULL, array options = [])
     {
-        var parts;
+        var parts, pdo;
 
         let parts = [];
 
@@ -114,7 +114,8 @@ class Pdo implements DbInterface
             let options[\PDO::MYSQL_ATTR_INIT_COMMAND] = &quot;SET NAMES utf8;&quot;;
         }
 
-        let this-&gt;client = new \Pdo(dsn, user, password, options);
+        let pdo = &quot;Pdo&quot;,
+            this-&gt;client = new {pdo}(dsn, user, password, options);
     }
 
     /**
@@ -184,7 +185,7 @@ class Pdo implements DbInterface
      */
     private function where(var filters = [], array values = []) -&gt; array
     {
-        var and, data, operator, key, item, value, or, is, index, i, sql;
+        var and, data, operator, key, item, value, or, is, index, i, sql, condition;
 
         let and = [],
             sql = &quot;&quot;,
@@ -201,71 +202,76 @@ class Pdo implements DbInterface
                         case &quot;OR&quot;:
                         case &quot;or&quot;:
                         case &quot;$or&quot;:
-                            let or = [];
-                            for item in data {
-                                let key = key(item),
-                                    value = current(item);
-
-                                if typeof value == &quot;array&quot; {
-                                    let is = key(value),
-                                        value = current(value);
-                                } else {
-                                    let is = &quot;=&quot;;
-                                }
-
-                                do {
-                                    let index = &quot;:&quot; . key . i,
-                                        i = i ? (int) i + 1 : 1;
-                                } while isset values[index];
-
-                                let or [] = &quot;`&quot; . key . &quot;` &quot; . is . &quot; &quot; . index,
-                                    values[index] = value;
-                            }
-                            let and[] = &quot;(&quot; . join(&quot; OR &quot;, or) . &quot;)&quot;;
+                            let or = [],
+                                operator = &quot;OR&quot;;
                         break;
                         case &quot;AND&quot;:
                         case &quot;and&quot;:
                         case &quot;$and&quot;:
-                            for item in data {
-                                let key = key(item),
-                                    value = current(item);
-
-                                if typeof value == &quot;array&quot; {
-                                    let is = key(value),
-                                        value = current(value);
-                                } else {
-                                    let is = &quot;=&quot;;
-                                }
-
-                                do {
-                                    let index = &quot;:&quot; . key . i,
-                                        i = i ? (int) i + 1 : 1;
-                                } while isset values[index];
-
-                                let and [] = &quot;`&quot; . key . &quot;` &quot; . is . &quot; &quot; . index,
-                                    values[index] = value;
-                            }
+                            let operator = &quot;AND&quot;;
                         break;
                         default: // short &quot;AND&quot;
-                            let key = operator,
-                                value = data;
-
-                            if typeof value == &quot;array&quot; {
-                                let is = key(value),
-                                    value = current(value);
-                            } else {
-                                let is = &quot;=&quot;;
-                            }
-
-                            do {
-                                let index = &quot;:&quot; . key . i,
-                                    i = i ? (int) i + 1 : 1;
-                            } while isset values[index];
-
-
-                            let and[] = &quot;`&quot; . key . &quot;` &quot; . is . &quot; &quot; . index,
-                                values[index] = value;
+                            var tmp = data;
+                            let data = [&quot;AND&quot;: [operator: tmp]],
+                                operator = &quot;AND&quot;;
                         break;
+                    }
+
+                    for item in data {
+                        let key = key(item),
+                            value = current(item);
+
+                        if typeof value == &quot;array&quot; {
+                            let is = key(value),
+                                value = current(value);
+                        } else {
+                            let is = &quot;=&quot;;
+                        }
+
+                        do {
+                            let index = &quot;:&quot; . key . i,
+                                i = i ? (int) i + 1 : 1;
+                        } while isset values[index];
+
+                        switch is {
+                            case &quot;IN&quot;:
+                            case &quot;in&quot;:
+                            case &quot;$in&quot;:
+                                if typeof value == &quot;array&quot; {
+                                    var j, id, ids = [];
+                                    // Bind all values
+                                    for j, id in value {
+                                        let ids[] = index . j,
+                                            values[index . j] = id;
+                                    }
+
+                                    let value = &quot;(&quot; . join(&quot;, &quot;, ids) . &quot;)&quot;;
+                                }
+                                let condition = &quot;`&quot; . key . &quot;` &quot; . is . &quot; &quot; . value;
+                            break;
+                            case &quot;IS&quot;:
+                            case &quot;is&quot;:
+                            case &quot;IS NOT&quot;:
+                            case &quot;is not&quot;:
+                                // Don&apos;t bind value
+                                let condition = &quot;`&quot; . key . &quot;` &quot; . is . &quot; &quot; . value;
+                            break;
+                            default:
+                                // Bind value
+                                let condition = &quot;`&quot; . key . &quot;` &quot; . is . &quot; &quot; . index,
+                                    values[index] = value;
+                            break;
+                        }
+
+                        if operator == &quot;AND&quot; {
+                            let and[] = condition;
+                        } else {
+                            let or[] = condition;
+                        }
+                    }
+
+                    if operator == &quot;OR&quot; {
+                        let and[] = &quot;(&quot; . join(&quot; OR &quot;, or) . &quot;)&quot;;
                     }
                 }
                 let sql .= join(&quot; AND &quot;, and);

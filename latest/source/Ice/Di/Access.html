@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.0.35</span>
+                                                    ice Documentation <span class="version">v1.1.1</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -89,25 +89,15 @@ class Access
     protected di;
 
     /**
-     * Access constructor. Fetch di if not specified.
-     *
-     * @param Di di
-     */
-    public function __construct(&lt;Di&gt; di = null)
-    {
-        if !di {
-            let this-&gt;di = Di::$fetch();
-        } else {
-            let this-&gt;di = di;
-        }
-    }
-
-    /**
      * Magic get to easy retrieve service from the di.
      */
     public function __get(string property)
     {
         var di, service;
+
+        if typeof this-&gt;di != &quot;object&quot; || typeof this-&gt;di == &quot;object&quot; &amp;&amp; !(this-&gt;di instanceof Di) {
+            let this-&gt;di = Di::$fetch();
+        }
 
         let di = this-&gt;di;
 
@@ -117,12 +107,19 @@ class Access
             return di;
         }
 
-        if di-&gt;has(property) {
-            let service = di-&gt;get(property),
-                this-&gt;{property} = service;
+        let service = di-&gt;get(property),
+            this-&gt;{property} = service;
 
-            return service;
+        return service;
+    }
+
+    public function __set(string property, var value)
+    {
+        if typeof this-&gt;di != &quot;object&quot; || typeof this-&gt;di == &quot;object&quot; &amp;&amp; !(this-&gt;di instanceof Di) {
+            let this-&gt;di = Di::$fetch();
         }
+
+        return this-&gt;di-&gt;set(property, value);
     }
 }
 </code></pre>                    </div>

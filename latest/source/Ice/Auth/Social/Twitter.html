@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.0.35</span>
+                                                    ice Documentation <span class="version">v1.1.1</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -142,9 +142,11 @@ class Twitter extends Adapter
      */
     public function authenticate()
     {
-        var result, params, accessTokenUrl, accessTokens, getDataUrl, userInfo;
+        var result, params, tokenInfo, userInfo;
+        var accessTokenUrl, getDataUrl;
 
-        let result = false;
+        let result = false,
+            tokenInfo = null;
 
         if isset _GET[&quot;oauth_token&quot;] &amp;&amp; isset _GET[&quot;oauth_verifier&quot;] {
             let params = [
@@ -152,20 +154,30 @@ class Twitter extends Adapter
                 &quot;oauth_verifier&quot;: _GET[&quot;oauth_verifier&quot;]
             ];
 
-            let accessTokenUrl = &quot;https://api.twitter.com/oauth/access_token&quot;,
-                params = this-&gt;prepareUrlParams(accessTokenUrl, params),
-                accessTokens = this-&gt;call(parent::GET, accessTokenUrl, params, false);
+            // Be able to store access_token in the session
+            if !this-&gt;accessToken {
+                let accessTokenUrl = &quot;https://api.twitter.com/oauth/access_token&quot;,
+                    params = this-&gt;prepareUrlParams(accessTokenUrl, params);
 
-            parse_str(accessTokens, accessTokens);
+                parse_str(this-&gt;call(parent::GET, accessTokenUrl, params, false), tokenInfo);
 
-            if isset accessTokens[&quot;oauth_token&quot;] {
+                if count(tokenInfo) &gt; 0 &amp;&amp; isset tokenInfo[&quot;oauth_token&quot;] &amp;&amp; isset tokenInfo[&quot;oauth_token_secret&quot;] &amp;&amp; isset tokenInfo[&quot;screen_name&quot;] {
+                    let this-&gt;accessToken = [
+                        &quot;oauth_token&quot;:        tokenInfo[&quot;oauth_token&quot;],
+                        &quot;oauth_token_secret&quot;: tokenInfo[&quot;oauth_token_secret&quot;],
+                        &quot;screen_name&quot;:        tokenInfo[&quot;screen_name&quot;]
+                    ];
+                } 
+            }
+
+            if this-&gt;accessToken {
                 let getDataUrl = &quot;https://api.twitter.com/1.1/users/show.json&quot;,
                     params = [
-                        &quot;oauth_token&quot;:      accessTokens[&quot;oauth_token&quot;],
-                        &quot;screen_name&quot;:      accessTokens[&quot;screen_name&quot;],
+                        &quot;oauth_token&quot;:      this-&gt;accessToken[&quot;oauth_token&quot;],
+                        &quot;screen_name&quot;:      this-&gt;accessToken[&quot;screen_name&quot;],
                         &quot;include_entities&quot;: &quot;false&quot;
                     ],
-                    params = this-&gt;prepareUrlParams(getDataUrl, params, accessTokens[&quot;oauth_token_secret&quot;]),
+                    params = this-&gt;prepareUrlParams(getDataUrl, params, this-&gt;accessToken[&quot;oauth_token_secret&quot;]),
                     userInfo = this-&gt;call(parent::GET, getDataUrl, params);
 
                 if isset userInfo[&quot;id&quot;] {
@@ -225,8 +237,7 @@ class Twitter extends Adapter
 
         return params;
     }
-}
-</code></pre>                    </div>
+}</code></pre>                    </div>
                 </div>
             </div>
         </div>

@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.0.35</span>
+                                                    ice Documentation <span class="version">v1.1.1</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -104,7 +104,7 @@ class Exception extends \Exception
 
         // Check if translation module is available.
         if di-&gt;has(&quot;i18n&quot;) {
-            let message = di-&gt;get(&quot;i18n&quot;, null, true)-&gt;translate(str, values);
+            let message = di-&gt;get(&quot;i18n&quot;)-&gt;translate(str, values);
         } elseif (typeof values == &quot;array&quot;) {
             // Check if values is associative or sequential
             if count(array_filter(array_keys(values), &quot;is_string&quot;)) {

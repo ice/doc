@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.0.35</span>
+                                                    ice Documentation <span class="version">v1.1.1</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -103,7 +103,7 @@ class Router
 
     protected ready = false;
     protected silent = false { set };
-    protected options = [] { get, set };
+    protected options = [] { get };
     protected routes { get, set };
     protected collector { get, set };
     protected dispatcher { get, set };
@@ -140,6 +140,19 @@ class Router
         if fetch action, defaults[&quot;action&quot;] {
             let this-&gt;defaultAction = action;
         }
+    }
+
+    /**
+     * Set options.
+     *
+     * @param array options
+     * @return object this
+     */
+    public function setOptions(array! options)
+    {
+        let this-&gt;options = options;
+
+        return this;
     }
 
     /**
@@ -228,7 +241,7 @@ class Router
             case self::NOT_FOUND:
                 if this-&gt;silent {
                     // 404 Not Found
-                    let response = this-&gt;di-&gt;get(&quot;response&quot;, null, true);
+                    let response = this-&gt;di-&gt;get(&quot;response&quot;);
                     response-&gt;setStatus(404);
                     response-&gt;setBody(response-&gt;getMessage(404));
 
@@ -238,7 +251,7 @@ class Router
             case self::METHOD_NOT_ALLOWED:
                 if this-&gt;silent {
                     // 405 Method Not Allowed
-                    let response = this-&gt;di-&gt;get(&quot;response&quot;, null, true);
+                    let response = this-&gt;di-&gt;get(&quot;response&quot;);
                     response-&gt;setStatus(405);
                     response-&gt;setBody(response-&gt;getMessage(405));
 

@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.0.35</span>
+                                                    ice Documentation <span class="version">v1.1.1</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -135,7 +135,7 @@ class Cookies
             if this-&gt;salt(key, value) == hash {
                 // Cookie signature is valid
                 if this-&gt;encrypt {
-                    let value = this-&gt;di-&gt;get(&quot;crypt&quot;, null, true)-&gt;decrypt(value);
+                    let value = this-&gt;di-&gt;get(&quot;crypt&quot;)-&gt;decrypt(value);
                 }
 
                 return value;
@@ -166,7 +166,7 @@ class Cookies
 
         if this-&gt;encrypt {
             if !empty value {
-                let value = this-&gt;di-&gt;get(&quot;crypt&quot;, null, true)-&gt;encrypt(value);
+                let value = this-&gt;di-&gt;get(&quot;crypt&quot;)-&gt;encrypt(value);
             }
         }
 
@@ -209,7 +209,7 @@ class Cookies
         }
 
         // Determine the user agent
-        let userAgent = this-&gt;di-&gt;get(&quot;request&quot;, null, true)-&gt;getUserAgent();
+        let userAgent = this-&gt;di-&gt;get(&quot;request&quot;)-&gt;getUserAgent();
 
         return sha1(userAgent . name . value . this-&gt;salt);
     }

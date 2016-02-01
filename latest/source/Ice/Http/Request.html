@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.0.35</span>
+                                                    ice Documentation <span class="version">v1.1.1</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -328,7 +328,7 @@ class Request extends Arr
             let value = this-&gt;get-&gt;get(key, defaultValue);
 
             if filters {
-                let filter = Di::$fetch()-&gt;get(&quot;filter&quot;, null, true),
+                let filter = Di::$fetch()-&gt;get(&quot;filter&quot;),
                     value = filter-&gt;sanitize(value, filters);
             }
 
@@ -371,7 +371,7 @@ class Request extends Arr
             let value = this-&gt;post-&gt;get(key, defaultValue);
 
             if filters {
-                let filter = Di::$fetch()-&gt;get(&quot;filter&quot;, null, true),
+                let filter = Di::$fetch()-&gt;get(&quot;filter&quot;),
                     value = filter-&gt;sanitize(value, filters);
             }
 

@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.0.35</span>
+                                                    ice Documentation <span class="version">v1.1.1</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -93,31 +93,30 @@ class Text
      * @param int length
      * @return string
      */
-    static public function random(int type = 0, long length = 8) -&gt; string
+    public function random(int type = 0, long length = 8) -&gt; string
     {
         var pool, str = &quot;&quot;;
         int end;
 
         switch type {
-
-            case Text::ALPHA:
+            case self::ALPHA:
                 let pool = array_merge(range(&quot;a&quot;, &quot;z&quot;), range(&quot;A&quot;, &quot;Z&quot;));
                 break;
 
-            case Text::HEXDEC:
+            case self::HEXDEC:
                 let pool = array_merge(range(0, 9), range(&quot;a&quot;, &quot;f&quot;));
                 break;
 
-            case Text::NUMERIC:
+            case self::NUMERIC:
                 let pool = range(0, 9);
                 break;
 
-            case Text::NOZERO:
+            case self::NOZERO:
                 let pool = range(1, 9);
                 break;
 
             default:
-                // Text::ALNUM
+                // self::ALNUM
                 let pool = array_merge(range(0, 9), range(&quot;a&quot;, &quot;z&quot;), range(&quot;A&quot;, &quot;Z&quot;));
                 break;
         }

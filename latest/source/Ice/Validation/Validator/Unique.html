@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.0.35</span>
+                                                    ice Documentation <span class="version">v1.1.1</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -128,7 +128,7 @@ class Unique extends Validator
         }
 
         let di = Di::$fetch(),
-            db = di-&gt;get(&quot;db&quot;, null, true);
+            db = di-&gt;get(&quot;db&quot;);
 
         if this-&gt;has(0) {
             let from = this-&gt;get(0);

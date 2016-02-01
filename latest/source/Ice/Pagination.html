@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.0.35</span>
+                                                    ice Documentation <span class="version">v1.1.1</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -97,7 +97,7 @@ class Pagination extends Arr
 
         let di = Di::$fetch(),
             this-&gt;di = di,
-            this-&gt;tag = di-&gt;get(&quot;tag&quot;, null, true);
+            this-&gt;tag = di-&gt;get(&quot;tag&quot;);
     }
 
     /**
@@ -197,7 +197,7 @@ class Pagination extends Arr
             return &quot;&lt;li class=\&quot;&quot; . (pages ? &quot;active&quot; : &quot;disabled&quot;) . &quot;\&quot;&gt;&lt;span&gt;&quot; . symbol . &quot;&lt;/span&gt;&lt;/li&gt;&quot;;
         }
 
-        let query = this-&gt;di-&gt;get(&quot;request&quot;, null, true)-&gt;getQuery(),
+        let query = this-&gt;di-&gt;get(&quot;request&quot;)-&gt;getQuery(),
             i18n = this-&gt;di-&gt;get(&quot;i18n&quot;);
 
         if pages {

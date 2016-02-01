@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.0.35</span>
+                                                    ice Documentation <span class="version">v1.1.1</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -98,7 +98,7 @@ class App extends Access
     public function __construct(&lt;Di&gt; di = null)
     {
         // Set the dependency injector
-        parent::__construct(di);
+        let this-&gt;di = di;
 
         // Register the app itself as a service
         this-&gt;di-&gt;set(&quot;app&quot;, this);
@@ -115,7 +115,7 @@ class App extends Access
     {
         var argv, router, request, response, dispatcher, returned, controller, view;
 
-        let request = this-&gt;di-&gt;get(&quot;request&quot;, null, true);
+        let request = this-&gt;di-&gt;get(&quot;request&quot;);
         if method == null {
             let method = request-&gt;getMethod();
         }
@@ -134,9 +134,9 @@ class App extends Access
             }
         }
 
-        let router = this-&gt;di-&gt;get(&quot;router&quot;, null, true),
+        let router = this-&gt;di-&gt;get(&quot;router&quot;),
             response = router-&gt;handle(method, uri),
-            dispatcher = this-&gt;di-&gt;get(&quot;dispatcher&quot;, null, true);
+            dispatcher = this-&gt;di-&gt;get(&quot;dispatcher&quot;);
 
         this-&gt;di-&gt;applyHook(&quot;app.after.router.handle&quot;, [response]);
 
@@ -159,7 +159,7 @@ class App extends Access
 
             if !(typeof response == &quot;object&quot; &amp;&amp; (response instanceof ResponseInterface)) {
                 let controller = response,
-                    response = this-&gt;di-&gt;get(&quot;response&quot;, null, true),
+                    response = this-&gt;di-&gt;get(&quot;response&quot;),
                     view = controller-&gt;view;
 
                 // Load views and set the response body if auto render

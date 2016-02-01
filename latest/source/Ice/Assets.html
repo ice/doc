@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.0.35</span>
+                                                    ice Documentation <span class="version">v1.1.1</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -160,7 +160,7 @@ class Assets
 
         var content, local, tag;
 
-        let tag = this-&gt;di-&gt;get(&quot;tag&quot;, null, true);
+        let tag = this-&gt;di-&gt;get(&quot;tag&quot;);
 
         if !fetch content, parameters[&quot;content&quot;] {
             fetch content, parameters[0];
@@ -204,7 +204,7 @@ class Assets
     {
         var content, local, tag;
 
-        let tag = this-&gt;di-&gt;get(&quot;tag&quot;, null, true);
+        let tag = this-&gt;di-&gt;get(&quot;tag&quot;);
 
         if !fetch content, parameters[&quot;content&quot;] {
             fetch content, parameters[0];
@@ -245,7 +245,7 @@ class Assets
      */
     protected function minify(string! content, type)
     {
-        return this-&gt;di-&gt;get(&quot;filter&quot;, null, true)-&gt;sanitize(content, type . &quot;min&quot;);
+        return this-&gt;di-&gt;get(&quot;filter&quot;)-&gt;sanitize(content, type . &quot;min&quot;);
     }
 
     /**
