@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.1.1</span>
+                                                    ice Documentation <span class="version">v1.1.2</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -171,7 +171,7 @@ class Pagination extends Arr
      */
     protected function prepareButton(var page, string url = null, boolean active = false, var symbol = null)
     {
-        var query, i18n, title;
+        var query, i18n, title, liClass, spanClass, aClass;
         boolean pages = false;
 
         switch page {
@@ -193,8 +193,12 @@ class Pagination extends Arr
                 break;
         }
 
+        let liClass = this-&gt;get(&quot;liClass&quot;),
+            spanClass = this-&gt;get(&quot;spanClass&quot;),
+            aClass = this-&gt;get(&quot;aClass&quot;);
+
         if !active {
-            return &quot;&lt;li class=\&quot;&quot; . (pages ? &quot;active&quot; : &quot;disabled&quot;) . &quot;\&quot;&gt;&lt;span&gt;&quot; . symbol . &quot;&lt;/span&gt;&lt;/li&gt;&quot;;
+            return &quot;&lt;li class=\&quot;&quot; . (pages ? &quot;active&quot; : &quot;disabled&quot;) . (liClass ? &quot; &quot; . liClass : &quot;&quot;) . &quot;\&quot;&gt;&lt;span&quot; . (spanClass ? &quot; class=\&quot;&quot; . spanClass . &quot;\&quot;&quot; : &quot;&quot;) . &quot;&gt;&quot; . symbol . &quot;&lt;/span&gt;&lt;/li&gt;&quot;;
         }
 
         let query = this-&gt;di-&gt;get(&quot;request&quot;)-&gt;getQuery(),
@@ -219,7 +223,7 @@ class Pagination extends Arr
             }
         }
 
-        return &quot;&lt;li&gt;&quot; . this-&gt;tag-&gt;a([url, symbol, title, &quot;query&quot;: query-&gt;all()]) . &quot;&lt;/li&gt;&quot;;
+        return &quot;&lt;li&quot; . (liClass ? &quot; class=\&quot;&quot; . liClass . &quot;\&quot;&quot; : &quot;&quot;) . &quot;&gt;&quot; . this-&gt;tag-&gt;a([url, symbol, title, &quot;query&quot;: query-&gt;all(), &quot;class&quot;: aClass]) . &quot;&lt;/li&gt;&quot;;
     }
 
     /**

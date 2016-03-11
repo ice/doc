@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.1.1</span>
+                                                    ice Documentation <span class="version">v1.1.2</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -88,8 +88,9 @@ abstract class Dispatcher
     protected activeHandler { get };
     protected lastHandler { get };
 
-    protected loops = 0 { get };
+    protected loops = 16 { get, set };
     protected finished { get };
+    protected forwards = 0 { get };
     protected forwarded = false { get };
     protected silent = false { set };
 
@@ -216,10 +217,10 @@ abstract class Dispatcher
             this-&gt;finished = false;
 
         while !this-&gt;finished {
-            let this-&gt;loops++;
+            let this-&gt;forwards++;
 
             // Throw an exception after 16 consecutive forwards
-            if this-&gt;loops &gt; 16 {
+            if this-&gt;loops &amp;&amp; this-&gt;forwards &gt; this-&gt;loops {
                 if this-&gt;silent {
                     // 508 Loop Detected
                     response-&gt;setStatus(508);

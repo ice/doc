@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.1.1</span>
+                                                    ice Documentation <span class="version">v1.1.2</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -170,9 +170,13 @@ class Filter
                 return preg_replace(&quot;/[^a-z]/i&quot;, &quot;&quot;, value);
             case &quot;email&quot;:
                 return filter_var(value, FILTER_SANITIZE_EMAIL);
+            case &quot;bool&quot;:
+            case &quot;boolean&quot;:
+                return filter_var(value, FILTER_VALIDATE_BOOLEAN);
             case &quot;float&quot;:
                 return (double) filter_var(value, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
             case &quot;int&quot;:
+            case &quot;integer&quot;:
                 return (int) filter_var(value, FILTER_SANITIZE_NUMBER_INT);
             case &quot;string&quot;:
                 return filter_var(value, FILTER_SANITIZE_STRING);

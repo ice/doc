@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.1.1</span>
+                                                    ice Documentation <span class="version">v1.1.2</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -111,7 +111,7 @@ class Pdo implements DbInterface
         preg_match(&quot;/^.+?(?:dbname|database)=(.+?)(?=;|$)/i&quot;, dsn, parts);
 
         if isset parts[0] &amp;&amp; strstr(parts[0], &quot;:&quot;, TRUE) == &quot;mysql&quot; {
-            let options[\PDO::MYSQL_ATTR_INIT_COMMAND] = &quot;SET NAMES utf8;&quot;;
+            let dsn = dsn . &quot;;charset=utf8&quot;;
         }
 
         let pdo = &quot;Pdo&quot;,
