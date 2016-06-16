@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.1.2</span>
+                                                    ice Documentation <span class="version">v1.1.5</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -81,7 +81,7 @@ use Ice\Mvc\Route\Collector;
  * @package     Ice/Dispatcher
  * @category    Component
  * @author      Ice Team
- * @copyright   (c) 2014-2015 Ice Team
+ * @copyright   (c) 2014-2016 Ice Team
  * @license     http://iceframework.org/license
  */
 class Dispatcher extends \Ice\Dispatcher
@@ -89,6 +89,8 @@ class Dispatcher extends \Ice\Dispatcher
 
     protected method { get, set };
     protected handlerSuffix = &quot;Controller&quot;;
+
+    const REDIRECT_CYCLIC = 5;
 
     /**
      * Get active method, first check whether a method with the HTTP method as prefix exist.
@@ -105,6 +107,28 @@ class Dispatcher extends \Ice\Dispatcher
         }
 
         return parent::getActiveMethod();
+    }
+
+    public function dispatch()
+    {
+        var parent, response;
+
+        let parent = parent::dispatch(),
+            response = this-&gt;di-&gt;get(&quot;response&quot;);
+
+        // Throw an exception after 16 consecutive redirects
+        if response-&gt;getRedirects() &gt; response-&gt;getLoops() {
+            if this-&gt;silent {
+                // 310 Too Many Redirects
+                response-&gt;setStatus(310);
+                response-&gt;setBody(response-&gt;getMessage(310));
+
+                return response;
+            }
+            throw new Exception(&quot;This Webpage has a redirect loop&quot;, self::REDIRECT_CYCLIC);
+        }
+
+        return parent;
     }
 }
 </code></pre>                    </div>

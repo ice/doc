@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.1.2</span>
+                                                    ice Documentation <span class="version">v1.1.5</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -74,15 +74,14 @@ namespace Ice;
  * @package     Ice/Assets
  * @category    Helper
  * @author      Ice Team
- * @copyright   (c) 2014-2015 Ice Team
+ * @copyright   (c) 2014-2016 Ice Team
  * @license     http://iceframework.org/license
  */
 class Assets
 {
 
     protected di;
-    protected css = [] { get };
-    protected js = [] { get };
+    protected collections = [] { set, get };
     protected options = [] { set };
 
     const NEVER = 0;
@@ -121,10 +120,11 @@ class Assets
      *
      * @param mixed parameters Parameters of link/script/style
      * @param string version Version appending to the uri
+     * @param string Collection Collection name
      * @param mixed minify Local minify option
      * @return object this
      */
-    public function add(var parameters, string version = null, var minify = null)
+    public function add(var parameters, string version = null, string collection = null, var minify = null)
     {
         var content, type;
 
@@ -139,9 +139,15 @@ class Assets
         fetch type, parameters[&quot;type&quot;];
 
         if ends_with(content, &quot;.css&quot;) || type == &quot;text/css&quot; {
-            this-&gt;addCss(parameters, version, minify);
+            if !collection {
+                let collection = &quot;css&quot;;
+            }
+            this-&gt;addCss(parameters, version, collection, minify);
         } elseif ends_with(content, &quot;.js&quot;) || type == &quot;text/javascript&quot; {
-            this-&gt;addJs(parameters, version, minify);
+            if !collection {
+                let collection = &quot;js&quot;;
+            }
+            this-&gt;addJs(parameters, version, collection, minify);
         }
 
         return this;
@@ -152,10 +158,11 @@ class Assets
      *
      * @param array parameters Parameters of link/style
      * @param string version Version appending to the uri
+     * @param string Collection Collection name
      * @param mixed minify Local minify option
      * @return object this
      */
-    public function addCss(array! parameters, string version = null, var minify = null)
+    public function addCss(array! parameters, string version = null, string collection = &quot;css&quot;, var minify = null)
     {
 
         var content, local, tag;
@@ -183,10 +190,10 @@ class Assets
 
         // Check if resource is inline or in file
         if isset parameters[&quot;content&quot;] {
-            let this-&gt;css[] = tag-&gt;style([&quot;content&quot;: minify ? this-&gt;minify(content, &quot;css&quot;) : content]);
+            this-&gt;addToCollection(collection, tag-&gt;style([&quot;content&quot;: minify ? this-&gt;minify(content, &quot;css&quot;) : content]));
         } else {
-            let parameters[&quot;href&quot;] = this-&gt;prepare(content, &quot;css&quot;, minify) . (version ? &quot;?v=&quot; . version : &quot;&quot;),
-                this-&gt;css[] = tag-&gt;link(parameters);
+            let parameters[&quot;href&quot;] = this-&gt;prepare(content, &quot;css&quot;, minify) . (version ? &quot;?v=&quot; . version : &quot;&quot;);
+            this-&gt;addToCollection(collection, tag-&gt;link(parameters));
         }
 
         return this;
@@ -197,10 +204,11 @@ class Assets
      *
      * @param array parameters Parameters of script
      * @param string version Version appending to the uri
+     * @param string Collection Collection name
      * @param mixed minify Local minify option
      * @return object this
      */
-    public function addJs(array! parameters, string version = null, var minify = null)
+    public function addJs(array! parameters, string version = null, string collection = &quot;js&quot;, var minify = null)
     {
         var content, local, tag;
 
@@ -227,17 +235,67 @@ class Assets
 
         // Check if resource is inline or in file
         if isset parameters[&quot;content&quot;] {
-            let this-&gt;js[] = tag-&gt;script([&quot;content&quot;: minify ? this-&gt;minify(content, &quot;js&quot;) : content]);
+            this-&gt;addToCollection(collection, tag-&gt;script([&quot;content&quot;: minify ? this-&gt;minify(content, &quot;js&quot;) : content]));
         } else {
-            let parameters[&quot;src&quot;] = this-&gt;prepare(content, &quot;js&quot;, minify) . (version ? &quot;?v=&quot; . version : &quot;&quot;),
-                this-&gt;js[] = tag-&gt;script(parameters);
+            let parameters[&quot;src&quot;] = this-&gt;prepare(content, &quot;js&quot;, minify) . (version ? &quot;?v=&quot; . version : &quot;&quot;);
+            this-&gt;addToCollection(collection, tag-&gt;script(parameters));
         }
 
         return this;
     }
 
     /**
-     * Minify content
+     * Add an asset to the collection.
+     *
+     * @param string key Collection name
+     * @param string value Asset HTML code
+     */
+    public function addToCollection(key, value)
+    {
+        if !isset this-&gt;collections[key] {
+            let this-&gt;collections[key] = [];
+        }
+
+        let this-&gt;collections[key][] = value;
+    }
+
+    /**
+     * Get the CSS default collection.
+     *
+     * @return array
+     */
+    public function getCss()
+    {
+        return this-&gt;get(&quot;css&quot;);
+    }
+
+    /**
+     * Get the JS default collection.
+     *
+     * @return array
+     */
+    public function getJs()
+    {
+        return this-&gt;get(&quot;js&quot;);
+    }
+
+    /**
+     * Get some collection.
+     *
+     * @param string key Collection name
+     * @return array
+     */
+    public function get(string key)
+    {
+        var collection;
+
+        fetch collection, this-&gt;collections[key];
+
+        return collection ? collection : [];
+    }
+
+    /**
+     * Minify content.
      *
      * @param string content Input text to minify
      * @param string type Type of content
@@ -249,7 +307,7 @@ class Assets
     }
 
     /**
-     * Prepare resource
+     * Prepare resource.
      *
      * @param string uri The uri/url source path
      * @param string type Type of content

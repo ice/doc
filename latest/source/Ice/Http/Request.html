@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.1.2</span>
+                                                    ice Documentation <span class="version">v1.1.5</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -80,7 +80,7 @@ use Ice\Di;
  * @package     Ice/Http
  * @category    Component
  * @author      Ice Team
- * @copyright   (c) 2014-2015 Ice Team
+ * @copyright   (c) 2014-2016 Ice Team
  * @license     http://iceframework.org/license
  */
 class Request extends Arr
@@ -316,8 +316,6 @@ class Request extends Arr
      */
     public function getQuery(string key = null, var filters = null, var defaultValue = null, boolean allowEmpty = false)
     {
-        var value, filter;
-
         if !key {
             // Remove `_url` from GET
             this-&gt;get-&gt;set(&quot;_url&quot;, null);
@@ -325,18 +323,7 @@ class Request extends Arr
 
             return this-&gt;get;
         } else {
-            let value = this-&gt;get-&gt;get(key, defaultValue);
-
-            if filters {
-                let filter = Di::$fetch()-&gt;get(&quot;filter&quot;),
-                    value = filter-&gt;sanitize(value, filters);
-            }
-
-            if (value === &quot;&quot; || value === null) &amp;&amp; allowEmpty === false {
-                return defaultValue;
-            }
-
-            return value;
+            return this-&gt;get-&gt;getValue(key, filters, defaultValue, allowEmpty);
         }
     }
 
@@ -363,23 +350,10 @@ class Request extends Arr
      */
     public function getPost(string key = null, var filters = null, var defaultValue = null, boolean allowEmpty = false)
     {
-        var value, filter;
-
         if !key {
             return this-&gt;post;
         } else {
-            let value = this-&gt;post-&gt;get(key, defaultValue);
-
-            if filters {
-                let filter = Di::$fetch()-&gt;get(&quot;filter&quot;),
-                    value = filter-&gt;sanitize(value, filters);
-            }
-
-            if (value === &quot;&quot; || value === null) &amp;&amp; allowEmpty === false {
-                return defaultValue;
-            }
-
-            return value;
+            return this-&gt;post-&gt;getValue(key, filters, defaultValue, allowEmpty);
         }
     }
 

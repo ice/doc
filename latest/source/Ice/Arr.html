@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.1.2</span>
+                                                    ice Documentation <span class="version">v1.1.5</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -76,7 +76,7 @@ use ArrayIterator;
  * @package     Ice/Arr
  * @category    Helper
  * @author      Ice Team
- * @copyright   (c) 2014-2015 Ice Team
+ * @copyright   (c) 2014-2016 Ice Team
  * @license     http://iceframework.org/license
  */
 class Arr implements \ArrayAccess, \Countable, \IteratorAggregate
@@ -159,6 +159,63 @@ class Arr implements \ArrayAccess, \Countable, \IteratorAggregate
     public function all() -&gt; array
     {
         return this-&gt;getData();
+    }
+
+    /**
+     * Fetch some data.
+     *
+     * @param array keys Keys to fetch
+     * @param boolean strict Fetch key only if exist
+     * @return array
+     */
+    public function only(array! keys, boolean strict = true) -&gt; array
+    {
+        var key, only = [];
+
+        for key in keys {
+            if !strict || strict &amp;&amp; this-&gt;has(key) {
+                let only[key] = this-&gt;get(key);
+            }
+        }
+        return only;
+    }
+
+    /**
+     * Gets value from data applying filters if needed.
+     *
+     * &lt;pre&gt;&lt;code&gt;
+     *  //Returns value from $arr[&quot;id&quot;] without sanitizing
+     *  $id = $arr-&gt;getValue(&quot;id&quot;);
+     *
+     *  //Returns value from $arr[&quot;title&quot;] with sanitizing
+     *  $title = $arr-&gt;getValue(&quot;title&quot;, &quot;escape|repeats&quot;);
+     *
+     *  //Returns value from $arr[&quot;id&quot;] with a default value
+     *  $id = $arr-&gt;getValue(&quot;id&quot;, null, 150);
+     * &lt;/code&gt;&lt;/pre&gt;
+     *
+     * @param string key Index to get
+     * @param string|array filters Filters to apply
+     * @param mixed defaultValue Default value if key not exist or value is empty and allowEmpty is false
+     * @param boolean allowEmpty
+     * @return mixed
+     */
+    public function getValue(string key, var filters = null, var defaultValue = null, boolean allowEmpty = false)
+    {
+        var value, filter;
+
+        let value = this-&gt;get(key, defaultValue);
+
+        if filters {
+            let filter = Di::$fetch()-&gt;get(&quot;filter&quot;),
+                value = filter-&gt;sanitize(value, filters);
+        }
+
+        if (value === &quot;&quot; || value === null) &amp;&amp; allowEmpty === false {
+            return defaultValue;
+        }
+
+        return value;
     }
 
     /**

@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.1.2</span>
+                                                    ice Documentation <span class="version">v1.1.5</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -82,7 +82,7 @@ use Ice\Mvc\View\ViewInterface;
  * @package     Ice/View
  * @category    Component
  * @author      Ice Team
- * @copyright   (c) 2014-2015 Ice Team
+ * @copyright   (c) 2014-2016 Ice Team
  * @license     http://iceframework.org/license
  */
 class View extends Arr implements ViewInterface
@@ -146,7 +146,7 @@ class View extends Arr implements ViewInterface
      */
     public function render(file = null, array data = [])
     {
-        var ext, engine, engines, path, exists, content;
+        var ext, engine, engines, path, dir, dirs, exists, content;
 
         let exists = false,
             content = null;
@@ -162,12 +162,20 @@ class View extends Arr implements ViewInterface
         let engines = this-&gt;getEngines();
 
         for ext, engine in engines {
-            let path = this-&gt;viewsDir . this-&gt;file . ext;
-            if file_exists(path) {
-                let exists = true;
-                this-&gt;replace(data);
-                let content = engine-&gt;render(path, this-&gt;all());
-                break;
+            if typeof this-&gt;viewsDir == &quot;array&quot; {
+                let dirs = this-&gt;viewsDir;
+            } else {
+                let dirs = [this-&gt;viewsDir];
+            }
+
+            for dir in dirs {
+                let path = dir . this-&gt;file . ext;
+                if file_exists(path) {
+                    let exists = true;
+                    this-&gt;replace(data);
+                    let content = engine-&gt;render(path, this-&gt;all());
+                    break;
+                }
             }
         }
 
@@ -235,6 +243,16 @@ class View extends Arr implements ViewInterface
     public function setVars(array! vars)
     {
         this-&gt;replace(vars);
+    }
+
+    /**
+     * Alias of the `setMainView` method.
+     *
+     * @param array vars
+     */
+    public function setLayout(string layout)
+    {
+        this-&gt;setMainView(layout);
     }
 
     /**

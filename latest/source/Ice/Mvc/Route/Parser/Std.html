@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.1.2</span>
+                                                    ice Documentation <span class="version">v1.1.5</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -87,14 +87,14 @@ use Ice\Mvc\Route\Parser\ParserInterface;
  */
 class Std implements ParserInterface
 {
-    const VARIABLE_REGEX = &quot;\\{ \\s* ([a-zA-Z][a-zA-Z0-9_]*) \\s* (?: : \\s* ([^{}]*(?:\\{(?-1)\\}[^{}]*)*) )? \\}&quot;;
+    const VARIABLE_REGEX = &quot;\\{ \\s* ([a-zA-Z_][a-zA-Z0-9_-]*) \\s* (?: : \\s* ([^{}]*(?:\\{(?-1)\\}[^{}]*)*) )? \\}&quot;;
     const DEFAULT_DISPATCH_REGEX = &quot;[^/]+&quot;;
 
     public function parse(route)
     {
         var routeWithoutClosingOptionals, numOptionals, segments, currentRoute, routeDatas, n, segment;
 
-        let routeWithoutClosingOptionals = rtrim(route, &apos;]&apos;),
+        let routeWithoutClosingOptionals = rtrim(route, &quot;]&quot;),
             numOptionals = strlen(route) - strlen(routeWithoutClosingOptionals);
         
         // Split on [ while skipping placeholders

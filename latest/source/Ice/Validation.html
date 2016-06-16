@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.1.2</span>
+                                                    ice Documentation <span class="version">v1.1.5</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -76,7 +76,7 @@ use Ice\Validation\Validator;
  * @package     Ice/Validation
  * @category    Security
  * @author      Ice Team
- * @copyright   (c) 2014-2015 Ice Team
+ * @copyright   (c) 2014-2016 Ice Team
  * @license     http://iceframework.org/license
  * @uses        Ice\Filter (if service is available)
  * @uses        Ice\I18n (if service is available)
@@ -102,7 +102,7 @@ class Validation
 {
 
     protected di { get };
-    protected data = [];
+    protected data { get };
     protected rules = [] { set, get };
     protected validators = [];
     protected filters = [] { set };
@@ -146,7 +146,7 @@ class Validation
     public function __construct(array data = [])
     {
         let this-&gt;di = Di::$fetch(),
-            this-&gt;data = data;
+            this-&gt;data = new Arr(data);
     }
 
     /**
@@ -251,11 +251,16 @@ class Validation
      * &lt;/code&gt;&lt;/pre&gt;
      *
      * @param array validators
+     * @param boolean clear
      * @return void
      */
-    public function rules(array! validators) -&gt; void
+    public function rules(array! validators, boolean clear = false) -&gt; void
     {
         var field, rules;
+
+        if clear {
+            let this-&gt;rules = [];
+        }
 
         for field, rules in validators {
             this-&gt;rule(field, rules);
@@ -266,14 +271,24 @@ class Validation
      * Validate the data.
      *
      * @param array data Data to validate
+     * @param boolean clear Clear messages before
      * @return boolean
      */
-    public function validate(array data = []) -&gt; boolean
+    public function validate(array data = [], boolean clear = false) -&gt; boolean
     {
-        var field, rules, rule;
+        var tmp, field, rules, rule;
 
         if count(data) {
-            let this-&gt;data = data;
+            let tmp = this-&gt;data;
+
+            tmp-&gt;setData(data);
+
+            let this-&gt;data = tmp;
+        }
+
+        if clear {
+            let this-&gt;valid = true,
+                this-&gt;messages = [];
         }
 
         // Validate the rules
@@ -311,7 +326,7 @@ class Validation
      */
     public function hasValue(string! field) -&gt; boolean
     {
-        return isset this-&gt;data[field];
+        return this-&gt;data-&gt;has(field);
     }
 
     /**
@@ -323,16 +338,13 @@ class Validation
      */
     public function getValue(string! field, boolean filtered = true)
     {
-        var value, filters;
+        var filters = null;
 
-        fetch value, this-&gt;data[field];
-
-        // Filter the value
-        if filtered &amp;&amp; this-&gt;di-&gt;has(&quot;filter&quot;) &amp;&amp; fetch filters, this-&gt;filters[field] {
-            let value = this-&gt;di-&gt;get(&quot;filter&quot;)-&gt;sanitize(value, filters);
+        if filtered {
+            fetch filters, this-&gt;filters[field];
         }
 
-        return value;
+        return this-&gt;data-&gt;getValue(field, filters);
     }
 
     /**
@@ -361,7 +373,7 @@ class Validation
         let data = [];
 
         if fields === null {
-            for field, _ in this-&gt;data {
+            for field, _ in iterator(this-&gt;data) {
                 let data[field] = this-&gt;getValue(field, filtered);
             }
         } else {
@@ -395,7 +407,7 @@ class Validation
 
         if !fetch label, this-&gt;labels[field] {
             // Humanize the field
-            if this-&gt;humanLabels &amp;&amp; this-&gt;di-&gt;has(&quot;filter&quot;) {
+            if this-&gt;humanLabels {
                 let label = this-&gt;di-&gt;get(&quot;filter&quot;)-&gt;sanitize(field, &quot;human&quot;);
             } else {
                 let label = field;

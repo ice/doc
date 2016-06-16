@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.1.2</span>
+                                                    ice Documentation <span class="version">v1.1.5</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -179,6 +179,38 @@
     <div class="method-summary">
         <span class="method-name"><a href="#method-details-all">all</a></span>(<span class="small"></span>)
                 <div class="summary-text text-muted">Fetch all data.</div>
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        array
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-only">only</a></span>(<span class="small"><span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$keys</strong></span>, <span class="param-data-type text-danger">bool</span>  <span class="param-name text-info"><strong>$strict</strong></span></span>)
+                <div class="summary-text text-muted">Fetch some data.</div>
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-getValue">getValue</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$key</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$filters</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$defaultValue</strong></span>, <span class="param-data-type text-danger">bool</span>  <span class="param-name text-info"><strong>$allowEmpty</strong></span></span>)
+                <div class="summary-text text-muted">Gets value from data applying filters if needed.</div>
             </div>
 </td>
 </tr>
@@ -675,6 +707,81 @@
                     Fetch all data.                    </div>
                     <div>
                                         </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-only"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">only</span>(<span class="small"><span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$keys</strong></span>, <span class="param-data-type text-danger">bool</span>  <span class="param-name text-info"><strong>$strict</strong></span></span>)
+                </h3>
+                                
+                    <div class="text-muted">
+                    Fetch some data.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-getValue"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">getValue</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$key</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$filters</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$defaultValue</strong></span>, <span class="param-data-type text-danger">bool</span>  <span class="param-name text-info"><strong>$allowEmpty</strong></span></span>)
+                </h3>
+                                
+                    <div class="text-muted">
+                    Gets value from data applying filters if needed.                    </div>
+                    <div>
+                    <pre><code class="php">
+      //Returns value from $arr[&quot;id&quot;] without sanitizing
+      $id = $arr-&gt;getValue(&quot;id&quot;);
+     
+      //Returns value from $arr[&quot;title&quot;] with sanitizing
+      $title = $arr-&gt;getValue(&quot;title&quot;, &quot;escape|repeats&quot;);
+     
+      //Returns value from $arr[&quot;id&quot;] with a default value
+      $id = $arr-&gt;getValue(&quot;id&quot;, null, 150);
+     </code></pre>                    </div>
                 
                                 
             </div>

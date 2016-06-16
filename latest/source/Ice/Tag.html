@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.1.2</span>
+                                                    ice Documentation <span class="version">v1.1.5</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -74,7 +74,7 @@ namespace Ice;
  * @package     Ice/Tag
  * @category    Helper
  * @author      Ice Team
- * @copyright   (c) 2014-2015 Ice Team
+ * @copyright   (c) 2014-2016 Ice Team
  * @license     http://iceframework.org/license
  * @uses        Ice\Mvc\Url
  */
@@ -98,7 +98,7 @@ class Tag
     protected docType = 5 { set };
     protected title = null { set, get };
     protected titleSeparator = &quot; - &quot; { set, get };
-    protected meta = [] { get };
+    protected meta = [] { set, get };
     protected escape = true { set };
 
     /**
@@ -365,9 +365,7 @@ class Tag
 
             // Send to current URL if action is false
             if action !== false {
-                if this-&gt;di-&gt;has(&quot;url&quot;) {
-                    let parameters[&quot;action&quot;] = this-&gt;di-&gt;get(&quot;url&quot;)-&gt;get(action);
-                }
+                let parameters[&quot;action&quot;] = this-&gt;di-&gt;get(&quot;url&quot;)-&gt;get(action);
             }
         }
 
@@ -441,9 +439,7 @@ class Tag
                 fetch src, parameters[defaultParams[&quot;src&quot;]];
             }
 
-            if this-&gt;di-&gt;has(&quot;url&quot;) {
-                let parameters[&quot;src&quot;] = this-&gt;di-&gt;get(&quot;url&quot;)-&gt;getStatic(src);
-            }
+            let parameters[&quot;src&quot;] = this-&gt;di-&gt;get(&quot;url&quot;)-&gt;getStatic(src);
         }
 
         return this-&gt;tagHtml(&quot;img&quot;, parameters, defaultParams, [&quot;local&quot;], null, false, false, true);
@@ -491,9 +487,7 @@ class Tag
 
         fetch query, parameters[&quot;query&quot;];
 
-        if this-&gt;di-&gt;has(&quot;url&quot;) {
-            let parameters[&quot;href&quot;] = this-&gt;di-&gt;get(&quot;url&quot;)-&gt;get(href, query, local);
-        }
+        let parameters[&quot;href&quot;] = this-&gt;di-&gt;get(&quot;url&quot;)-&gt;get(href, query, local);
 
         return this-&gt;tagHtml(&quot;a&quot;, parameters, defaultParams, [&quot;text&quot;, &quot;local&quot;, &quot;query&quot;], &quot;text&quot;, true);
     }
@@ -531,9 +525,7 @@ class Tag
                 fetch href, parameters[defaultParams[&quot;href&quot;]];
             }
 
-            if this-&gt;di-&gt;has(&quot;url&quot;) {
-                let parameters[&quot;href&quot;] = this-&gt;di-&gt;get(&quot;url&quot;)-&gt;getStatic(href);
-            }
+            let parameters[&quot;href&quot;] = this-&gt;di-&gt;get(&quot;url&quot;)-&gt;getStatic(href);
         }
 
         return this-&gt;tagHtml(&quot;link&quot;, parameters, defaultParams, [&quot;local&quot;], null, false, true, true);
@@ -571,7 +563,7 @@ class Tag
                 fetch src, parameters[defaultParams[&quot;src&quot;]];
             }
 
-            if src &amp;&amp; this-&gt;di-&gt;has(&quot;url&quot;) {
+            if src {
                 let parameters[&quot;src&quot;] = this-&gt;di-&gt;get(&quot;url&quot;)-&gt;getStatic(src);
             }
         }
@@ -848,7 +840,7 @@ class Tag
 
         for key, value in attrs {
             if typeof key == &quot;string&quot; &amp;&amp; value !== null &amp;&amp; value !== false &amp;&amp; !in_array(key, skip) {
-                if this-&gt;escape &amp;&amp; this-&gt;di-&gt;has(&quot;filter&quot;) {
+                if this-&gt;escape {
                     let value = this-&gt;di-&gt;get(&quot;filter&quot;)-&gt;sanitize(value, &quot;escape&quot;);
                 }
                 let code .= &quot; &quot; . key . &quot;=\&quot;&quot; . value. &quot;\&quot;&quot;;

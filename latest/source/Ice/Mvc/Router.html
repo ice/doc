@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.1.2</span>
+                                                    ice Documentation <span class="version">v1.1.5</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -83,14 +83,13 @@ use Ice\Mvc\Route\Dispatcher\DispatcherInterface;
  * @package     Ice/Router
  * @category    Component
  * @author      Ice Team
- * @copyright   (c) 2014-2015 Ice Team
+ * @copyright   (c) 2014-2016 Ice Team
  * @license     http://iceframework.org/license
  * @uses        FastRoute http:/github.com/nikic/FastRoute
  */
 class Router
 {
 
-    protected di;
     protected defaultModule = &quot;default&quot; { get, set };
     protected defaultHandler = &quot;index&quot; { get, set };
     protected defaultAction = &quot;index&quot; { get, set };
@@ -111,14 +110,6 @@ class Router
     const NOT_FOUND = 0;
     const FOUND = 1;
     const METHOD_NOT_ALLOWED = 2;
-
-    /**
-     * Router constructor. Fetch Di and set it as a property.
-     */
-    public function __construct()
-    {
-        let this-&gt;di = Di::$fetch();
-    }
 
     /**
      * Set defaults values
@@ -160,39 +151,37 @@ class Router
      */
     public function fastRoute()
     {
-        var options, dispatcher, data, collector, parser, generator, route, handler;
+        var options, data, route, handler;
 
         let options = array_merge([
             &quot;routeParser&quot;: &quot;Ice\\Mvc\\Route\\Parser\\Std&quot;,
             &quot;dataGenerator&quot;: &quot;Ice\\Mvc\\Route\\DataGenerator\\GroupCount&quot;,
-            &quot;dispatcher&quot;:&quot;Ice\\Mvc\\Route\\Dispatcher\\GroupCount&quot;,
+            &quot;dispatcher&quot;: &quot;Ice\\Mvc\\Route\\Dispatcher\\GroupCount&quot;,
             &quot;cache&quot;: false
         ], this-&gt;options);
 
-        let this-&gt;options = options,
-            collector = this-&gt;collector;
+        let this-&gt;options = options;
 
-        if typeof collector != &quot;object&quot; || typeof collector == &quot;object&quot; &amp;&amp; !(collector instanceof Collector) {
-            fetch parser, options[&quot;routeParser&quot;];
-            fetch generator, options[&quot;dataGenerator&quot;];
-
-            let this-&gt;collector = new Collector(new {parser}(), new {generator}());
+        if typeof this-&gt;collector != &quot;object&quot; || typeof this-&gt;collector == &quot;object&quot; &amp;&amp; !(this-&gt;collector instanceof Collector) {
+            let this-&gt;collector = new Collector(create_instance(options[&quot;routeParser&quot;]), create_instance(options[&quot;dataGenerator&quot;]));
         }
 
         if !this-&gt;routes {
-            throw new Exception(&quot;There are no routes.&quot;);
-        } else {
-            for route in this-&gt;routes {
-                fetch handler, route[2];
-                this-&gt;collector-&gt;addRoute(route[0], route[1], handler);
-            }
+            // Set default routes
+            let this-&gt;routes = [
+                [&quot;*&quot;, &quot;/{controller:[a-z]+}/{action:[a-z]+}[/{param}]&quot;],
+                [&quot;*&quot;, &quot;/{controller:[a-z]+}&quot;],
+                [&quot;*&quot;, &quot;&quot;]
+            ];
         }
 
-        let dispatcher = this-&gt;dispatcher;
+        for route in this-&gt;routes {
+            fetch handler, route[2];
+            this-&gt;collector-&gt;addRoute(route[0], route[1], handler);
+        }
 
-        if typeof dispatcher != &quot;object&quot; || typeof dispatcher == &quot;object&quot; &amp;&amp; !(dispatcher instanceof DispatcherInterface) {
-            let dispatcher = options[&quot;dispatcher&quot;],
-                this-&gt;dispatcher = new {dispatcher}();
+        if typeof this-&gt;dispatcher != &quot;object&quot; || typeof this-&gt;dispatcher == &quot;object&quot; &amp;&amp; !(this-&gt;dispatcher instanceof DispatcherInterface) {
+            let this-&gt;dispatcher = create_instance(options[&quot;dispatcher&quot;]);
         }
 
         if options[&quot;cache&quot;] {
@@ -241,7 +230,7 @@ class Router
             case self::NOT_FOUND:
                 if this-&gt;silent {
                     // 404 Not Found
-                    let response = this-&gt;di-&gt;get(&quot;response&quot;);
+                    let response = Di::$fetch()-&gt;get(&quot;response&quot;);
                     response-&gt;setStatus(404);
                     response-&gt;setBody(response-&gt;getMessage(404));
 
@@ -251,7 +240,7 @@ class Router
             case self::METHOD_NOT_ALLOWED:
                 if this-&gt;silent {
                     // 405 Method Not Allowed
-                    let response = this-&gt;di-&gt;get(&quot;response&quot;);
+                    let response = Di::$fetch()-&gt;get(&quot;response&quot;);
                     response-&gt;setStatus(405);
                     response-&gt;setBody(response-&gt;getMessage(405));
 

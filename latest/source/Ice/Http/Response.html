@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.1.2</span>
+                                                    ice Documentation <span class="version">v1.1.5</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -83,84 +83,18 @@ use Ice\Http\Response\ResponseInterface;
  * @package     Ice/Http
  * @category    Component
  * @author      Ice Team
- * @copyright   (c) 2014-2015 Ice Team
+ * @copyright   (c) 2014-2016 Ice Team
  * @license     http://iceframework.org/license
  */
 class Response implements ResponseInterface
 {
 
-    protected di;
     protected protocolVersion = &quot;HTTP/1.1&quot; { get, set };
     protected status = 200 { get, set };
     protected headers;
+    protected loops = 16 { get, set };
+    protected redirects = 0 { get };
     protected body { get, set };
-    protected messages = [
-        //Informational 1xx
-        100: &quot;Continue&quot;,
-        101: &quot;Switching Protocols&quot;,
-        102: &quot;Processing&quot;,
-        //Successful 2xx
-        200: &quot;OK&quot;,
-        201: &quot;Created&quot;,
-        202: &quot;Accepted&quot;,
-        203: &quot;Non-Authoritative Information&quot;,
-        204: &quot;No Content&quot;,
-        205: &quot;Reset Content&quot;,
-        206: &quot;Partial Content&quot;,
-        207: &quot;Multi-Status&quot;,
-        208: &quot;Already Reported&quot;,
-        226: &quot;IM Used&quot;,
-        //Redirection 3xx
-        300: &quot;Multiple Choices&quot;,
-        301: &quot;Moved Permanently&quot;,
-        302: &quot;Found&quot;,
-        303: &quot;See Other&quot;,
-        304: &quot;Not Modified&quot;,
-        305: &quot;Use Proxy&quot;,
-        306: &quot;(Unused)&quot;,
-        307: &quot;Temporary Redirect&quot;,
-        308: &quot;Permanent Redirect&quot;,
-        310: &quot;Too Many Redirects&quot;,
-        //Client Error 4xx
-        400: &quot;Bad Request&quot;,
-        401: &quot;Unauthorized&quot;,
-        402: &quot;Payment Required&quot;,
-        403: &quot;Forbidden&quot;,
-        404: &quot;Not Found&quot;,
-        405: &quot;Method Not Allowed&quot;,
-        406: &quot;Not Acceptable&quot;,
-        407: &quot;Proxy Authentication Required&quot;,
-        408: &quot;Request Timeout&quot;,
-        409: &quot;Conflict&quot;,
-        410: &quot;Gone&quot;,
-        411: &quot;Length Required&quot;,
-        412: &quot;Precondition Failed&quot;,
-        413: &quot;Request Entity Too Large&quot;,
-        414: &quot;Request-URI Too Long&quot;,
-        415: &quot;Unsupported Media Type&quot;,
-        416: &quot;Requested Range Not Satisfiable&quot;,
-        417: &quot;Expectation Failed&quot;,
-        418: &quot;I\&quot;m a teapot&quot;,
-        422: &quot;Unprocessable Entity&quot;,
-        423: &quot;Locked&quot;,
-        424: &quot;Failed Dependency&quot;,
-        426: &quot;Upgrade Required&quot;,
-        428: &quot;Precondition Required&quot;,
-        429: &quot;Too Many Requests&quot;,
-        431: &quot;Request Header Fields Too Large&quot;,
-        //Server Error 5xx
-        500: &quot;Internal Server Error&quot;,
-        501: &quot;Not Implemented&quot;,
-        502: &quot;Bad Gateway&quot;,
-        503: &quot;Service Unavailable&quot;,
-        504: &quot;Gateway Timeout&quot;,
-        505: &quot;HTTP Version Not Supported&quot;,
-        506: &quot;Variant Also Negotiates&quot;,
-        507: &quot;Insufficient Storage&quot;,
-        508: &quot;Loop Detected&quot;,
-        510: &quot;Not Extended&quot;,
-        511: &quot;Network Authentication Required&quot;
-    ] { get };
 
     /**
      * Response constructor. Fetch Di and set it as a property.
@@ -170,8 +104,6 @@ class Response implements ResponseInterface
      */
     public function __construct(string body = &quot;&quot;, int status = 200)
     {
-        let this-&gt;di = Di::$fetch();
-
         let this-&gt;headers = new Headers(),
             this-&gt;status = status,
             this-&gt;body = body;
@@ -296,9 +228,15 @@ class Response implements ResponseInterface
     {
         if !headers_sent() {
             if strpos(PHP_SAPI, &quot;cgi&quot;) === 0 {
-                header(sprintf(&quot;Status: %d %s&quot;, this-&gt;status, this-&gt;messages[this-&gt;status]));
+                header(sprintf(&quot;Status: %d %s&quot;, this-&gt;status, this-&gt;getMessage(this-&gt;status)));
             } else {
-                header(sprintf(&quot;%s %d %s&quot;, this-&gt;getProtocolVersion(), this-&gt;status, this-&gt;messages[this-&gt;status]));
+                header(sprintf(&quot;%s %d %s&quot;, this-&gt;getProtocolVersion(), this-&gt;status, this-&gt;getMessage(this-&gt;status)));
+            }
+
+            var di = Di::$fetch();
+
+            if di-&gt;has(&quot;session&quot;) &amp;&amp; !this-&gt;isRedirect() {
+                di-&gt;get(&quot;session&quot;)-&gt;remove(&quot;_redirects&quot;);
             }
 
             this-&gt;headers-&gt;send();
@@ -317,14 +255,29 @@ class Response implements ResponseInterface
      */
     public function redirect(string location = null, int status = 302, boolean external = false)
     {
-        var url;
+        var url, di = Di::$fetch();;
+        int redirects;
 
         this-&gt;setStatus(status);
 
         if !external {
-            let url = this-&gt;di-&gt;get(&quot;url&quot;),
+            let url = di-&gt;get(&quot;url&quot;),
                 location = url-&gt;get(location);
         }
+
+        if di-&gt;has(&quot;session&quot;) &amp;&amp; this-&gt;loops {
+            var session = di-&gt;get(&quot;session&quot;);
+
+            let redirects = (int) session-&gt;get(&quot;_redirects&quot;, 0) + 1,
+                this-&gt;redirects = redirects;
+
+            session-&gt;set(&quot;_redirects&quot;, redirects);
+
+            if this-&gt;redirects &gt; this-&gt;loops {
+                return this;
+            }
+        }
+
         this-&gt;headers-&gt;set(&quot;Location&quot;, location);
 
         return this;
@@ -440,9 +393,85 @@ class Response implements ResponseInterface
     {
         var message;
 
-        fetch message, this-&gt;messages[code];
+        fetch message, this-&gt;getMessages()[code];
 
         return message ? message : &quot;&quot;;
+    }
+
+    /**
+     * Get all messages.
+     *
+     * @return array
+     */
+    public function getMessages() -&gt; array
+    {
+        return [
+            //Informational 1xx
+            100: &quot;Continue&quot;,
+            101: &quot;Switching Protocols&quot;,
+            102: &quot;Processing&quot;,
+            //Successful 2xx
+            200: &quot;OK&quot;,
+            201: &quot;Created&quot;,
+            202: &quot;Accepted&quot;,
+            203: &quot;Non-Authoritative Information&quot;,
+            204: &quot;No Content&quot;,
+            205: &quot;Reset Content&quot;,
+            206: &quot;Partial Content&quot;,
+            207: &quot;Multi-Status&quot;,
+            208: &quot;Already Reported&quot;,
+            226: &quot;IM Used&quot;,
+            //Redirection 3xx
+            300: &quot;Multiple Choices&quot;,
+            301: &quot;Moved Permanently&quot;,
+            302: &quot;Found&quot;,
+            303: &quot;See Other&quot;,
+            304: &quot;Not Modified&quot;,
+            305: &quot;Use Proxy&quot;,
+            306: &quot;(Unused)&quot;,
+            307: &quot;Temporary Redirect&quot;,
+            308: &quot;Permanent Redirect&quot;,
+            310: &quot;Too Many Redirects&quot;,
+            //Client Error 4xx
+            400: &quot;Bad Request&quot;,
+            401: &quot;Unauthorized&quot;,
+            402: &quot;Payment Required&quot;,
+            403: &quot;Forbidden&quot;,
+            404: &quot;Not Found&quot;,
+            405: &quot;Method Not Allowed&quot;,
+            406: &quot;Not Acceptable&quot;,
+            407: &quot;Proxy Authentication Required&quot;,
+            408: &quot;Request Timeout&quot;,
+            409: &quot;Conflict&quot;,
+            410: &quot;Gone&quot;,
+            411: &quot;Length Required&quot;,
+            412: &quot;Precondition Failed&quot;,
+            413: &quot;Request Entity Too Large&quot;,
+            414: &quot;Request-URI Too Long&quot;,
+            415: &quot;Unsupported Media Type&quot;,
+            416: &quot;Requested Range Not Satisfiable&quot;,
+            417: &quot;Expectation Failed&quot;,
+            418: &quot;I&apos;m a teapot&quot;,
+            422: &quot;Unprocessable Entity&quot;,
+            423: &quot;Locked&quot;,
+            424: &quot;Failed Dependency&quot;,
+            426: &quot;Upgrade Required&quot;,
+            428: &quot;Precondition Required&quot;,
+            429: &quot;Too Many Requests&quot;,
+            431: &quot;Request Header Fields Too Large&quot;,
+            //Server Error 5xx
+            500: &quot;Internal Server Error&quot;,
+            501: &quot;Not Implemented&quot;,
+            502: &quot;Bad Gateway&quot;,
+            503: &quot;Service Unavailable&quot;,
+            504: &quot;Gateway Timeout&quot;,
+            505: &quot;HTTP Version Not Supported&quot;,
+            506: &quot;Variant Also Negotiates&quot;,
+            507: &quot;Insufficient Storage&quot;,
+            508: &quot;Loop Detected&quot;,
+            510: &quot;Not Extended&quot;,
+            511: &quot;Network Authentication Required&quot;
+        ];
     }
 
     /**

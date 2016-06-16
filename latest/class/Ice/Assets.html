@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.1.2</span>
+                                                    ice Documentation <span class="version">v1.1.5</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -82,7 +82,7 @@
                 
     </div>
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-getCss">getCss</a></span>(<span class="small"></span>)
+        <span class="method-name"><a href="#method-details-setCollections">setCollections</a></span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$collections</strong></span></span>)
             </div>
 </td>
 </tr>
@@ -97,7 +97,7 @@
                 
     </div>
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-getJs">getJs</a></span>(<span class="small"></span>)
+        <span class="method-name"><a href="#method-details-getCollections">getCollections</a></span>(<span class="small"></span>)
             </div>
 </td>
 </tr>
@@ -159,7 +159,7 @@
                 
     </div>
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-add">add</a></span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$parameters</strong></span>, <span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$version</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$minify</strong></span></span>)
+        <span class="method-name"><a href="#method-details-add">add</a></span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$parameters</strong></span>, <span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$version</strong></span>, <span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$collection</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$minify</strong></span></span>)
                 <div class="summary-text text-muted">Add resource to assets, autodetect type.</div>
             </div>
 </td>
@@ -175,7 +175,7 @@
                 
     </div>
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-addCss">addCss</a></span>(<span class="small"><span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$parameters</strong></span>, <span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$version</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$minify</strong></span></span>)
+        <span class="method-name"><a href="#method-details-addCss">addCss</a></span>(<span class="small"><span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$parameters</strong></span>, <span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$version</strong></span>, <span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$collection</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$minify</strong></span></span>)
                 <div class="summary-text text-muted">Add CSS resource to assets.</div>
             </div>
 </td>
@@ -191,7 +191,7 @@
                 
     </div>
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-addJs">addJs</a></span>(<span class="small"><span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$parameters</strong></span>, <span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$version</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$minify</strong></span></span>)
+        <span class="method-name"><a href="#method-details-addJs">addJs</a></span>(<span class="small"><span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$parameters</strong></span>, <span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$version</strong></span>, <span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$collection</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$minify</strong></span></span>)
                 <div class="summary-text text-muted">Add JS resource to assets.</div>
             </div>
 </td>
@@ -207,8 +207,72 @@
                 
     </div>
     <div class="method-summary">
+        <span class="method-name"><a href="#method-details-addToCollection">addToCollection</a></span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$key</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$value</strong></span></span>)
+                <div class="summary-text text-muted">Add an asset to the collection.</div>
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-getCss">getCss</a></span>(<span class="small"></span>)
+                <div class="summary-text text-muted">Get the CSS default collection.</div>
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-getJs">getJs</a></span>(<span class="small"></span>)
+                <div class="summary-text text-muted">Get the JS default collection.</div>
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-get">get</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$key</strong></span></span>)
+                <div class="summary-text text-muted">Get some collection.</div>
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
         <span class="method-name"><a href="#method-details-minify">minify</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$content</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$type</strong></span></span>)
-                <div class="summary-text text-muted">Minify content</div>
+                <div class="summary-text text-muted">Minify content.</div>
             </div>
 </td>
 </tr>
@@ -224,7 +288,7 @@
     </div>
     <div class="method-summary">
         <span class="method-name"><a href="#method-details-prepare">prepare</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$uri</strong></span>, <span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$type</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$minify</strong></span></span>)
-                <div class="summary-text text-muted">Prepare resource</div>
+                <div class="summary-text text-muted">Prepare resource.</div>
             </div>
 </td>
 </tr>
@@ -252,7 +316,7 @@
         
 <li class="class-method clearfix">
 
-    <div class="hidden-anchor"  id="method-details-getCss"></div>
+    <div class="hidden-anchor"  id="method-details-setCollections"></div>
     
     <div class="method-details">
         
@@ -266,7 +330,7 @@
                                 <span class="small visibility-public">public</span>
                 
                                 
-                <span class="small">function</span> <span class="method-name">getCss</span>(<span class="small"></span>)
+                <span class="small">function</span> <span class="method-name">setCollections</span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$collections</strong></span></span>)
                 </h3>
                                 
             </div>
@@ -279,7 +343,7 @@
         
 <li class="class-method clearfix">
 
-    <div class="hidden-anchor"  id="method-details-getJs"></div>
+    <div class="hidden-anchor"  id="method-details-getCollections"></div>
     
     <div class="method-details">
         
@@ -293,7 +357,7 @@
                                 <span class="small visibility-public">public</span>
                 
                                 
-                <span class="small">function</span> <span class="method-name">getJs</span>(<span class="small"></span>)
+                <span class="small">function</span> <span class="method-name">getCollections</span>(<span class="small"></span>)
                 </h3>
                                 
             </div>
@@ -413,7 +477,7 @@
                                 <span class="small visibility-public">public</span>
                 
                                 
-                <span class="small">function</span> <span class="method-name">add</span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$parameters</strong></span>, <span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$version</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$minify</strong></span></span>)
+                <span class="small">function</span> <span class="method-name">add</span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$parameters</strong></span>, <span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$version</strong></span>, <span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$collection</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$minify</strong></span></span>)
                 </h3>
                                 
                     <div class="text-muted">
@@ -446,7 +510,7 @@
                                 <span class="small visibility-public">public</span>
                 
                                 
-                <span class="small">function</span> <span class="method-name">addCss</span>(<span class="small"><span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$parameters</strong></span>, <span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$version</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$minify</strong></span></span>)
+                <span class="small">function</span> <span class="method-name">addCss</span>(<span class="small"><span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$parameters</strong></span>, <span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$version</strong></span>, <span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$collection</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$minify</strong></span></span>)
                 </h3>
                                 
                     <div class="text-muted">
@@ -479,11 +543,143 @@
                                 <span class="small visibility-public">public</span>
                 
                                 
-                <span class="small">function</span> <span class="method-name">addJs</span>(<span class="small"><span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$parameters</strong></span>, <span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$version</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$minify</strong></span></span>)
+                <span class="small">function</span> <span class="method-name">addJs</span>(<span class="small"><span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$parameters</strong></span>, <span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$version</strong></span>, <span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$collection</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$minify</strong></span></span>)
                 </h3>
                                 
                     <div class="text-muted">
                     Add JS resource to assets.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-addToCollection"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">addToCollection</span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$key</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$value</strong></span></span>)
+                </h3>
+                                
+                    <div class="text-muted">
+                    Add an asset to the collection.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-getCss"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">getCss</span>(<span class="small"></span>)
+                </h3>
+                                
+                    <div class="text-muted">
+                    Get the CSS default collection.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-getJs"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">getJs</span>(<span class="small"></span>)
+                </h3>
+                                
+                    <div class="text-muted">
+                    Get the JS default collection.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-get"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">get</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$key</strong></span></span>)
+                </h3>
+                                
+                    <div class="text-muted">
+                    Get some collection.                    </div>
                     <div>
                                         </div>
                 
@@ -516,7 +712,7 @@
                 </h3>
                                 
                     <div class="text-muted">
-                    Minify content                    </div>
+                    Minify content.                    </div>
                     <div>
                                         </div>
                 
@@ -549,7 +745,7 @@
                 </h3>
                                 
                     <div class="text-muted">
-                    Prepare resource                    </div>
+                    Prepare resource.                    </div>
                     <div>
                                         </div>
                 

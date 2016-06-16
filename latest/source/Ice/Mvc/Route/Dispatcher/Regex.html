@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.1.2</span>
+                                                    ice Documentation <span class="version">v1.1.5</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -101,9 +101,6 @@ abstract class Regex implements DispatcherInterface
         if isset this-&gt;staticRouteMap[httpMethod] &amp;&amp; isset this-&gt;staticRouteMap[httpMethod][uri] {
             let handler = this-&gt;staticRouteMap[httpMethod][uri];
             return [Router::FOUND, handler, []];
-        } elseif httpMethod === &quot;HEAD&quot; &amp;&amp; isset this-&gt;staticRouteMap[&quot;GET&quot;][uri] {
-            let handler = this-&gt;staticRouteMap[&quot;GET&quot;][uri];
-            return [Router::FOUND, handler, []];
         }
 
         let varRouteData = this-&gt;variableRouteData;
@@ -114,8 +111,32 @@ abstract class Regex implements DispatcherInterface
             if result[0] === Router::FOUND {
                 return result;
             }
-        } elseif httpMethod === &quot;HEAD&quot; &amp;&amp; isset varRouteData[&quot;GET&quot;] {
-            let result = this-&gt;dispatchVariableRoute(varRouteData[&quot;GET&quot;], uri);
+        }
+
+        // For HEAD requests, attempt fallback to GET
+        if httpMethod === &quot;HEAD&quot; {
+            if isset this-&gt;staticRouteMap[&quot;GET&quot;][uri] {
+                let handler = this-&gt;staticRouteMap[&quot;GET&quot;][uri];
+
+                return [Router::FOUND, handler, []];
+            }
+            if isset varRouteData[&quot;GET&quot;] {
+                let result = this-&gt;dispatchVariableRoute(varRouteData[&quot;GET&quot;], uri);
+
+                if result[0] === Router::FOUND {
+                    return result;
+                }
+            }
+        }
+
+        // If nothing else matches, try fallback routes
+        if isset this-&gt;staticRouteMap[&quot;*&quot;][uri] {
+            let handler = this-&gt;staticRouteMap[&quot;*&quot;][uri];
+
+            return [Router::FOUND, handler, []];
+        }
+        if isset varRouteData[&quot;*&quot;] {
+            let result = this-&gt;dispatchVariableRoute(varRouteData[&quot;*&quot;], uri);
 
             if result[0] === Router::FOUND {
                 return result;
