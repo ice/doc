@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.1.5</span>
+                                                    ice Documentation <span class="version">v1.2.1</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -164,6 +164,25 @@ abstract class Model extends Arr implements \Serializable
     public function getIdKey() -&gt; string
     {
         return this-&gt;db-&gt;getId();
+    }
+
+    /**
+     * Get the date time object.
+     *
+     * @param mixed key
+     * @param boolean model
+     * @return object
+     */
+    public function getDateTime(key, model = false)
+    {
+        var value;
+        if this-&gt;has(key) {
+            let value = this-&gt;get(key);
+        } else {
+            let value = key;   
+        }
+
+        return this-&gt;db-&gt;getDateTime(value, model);
     }
 
     /**

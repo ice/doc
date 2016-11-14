@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.1.5</span>
+                                                    ice Documentation <span class="version">v1.2.1</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -118,7 +118,7 @@ class With extends Validator
      */
     public function validate(&lt;Validation&gt; validation, string! field) -&gt; boolean
     {
-        var value, label, message, i18n, replace, fields, with, tmp, required;
+        var value, label, message, i18n, replace, fields, with, tmp, required, key, translate;
 
         let value = validation-&gt;getValue(field);
 
@@ -163,6 +163,10 @@ class With extends Validator
                 let i18n = validation-&gt;getDi()-&gt;get(&quot;i18n&quot;),
                     label = i18n-&gt;translate(label),
                     message = i18n-&gt;translate(message);
+
+                for key, translate in required {
+                    let required[key] = i18n-&gt;translate(translate);
+                }
             }
 
             let replace = [&quot;:field&quot;: label, &quot;:fields&quot;:  join(&quot;, &quot;, required)];

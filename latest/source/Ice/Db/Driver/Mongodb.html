@@ -38,7 +38,7 @@
         <li><a href="../../../../index.html">Home</a></li>
         
                 <li><a href="../../../../classes.html">Classes</a></li>
-                <li><a href="../../../../class/Ice/Db/Driver/Mongo.html">Ice\Db\Driver\Mongo</a></li>
+                <li><a href="../../../../class/Ice/Db/Driver/Mongodb.html">Ice\Db\Driver\Mongodb</a></li>
                 <li><a >Source</a></li>
                 
     </ul>
@@ -47,9 +47,9 @@
 <div class="class-header source clearfix">
     
     <div class="access-buttons pull-right">
-        <a class="zep-button btn btn-default" href="../../../../class/Ice/Db/Driver/Mongo.html">Class</a>
+        <a class="zep-button btn btn-default" href="../../../../class/Ice/Db/Driver/Mongodb.html">Class</a>
 
-                <a class="zep-button btn btn-default" href="https://github.com/ice/framework/tree/dev/ice/db/driver/mongo.zep">Github</a>
+                <a class="zep-button btn btn-default" href="https://github.com/ice/framework/tree/dev/ice/db/driver/mongodb.zep">Github</a>
             </div>
     
     <div class="class-full-name">
@@ -65,7 +65,7 @@
                 <span class="namespace-piece">
             <a href="../../../../namespace/Ice/Db/Driver.html">Driver</a>
         </span>
-                <h1 class="class-name">Mongo</h1>
+                <h1 class="class-name">Mongodb</h1>
     </div>
     
 </div>
@@ -79,7 +79,7 @@ use Ice\Exception;
 use Ice\Db\DbInterface;
 
 /**
- * Mongo driver.
+ * MongoDB driver.
  *
  * @package     Ice/Db
  * @category    Component
@@ -87,7 +87,7 @@ use Ice\Db\DbInterface;
  * @copyright   (c) 2014-2016 Ice Team
  * @license     http://iceframework.org/license
  */
-class Mongo implements DbInterface
+class Mongodb implements DbInterface
 {
 
     protected id = &quot;_id&quot; { get };
@@ -105,7 +105,14 @@ class Mongo implements DbInterface
      */
     public function __construct(string dsn, string dbname = NULL, array options = [])
     {
-        let this-&gt;client = new \MongoDB(new \MongoClient(dsn, options), dbname);
+        var client;
+
+        if version_compare(phpversion(&quot;mongodb&quot;), &quot;1.2.0alpha1&quot;, &quot;&gt;=&quot;) {
+            let client = &quot;MongoDB\\Client&quot;,
+                this-&gt;client = (new {client}(dsn, options))-&gt;selectDatabase(dbname);
+        } else {
+            throw new Exception(&quot;Version of `mongodb` extension must be 1.2.0alpha1 or higher&quot;);
+        }
     }
 
     /**
@@ -116,7 +123,7 @@ class Mongo implements DbInterface
      */
     public function getIdValue(string id) -&gt; object
     {
-        return new \MongoId(id);
+        return new \MongoDB\BSON\ObjectID(id);
     }
 
     /**
@@ -130,10 +137,10 @@ class Mongo implements DbInterface
     {
         var date;
 
-        if typeof value == &quot;object&quot; &amp;&amp; value instanceof \MongoDate {
+        if typeof value == &quot;object&quot; &amp;&amp; value instanceof \MongoDB\BSON\UTCDateTime {
             let date = value;
         } else {
-            let date = new \MongoDate(value);
+            let date = new \MongoDB\BSON\UTCDateTime(value);
         }
 
         if model {
@@ -159,7 +166,7 @@ class Mongo implements DbInterface
         let options[&quot;limit&quot;] = 1,
             result = this-&gt;select(from, filters, options, fields);
 
-        return result-&gt;count() ? new Arr(result-&gt;getNext()) : false;
+        return count(result) ? new Arr(current(result)) : false;
     }
 
     /**
@@ -183,7 +190,7 @@ class Mongo implements DbInterface
 
         let result = this-&gt;select(from, filters, options, fields);
 
-        return new Arr(iterator_to_array(result));
+        return new Arr(result);
     }
 
     /**
@@ -196,15 +203,15 @@ class Mongo implements DbInterface
      */
     public function select(string! from, var filters = [], array options = [], array fields = [])
     {
-        var filtered, collection, result, tmp;
+        var filtered, collection, result;
 
         switch typeof filters {
             case &quot;object&quot;:
-                // Find by MongoId
-                if filters instanceof \MongoId {
+                // Find by ObjectId
+                if filters instanceof \MongoDB\BSON\ObjectID {
                     let filtered = [this-&gt;id: filters];
                 } else {
-                    throw new Exception(&quot;Object must be an MongoId instance&quot;);
+                    throw new Exception(&quot;Object must be an ObjectID instance&quot;);
                 }
             break;
             case &quot;array&quot;:
@@ -222,25 +229,26 @@ class Mongo implements DbInterface
             break;
         }
 
-        let collection = this-&gt;client-&gt;selectcollection(from),
-            result = collection-&gt;find(filtered, fields);
-
         if isset options[&quot;order&quot;] {
-            let tmp = result,
-                result = tmp-&gt;sort(options[&quot;order&quot;]);
+            let options[&quot;sort&quot;] = options[&quot;order&quot;];
+            unset options[&quot;order&quot;];
         }
-        if isset options[&quot;limit&quot;] {
-            let tmp = result,
-                result = tmp-&gt;limit(options[&quot;limit&quot;]);
-        }
+
         if isset options[&quot;offset&quot;] {
-            let tmp = result,
-                result = tmp-&gt;skip(options[&quot;offset&quot;]);
+            let options[&quot;skip&quot;] = options[&quot;offset&quot;];
+            unset options[&quot;offset&quot;];
         }
 
-        let this-&gt;error = this-&gt;client-&gt;lastError();
+        if count(fields) {
+            let options[&quot;projection&quot;] = array_fill_keys(array_flip(fields), 1);
+        }
 
-        return result;
+        let collection = this-&gt;client-&gt;selectCollection(from),
+            result = collection-&gt;find(filtered, options);
+
+        result-&gt;setTypeMap([&quot;root&quot;: &quot;array&quot;, &quot;document&quot;: &quot;array&quot;, &quot;array&quot;: &quot;array&quot;]);
+
+        return iterator_to_array(result);
     }
 
     /**
@@ -251,14 +259,13 @@ class Mongo implements DbInterface
      */
     public function insert(string! from, array fields = [])
     {
-        var collection, status;
+        var collection, result;
 
-        let collection = this-&gt;client-&gt;selectcollection(from),
-            status = collection-&gt;insert(fields),
-            this-&gt;lastInsertId = fields[this-&gt;id],
-            this-&gt;error = status;
+        let collection = this-&gt;client-&gt;selectCollection(from),
+            result = collection-&gt;insertOne(fields),
+            this-&gt;lastInsertId = result-&gt;getInsertedId();
 
-        return status[&quot;err&quot;] === null ? true : status;
+        return result-&gt;getInsertedCount() ? true : false;
     }
 
     /**
@@ -270,13 +277,12 @@ class Mongo implements DbInterface
      */
     public function update(string! from, var filters = [], array fields = [])
     {
-        var collection, status;
+        var collection, result;
 
-        let collection = this-&gt;client-&gt;selectcollection(from),
-            status = collection-&gt;update(filters, fields),
-            this-&gt;error = status;
+        let collection = this-&gt;client-&gt;selectCollection(from),
+            result = collection-&gt;updateMany(filters, [&quot;$set&quot;: fields]);
 
-        return status[&quot;err&quot;] === null ? true : status;
+        return result-&gt;getMatchedCount() ? true : false;
     }
 
     /**
@@ -287,13 +293,12 @@ class Mongo implements DbInterface
      */
     public function remove(string! from, var filters = [])
     {
-        var collection, status;
+        var collection, result;
 
-        let collection = this-&gt;client-&gt;selectcollection(from),
-            status = collection-&gt;remove(filters),
-            this-&gt;error = status;
+        let collection = this-&gt;client-&gt;selectCollection(from),
+            result = collection-&gt;deleteMany(filters);
 
-        return status[&quot;err&quot;] === null ? true : status;
+        return result-&gt;getDeletedCount() ? true : false;
     }
 
     /**

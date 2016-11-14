@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.1.5</span>
+                                                    ice Documentation <span class="version">v1.2.1</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -98,6 +98,7 @@ class Dump
 {
 
     protected detailed = false { get, set };
+    protected plain = false { get, set };
     protected skipDi = true { get, set };
     protected methods = [];
     protected styles = [];
@@ -106,14 +107,15 @@ class Dump
      * Dump constructor
      *
      * @param boolean detailed debug object&apos;s private and protected properties
-     * @param array styles
+     * @param mixed styles
      */
-    public function __construct(boolean detailed = false, array styles = [])
+    public function __construct(boolean detailed = false, var styles = [])
     {
-        if typeof styles != &quot;array&quot; {
-            throw new Exception(&quot;The styles must be an array&quot;);
+        if typeof styles == &quot;array&quot; {
+            this-&gt;setStyles(styles);
+        } elseif typeof styles == &quot;boolean&quot; {
+            let this-&gt;plain = styles;
         }
-        this-&gt;setStyles(styles);
         let this-&gt;detailed = detailed;
     }
 
@@ -220,10 +222,10 @@ class Dump
         }
 
         if typeof variable == &quot;array&quot; {
-            let output .= strtr(&quot;&lt;b style =&apos;:style&apos;&gt;array&lt;/b&gt; (&lt;span style =&apos;:style&apos;&gt;:count&lt;/span&gt;) (\n&quot;, [&quot;:style&quot;: this-&gt;getStyle(&quot;arr&quot;), &quot;:count&quot;: count(variable)]);
+            let output .= strtr((this-&gt;plain ? &quot;array (:count) (\n&quot; : &quot;&lt;b style =&apos;:style&apos;&gt;array&lt;/b&gt; (&lt;span style =&apos;:style&apos;&gt;:count&lt;/span&gt;) (\n&quot;), [&quot;:style&quot;: this-&gt;getStyle(&quot;arr&quot;), &quot;:count&quot;: count(variable)]);
 
             for key, value in variable {
-                let output .= str_repeat(space, tab) . strtr(&quot;[&lt;span style=&apos;:style&apos;&gt;:key&lt;/span&gt;] =&gt; &quot;, [&quot;:style&quot;: this-&gt;getStyle(&quot;arr&quot;), &quot;:key&quot;: key]);
+                let output .= str_repeat(space, tab) . strtr((this-&gt;plain ? &quot;[:key] =&gt; &quot; : &quot;[&lt;span style=&apos;:style&apos;&gt;:key&lt;/span&gt;] =&gt; &quot;), [&quot;:style&quot;: this-&gt;getStyle(&quot;arr&quot;), &quot;:key&quot;: key]);
 
                 if tab == 1 &amp;&amp; name != &quot;&quot; &amp;&amp; !is_int(key) &amp;&amp; name == key {
                     continue;
@@ -238,10 +240,10 @@ class Dump
             var className;
 
             let className = get_class(variable),
-                output .= strtr(&quot;&lt;b style=&apos;:style&apos;&gt;object&lt;/b&gt; :class&quot;, [&quot;:style&quot;: this-&gt;getStyle(&quot;obj&quot;), &quot;:class&quot;: className]);
+                output .= strtr((this-&gt;plain ? &quot;object :class&quot; : &quot;&lt;b style=&apos;:style&apos;&gt;object&lt;/b&gt; :class&quot;), [&quot;:style&quot;: this-&gt;getStyle(&quot;obj&quot;), &quot;:class&quot;: className]);
 
             if get_parent_class(variable) {
-                let output .= strtr(&quot; &lt;b style=&apos;:style&apos;&gt;extends&lt;/b&gt; :parent&quot;, [&quot;:style&quot;: this-&gt;getStyle(&quot;obj&quot;), &quot;:parent&quot;: get_parent_class(variable)]);
+                let output .= strtr((this-&gt;plain ? &quot; extends :parent&quot; : &quot; &lt;b style=&apos;:style&apos;&gt;extends&lt;/b&gt; :parent&quot;), [&quot;:style&quot;: this-&gt;getStyle(&quot;obj&quot;), &quot;:parent&quot;: get_parent_class(variable)]);
             }
             let output .= &quot; (\n&quot;;
 
@@ -251,7 +253,7 @@ class Dump
             } elseif !this-&gt;detailed {
                 // Debug only public properties
                 for key, value in get_object_vars(variable) {
-                    let output .= str_repeat(space, tab) . strtr(&quot;-&gt;&lt;span style=&apos;:style&apos;&gt;:key&lt;/span&gt; (&lt;span style=&apos;:style&apos;&gt;:type&lt;/span&gt;) = &quot;, [&quot;:style&quot;: this-&gt;getStyle(&quot;obj&quot;), &quot;:key&quot;: key, &quot;:type&quot;: &quot;public&quot;]);
+                    let output .= str_repeat(space, tab) . strtr((this-&gt;plain ? &quot;-&gt;:key (:type) = &quot; :  &quot;-&gt;&lt;span style=&apos;:style&apos;&gt;:key&lt;/span&gt; (&lt;span style=&apos;:style&apos;&gt;:type&lt;/span&gt;) = &quot;), [&quot;:style&quot;: this-&gt;getStyle(&quot;obj&quot;), &quot;:key&quot;: key, &quot;:type&quot;: &quot;public&quot;]);
                     let output .= this-&gt;output(value, &quot;&quot;, tab + 1) . &quot;\n&quot;;
                 }
             } else {
@@ -280,13 +282,13 @@ class Dump
                             let type = &quot;protected&quot;;
                         }
                     }
-                    let output .= str_repeat(space, tab) . strtr(&quot;-&gt;&lt;span style=&apos;:style&apos;&gt;:key&lt;/span&gt; (&lt;span style=&apos;:style&apos;&gt;:type&lt;/span&gt;) = &quot;, [&quot;:style&quot;: this-&gt;getStyle(&quot;obj&quot;), &quot;:key&quot;: end(key), &quot;:type&quot;: type]),
+                    let output .= str_repeat(space, tab) . strtr((this-&gt;plain ? &quot;-&gt;:key (:type) = &quot; : &quot;-&gt;&lt;span style=&apos;:style&apos;&gt;:key&lt;/span&gt; (&lt;span style=&apos;:style&apos;&gt;:type&lt;/span&gt;) = &quot;), [&quot;:style&quot;: this-&gt;getStyle(&quot;obj&quot;), &quot;:key&quot;: end(key), &quot;:type&quot;: type]),
                         output .= this-&gt;output(value, &quot;&quot;, tab + 1) . &quot;\n&quot;;
                 } while attr;
             }
 
             let attr = get_class_methods(variable),
-                output .= str_repeat(space, tab) . strtr(&quot;:class &lt;b style=&apos;:style&apos;&gt;methods&lt;/b&gt;: (&lt;span style=&apos;:style&apos;&gt;:count&lt;/span&gt;) (\n&quot;, [&quot;:style&quot;: this-&gt;getStyle(&quot;obj&quot;), &quot;:class&quot;: className, &quot;:count&quot;: count(attr)]);
+                output .= str_repeat(space, tab) . strtr((this-&gt;plain ? &quot;:class methods: (:count) (\n&quot; : &quot;:class &lt;b style=&apos;:style&apos;&gt;methods&lt;/b&gt;: (&lt;span style=&apos;:style&apos;&gt;:count&lt;/span&gt;) (\n&quot;), [&quot;:style&quot;: this-&gt;getStyle(&quot;obj&quot;), &quot;:class&quot;: className, &quot;:count&quot;: count(attr)]);
 
             if in_array(className, this-&gt;methods) {
                 let output .= str_repeat(space, tab) . &quot;[already listed]\n&quot;;
@@ -296,9 +298,9 @@ class Dump
                         let this-&gt;methods[] = className;
                     }
                     if value == &quot;__construct&quot; {
-                        let output .= str_repeat(space, tab + 1) . strtr(&quot;-&gt;&lt;span style=&apos;:style&apos;&gt;:method&lt;/span&gt;(); [&lt;b style=&apos;:style&apos;&gt;constructor&lt;/b&gt;]\n&quot;, [&quot;:style&quot;: this-&gt;getStyle(&quot;obj&quot;), &quot;:method&quot;: value]);
+                        let output .= str_repeat(space, tab + 1) . strtr((this-&gt;plain ? &quot;-&gt;:method(); [constructor]\n&quot; : &quot;-&gt;&lt;span style=&apos;:style&apos;&gt;:method&lt;/span&gt;(); [&lt;b style=&apos;:style&apos;&gt;constructor&lt;/b&gt;]\n&quot;), [&quot;:style&quot;: this-&gt;getStyle(&quot;obj&quot;), &quot;:method&quot;: value]);
                     } else {
-                        let output .= str_repeat(space, tab + 1) . strtr(&quot;-&gt;&lt;span style=&apos;:style&apos;&gt;:method&lt;/span&gt;();\n&quot;, [&quot;:style&quot;: this-&gt;getStyle(&quot;obj&quot;), &quot;:method&quot;: value]);
+                        let output .= str_repeat(space, tab + 1) . strtr((this-&gt;plain ? &quot;-&gt;:method();\n&quot; : &quot;-&gt;&lt;span style=&apos;:style&apos;&gt;:method&lt;/span&gt;();\n&quot;), [&quot;:style&quot;: this-&gt;getStyle(&quot;obj&quot;), &quot;:method&quot;: value]);
                     }
                 }
                 let output .= str_repeat(space, tab) . &quot;)\n&quot;;
@@ -307,29 +309,29 @@ class Dump
         }
 
         if is_int(variable) {
-            return output . strtr(&quot;&lt;b style=&apos;:style&apos;&gt;integer&lt;/b&gt; (&lt;span style=&apos;:style&apos;&gt;:var&lt;/span&gt;)&quot;, [&quot;:style&quot;: this-&gt;getStyle(&quot;int&quot;), &quot;:var&quot;: variable]);
+            return output . strtr((this-&gt;plain ? &quot;integer (:var)&quot; : &quot;&lt;b style=&apos;:style&apos;&gt;integer&lt;/b&gt; (&lt;span style=&apos;:style&apos;&gt;:var&lt;/span&gt;)&quot;), [&quot;:style&quot;: this-&gt;getStyle(&quot;int&quot;), &quot;:var&quot;: variable]);
         }
 
         if is_float(variable) {
-            return output . strtr(&quot;&lt;b style=&apos;:style&apos;&gt;float&lt;/b&gt; (&lt;span style=&apos;:style&apos;&gt;:var&lt;/span&gt;)&quot;, [&quot;:style&quot;: this-&gt;getStyle(&quot;float&quot;), &quot;:var&quot;: variable]);
+            return output . strtr((this-&gt;plain ? &quot;float (:var)&quot; : &quot;&lt;b style=&apos;:style&apos;&gt;float&lt;/b&gt; (&lt;span style=&apos;:style&apos;&gt;:var&lt;/span&gt;)&quot;), [&quot;:style&quot;: this-&gt;getStyle(&quot;float&quot;), &quot;:var&quot;: variable]);
         }
 
         if is_numeric(variable) {
-            return output . strtr(&quot;&lt;b style=&apos;:style&apos;&gt;numeric string&lt;/b&gt; (&lt;span style=&apos;:style&apos;&gt;:length&lt;/span&gt;) \&quot;&lt;span style=&apos;:style&apos;&gt;:var&lt;/span&gt;\&quot;&quot;, [&quot;:style&quot;: this-&gt;getStyle(&quot;num&quot;), &quot;:length&quot;: strlen(variable), &quot;:var&quot;: variable]);
+            return output . strtr((this-&gt;plain ? &quot;numeric string (:length) \&quot;:var\&quot;&quot; : &quot;&lt;b style=&apos;:style&apos;&gt;numeric string&lt;/b&gt; (&lt;span style=&apos;:style&apos;&gt;:length&lt;/span&gt;) \&quot;&lt;span style=&apos;:style&apos;&gt;:var&lt;/span&gt;\&quot;&quot;), [&quot;:style&quot;: this-&gt;getStyle(&quot;num&quot;), &quot;:length&quot;: strlen(variable), &quot;:var&quot;: variable]);
         }
 
         if is_string(variable) {
-            return output . strtr(&quot;&lt;b style=&apos;:style&apos;&gt;string&lt;/b&gt; (&lt;span style=&apos;:style&apos;&gt;:length&lt;/span&gt;) \&quot;&lt;span style=&apos;:style&apos;&gt;:var&lt;/span&gt;\&quot;&quot;, [&quot;:style&quot;: this-&gt;getStyle(&quot;str&quot;), &quot;:length&quot;: strlen(variable), &quot;:var&quot;: nl2br(htmlentities(variable, ENT_IGNORE, &quot;utf-8&quot;))]);
+            return output . strtr((this-&gt;plain ? &quot;string (:length) \&quot;:var\&quot;&quot; : &quot;&lt;b style=&apos;:style&apos;&gt;string&lt;/b&gt; (&lt;span style=&apos;:style&apos;&gt;:length&lt;/span&gt;) \&quot;&lt;span style=&apos;:style&apos;&gt;:var&lt;/span&gt;\&quot;&quot;), [&quot;:style&quot;: this-&gt;getStyle(&quot;str&quot;), &quot;:length&quot;: strlen(variable), &quot;:var&quot;: nl2br(htmlentities(variable, ENT_IGNORE, &quot;utf-8&quot;))]);
         }
 
         if is_bool(variable) {
-            return output . strtr(&quot;&lt;b style=&apos;:style&apos;&gt;boolean&lt;/b&gt; (&lt;span style=&apos;:style&apos;&gt;:var&lt;/span&gt;)&quot;, [&quot;:style&quot;: this-&gt;getStyle(&quot;bool&quot;), &quot;:var&quot;: (variable ? &quot;true&quot; : &quot;false&quot;)]);
+            return output . strtr((this-&gt;plain ? &quot;boolean (:var)&quot; : &quot;&lt;b style=&apos;:style&apos;&gt;boolean&lt;/b&gt; (&lt;span style=&apos;:style&apos;&gt;:var&lt;/span&gt;)&quot;), [&quot;:style&quot;: this-&gt;getStyle(&quot;bool&quot;), &quot;:var&quot;: (variable ? &quot;true&quot; : &quot;false&quot;)]);
         }
 
         if is_null(variable) {
-            return output . strtr(&quot;&lt;b style=&apos;:style&apos;&gt;null&lt;/b&gt;&quot;, [&quot;:style&quot;: this-&gt;getStyle(&quot;null&quot;)]);
+            return output . strtr((this-&gt;plain ? &quot;null&quot; : &quot;&lt;b style=&apos;:style&apos;&gt;null&lt;/b&gt;&quot;), [&quot;:style&quot;: this-&gt;getStyle(&quot;null&quot;)]);
         }
-        return output . strtr(&quot;(&lt;span style=&apos;:style&apos;&gt;:var&lt;/span&gt;)&quot;, [&quot;:style&quot;: this-&gt;getStyle(&quot;other&quot;), &quot;:var&quot;: variable]);
+        return output . strtr((this-&gt;plain ? &quot;(:var)&quot; : &quot;(&lt;span style=&apos;:style&apos;&gt;:var&lt;/span&gt;)&quot;), [&quot;:style&quot;: this-&gt;getStyle(&quot;other&quot;), &quot;:var&quot;: variable]);
     }
 
      /**
@@ -346,7 +348,7 @@ class Dump
      */
     public function variable(variable, string name = null) -&gt; string
     {
-        return strtr(&quot;&lt;pre style=&apos;:style&apos;&gt;:output&lt;/pre&gt;&quot;, [&quot;:style&quot;: this-&gt;getStyle(&quot;pre&quot;), &quot;:output&quot;: this-&gt;output(variable, name)]);
+        return strtr((this-&gt;plain ? &quot;:output&quot; : &quot;&lt;pre style=&apos;:style&apos;&gt;:output&lt;/pre&gt;&quot;), [&quot;:style&quot;: this-&gt;getStyle(&quot;pre&quot;), &quot;:output&quot;: this-&gt;output(variable, name)]);
     }
 
     /**

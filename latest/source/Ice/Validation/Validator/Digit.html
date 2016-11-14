@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.1.5</span>
+                                                    ice Documentation <span class="version">v1.2.1</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -120,7 +120,7 @@ class Digit extends Validator
             return true;
         }
 
-        if !ctype_digit(value) {
+        if !(is_int(value) || ctype_digit(value)) {
             if this-&gt;has(&quot;label&quot;) {
                 let label = this-&gt;get(&quot;label&quot;);
             } else {
