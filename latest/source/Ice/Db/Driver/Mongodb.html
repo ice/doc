@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.2.1</span>
+                                                    ice Documentation <span class="version">v1.2.4</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -140,6 +140,23 @@ class Mongodb implements DbInterface
         if typeof value == &quot;object&quot; &amp;&amp; value instanceof \MongoDB\BSON\UTCDateTime {
             let date = value;
         } else {
+            long tmp;
+
+            switch typeof value {
+                case &quot;null&quot;:
+                    let tmp = time() * 1000,
+                        value = tmp;
+                    break;
+                case &quot;integer&quot;:
+                    let tmp = value * 1000,
+                        value = tmp;
+                    break;
+                default:
+                    let tmp = strtotime(value) * 1000,
+                        value = tmp;
+                    break;
+            }
+
             let date = new \MongoDB\BSON\UTCDateTime(value);
         }
 

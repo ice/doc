@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.2.1</span>
+                                                    ice Documentation <span class="version">v1.2.4</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -139,11 +139,12 @@ class Pdo implements DbInterface
     public function getDateTime(value = null, model = false)
     {
         var date;
+
         if typeof value == &quot;integer&quot; {
-            let date = new \DateTime(&quot;@&quot; . value);
-        } else {
-            let date = new \DateTime(value);
+            let value = &quot;@&quot; . value;
         }
+
+        let date = new \DateTime(value);
 
         if model {
             return date-&gt;format(&quot;Y-m-d H:i:s.u&quot;);

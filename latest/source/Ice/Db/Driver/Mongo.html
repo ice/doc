@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.2.1</span>
+                                                    ice Documentation <span class="version">v1.2.4</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -133,6 +133,10 @@ class Mongo implements DbInterface
         if typeof value == &quot;object&quot; &amp;&amp; value instanceof \MongoDate {
             let date = value;
         } else {
+            if typeof value == &quot;string&quot; {
+                let value = strtotime(value);
+            }
+
             let date = new \MongoDate(value);
         }
 
