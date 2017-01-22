@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.2.4</span>
+                                                    ice Documentation <span class="version">v1.2.5</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -88,7 +88,7 @@ interface DriverInterface
     
     public function getUser(var defaultValue = null);
     public function hasRole(var user, string role = &quot;login&quot;);
-    public function login(var username, string password, boolean remember = false);
+    public function login(var username, string password, boolean remember = false, boolean force = false);
 }
 </code></pre>                    </div>
                 </div>

@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.2.4</span>
+                                                    ice Documentation <span class="version">v1.2.5</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -114,7 +114,6 @@ class Url
         if !local {
             if typeof uri == &quot;string&quot; &amp;&amp; (memstr(uri, &quot;//&quot;) || memstr(uri, &quot;:&quot;)) {
                 if preg_match(&quot;#^((//)|([a-z0-9]+://)|([a-z0-9]+:))#i&quot;, uri) {
-
                     let local = false;
                 } else {
                     let local = true;
@@ -131,7 +130,9 @@ class Url
             if uri === false &amp;&amp; isset _GET[&quot;_url&quot;] {
                 let uri = _GET[&quot;_url&quot;];
             } else {
-                let uri = baseUri . uri;
+                if !starts_with(uri, &quot;#&quot;) &amp;&amp; !starts_with(uri, &quot;?&quot;)  {
+                    let uri = baseUri . uri;
+                }
             }
         }
 

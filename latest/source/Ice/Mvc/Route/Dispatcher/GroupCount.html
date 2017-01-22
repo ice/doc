@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.2.4</span>
+                                                    ice Documentation <span class="version">v1.2.5</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -99,7 +99,7 @@ class GroupCount extends Regex
         var data, matches, handler, varName, varNames, vars;
         int i, j;
 
-        let matches = [];
+        let matches = null;
 
         for data in routeData {
             if !preg_match(data[&quot;regex&quot;], uri, matches) {

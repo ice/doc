@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.2.4</span>
+                                                    ice Documentation <span class="version">v1.2.5</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -361,12 +361,17 @@ abstract class Model extends Arr implements \Serializable
 
         this-&gt;di-&gt;applyHook(&quot;model.before.validate&quot;, [this]);
 
-        if count(this-&gt;rules) {
+        // Run validation if rules or validation is specified
+        if count(this-&gt;rules) || typeof this-&gt;validation == &quot;object&quot; &amp;&amp; (this-&gt;validation instanceof Validation) {
             if !(typeof this-&gt;validation == &quot;object&quot; &amp;&amp; (this-&gt;validation instanceof Validation)) {
                 let this-&gt;validation = new Validation();
             }
 
-            this-&gt;validation-&gt;rules(this-&gt;rules);
+            if !this-&gt;validation-&gt;getRules() {
+                // Resolve the rules
+                this-&gt;validation-&gt;rules(this-&gt;rules);
+            }
+
             this-&gt;validation-&gt;setFilters(this-&gt;filters);
             this-&gt;validation-&gt;setLabels(this-&gt;labels);
             this-&gt;validation-&gt;validate(this-&gt;getData());

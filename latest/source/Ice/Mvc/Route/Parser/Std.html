@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.2.4</span>
+                                                    ice Documentation <span class="version">v1.2.5</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -131,7 +131,7 @@ class Std implements ParserInterface
     {
         var matches, routeData, value, offset;
 
-        let matches = [];
+        let matches = null;
 
         if !preg_match_all(&quot;~&quot; . self::VARIABLE_REGEX . &quot;~x&quot;, route, matches, PREG_OFFSET_CAPTURE | PREG_SET_ORDER) {
             return [route];

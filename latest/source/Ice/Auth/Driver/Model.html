@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.2.4</span>
+                                                    ice Documentation <span class="version">v1.2.5</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -218,9 +218,10 @@ class Model extends Driver implements DriverInterface
      * @param mixed username
      * @param string password
      * @param boolean remember enable autologin
+     * @param boolean force login without password
      * @return boolean
      */
-    public function login(var username, string password, boolean remember = false)
+    public function login(var username, string password, boolean remember = false, boolean force = false) -&gt; boolean | null
     {
         var user, users, roles, userRoles, role, token, lifetime;
 
@@ -239,12 +240,12 @@ class Model extends Driver implements DriverInterface
         }
 
         if typeof user == &quot;object&quot; &amp;&amp; (user instanceof Users) {
-            if empty password {
+            if empty password &amp;&amp; !force {
                 return false;
             }
 
             // Check if password match
-            if user-&gt;get(&quot;password&quot;) == this-&gt;hash(password) {
+            if user-&gt;get(&quot;password&quot;) == this-&gt;hash(password) || force {
                 let userRoles = user-&gt;{&quot;getRoles&quot;}(),
                     roles = [];
 
