@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.2.5</span>
+                                                    ice Documentation <span class="version">v1.2.6</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -370,6 +370,16 @@ class Tag
         }
 
         return this-&gt;tagHtml(&quot;form&quot;, parameters, defaultParams, [&quot;local&quot;]);
+    }
+
+    /**
+     * Builds a FORM close tag.
+     *
+     * @return string
+     */
+    public function endForm() -&gt; string
+    {
+        return this-&gt;endTag(&quot;form&quot;);
     }
 
     /**

@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.2.5</span>
+                                                    ice Documentation <span class="version">v1.2.6</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -251,14 +251,14 @@ class Validation
      * &lt;/code&gt;&lt;/pre&gt;
      *
      * @param array validators
-     * @param boolean clear
+     * @param boolean merge
      * @return void
      */
-    public function rules(array! validators, boolean clear = false) -&gt; void
+    public function rules(array! validators, boolean merge = true) -&gt; void
     {
         var field, rules;
 
-        if clear {
+        if !merge {
             let this-&gt;rules = [];
         }
 
@@ -274,7 +274,7 @@ class Validation
      * @param boolean clear Clear messages before
      * @return boolean
      */
-    public function validate(array data = [], boolean clear = false) -&gt; boolean
+    public function validate(array data = [], boolean clear = true) -&gt; boolean
     {
         var tmp, field, rules, rule;
 
