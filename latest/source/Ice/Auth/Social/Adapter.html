@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.2.6</span>
+                                                    ice Documentation <span class="version">v1.2.11</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -89,6 +89,7 @@ use Ice\Exception;
 abstract class Adapter implements SocialInterface
 {
 
+    protected options;
     protected accessToken { set, get };
     protected clientId;
     protected clientSecret;
@@ -109,13 +110,15 @@ abstract class Adapter implements SocialInterface
      */
     public function __construct(config = [])
     {
-        var clientId, clientSecret, redirectUri, tmp;
+        var clientId, clientSecret, redirectUri, di, auth;
+
+        let di = Di::$fetch();
 
         if !count(config) {
-            let tmp = Di::$fetch()-&gt;get(&quot;config&quot;)-&gt;get(&quot;auth&quot;);
+            let auth = di-&gt;get(&quot;config&quot;)-&gt;get(&quot;auth&quot;);
 
-            if tmp &amp;&amp; tmp-&gt;has(this-&gt;provider) {
-                let config = tmp-&gt;get(this-&gt;provider)-&gt;toArray();
+            if auth &amp;&amp; auth-&gt;has(this-&gt;provider) {
+                let config = auth-&gt;get(this-&gt;provider)-&gt;toArray();
             }
         }
 
@@ -126,12 +129,14 @@ abstract class Adapter implements SocialInterface
             let this-&gt;clientSecret = clientSecret;
         }
         if fetch redirectUri, config[&quot;redirect_uri&quot;] {
-            let this-&gt;redirectUri = redirectUri;
+            let this-&gt;redirectUri = di-&gt;has(&quot;url&quot;) ? di-&gt;get(&quot;url&quot;)-&gt;getStatic(redirectUri) : redirectUri;
         }
 
         if !this-&gt;clientId || !this-&gt;clientSecret || !this-&gt;redirectUri {
             throw new Exception([&quot;Option `%s`, `%s`, `%s` are required&quot;, &quot;client_id&quot;, &quot;client_secret&quot;, &quot;redirect_uri&quot;]);
         }
+
+        let this-&gt;options = config;
     }
 
     /**
@@ -209,6 +214,23 @@ abstract class Adapter implements SocialInterface
         let config = this-&gt;{&quot;prepareAuthParams&quot;}();
 
         return config[&quot;auth_url&quot;] . &quot;?&quot; . urldecode(http_build_query(config[&quot;auth_params&quot;]));
+    }
+
+    /**
+     * Get option value with key.
+     *
+     * @param string key The option key
+     * @param mixed defaultValue The value to return if option key does not exist
+     * @return mixed
+     */
+    public function getOption(string! key, var defaultValue = null)
+    {
+        var value;
+
+        if fetch value, this-&gt;options[key] {
+            return value;
+        }
+        return defaultValue;
     }
 
     /**

@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.2.6</span>
+                                                    ice Documentation <span class="version">v1.2.11</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -130,8 +130,7 @@ class Facebook extends Adapter
     {
         var result, params, tokenInfo, userInfo;
 
-        let result = false,
-            tokenInfo = null;
+        let result = false;
 
         if isset _GET[&quot;code&quot;] {
             let params = [
@@ -143,18 +142,21 @@ class Facebook extends Adapter
 
             // Be able to store access_token in the session (message: This_authorization_code_has_expired_)
             if !this-&gt;accessToken {
-                parse_str(this-&gt;call(parent::GET, &quot;https://graph.facebook.com/oauth/access_token&quot;, params, false), tokenInfo);
-                
-                if count(tokenInfo) &gt; 0 &amp;&amp; isset tokenInfo[&quot;access_token&quot;] {
+                let tokenInfo = this-&gt;call(parent::GET, &quot;https://graph.facebook.com/oauth/access_token&quot;, params);
+
+                if isset tokenInfo[&quot;access_token&quot;] {
                     let this-&gt;accessToken = tokenInfo[&quot;access_token&quot;];
-                }                
+                }
             }
 
             if this-&gt;accessToken {
-                let params = [&quot;access_token&quot;: this-&gt;accessToken],
+                let params = [
+                    &quot;access_token&quot;: this-&gt;accessToken,
+                    &quot;fields&quot;: this-&gt;getOption(&quot;fields&quot;, &quot;id,name,email,gender,link,verified,first_name,last_name,birthday,locale,timezone&quot;)
+                ],
                     userInfo = this-&gt;call(parent::GET, &quot;https://graph.facebook.com/me&quot;, params);
 
-                if isset userInfo[&quot;id&quot;] {
+                if isset userInfo[this-&gt;socialFieldsMap[&quot;socialId&quot;]] {
                     let this-&gt;userInfo = userInfo,
                         result = true;
                 }
@@ -176,7 +178,7 @@ class Facebook extends Adapter
                 &quot;client_id&quot;:     this-&gt;clientId,
                 &quot;redirect_uri&quot;:  this-&gt;redirectUri,
                 &quot;response_type&quot;: &quot;code&quot;,
-                &quot;scope&quot;:         &quot;email,user_birthday&quot;
+                &quot;scope&quot;:         this-&gt;getOption(&quot;scope&quot;, &quot;email,public_profile&quot;)
             ]
         ];
     }

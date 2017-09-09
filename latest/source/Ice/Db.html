@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.2.6</span>
+                                                    ice Documentation <span class="version">v1.2.11</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -68,7 +68,6 @@
 <pre class="zephir-source-file"><code>
 namespace Ice;
 
-use Ice\Db\Driver\Mongo;
 use Ice\Db\Driver\Mongodb;
 use Ice\Db\Driver\Pdo;
 use Ice\Db\DbInterface;
@@ -102,12 +101,19 @@ class Db
         if typeof driver == &quot;object&quot; &amp;&amp; (driver instanceof DbInterface) {
             let this-&gt;driver = driver;
         } elseif typeof driver == &quot;string&quot; {
-            if driver == &quot;mongodb&quot; || driver == &quot;mongo&quot; {
-                var dsn;
-                let dsn = &quot;mongodb://&quot; . user . &quot;:&quot; . password . &quot;@&quot; . host . &quot;:&quot; . port . &quot;/&quot; . name,
-                    this-&gt;driver = driver == &quot;mongo&quot; ? new Mongo(dsn, name) : new Mongodb(dsn, name);
-            } else {
-                let this-&gt;driver = new Pdo(driver . &quot;:host=&quot; . host . &quot;;port=&quot; . port . &quot;;dbname=&quot; . name, user, password);
+            var dsn = &quot;mongodb://&quot; . user . &quot;:&quot; . password . &quot;@&quot; . host . &quot;:&quot; . port . &quot;/&quot; . name;
+
+            switch driver {
+                case &quot;mongo&quot;:
+                    let driver = &quot;Ice\\Db\\Driver\\Mongo&quot;,
+                        this-&gt;driver = new {driver}(dsn, name);
+                    break;
+                case &quot;mongodb&quot;:
+                    let this-&gt;driver = new Mongodb(dsn, name);
+                    break;
+                default:
+                    let this-&gt;driver = new Pdo(driver . &quot;:host=&quot; . host . &quot;;port=&quot; . port . &quot;;dbname=&quot; . name, user, password);
+                    break;
             }
         }
     }

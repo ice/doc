@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.2.6</span>
+                                                    ice Documentation <span class="version">v1.2.11</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -166,7 +166,7 @@ class Unique extends Validator
 
             if db-&gt;getType() == &quot;NOSQL&quot; {
                 if db-&gt;getDriver() instanceof Mongodb {
-                    let value = new \MongoDB\BSON\Regex(tmp, &quot;i&quot;);
+                    let value = new \MongoDB\BSON\Regex(&quot;^&quot; . tmp . &quot;$&quot;, &quot;i&quot;);
                 } else {
                     let value = new \MongoRegex(&quot;/^&quot; . tmp . &quot;$/i&quot;);
                 }

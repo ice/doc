@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.2.6</span>
+                                                    ice Documentation <span class="version">v1.2.11</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -178,7 +178,7 @@ class Google extends Adapter
                 &quot;redirect_uri&quot;:  this-&gt;redirectUri,
                 &quot;response_type&quot;: &quot;code&quot;,
                 &quot;client_id&quot;:     this-&gt;clientId,
-                &quot;scope&quot;:         &quot;https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile&quot;
+                &quot;scope&quot;:         this-&gt;getOption(&quot;scope&quot;, &quot;https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile&quot;)
             ]
         ];
     }
