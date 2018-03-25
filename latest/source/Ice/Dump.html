@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.2.11</span>
+                                                    ice Documentation <span class="version">v1.3.0</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -74,14 +74,14 @@ namespace Ice;
  * @package     Ice/Dump
  * @category    Helper
  * @author      Ice Team
- * @copyright   (c) 2014-2016 Ice Team
+ * @copyright   (c) 2014-2018 Ice Team
  * @license     http://iceframework.org/license
  *
  * &lt;pre&gt;&lt;code&gt;
  *  $foo = 123;
  *  echo (new \Ice\Dump())-&gt;variable($foo, &quot;foo&quot;);
  * &lt;/code&gt;&lt;/pre&gt;
- * 
+ *
  * &lt;pre&gt;&lt;code&gt;
  *  $foo = &quot;string&quot;;
  *  $bar = [&quot;key&quot; =&gt; &quot;value&quot;];
@@ -99,7 +99,7 @@ class Dump
 
     protected detailed = false { get, set };
     protected plain = false { get, set };
-    protected skipDi = true { get, set };
+    protected skip = [&quot;Ice\\Di&quot;] { get, set };
     protected methods = [];
     protected styles = [];
 
@@ -200,7 +200,7 @@ class Dump
     public function one(variable, string name = null) -&gt; string
     {
         return this-&gt;variable(variable, name);
-    }   
+    }
 
     /**
      * Prepare an HTML string of information about a single variable.
@@ -214,7 +214,7 @@ class Dump
     {
         var key, value, output, space, type, attr;
 
-        let space = &quot;  &quot;, 
+        let space = &quot;  &quot;,
             output = &quot;&quot;;
 
         if name {
@@ -222,7 +222,7 @@ class Dump
         }
 
         if typeof variable == &quot;array&quot; {
-            let output .= strtr((this-&gt;plain ? &quot;array (:count) (\n&quot; : &quot;&lt;b style =&apos;:style&apos;&gt;array&lt;/b&gt; (&lt;span style =&apos;:style&apos;&gt;:count&lt;/span&gt;) (\n&quot;), [&quot;:style&quot;: this-&gt;getStyle(&quot;arr&quot;), &quot;:count&quot;: count(variable)]);
+            let output .= strtr((this-&gt;plain ? &quot;array (:count) (&quot; . PHP_EOL : &quot;&lt;b style =&apos;:style&apos;&gt;array&lt;/b&gt; (&lt;span style =&apos;:style&apos;&gt;:count&lt;/span&gt;) (&quot; . PHP_EOL), [&quot;:style&quot;: this-&gt;getStyle(&quot;arr&quot;), &quot;:count&quot;: count(variable)]);
 
             for key, value in variable {
                 let output .= str_repeat(space, tab) . strtr((this-&gt;plain ? &quot;[:key] =&gt; &quot; : &quot;[&lt;span style=&apos;:style&apos;&gt;:key&lt;/span&gt;] =&gt; &quot;), [&quot;:style&quot;: this-&gt;getStyle(&quot;arr&quot;), &quot;:key&quot;: key]);
@@ -230,7 +230,7 @@ class Dump
                 if tab == 1 &amp;&amp; name != &quot;&quot; &amp;&amp; !is_int(key) &amp;&amp; name == key {
                     continue;
                 } else {
-                    let output .= this-&gt;output(value, &quot;&quot;, tab + 1) . &quot;\n&quot;;
+                    let output .= this-&gt;output(value, &quot;&quot;, tab + 1) . PHP_EOL;
                 }
             }
             return output . str_repeat(space, tab - 1) . &quot;)&quot;;
@@ -245,65 +245,59 @@ class Dump
             if get_parent_class(variable) {
                 let output .= strtr((this-&gt;plain ? &quot; extends :parent&quot; : &quot; &lt;b style=&apos;:style&apos;&gt;extends&lt;/b&gt; :parent&quot;), [&quot;:style&quot;: this-&gt;getStyle(&quot;obj&quot;), &quot;:parent&quot;: get_parent_class(variable)]);
             }
-            let output .= &quot; (\n&quot;;
+            let output .= &quot; (&quot; . PHP_EOL;
 
-            if this-&gt;skipDi &amp;&amp; variable instanceof Di {
-                // Skip debuging di
-                let output .= str_repeat(space, tab) . &quot;[skipped]\n&quot;;
+            if in_array(className, this-&gt;skip) {
+                // Skip debuging
+                let output .= str_repeat(space, tab) . &quot;[skipped]&quot; . PHP_EOL;
             } elseif !this-&gt;detailed {
                 // Debug only public properties
                 for key, value in get_object_vars(variable) {
                     let output .= str_repeat(space, tab) . strtr((this-&gt;plain ? &quot;-&gt;:key (:type) = &quot; :  &quot;-&gt;&lt;span style=&apos;:style&apos;&gt;:key&lt;/span&gt; (&lt;span style=&apos;:style&apos;&gt;:type&lt;/span&gt;) = &quot;), [&quot;:style&quot;: this-&gt;getStyle(&quot;obj&quot;), &quot;:key&quot;: key, &quot;:type&quot;: &quot;public&quot;]);
-                    let output .= this-&gt;output(value, &quot;&quot;, tab + 1) . &quot;\n&quot;;
+                    let output .= this-&gt;output(value, &quot;&quot;, tab + 1) . PHP_EOL;
                 }
             } else {
                 // Debug all properties
-                do {
-                    let attr = each(variable);
+                var reflect = &quot;ReflectionClass&quot;;
 
-                    if !attr {
-                        continue;
-                    }
-                    let key = attr[&quot;key&quot;],
-                        value = attr[&quot;value&quot;];
-
-                    if !key {
-                        continue;
-                    }
-
-                    // Explode key by the &quot;\x00&quot; char
-                    let key = explode(chr(0), key),
+                for attr in (new {reflect}(variable))-&gt;getProperties() {
+                    let key = attr-&gt;getName(),
                         type = &quot;public&quot;;
 
-                    if isset key[1] {
-                        let type = &quot;private&quot;;
-
-                        if key[1] == &quot;*&quot; {
-                            let type = &quot;protected&quot;;
-                        }
+                    if attr-&gt;isProtected() {
+                        attr-&gt;setAccessible(true);
+                        let type = &quot;protected&quot;;
                     }
-                    let output .= str_repeat(space, tab) . strtr((this-&gt;plain ? &quot;-&gt;:key (:type) = &quot; : &quot;-&gt;&lt;span style=&apos;:style&apos;&gt;:key&lt;/span&gt; (&lt;span style=&apos;:style&apos;&gt;:type&lt;/span&gt;) = &quot;), [&quot;:style&quot;: this-&gt;getStyle(&quot;obj&quot;), &quot;:key&quot;: end(key), &quot;:type&quot;: type]),
-                        output .= this-&gt;output(value, &quot;&quot;, tab + 1) . &quot;\n&quot;;
-                } while attr;
+
+                    if attr-&gt;isPrivate() {
+                        attr-&gt;setAccessible(true);
+                        let type = &quot;private&quot;;
+                    }
+
+                    let value = attr-&gt;getValue(variable);
+
+                    let output .= str_repeat(space, tab) . strtr((this-&gt;plain ? &quot;-&gt;:key (:type) = &quot; : &quot;-&gt;&lt;span style=&apos;:style&apos;&gt;:key&lt;/span&gt; (&lt;span style=&apos;:style&apos;&gt;:type&lt;/span&gt;) = &quot;), [&quot;:style&quot;: this-&gt;getStyle(&quot;obj&quot;), &quot;:key&quot;: key, &quot;:type&quot;: type]),
+                        output .= this-&gt;output(value, &quot;&quot;, tab + 1) . PHP_EOL;
+                }
             }
 
             let attr = get_class_methods(variable),
-                output .= str_repeat(space, tab) . strtr((this-&gt;plain ? &quot;:class methods: (:count) (\n&quot; : &quot;:class &lt;b style=&apos;:style&apos;&gt;methods&lt;/b&gt;: (&lt;span style=&apos;:style&apos;&gt;:count&lt;/span&gt;) (\n&quot;), [&quot;:style&quot;: this-&gt;getStyle(&quot;obj&quot;), &quot;:class&quot;: className, &quot;:count&quot;: count(attr)]);
+                output .= str_repeat(space, tab) . strtr((this-&gt;plain ? &quot;:class methods: (:count) (&quot; . PHP_EOL : &quot;:class &lt;b style=&apos;:style&apos;&gt;methods&lt;/b&gt;: (&lt;span style=&apos;:style&apos;&gt;:count&lt;/span&gt;) (&quot; . PHP_EOL), [&quot;:style&quot;: this-&gt;getStyle(&quot;obj&quot;), &quot;:class&quot;: className, &quot;:count&quot;: count(attr)]);
 
             if in_array(className, this-&gt;methods) {
-                let output .= str_repeat(space, tab) . &quot;[already listed]\n&quot;;
+                let output .= str_repeat(space, tab) . &quot;[already listed]&quot; . PHP_EOL;
             } else {
                 for value in attr {
                     if !in_array(className, this-&gt;methods) {
                         let this-&gt;methods[] = className;
                     }
                     if value == &quot;__construct&quot; {
-                        let output .= str_repeat(space, tab + 1) . strtr((this-&gt;plain ? &quot;-&gt;:method(); [constructor]\n&quot; : &quot;-&gt;&lt;span style=&apos;:style&apos;&gt;:method&lt;/span&gt;(); [&lt;b style=&apos;:style&apos;&gt;constructor&lt;/b&gt;]\n&quot;), [&quot;:style&quot;: this-&gt;getStyle(&quot;obj&quot;), &quot;:method&quot;: value]);
+                        let output .= str_repeat(space, tab + 1) . strtr((this-&gt;plain ? &quot;-&gt;:method(); [constructor]&quot; . PHP_EOL : &quot;-&gt;&lt;span style=&apos;:style&apos;&gt;:method&lt;/span&gt;(); [&lt;b style=&apos;:style&apos;&gt;constructor&lt;/b&gt;]&quot; . PHP_EOL), [&quot;:style&quot;: this-&gt;getStyle(&quot;obj&quot;), &quot;:method&quot;: value]);
                     } else {
-                        let output .= str_repeat(space, tab + 1) . strtr((this-&gt;plain ? &quot;-&gt;:method();\n&quot; : &quot;-&gt;&lt;span style=&apos;:style&apos;&gt;:method&lt;/span&gt;();\n&quot;), [&quot;:style&quot;: this-&gt;getStyle(&quot;obj&quot;), &quot;:method&quot;: value]);
+                        let output .= str_repeat(space, tab + 1) . strtr((this-&gt;plain ? &quot;-&gt;:method();&quot; . PHP_EOL : &quot;-&gt;&lt;span style=&apos;:style&apos;&gt;:method&lt;/span&gt;();&quot; . PHP_EOL), [&quot;:style&quot;: this-&gt;getStyle(&quot;obj&quot;), &quot;:method&quot;: value]);
                     }
                 }
-                let output .= str_repeat(space, tab) . &quot;)\n&quot;;
+                let output .= str_repeat(space, tab) . &quot;)&quot; . PHP_EOL;
             }
             return output . str_repeat(space, tab - 1) . &quot;)&quot;;
         }

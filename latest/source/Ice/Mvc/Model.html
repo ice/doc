@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.2.11</span>
+                                                    ice Documentation <span class="version">v1.3.0</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -83,7 +83,7 @@ use Ice\Validation;
  * @package     Ice/Db
  * @category    Component
  * @author      Ice Team
- * @copyright   (c) 2014-2016 Ice Team
+ * @copyright   (c) 2014-2018 Ice Team
  * @license     http://iceframework.org/license
  */
 abstract class Model extends Arr implements \Serializable
@@ -91,6 +91,7 @@ abstract class Model extends Arr implements \Serializable
 
     protected di { get };
     protected db { get };
+    protected service = &quot;db&quot;;
     protected from { set };
     protected primary { set, get };
     protected autoincrement = true { set };
@@ -118,7 +119,7 @@ abstract class Model extends Arr implements \Serializable
 
         let di = Di::$fetch(),
             this-&gt;di = di,
-            this-&gt;db = di-&gt;get(&quot;db&quot;);
+            this-&gt;db = di-&gt;get(this-&gt;service);
 
         let data = array_merge(array_fill_keys(this-&gt;fields, null), data);
 
@@ -180,7 +181,7 @@ abstract class Model extends Arr implements \Serializable
         if this-&gt;has(key) {
             let value = this-&gt;get(key);
         } else {
-            let value = key;   
+            let value = key;
         }
 
         return this-&gt;db-&gt;getDateTime(value, model);
@@ -510,7 +511,7 @@ abstract class Model extends Arr implements \Serializable
      *  //Remove current user
      *  $user = Users::findOne(100);
      *  $user-&gt;delete();
-     *  
+     *
      *  //Remove all unactive users
      *  $status = (new Users())-&gt;remove([&quot;status&quot; =&gt; 0]);
      * &lt;/code&gt;&lt;/pre&gt;
@@ -746,10 +747,10 @@ abstract class Model extends Arr implements \Serializable
      * &lt;pre&gt;&lt;code&gt;
      *  // Get rules for one field
      *  $this-&gt;getRules(&apos;password&apos;);
-     *  
+     *
      *  // Get rules for multiple fields
      *  $this-&gt;getRules([&apos;fullName&apos;, &apos;about&apos;]);
-     *  
+     *
      *  // Get all rules
      *  $this-&gt;getRules();
      * &lt;/code&gt;&lt;/pre&gt;

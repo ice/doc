@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.2.11</span>
+                                                    ice Documentation <span class="version">v1.3.0</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -1610,7 +1610,7 @@
       //Remove current user
       $user = Users::findOne(100);
       $user-&gt;delete();
-      
+     
       //Remove all unactive users
       $status = (new Users())-&gt;remove([&quot;status&quot; =&gt; 0]);
      </code></pre>                    </div>
@@ -1883,10 +1883,10 @@
                     <pre><code class="php">
       // Get rules for one field
       $this-&gt;getRules(&apos;password&apos;);
-      
+     
       // Get rules for multiple fields
       $this-&gt;getRules([&apos;fullName&apos;, &apos;about&apos;]);
-      
+     
       // Get all rules
       $this-&gt;getRules();
      </code></pre>                    </div>

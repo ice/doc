@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.2.11</span>
+                                                    ice Documentation <span class="version">v1.3.0</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -77,10 +77,10 @@ use Ice\Mvc\ModuleInterface;
  * @package     Ice/Dispatcher
  * @category    Component
  * @author      Ice Team
- * @copyright   (c) 2014-2016 Ice Team
+ * @copyright   (c) 2014-2018 Ice Team
  * @license     http://iceframework.org/license
  */
-abstract class Dispatcher 
+abstract class Dispatcher
 {
 
     protected di;
@@ -227,7 +227,7 @@ abstract class Dispatcher
                 if !fetch module, modules[this-&gt;module] {
                     throw new Exception([&quot;Module &apos;%s&apos; isn&apos;t registered in the application container&quot;, this-&gt;module]);
                 }
-                
+
                 if typeof module != &quot;array&quot; {
                     throw new Exception(&quot;Module definition must be an array&quot;);
                 }

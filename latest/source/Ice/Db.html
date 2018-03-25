@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.2.11</span>
+                                                    ice Documentation <span class="version">v1.3.0</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -78,7 +78,7 @@ use Ice\Db\DbInterface;
  * @package     Ice/Db
  * @category    Component
  * @author      Ice Team
- * @copyright   (c) 2014-2016 Ice Team
+ * @copyright   (c) 2014-2018 Ice Team
  * @license     http://iceframework.org/license
  */
 class Db
@@ -90,29 +90,29 @@ class Db
      * Db constructor.
      *
      * @param mixed driver
-     * @param string host 
+     * @param string host
      * @param int port
      * @param string name
      * @param string user
      * @param string password
+     * @param array options
      */
-    public function __construct(var driver, string host = null, int port = null, string name = null, string user = null, string password = null)
+    public function __construct(var driver, string host = null, int port = null, string name = null, string user = null, string password = null, array options = [])
     {
         if typeof driver == &quot;object&quot; &amp;&amp; (driver instanceof DbInterface) {
             let this-&gt;driver = driver;
         } elseif typeof driver == &quot;string&quot; {
-            var dsn = &quot;mongodb://&quot; . user . &quot;:&quot; . password . &quot;@&quot; . host . &quot;:&quot; . port . &quot;/&quot; . name;
-
             switch driver {
-                case &quot;mongo&quot;:
-                    let driver = &quot;Ice\\Db\\Driver\\Mongo&quot;,
-                        this-&gt;driver = new {driver}(dsn, name);
+                case &quot;oci&quot;:
+                    var tns = &quot;(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=&quot; . host . &quot;)(PORT=&quot; . port . &quot;))(CONNECT_DATA=(SID=orcl)))&quot;;
+                    let this-&gt;driver = new Pdo(&quot;oci:dbname=&quot; . tns, user, password, options);
                     break;
                 case &quot;mongodb&quot;:
-                    let this-&gt;driver = new Mongodb(dsn, name);
+                    var dsn = &quot;mongodb://&quot; . user . &quot;:&quot; . password . &quot;@&quot; . host . &quot;:&quot; . port . &quot;/&quot; . name;
+                    let this-&gt;driver = new Mongodb(dsn, name, options);
                     break;
                 default:
-                    let this-&gt;driver = new Pdo(driver . &quot;:host=&quot; . host . &quot;;port=&quot; . port . &quot;;dbname=&quot; . name, user, password);
+                    let this-&gt;driver = new Pdo(driver . &quot;:host=&quot; . host . &quot;;port=&quot; . port . &quot;;dbname=&quot; . name, user, password, options);
                     break;
             }
         }
