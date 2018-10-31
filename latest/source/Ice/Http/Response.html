@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.3.0</span>
+                                                    ice Documentation <span class="version">v1.4.0</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -99,10 +99,10 @@ class Response implements ResponseInterface
     /**
      * Response constructor. Fetch Di and set it as a property.
      *
-     * @param string body The HTTP response body
+     * @param string|null body The HTTP response body
      * @param int status The HTTP response status
      */
-    public function __construct(string body = &quot;&quot;, int status = 200)
+    public function __construct(var body = null, int status = 200)
     {
         let this-&gt;headers = new Headers(),
             this-&gt;status = status,
@@ -148,30 +148,39 @@ class Response implements ResponseInterface
      *
      * @param string name
      * @param string value
+     * @return object Response
      */
-    public function setHeader(string name, string value) -&gt; void
+    public function setHeader(string name, string value)
     {
         this-&gt;headers-&gt;set(name, value);
+        
+        return this;
     }
 
     /**
      * Set multiple header values.
      *
      * @param array headers
+     * @return object Response
      */
-    public function setHeaders(array headers) -&gt; void
+    public function setHeaders(array headers)
     {
         this-&gt;headers-&gt;replace(headers);
+        
+        return this;
     }
 
     /**
      * Remove header by index name.
      *
      * @param string name
+     * @return object Response     
      */
-    public function removeHeader(string name) -&gt; void
+    public function removeHeader(string name)
     {
         this-&gt;headers-&gt;remove(name);
+        
+        return this;
     }
 
     /**
@@ -192,7 +201,7 @@ class Response implements ResponseInterface
      * Apply final preparations to the resposne object so that it is suitable for delivery to the client.
      *
      * @param RequestInterface request
-     * @return Response
+     * @return object Response
      */
     public function finalize(&lt;RequestInterface&gt; request)
     {
@@ -222,7 +231,7 @@ class Response implements ResponseInterface
     /**
      * Send HTTP response headers.
      *
-     * @return Response
+     * @return object Response
      */
     public function send()
     {
@@ -246,12 +255,181 @@ class Response implements ResponseInterface
     }
 
     /**
+     * Send file download as the response. All execution will be halted when
+     * this method is called! The third parameter allows the following
+     * options to be set:
+     *
+     * Type      | Option    | Description                        | Default Value
+     * ----------|-----------|------------------------------------|--------------
+     * string    | file      | file that already exists           | null
+     * boolean   | inline    | Display inline instead of download | FALSE
+     * boolean   | resumable | Allow to resumable download        | FALSE
+     * boolean   | delete    | Delete the file after sending      | FALSE
+     * int       | timeout   | Execute time for the script        | 0
+     * int       | speed     | Download speed in millisecond      | 0
+     *
+     * Download a file that already exists:
+     *
+     *     $request-&gt;sendFile(&apos;ice.zip&apos;, &apos;application/zip&apos;, [&apos;file&apos; =&gt; &apos;/download/latest.zip&apos;]);
+     *
+     * Download generated content as a file:
+     *
+     *     $response-&gt;setContent($content);
+     *     $response-&gt;sendFile($filename, $mineType);
+     *
+     * Attention: No further processing can be done after this method is called!
+     *
+     * @param string filename The file name of the attachment
+     * @param string mime Manual mime type
+     * @param array options The keys can be [file|inline|resumable|delete|timeout|speed]
+     * @return  void
+     */
+    public function sendFile(string filename, string mime, array options = [])
+    {
+        var file, filepath, data, size, isDelete, disposition, block, pos, speed, range, start, end;
+
+        if empty options[&quot;file&quot;] {
+            // Force the data to be rendered if
+            let data = (string) this-&gt;body;
+
+            // Get the content size
+            let size = strlen(data);
+
+            // Create a temporary file to hold the current response
+            let file = tmpfile();
+
+            // Write the current response into the file
+            fwrite(file, data);
+
+            let isDelete = false;
+        } else {
+            // Get the complete file path
+            let filepath = realpath(options[&quot;file&quot;]);
+
+            // Get the file size
+            let size = filesize(filepath);
+
+            // Open the file for reading
+            let file = fopen(filepath, &quot;rb&quot;);
+
+            fetch isDelete, options[&quot;delete&quot;];
+        }
+
+        if !is_resource(file) {
+            throw new Exception([&quot;Could not read file to send: %s&quot;,  filename]);
+        }
+
+        if empty options[&quot;inline&quot;] {
+            let disposition = &quot;attachment&quot;;
+        } else {
+            let disposition = &quot;inline&quot;;
+        }
+
+        if empty options[&quot;resumable&quot;] {
+            this-&gt;headers-&gt;set(&quot;Content-Length&quot;, size);
+        } else {
+            // Calculate byte range to download.
+            let range = this-&gt;getByteRange(size),
+                start = range[0],
+                end = range[1];
+
+            // HTTP/1.1 416 Requested Range Not Satisfiable
+            if this-&gt;status == 416 {                
+                header(sprintf(&quot;%s %d %s&quot;, this-&gt;getProtocolVersion(), this-&gt;status, this-&gt;getMessage(this-&gt;status)));
+                exit();
+            }
+
+            // Partial Content
+            if start &gt; 0 || end &lt; size - 1 {
+                let this-&gt;status = 206;
+            }
+
+            // Range of bytes being sent
+            this-&gt;headers-&gt;set(&quot;Accept-Ranges&quot;, &quot;bytes&quot;);
+            this-&gt;headers-&gt;set(&quot;Content-Range&quot;, &quot;bytes &quot;.start.&quot;-&quot;.end.&quot;/&quot;.size);
+            this-&gt;headers-&gt;set(&quot;Content-Length&quot;, end - start + 1);
+        }
+
+        // Set the headers for a download
+        this-&gt;headers-&gt;set(&quot;Content-Disposition&quot;, disposition.&quot;; filename=\&quot;&quot;.filename.&quot;\&quot;&quot;);
+        this-&gt;headers-&gt;set(&quot;Content-Type&quot;, mime);
+
+        // Send all headers now
+        this-&gt;headers-&gt;send();
+
+        while ob_get_level() {
+            // Flush all output buffers
+            ob_end_flush();
+        }
+
+        // Manually stop execution
+        ignore_user_abort(true);
+
+        if empty options[&quot;timeout&quot;] {
+            // Keep the script running forever
+            set_time_limit(0);
+        } else {
+            set_time_limit((int)options[&quot;timeout&quot;]);
+        }
+
+        // Send data in 16kb blocks
+        let block = 1024 * 16;
+
+        if !empty options[&quot;sleep&quot;] {
+            let speed = ((int)options[&quot;sleep&quot;]) * 1000;
+        } else {
+            let speed = 0;
+        }
+
+        fseek(file, start);
+
+        while !feof(file)  {
+            let pos = ftell(file);
+
+            if pos &gt; end || connection_aborted() {
+                break;
+            }
+
+            if pos + block &gt; end {
+                // Don&apos;t read past the buffer.
+                let block = end - pos + 1;
+            }
+
+            // Output a block of the file
+            echo fread(file, block);
+
+            // Send the data now
+            flush();
+
+            if speed &gt; 0 {
+                usleep(speed);
+            }
+        }
+
+        // Close the file
+        fclose(file);
+
+        if isDelete {
+            try {
+                // Attempt to remove the file
+                unlink(filepath);
+            } catch \Exception {
+                // TODO: Write log for this exception
+                // Do NOT display the exception, it will corrupt the output!
+            }
+        }
+
+        // Stop execution
+        exit();
+    }
+
+    /**
      * Redirect to some location.
      * This method prepares the response object to return an HTTP Redirect response to the client.
      *
      * @param string location The redirect destination
      * @param int status The redirect HTTP status code
-     * @return object this
+     * @return object Response
      */
     public function redirect(string location = null, int status = 302, boolean external = false)
     {
@@ -475,13 +653,183 @@ class Response implements ResponseInterface
     }
 
     /**
+     * Response data to JSON string.
+     *
+     * @param mixed data Can be any type excepta resource
+     * @param int option The options for json_encode
+     * @return object Response
+     */
+    public function toJson(var data, var option = null)
+    {
+        this-&gt;headers-&gt;set(&quot;Content-Type&quot;, &quot;application/json;charset=utf-8&quot;);
+
+        let this-&gt;body = json_encode(data, option);
+
+        return this;
+    }
+
+    /**
+     * Response data to XML string.
+     *
+     * &lt;pre&gt;&lt;code&gt;
+     *     $response-&gt;toXml(
+     *         [[&apos;title&apos; =&gt; &apos;hello world&apos;, &apos;desc&apos; =&gt; &apos;dont panic&apos;]],
+     *         [&apos;root&apos; =&gt; &apos;blogs&apos;, &apos;namespace&apos; =&gt; &apos;http://example.com/xml/blog&apos;]
+     *     );
+     *
+     *     // This will output the xml
+     *     &lt;?xml version=&quot;1.0&quot;?&gt;&lt;blogs xmlns=&quot;http://example.com/xml/blog&quot;&gt;
+     *     &lt;blog&gt;&lt;title&gt;hello world&lt;/title&gt;&lt;desc&gt;dont panic&lt;/desc&gt;&lt;/blog&gt;&lt;/blogs&gt;
+     * &lt;/code&gt;&lt;/pre&gt;
+     *
+     * @param mixed data Can be any type excepta resource
+     * @param array options The options can be [root|charset|namespace]
+     * @return object Response
+     */
+    public function toXml(var data, var options = null)
+    {
+        var doc, ns, rootName, charset;
+
+        let rootName = isset options[&quot;root&quot;] ? options[&quot;root&quot;] : &quot;result&quot;,
+            charset = isset options[&quot;charset&quot;] ? options[&quot;charset&quot;] : &quot;utf-8&quot;,
+            doc = this-&gt;xmlEncode(data, rootName),
+            doc-&gt;preserveWhiteSpace = false,
+            doc-&gt;formatOutput = true,
+            doc-&gt;encoding = charset;
+
+        if fetch ns, options[&quot;namespace&quot;] {
+            doc-&gt;createAttributeNS(ns, &quot;xmlns&quot;);
+        }
+
+        this-&gt;headers-&gt;set(&quot;Content-Type&quot;, &quot;application/xml;charset=&quot; . charset);
+
+        let this-&gt;body = doc-&gt;saveXML();
+
+        return this;
+    }
+
+    /**
+     * Convert data to XML string.
+     *
+     * @param mixed data Can be any type excepta resource
+     * @param string root The root tag name
+     * @param DOMElement domNode null, ONLY FOR INTERNAL USE
+     * @return DOMDocument domDoc object
+     */
+    public function xmlEncode(var data, string root = &quot;root&quot;, &lt;\DOMElement&gt; domNode = null)
+    {
+        var domDoc, type, key, val, node;
+
+        if domNode === null {
+            let domDoc = new \DOMDocument,
+                domNode = domDoc-&gt;createElement(root);
+
+            domDoc-&gt;appendChild(domNode);
+            this-&gt;xmlEncode(data, null, domNode);
+
+            return domDoc;
+        }
+
+        let domDoc = domNode-&gt;ownerDocument,
+            type = typeof data;
+
+        if type == &quot;array&quot; {
+            for key, val in data {
+                if typeof key == &quot;integer&quot; {
+                    let node = domDoc-&gt;createElement(rtrim(domNode-&gt;tagName, &quot;s&quot;));
+                    node-&gt;setAttribute(&quot;i&quot;, key);
+                } else {
+                    let node = domDoc-&gt;createElement(key);
+                }
+                domNode-&gt;appendChild(node);
+
+                this-&gt;xmlEncode(val, null, node);
+            }
+        } elseif type == &quot;object&quot; {
+            // set internal attr __is__ eq object
+            domNode-&gt;setAttribute(&quot;__is__&quot;, &quot;obj&quot;);
+
+            for key, val in get_object_vars(data) {
+                if typeof val == &quot;array&quot; || typeof val == &quot;object&quot; {
+                    let node = domDoc-&gt;createElement(key);
+                    domNode-&gt;appendChild(node);
+                    this-&gt;xmlEncode(val, null, node);
+                } else {
+                    domNode-&gt;setAttribute(key, val);
+                }
+            }
+        } else {
+            if type == &quot;boolean&quot; {
+                let data = data ? &quot;true&quot; : &quot;false&quot;;
+            }
+            domNode-&gt;appendChild(domDoc-&gt;createTextNode(data));
+        }
+    }
+
+    /**
      * Magic toString, convert response to string.
      *
      * @return string
      */
     public function __toString() -&gt; string
     {
-        return this-&gt;body;
+        return (string) this-&gt;body;
+    }
+
+    /**
+     *
+     * At the moment we only support single ranges.
+     * Multiple ranges requires some more work to ensure it works correctly
+     * and comply with the spesifications:
+     *    http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.2
+     *
+     * Multirange support annouces itself with:
+     * header(&apos;Accept-Ranges: bytes&apos;);
+     *
+     * Multirange content must be sent with multipart/byteranges mediatype,
+     * as well as a boundry header to indicate the various chunks of data.
+     *
+     * @return array The bytes range start and end, error message if there is
+     */
+    protected function getByteRange(int size) -&gt; array
+    {
+        var start, end, range;
+
+        let start = 0,
+            end = size - 1;
+
+        // Defaults to start with when the HTTP_RANGE header doesn&apos;t exist.
+        if isset _SERVER[&quot;HTTP_RANGE&quot;] {
+            let range = explode(&quot;=&quot;, _SERVER[&quot;HTTP_RANGE&quot;], 2);
+
+            if range[0] != &quot;bytes&quot; {
+                let this-&gt;status = 416;
+            } else {
+                // multiple ranges could be specified at the same time,
+                // but for simplicity only serve the first range ATM
+                let range = explode(&quot;,&quot;, range[1], 2), range = range[0];
+
+                // A negative value means we start from the end
+                if range[0] == &quot;-&quot; {
+                    let start = abs(size - abs((int)range));
+                } else {
+                    let range = explode(&quot;-&quot;, range), start = abs((int)range[0]);
+
+                    if range[1] &amp;&amp; is_numeric(range[1]) {
+                        let end = (int)range[1];
+                    }
+                }
+
+                if end &gt; size {
+                    let end = size - 1;
+                }
+
+                if start &gt; end || start &gt; size - 1 || end &gt;= size {
+                    let this-&gt;status = 416;
+                }
+            }
+        }
+        return [start, end];
     }
 }
 </code></pre>                    </div>

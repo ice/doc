@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.3.0</span>
+                                                    ice Documentation <span class="version">v1.4.0</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -163,7 +163,8 @@ class App extends Access
                     view = controller-&gt;view;
 
                 // Load views and set the response body if auto render
-                if this-&gt;autoRender {
+                // and there is no content in the response
+                if this-&gt;autoRender &amp;&amp; response-&gt;getBody() === null {
                     if view-&gt;getContent() === null {
                         if !view-&gt;getFile() {
                             view-&gt;setSilent(true);
@@ -175,8 +176,12 @@ class App extends Access
 
                         view-&gt;setContent(view-&gt;render());
                     }
-
-                    response-&gt;setBody(view-&gt;layout(view-&gt;getMainView()));
+                    // if there is main layout view, other case e.g. load partial view through ajax
+                    if view-&gt;getMainView() {
+                        response-&gt;setBody(view-&gt;layout(view-&gt;getMainView()));
+                    } else {
+                        response-&gt;setBody(view-&gt;getContent());
+                    }
                 }
             }
         }
@@ -184,6 +189,21 @@ class App extends Access
         this-&gt;di-&gt;applyHook(&quot;app.after.handle&quot;, [response]);
 
         return response-&gt;send();
+    }
+
+    /**
+     * Add module with its dir path, initial class name and namespace
+     *
+     * @param string name
+     * @param array options The keys can be [path|class|namespace]
+     * @return object App
+     */
+    public function addModule(string name, array options)
+    {
+        // add or replace module
+        let this-&gt;modules[name] = options;
+
+        return this;
     }
 }
 </code></pre>                    </div>

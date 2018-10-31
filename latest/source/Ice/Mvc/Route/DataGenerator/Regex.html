@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.3.0</span>
+                                                    ice Documentation <span class="version">v1.4.0</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -79,7 +79,7 @@ namespace Ice\Mvc\Route\DataGenerator;
 
 use Ice\Mvc\Route\DataGenerator\DataGeneratorInterface;
 use Ice\Exception;
-use Ice\Mvc\Route;
+use Ice\Mvc\FastRoute;
 
 abstract class Regex implements DataGeneratorInterface
 {
@@ -180,7 +180,7 @@ abstract class Regex implements DataGeneratorInterface
             ));
         }
 
-        let this-&gt;methodToRegexToRoutesMap[httpMethod][regex] = new Route(
+        let this-&gt;methodToRegexToRoutesMap[httpMethod][regex] = new FastRoute(
             httpMethod, handler, regex, variables
         );
     }
@@ -213,7 +213,8 @@ abstract class Regex implements DataGeneratorInterface
 
         return [regex, variables];
     }
-}</code></pre>                    </div>
+}
+</code></pre>                    </div>
                 </div>
             </div>
         </div>

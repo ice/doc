@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.3.0</span>
+                                                    ice Documentation <span class="version">v1.4.0</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -155,9 +155,9 @@ class Validation
      * @param string alias
      * @param string field
      * @param mixed options
-     * @return void
+     * @return object Validation
      */
-    public function resolve(string alias, string field, var options = null) -&gt; void
+    public function resolve(string alias, string field, var options = null)
     {
         var rule;
 
@@ -170,6 +170,8 @@ class Validation
         }
 
         let this-&gt;rules[field][] = &lt;Validator&gt; create_instance_params(rule, [options]);
+        
+        return this;
     }
 
     /**
@@ -191,9 +193,9 @@ class Validation
      * @param string field
      * @param mixed validators
      * @param mixed options
-     * @return void
+     * @return object Validation
      */
-    public function rule(string field, var validators, var options = null) -&gt; void
+    public function rule(string field, var validators, var options = null)
     {
         var validator, rules, rule, alias, values;
 
@@ -230,6 +232,7 @@ class Validation
                 }
             break;
         }
+        return this;
     }
 
     /**
@@ -252,9 +255,9 @@ class Validation
      *
      * @param array validators
      * @param boolean merge
-     * @return void
+     * @return object Validation
      */
-    public function rules(array! validators, boolean merge = true) -&gt; void
+    public function rules(array! validators, boolean merge = true)
     {
         var field, rules;
 
@@ -265,6 +268,8 @@ class Validation
         for field, rules in validators {
             this-&gt;rule(field, rules);
         }
+        
+        return this;
     }
 
     /**
@@ -421,11 +426,13 @@ class Validation
      * Set the default messages.
      *
      * @param array messages
-     * @return void
+     * @return object Validation
      */
-    public function setDefaultMessages(array messages = []) -&gt; void
+    public function setDefaultMessages(array messages = [])
     {
         let this-&gt;defaultMessages = array_merge(this-&gt;defaultMessages, messages);
+        
+        return this;
     }
 
     /**
@@ -450,17 +457,19 @@ class Validation
      *
      * @param string field
      * @param string message
-     * @return void
+     * @return object Validation
      */
-    public function addMessage(string! field, string message) -&gt; void
+    public function addMessage(string! field, string message)
     {
         let this-&gt;messages[field][] = message;
+        
+        return this;
     }
 
     /**
      * Get the validation&apos;s messages.
      *
-     * @return Arr
+     * @return object Arr
      */
     public function getMessages() -&gt; &lt;Arr&gt;
     {

@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.3.0</span>
+                                                    ice Documentation <span class="version">v1.4.0</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -120,17 +120,18 @@ class View extends Arr implements ViewInterface
 
         if !this-&gt;engines {
             let this-&gt;engines[&quot;.phtml&quot;] = new Php(this);
-        }
-        for ext, engine in this-&gt;engines {
-            if typeof engine == &quot;object&quot; {
-                if engine instanceof \Closure {
-                    let this-&gt;engines[ext] = call_user_func_array(engine, [this]);
-                }
-            } else {
-                if typeof engine == &quot;string&quot; {
-                    let this-&gt;engines[ext] = create_instance_params(engine, [this]);
+        } else {
+            for ext, engine in this-&gt;engines {
+                if typeof engine == &quot;object&quot; {
+                    if engine instanceof \Closure {
+                        let this-&gt;engines[ext] = call_user_func_array(engine, [this]);
+                    }
                 } else {
-                    throw new Exception(sprintf(&quot;Invalid template engine registration for &apos;%s&apos; extension&quot;, ext));
+                    if typeof engine == &quot;string&quot; {
+                        let this-&gt;engines[ext] = create_instance_params(engine, [this]);
+                    } else {
+                        throw new Exception(sprintf(&quot;Invalid template engine registration for &apos;%s&apos; extension&quot;, ext));
+                    }
                 }
             }
         }
@@ -161,19 +162,39 @@ class View extends Arr implements ViewInterface
 
         let engines = this-&gt;getEngines();
 
-        for ext, engine in engines {
-            if typeof this-&gt;viewsDir == &quot;array&quot; {
-                let dirs = this-&gt;viewsDir;
-            } else {
-                let dirs = [this-&gt;viewsDir];
-            }
+        if typeof this-&gt;viewsDir == &quot;array&quot; {
+            let dirs = this-&gt;viewsDir;
+        } else {
+            let dirs = [this-&gt;viewsDir];
+        }
 
-            for dir in dirs {
-                let path = dir . this-&gt;file . ext;
-                if file_exists(path) {
-                    let exists = true;
-                    this-&gt;replace(data);
-                    let content = engine-&gt;render(path, this-&gt;all());
+        let ext = pathinfo(this-&gt;file, PATHINFO_EXTENSION);
+
+        if !empty ext {
+            if fetch engine, engines[&quot;.&quot; . ext] {            
+                for dir in dirs {
+                    let path = dir . this-&gt;file;
+                    if file_exists(path) {
+                        let exists = true;
+                        this-&gt;replace(data);
+                        let content = engine-&gt;render(path, this-&gt;all());
+                        break;
+                    }
+                }
+            }
+        } else {
+            for ext, engine in engines {
+                for dir in dirs {
+                    let path = dir . this-&gt;file . ext;
+                    if file_exists(path) {
+                        let exists = true;
+                        this-&gt;replace(data);
+                        let content = engine-&gt;render(path, this-&gt;all());
+                        break;
+                    }
+                }
+                // no need to lookup and parse the other view
+                if exists {
                     break;
                 }
             }
@@ -229,30 +250,39 @@ class View extends Arr implements ViewInterface
      *
      * @param string name
      * @param mixed value
+     * @return object View
      */
     public function setVar(string! name, value)
     {
         this-&gt;set(name, value);
+        
+        return this;
     }
 
     /**
      * Set multiple vars to the view.
      *
      * @param array vars
+     * @return object View
      */
     public function setVars(array! vars)
     {
         this-&gt;replace(vars);
+        
+        return this;
     }
 
     /**
      * Alias of the `setMainView` method.
      *
      * @param array vars
+     * @return object View
      */
     public function setLayout(string layout)
     {
         this-&gt;setMainView(layout);
+        
+        return this;
     }
 
     /**

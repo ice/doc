@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" type="text/css" href="../../../../asset/static/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="../../../../asset/static/css/tomorrow.min.css" id="tomorrow" />
+        <link rel="stylesheet" type="text/css" href="../../../../asset/static/css/tomorrow-night.min.css" id="tomorrow-night" disabled />
+        <link rel="stylesheet" type="text/css" href="../../../../asset/static/css/style.css" />
+    </head>
+    <body>
+        <header class="navbar navbar-default navbar-fixed-top">
+            <div id="top-bar" class="container-fluid">
+                <div id="top-left" class="navbar-header">
+                    <a href="../../../../index.html" class="navbar-brand">
+                                                    ice Documentation <span class="version">v1.4.0</span>
+                                            </a>
+                </div>
+                <div id="top-right" class="collapse navbar-collapse">
+
+                </div>
+            </div>
+        </header>
+        <div id="body" class="container-fluid">
+            <div class="row">
+                <div id="body-left" class="col-lg-3 col-sm-4">
+                    <div class="header-search">
+                        <input class="search-box form-control" placeholder="Search for a class or namespace " type="text" />
+                        <div id="menu-wrapper">
+                        </div>
+                    </div>
+                </div>
+                <div id="body-right" class="col-lg-9 col-sm-8">
+                    <div class="content">
+                        
+<div>
+    
+    <ul class="breadcrumb">
+        
+        <li><a href="../../../../index.html">Home</a></li>
+        
+                <li><a href="../../../../classes.html">Classes</a></li>
+                <li><a href="../../../../class/Ice/Cli/Websocket/Websocket.html">Ice\Cli\Websocket\Websocket</a></li>
+                <li><a >Source</a></li>
+                
+    </ul>
+    
+</div>
+<div class="class-header source clearfix">
+    
+    <div class="access-buttons pull-right">
+        <a class="zep-button btn btn-default" href="../../../../class/Ice/Cli/Websocket/Websocket.html">Class</a>
+
+                <a class="zep-button btn btn-default" href="https://github.com/ice/framework/tree/dev/ice/cli/websocket/websocket.zep">Github</a>
+            </div>
+    
+    <div class="class-full-name">
+        
+        <span class="class-type">Class</span>
+        
+                <span class="namespace-piece">
+            <a href="../../../../namespace/Ice.html">Ice</a>
+        </span>
+                <span class="namespace-piece">
+            <a href="../../../../namespace/Ice/Cli.html">Cli</a>
+        </span>
+                <span class="namespace-piece">
+            <a href="../../../../namespace/Ice/Cli/Websocket.html">Websocket</a>
+        </span>
+                <h1 class="class-name">Websocket</h1>
+    </div>
+    
+</div>
+
+
+<pre class="zephir-source-file"><code>
+namespace Ice\Cli\Websocket;
+
+use Ice\Cli\Console;
+
+/**
+ * A base class used in the server class.
+ * It handles all encoding / decoding / masking / socket operations.
+ *
+ * @package     Ice/Cli
+ * @category    Component
+ * @author      Ice Team
+ * @copyright   (c) 2014-2018 Ice Team
+ * @license     http://iceframework.org/license
+ */
+class Websocket
+{
+
+    protected static opcodes = [
+        &quot;continuation&quot;: 0,
+        &quot;text&quot;: 1,
+        &quot;binary&quot;: 2,
+        &quot;close&quot;: 8,
+        &quot;ping&quot;: 9,
+        &quot;pong&quot;: 10
+    ];
+
+    protected static fragmentSize = 4096;
+    protected static magic = &quot;258EAFA5-E914-47DA-95CA-C5AB0DC85B11&quot;;
+    protected params;
+
+    /**
+     * Send data to a socket in clear form (basically fwrite).
+     *
+     * @param resource socket The socket to write to
+     * @param string data The data to send
+     * @return boolean Was the send successful
+     */
+    public function sendClear(resource socket, string data) -&gt; boolean
+    {
+        return fwrite(socket, data) &gt; 0;
+    }
+
+    /**
+     * Send data to a socket.
+     *
+     * @param resource socket The socket to send to
+     * @param string data The data to send
+     * @param string opcode One of the opcodes (defaults to &quot;text&quot;)
+     * @param boolean masked Should the data be masked (per specs the server should not mask, defaults to false)
+     * @return boolean Was the send successful
+     */
+    public function sendData(resource socket, string data, string opcode = &quot;text&quot;, boolean masked = false) -&gt; boolean
+    {
+        var tmp;
+
+        while strlen(data) {
+            let tmp = substr(data, 0, self::fragmentSize),
+                data = strlen(data) &lt; self::fragmentSize ? &quot;&quot; : substr(data, self::fragmentSize),
+                tmp = this-&gt;encode(tmp, opcode, masked, strlen(data) === 0);
+
+            if is_resource(socket) &amp;&amp; get_resource_type(socket) == &quot;stream&quot; &amp;&amp; !feof(socket) {
+                if fwrite(socket, tmp) === false || stream_get_meta_data(socket)[&quot;timed_out&quot;] {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+
+            let opcode = &quot;continuation&quot;;
+        }
+
+        return true;
+    }
+
+    /**
+     * Read clear data from a socket (basically a fread).
+     *
+     * @param resource socket The socket to read from
+     * @return string The data that was read
+     */
+    public function receiveClear(resource socket) -&gt; string
+    {
+        var data, read, buff, meta;
+
+        let data = &quot;&quot;,
+            read = self::fragmentSize;
+
+        do {
+            let buff = fread(socket, read);
+
+            if buff === false {
+                return &quot;&quot;;
+            }
+
+            let data .= buff,
+                meta = stream_get_meta_data(socket),
+                read = min((int) meta[&quot;unread_bytes&quot;], self::fragmentSize);
+
+            usleep(1000);
+        } while !feof(socket) &amp;&amp; (int) meta[&quot;unread_bytes&quot;] &gt; 0;
+
+        if strlen(data) === 1 {
+            let data .= this-&gt;receiveClear(socket);
+        }
+
+        return data;
+    }
+
+    /**
+     * Read data from a socket (in websocket format).
+     *
+     * @param resource socket The socket to read from
+     * @return string The read data (decoded)
+     */
+    public function receive(resource socket) -&gt; string | boolean
+    {
+        var data, fin, opcode, masked, payload, length, tmp, mask, buff;
+        int i;
+
+        let data = fread(socket, 2);
+
+        if strlen(data) === 1 {
+            let data .= fread(socket, 1);
+        }
+
+        if data === false || strlen(data) &lt; 2 {
+            return false;
+        }
+
+        let fin = (bool) (ord(data[0]) &amp; 1 &lt;&lt; 7),
+            // rsv1 = (bool) (ord(data[0]) &amp; 1 &lt;&lt; 6),
+            // rsv2 = (bool) (ord(data[0]) &amp; 1 &lt;&lt; 5),
+            // rsv3 = (bool) (ord(data[0]) &amp; 1 &lt;&lt; 4),
+            opcode = ord(data[0]) &amp; 31,
+            masked = (bool) (ord(data[1]) &gt;&gt; 7),
+            payload = &quot;&quot;,
+            length = (int) (ord(data[1]) &amp; 127); // Bits 1-7 in byte 1
+
+        if length &gt; 125 {
+            let tmp = length === 126 ? fread(socket, 2) : fread(socket, 8);
+
+            if tmp === false {
+                return false;
+            }
+
+            let length = &quot;&quot;,
+                i = 0;
+
+            while i &lt; strlen(tmp) {
+                let length .= sprintf(&quot;%08b&quot;, ord(tmp[i])),
+                    i++;
+            }
+
+            let length = bindec(length);
+        }
+
+        let mask = &quot;&quot;;
+
+        if masked {
+            let mask = fread(socket, 4);
+
+            if mask === false {
+                return false;
+            }
+        }
+
+        if length &gt; 0 {
+            let tmp = &quot;&quot;;
+
+            do {
+                let buff = fread(socket, min(length, self::fragmentSize));
+
+                if buff === false {
+                    return false;
+                }
+
+                let tmp .= buff;
+            } while strlen(tmp) &lt; length;
+
+            if masked {
+                let i =0;
+
+                while i &lt; length {
+                    let payload .= tmp[i] ^ mask[(int) (i % 4)],
+                        i++;
+                }
+            } else {
+                let payload = tmp;
+            }
+        }
+
+        if opcode === self::opcodes[&quot;close&quot;] {
+            return false;
+        }
+
+        return fin ? payload : payload . this-&gt;receive(socket);
+    }
+
+    /**
+     * Encode the data.
+     *
+     * @param string data The data to send
+     * @param string opcode One of the opcodes (defaults to &quot;text&quot;)
+     * @param boolean masked Should the data be masked
+     * @param boolean fin Add 1 to the head
+     * @return string
+     */
+    protected function encode(string data, string opcode = &quot;text&quot;, boolean masked = true, boolean fin = true) -&gt; string
+    {
+        var length, head, frame, binstr, mask;
+        int i;
+
+        let length = strlen(data),
+            head = &quot;&quot;,
+            head .= fin ? &quot;1&quot; : &quot;0&quot;,
+            head .= &quot;0&quot; . &quot;0&quot; . &quot;0&quot;,
+            head .= sprintf(&quot;%04b&quot;, self::opcodes[opcode]),
+            head .= masked ? &quot;1&quot; : &quot;0&quot;;
+
+        if length &gt; 65535 {
+            let head .= decbin(127),
+                head .= sprintf(&quot;%064b&quot;, length);
+        } elseif length &gt; 125 {
+            let head .= decbin(126),
+                head .= sprintf(&quot;%016b&quot;, length);
+        } else {
+            let head .= sprintf(&quot;%07b&quot;, length);
+        }
+
+        let frame = &quot;&quot;;
+
+        for binstr in str_split(head, 8) {
+            let frame .= chr((int) bindec(binstr));
+        }
+
+        let mask = &quot;&quot;;
+
+        if masked {
+            let i = 0;
+
+            while i &lt; 4 {
+                let mask .= chr(rand(0, 255)),
+                    i++;
+            }
+
+            let frame .= mask;
+        }
+
+        let i = 0;
+
+        while i &lt; length {
+            let frame .= (masked === true) ? data[i] ^ mask[(int) (i % 4)] : data[i],
+                i++;
+        }
+
+        return frame;
+    }
+
+    /**
+     * Set server params.
+     *
+     * @param array params
+     * @return self
+     */
+    public function setParams(array params) -&gt; &lt;self&gt;
+    {
+        let this-&gt;params = params;
+
+        return this;
+    }
+
+    /**
+     * Get server params.
+     *
+     * @return array
+     */
+    public function getParams() -&gt; array
+    {
+        return this-&gt;params;
+    }
+
+    /**
+     * Retrieve a single param.
+     *
+     * @param string key The data key
+     * @param mixed defaultValue The value to return if data key does not exist
+     * @return mixed
+     */
+    public function getParam(string key, defaultValue = null)
+    {
+        if isset this-&gt;params[key] {
+            return this-&gt;params[key];
+        }
+
+        return defaultValue;
+    }
+
+    /**
+     * Display text on the console.
+     *
+     * @param string text Text to display
+     * @param string color The foreground color
+     * @param int decoration Formatting type
+     * @param string bgColor The background color
+     * @param boolean exit Die if true
+     * @return self
+     */
+    public function console(string text, string color = null, int decoration = Console::NORMAL, string bgColor = null, boolean exit = false)
+    {
+        var text;
+
+        let text = date(this-&gt;getParam(&quot;date_format&quot;, &quot;[Y-m-d H:i:s]&quot;)) . &quot; &quot; . text . &quot;\r\n&quot;;
+
+        if exit {
+            die(text);
+        }
+
+        if this-&gt;getParam(&quot;verbose&quot;, false) {
+            echo Console::color(text, color, decoration, bgColor);
+        }
+
+        return this;
+    }
+
+    /**
+     * Get script uptime.
+     *
+     * @param boolean human In seconds if false
+     * @return float|string
+     */
+    public function getUptime(boolean human = true)
+    {
+        var uptime, y, m, d, h, i, s;
+
+        let uptime = microtime(true) - _SERVER[&quot;REQUEST_TIME_FLOAT&quot;];
+
+        if !human {
+            return uptime;
+        }
+
+        let s = uptime % 60,
+            i = floor((uptime % 3600) / 60),
+            h = floor((uptime % 86400) / 3600),
+            d = floor((uptime % 2592000) / 86400),
+            m = floor(uptime / 2592000),
+            y = floor(uptime / 2592000 * 12);
+
+        return (y ? y . &quot;Y &quot; : &quot;&quot;) .
+               (m ? m . &quot;M &quot; : &quot;&quot;) .
+               (d ? d . &quot;d &quot; : &quot;&quot;) .
+               (h ? h . &quot;h &quot; : &quot;&quot;) .
+               (i ? i . &quot;m &quot; : &quot;&quot;) .
+               (s ? s . &quot;s&quot; : &quot;&quot;);
+    }
+
+    /**
+     * Get memory usage.
+     *
+     * @param boolean human In byetes if false
+     * @return int|string
+     */
+    public function getMemoryUsage(boolean human = true)
+    {
+        var size, unit, i;
+
+        let size = memory_get_usage();
+
+        if !human {
+            return size;
+        }
+
+        let unit = [&quot;B&quot;, &quot;KB&quot;, &quot;MB&quot;, &quot;GB&quot;, &quot;TB&quot;, &quot;PB&quot;],
+            i = floor(log(size, 1024));
+
+        return round(size / pow(1024, (i)), 2) . unit[i];
+    }
+}
+</code></pre>                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="../../../../asset/static/js/jquery.min.js"></script>
+        <script src="../../../../asset/static/js/bootstrap.min.js"></script>
+        <script src="../../../../asset/static/js/highlight.pack.js"></script>
+        <script src="../../../../asset/static/js/jquery.slimscroll.min.js"></script>
+        <script src="../../../../asset/api_definition.js"></script>
+
+        <script>var ZepCurrentPath = '../../../../'</script>
+        <script src="../../../../asset/static/js/script.js"></script>
+        <script type="text/javascript">
+            $(window).on("load resize", function() {
+                $('#menu-wrapper').slimscroll({ height: $(window).height() - 100, size: '3px' });
+            });
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function() { $('pre code').each(function(i, block) { hljs.highlightBlock(block); }); });
+            if ($('.zephir-source-file').length) {
+                $('link[id]').each(function(i, link) {
+                    link.disabled = (link.id != 'tomorrow-night');
+                });
+            }
+        </script>
+            </body>
+</html>

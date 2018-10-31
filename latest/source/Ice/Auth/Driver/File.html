@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.3.0</span>
+                                                    ice Documentation <span class="version">v1.4.0</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -147,16 +147,20 @@ class File extends Driver implements DriverInterface
      * @param boolean force login without password
      * @return boolean
      */
-    public function login(string username, string password, boolean remember = false, boolean force = false) -&gt; boolean | null
+    public function login(var username, string password, boolean remember = false, boolean force = false) -&gt; boolean | null
     {
         var user;
+
+        if typeof username != &quot;string&quot; {
+            throw new Exception(&quot;Username must be a string&quot;);
+        }
 
         if username &amp;&amp; fetch user, this-&gt;users[username] {
             if empty password &amp;&amp; !force {
                 return false;
             }
 
-            if user[&quot;password&quot;] === this-&gt;hash(password) || force {
+            if parent::checkHash(password, user[&quot;password&quot;]) || force {
                 // Complete the login
                 this-&gt;completeLogin(username, user[&quot;roles&quot;]);
 

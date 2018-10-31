@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.3.0</span>
+                                                    ice Documentation <span class="version">v1.4.0</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -90,7 +90,10 @@ abstract class Driver
     protected request;
     protected user;
     protected options = [
-        &quot;hash_method&quot;: &quot;sha256&quot;,
+        // algorithms are currently supported: PASSWORD_DEFAULT, PASSWORD_BCRYPT and PASSWORD_ARGON2I
+        &quot;hash_method&quot;: PASSWORD_BCRYPT,
+        &quot;hash_option&quot;: [],
+        // DEPRECATED in 2.0
         &quot;hash_key&quot;: &quot;&quot;,
         &quot;session_key&quot;: &quot;auth_user&quot;,
         &quot;session_roles&quot;: &quot;auth_user_roles&quot;,
@@ -123,7 +126,11 @@ abstract class Driver
      */
     public function checkHash(string password, string hash) -&gt; boolean
     {
-        return this-&gt;hash(password) == hash;
+        if typeof this-&gt;options[&quot;hash_method&quot;] == &quot;string&quot; {
+            return hash_equals(this-&gt;hash(password), hash);
+        } else {
+            return password_verify(password, hash);
+        }
     }
 
     /**
@@ -170,6 +177,20 @@ abstract class Driver
     }
 
     /**
+     * Assigns a value to the specified options.
+     *
+     * @param string key The option key
+     * @param mixed value
+     * @return object self
+     */
+    public function setOption(string key, var value)
+    {
+        let this-&gt;options[key] = value;
+
+        return this;
+    }
+
+    /**
      * Gets the currently logged in user from the session. Returns NULL if no user is currently logged in.
      *
      * @param mixed defaultValue Default value to return if the user is currently not logged in.
@@ -188,7 +209,11 @@ abstract class Driver
      */
     public function hash(string password)
     {
-        return hash_hmac(this-&gt;getOption(&quot;hash_method&quot;), password, this-&gt;getOption(&quot;hash_key&quot;));
+        if typeof this-&gt;options[&quot;hash_method&quot;] == &quot;string&quot; {
+            return hash_hmac(this-&gt;options[&quot;hash_method&quot;], password, this-&gt;options[&quot;hash_key&quot;]);
+        } else {
+            return password_hash(password, this-&gt;options[&quot;hash_method&quot;], this-&gt;options[&quot;hash_option&quot;]);
+        }
     }
 
     /**

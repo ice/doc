@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" type="text/css" href="../../../../asset/static/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="../../../../asset/static/css/tomorrow.min.css" id="tomorrow" />
+        <link rel="stylesheet" type="text/css" href="../../../../asset/static/css/tomorrow-night.min.css" id="tomorrow-night" disabled />
+        <link rel="stylesheet" type="text/css" href="../../../../asset/static/css/style.css" />
+    </head>
+    <body>
+        <header class="navbar navbar-default navbar-fixed-top">
+            <div id="top-bar" class="container-fluid">
+                <div id="top-left" class="navbar-header">
+                    <a href="../../../../index.html" class="navbar-brand">
+                                                    ice Documentation <span class="version">v1.4.0</span>
+                                            </a>
+                </div>
+                <div id="top-right" class="collapse navbar-collapse">
+
+                </div>
+            </div>
+        </header>
+        <div id="body" class="container-fluid">
+            <div class="row">
+                <div id="body-left" class="col-lg-3 col-sm-4">
+                    <div class="header-search">
+                        <input class="search-box form-control" placeholder="Search for a class or namespace " type="text" />
+                        <div id="menu-wrapper">
+                        </div>
+                    </div>
+                </div>
+                <div id="body-right" class="col-lg-9 col-sm-8">
+                    <div class="content">
+                        
+<div>
+    
+    <ul class="breadcrumb">
+        
+        <li><a href="../../../../index.html">Home</a></li>
+        
+                <li><a href="../../../../classes.html">Classes</a></li>
+                <li><a href="../../../../class/Ice/Cli/Websocket/Server.html">Ice\Cli\Websocket\Server</a></li>
+                <li><a >Source</a></li>
+                
+    </ul>
+    
+</div>
+<div class="class-header source clearfix">
+    
+    <div class="access-buttons pull-right">
+        <a class="zep-button btn btn-default" href="../../../../class/Ice/Cli/Websocket/Server.html">Class</a>
+
+                <a class="zep-button btn btn-default" href="https://github.com/ice/framework/tree/dev/ice/cli/websocket/server.zep">Github</a>
+            </div>
+    
+    <div class="class-full-name">
+        
+        <span class="class-type">Class</span>
+        
+                <span class="namespace-piece">
+            <a href="../../../../namespace/Ice.html">Ice</a>
+        </span>
+                <span class="namespace-piece">
+            <a href="../../../../namespace/Ice/Cli.html">Cli</a>
+        </span>
+                <span class="namespace-piece">
+            <a href="../../../../namespace/Ice/Cli/Websocket.html">Websocket</a>
+        </span>
+                <h1 class="class-name">Server</h1>
+    </div>
+    
+</div>
+
+
+<pre class="zephir-source-file"><code>
+namespace Ice\Cli\Websocket;
+
+use Ice\Exception;
+
+/**
+ * Websocket server.
+ *
+ * @package     Ice/Cli
+ * @category    Component
+ * @author      Ice Team
+ * @copyright   (c) 2014-2018 Ice Team
+ * @license     http://iceframework.org/license
+ */
+class Server extends Websocket
+{
+
+    protected verbose = false { set };
+    protected address;
+    protected server { get };
+    protected sockets = [];
+    protected clients = [] { get };
+    protected callbacks = [];
+
+    /**
+     * Create an instance.
+     *
+     * @param string address Where to create the server, defaults to &quot;ws://127.0.0.1:8080&quot;
+     * @param array options Stream context options
+     */
+    public function __construct(string address = &quot;ws://127.0.0.1:8080&quot;, array options = [])
+    {
+        var addr, context, key, value;
+
+        let addr = parse_url(address);
+
+        if addr === false || !isset addr[&quot;scheme&quot;] || !isset addr[&quot;host&quot;] || !isset addr[&quot;port&quot;] {
+            throw new Exception(&quot;Invalid address&quot;);
+        }
+
+        let context = stream_context_create();
+
+        if count(options) {
+            for key, value in options {
+                stream_context_set_option(context, &quot;ssl&quot;, key, value);
+            }
+        }
+
+        let this-&gt;address = address;
+
+        let this-&gt;server = stream_socket_server(
+            (in_array(addr[&quot;scheme&quot;], [&quot;wss&quot;, &quot;tls&quot;]) ? &quot;tls&quot; : &quot;tcp&quot;) . &quot;://&quot; . addr[&quot;host&quot;] . &quot;:&quot; . addr[&quot;port&quot;],
+            null,
+            null,
+            STREAM_SERVER_BIND | STREAM_SERVER_LISTEN,
+            context
+        );
+
+        if this-&gt;server === false {
+            throw new Exception(&quot;Could not create server&quot;);
+        }
+    }
+
+    /**
+     * Start processing requests. This method runs in an infinite loop.
+     *
+     * @return void
+     */
+    public function run() -&gt; void
+    {
+        var changed, write, except, stream, messages, message, socket, tmp;
+
+        let this-&gt;sockets[] = this-&gt;server;
+
+        if isset this-&gt;callbacks[&quot;boot&quot;] {
+            call_user_func(this-&gt;callbacks[&quot;boot&quot;], this);
+        }
+
+        while 1 {
+            if isset this-&gt;callbacks[&quot;tick&quot;] {
+                if call_user_func(this-&gt;callbacks[&quot;tick&quot;], this) === false {
+                    break;
+                }
+            }
+
+            let changed = this-&gt;sockets,
+                write = [],
+                except = [],
+                stream = stream_select(changed, write, except, (isset this-&gt;callbacks[&quot;tick&quot;] ? 0 : null));
+
+            if stream &gt; 0 {
+                let messages = [];
+
+                for socket in changed {
+                    if socket === this-&gt;server {
+                        let tmp = stream_socket_accept(this-&gt;server);
+
+                        if tmp !== false {
+                            if this-&gt;connect(tmp) {
+                                if isset this-&gt;callbacks[&quot;connect&quot;] {
+                                    call_user_func(this-&gt;callbacks[&quot;connect&quot;], this-&gt;clients[(int) tmp], this);
+                                }
+                            }
+                        }
+                    } else {
+                        let message = this-&gt;receive(socket);
+
+                        if message === false || in_array(message, [&quot;quit&quot;, &quot;exit&quot;, &quot;close&quot;]) {
+                            if isset this-&gt;callbacks[&quot;disconnect&quot;] {
+                                call_user_func(this-&gt;callbacks[&quot;disconnect&quot;], this-&gt;clients[(int) socket], this);
+                            }
+
+                            this-&gt;disconnect(socket);
+                        } else {
+                            let messages[] = [
+                                &quot;client&quot;: this-&gt;clients[(int) socket],
+                                &quot;message&quot;: message
+                            ];
+                        }
+                    }
+                }
+
+                for message in messages {
+                    if isset this-&gt;callbacks[&quot;message&quot;] {
+                        call_user_func(this-&gt;callbacks[&quot;message&quot;], message[&quot;client&quot;], message[&quot;message&quot;], this);
+                    }
+                }
+            }
+
+            usleep(this-&gt;getParam(&quot;sleep&quot;, 5000));
+        }
+    }
+
+    /**
+     * Connect a socket to the server.
+     *
+     * @param resource socket The resource
+     * @return boolean
+     */
+    protected function connect(resource socket) -&gt; boolean
+    {
+        var headers, header, request, tmp, cookies, value, client, response;
+
+        let headers = this-&gt;receiveClear(socket);
+
+        if !headers {
+            return false;
+        }
+
+        let headers = str_replace([&quot;\r\n&quot;, &quot;\n&quot;], [&quot;\n&quot;, &quot;\r\n&quot;], headers),
+            headers = array_filter(explode(&quot;\r\n&quot;, preg_replace(&quot;(\r\n\s+)&quot;, &quot; &quot;, headers))),
+            request = explode(&quot; &quot;, array_shift(headers));
+
+        if strtoupper(request[0]) !== &quot;GET&quot; {
+            this-&gt;sendClear(socket, &quot;HTTP/1.1 405 Method Not Allowed\r\n\r\n&quot;);
+
+            return false;
+        }
+
+        let tmp = [];
+
+        for header in headers {
+            let header = explode(&quot;:&quot;, header, 2),
+                tmp[trim(strtolower(header[0]))] = trim(header[1]);
+        }
+
+        let headers = tmp;
+
+        if !isset headers[&quot;sec-websocket-key&quot;] || !isset headers[&quot;upgrade&quot;] || !isset headers[&quot;connection&quot;] ||
+            strtolower(headers[&quot;upgrade&quot;]) != &quot;websocket&quot; || strpos(strtolower(headers[&quot;connection&quot;]), &quot;upgrade&quot;) === false {
+            this-&gt;sendClear(socket, &quot;HTTP/1.1 400 Bad Request\r\n\r\n&quot;);
+
+            return false;
+        }
+
+        let cookies = [];
+
+        if isset headers[&quot;cookie&quot;] {
+            let tmp = explode(&quot;;&quot;, headers[&quot;cookie&quot;]);
+
+            for value in tmp {
+                if trim(value) !== &quot;&quot; &amp;&amp; strpos(value, &quot;=&quot;) !== false {
+                    let value = explode(&quot;=&quot;, value, 2),
+                        cookies[trim(value[0])] = value[1];
+                }
+            }
+        }
+
+        let client = [
+            &quot;socket&quot;: socket,
+            &quot;headers&quot;: headers,
+            &quot;resource&quot;: request[1],
+            &quot;cookies&quot;: cookies
+        ];
+
+        if isset this-&gt;callbacks[&quot;validate&quot;] &amp;&amp; !call_user_func(this-&gt;callbacks[&quot;validate&quot;], client, this) {
+            this-&gt;sendClear(socket, &quot;HTTP/1.1 400 Bad Request\r\n\r\n&quot;);
+
+            return false;
+        }
+
+        let response = [
+            &quot;HTTP/1.1 101 WebSocket Protocol Handshake&quot;,
+            &quot;Upgrade: WebSocket&quot;,
+            &quot;Connection: Upgrade&quot;,
+            &quot;Sec-WebSocket-Version: 13&quot;,
+            &quot;Sec-WebSocket-Location: &quot; . this-&gt;address,
+            &quot;Sec-WebSocket-Accept: &quot; . base64_encode(sha1(headers[&quot;sec-websocket-key&quot;] . self::magic, true))
+        ];
+
+        if isset headers[&quot;origin&quot;] {
+            let response[] = &quot;Sec-WebSocket-Origin: &quot; . headers[&quot;origin&quot;];
+        }
+
+        let this-&gt;sockets[(int) socket] = socket,
+            this-&gt;clients[(int) socket] = client;
+
+        return this-&gt;sendClear(socket, implode(&quot;\r\n&quot;, response) . &quot;\r\n\r\n&quot;);
+    }
+
+    /**
+     * Disconnect a socket from the server.
+     *
+     * @param resource socket The resource
+     * @return void
+     */
+    public function disconnect(resource socket) -&gt; void
+    {
+        unset this-&gt;clients[(int) socket];
+        unset this-&gt;sockets[(int) socket];
+    }
+
+    /**
+     * Set a callback to be executed when a client connects, returning `false` will prevent the client from connecting.
+     * The callable will receive:
+     *  - an associative array with client data
+     *  - the current server instance
+     * The callable should return `true` if the client should be allowed to connect or `false` otherwise.
+     *
+     * @param callable callback The callback
+     * @return self
+     */
+    public function onValidate(callable callback) -&gt; &lt;self&gt;
+    {
+        return this-&gt;callback(&quot;validate&quot;, callback);
+    }
+
+    /**
+     * Set a callback to be executed when a client is connected.
+     * The callable will receive:
+     *  - an associative array with client data
+     *  - the current server instance
+     *
+     * @param callable callback The callback
+     * @return self
+     */
+    public function onConnect(callable callback) -&gt; &lt;self&gt;
+    {
+        return this-&gt;callback(&quot;connect&quot;, callback);
+    }
+
+    /**
+     * Set a callback to execute when a client disconnects.
+     * The callable will receive:
+     *  - an associative array with client data
+     *  - the current server instance
+     *
+     * @param callable callback The callback
+     * @return self
+     */
+    public function onDisconnect(callable callback) -&gt; &lt;self&gt;
+    {
+        return this-&gt;callback(&quot;disconnect&quot;, callback);
+    }
+
+    /**
+     * Set a callback to execute when a client sends a message.
+     * The callable will receive:
+     *  - an associative array with client data
+     *  - the message string
+     *  - the current server instance
+     *
+     * @param callable callback The callback
+     * @return self
+     */
+    public function onMessage(callable callback) -&gt; &lt;self&gt;
+    {
+        return this-&gt;callback(&quot;message&quot;, callback);
+    }
+
+    /**
+     * Set a callback to execute every few milliseconds.
+     * The callable will receive the server instance. If it returns boolean `false` the server will stop listening.
+     *
+     * @param callable callback The callback
+     * @return self
+     */
+    public function onTick(callable callback) -&gt; &lt;self&gt;
+    {
+        return this-&gt;callback(&quot;tick&quot;, callback);
+    }
+
+    /**
+     * Set a callback to execute on boot the server.
+     * The callable will receive the server instance.
+     *
+     * @param callable callback The callback
+     * @return self
+     */
+    public function onBoot(callable callback) -&gt; &lt;self&gt;
+    {
+        return this-&gt;callback(&quot;boot&quot;, callback);
+    }
+
+    /**
+     * Register a callback to execute.
+     *
+     * @param string key A callback key
+     * @param callable callback The callback
+     * @return self
+     */
+    public function callback(string key, callable callback) -&gt; &lt;self&gt;
+    {
+        let this-&gt;callbacks[key] = callback;
+
+        return this;
+    }
+}
+</code></pre>                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="../../../../asset/static/js/jquery.min.js"></script>
+        <script src="../../../../asset/static/js/bootstrap.min.js"></script>
+        <script src="../../../../asset/static/js/highlight.pack.js"></script>
+        <script src="../../../../asset/static/js/jquery.slimscroll.min.js"></script>
+        <script src="../../../../asset/api_definition.js"></script>
+
+        <script>var ZepCurrentPath = '../../../../'</script>
+        <script src="../../../../asset/static/js/script.js"></script>
+        <script type="text/javascript">
+            $(window).on("load resize", function() {
+                $('#menu-wrapper').slimscroll({ height: $(window).height() - 100, size: '3px' });
+            });
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function() { $('pre code').each(function(i, block) { hljs.highlightBlock(block); }); });
+            if ($('.zephir-source-file').length) {
+                $('link[id]').each(function(i, link) {
+                    link.disabled = (link.id != 'tomorrow-night');
+                });
+            }
+        </script>
+            </body>
+</html>

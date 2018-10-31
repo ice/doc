@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../../../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.3.0</span>
+                                                    ice Documentation <span class="version">v1.4.0</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -99,17 +99,22 @@ class Tokens extends Model
     protected from = &quot;user_tokens&quot;;
 
     /**
+     * User class name.
+     */
+    protected userClass = &quot;Ice\\Auth\\Driver\\Model\\Users&quot;;
+
+    /**
      * Initialize token&apos;s relations, remove expired tokens.
      *
      * @return void
      */
     public function initialize()
     {
-        var auth;
+        var auth, expire;
 
-        let auth = this-&gt;getDi()-&gt;get(&quot;auth&quot;);
+        let auth = this-&gt;di-&gt;get(&quot;auth&quot;);
 
-        this-&gt;belongsTo(&quot;user_id&quot;, auth-&gt;getOption(&quot;users&quot;, &quot;Ice\\Auth\\Driver\\Model\\Users&quot;), this-&gt;getIdKey(), [
+        this-&gt;belongsTo(&quot;user_id&quot;, auth-&gt;getOption(&quot;users&quot;, this-&gt;userClass), this-&gt;getIdKey(), [
             &quot;alias&quot;: &quot;User&quot;,
             &quot;foreignKey&quot;: true
         ]);
@@ -119,9 +124,11 @@ class Tokens extends Model
             this-&gt;deleteExpired();
         }
 
+        let expire = this-&gt;get(&quot;expires&quot;);
+
         // This object has expired
-        if this-&gt;has(&quot;expires&quot;) &amp;&amp; this-&gt;get(&quot;expires&quot;) &amp;&amp; this-&gt;get(&quot;expires&quot;) &lt; time() {
-            this-&gt;remove();
+        if expire &gt; 0 &amp;&amp; expire &lt; time() {
+            this-&gt;delete();
         }
     }
 
@@ -142,19 +149,13 @@ class Tokens extends Model
     /**
      * Deletes all expired tokens.
      *
-     * @return void
+     * @return bool status
      */
     public function deleteExpired()
     {
-        var token, expired;
-
-        let expired = this-&gt;load([
+        return this-&gt;delete([
             &quot;expires&quot;: [&quot;&lt;&quot;: time()]
         ]);
-
-        for token in iterator(expired) {
-            token-&gt;remove();
-        }
     }
 
     /**
@@ -182,8 +183,8 @@ class Tokens extends Model
         var token;
 
         do {
-            let token = sha1(uniqid(this-&gt;getDi()-&gt;get(&quot;text&quot;)-&gt;random(Text::ALNUM, 32), true));
-        } while Tokens::findOne([&quot;token&quot;: token]);
+            let token = bin2hex(openssl_random_pseudo_bytes(16));
+        } while static::findOne([&quot;token&quot;: token]);
 
         return token;
     }

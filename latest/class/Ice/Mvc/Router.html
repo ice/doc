@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.3.0</span>
+                                                    ice Documentation <span class="version">v1.4.0</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -67,13 +67,135 @@
 
 </div>
     <div class="text-muted">
-    Router is the standard framework router. Routing is the process of taking a URI endpoint and decomposing it into    </div>
+        </div>
     <div>
-    parameters to determine which module, controller, and action of that controller should receive the request.    </div>
+    Router is the standard framework router. Routing is the process of taking a URI endpoint and decomposing it into
+
+ parameters to determine which module, controller, and action of that controller should receive the request.    </div>
 
 <div class="hidden-anchor"  id="methods"></div>
 <div class="methods-summary standard-bandeau">Methods</div>
 <table class="method-summary-list table table-striped table-hover">
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-getRoutes">getRoutes</a></span>(<span class="small"></span>)
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-getMethod">getMethod</a></span>(<span class="small"></span>)
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-getModule">getModule</a></span>(<span class="small"></span>)
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-getHandler">getHandler</a></span>(<span class="small"></span>)
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-getAction">getAction</a></span>(<span class="small"></span>)
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-getParams">getParams</a></span>(<span class="small"></span>)
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-getSilent">getSilent</a></span>(<span class="small"></span>)
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-setSilent">setSilent</a></span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$silent</strong></span></span>)
+            </div>
+</td>
+</tr>
     
         
 <tr class="class-method">
@@ -175,7 +297,8 @@
                 
     </div>
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-getMethod">getMethod</a></span>(<span class="small"></span>)
+        <span class="method-name"><a href="#method-details-addRoute">addRoute</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$name</strong></span>, <span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$uri</strong></span>, <span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$regex</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$method</strong></span></span>)
+                <div class="summary-text text-muted"></div>
             </div>
 </td>
 </tr>
@@ -190,7 +313,8 @@
                 
     </div>
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-getModule">getModule</a></span>(<span class="small"></span>)
+        <span class="method-name"><a href="#method-details-getRoute">getRoute</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$name</strong></span></span>)
+                <div class="summary-text text-muted"></div>
             </div>
 </td>
 </tr>
@@ -205,7 +329,8 @@
                 
     </div>
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-getHandler">getHandler</a></span>(<span class="small"></span>)
+        <span class="method-name"><a href="#method-details-getRouteName">getRouteName</a></span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$route</strong></span></span>)
+                <div class="summary-text text-muted"></div>
             </div>
 </td>
 </tr>
@@ -220,7 +345,8 @@
                 
     </div>
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-getAction">getAction</a></span>(<span class="small"></span>)
+        <span class="method-name"><a href="#method-details-cache">cache</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$file</strong></span></span>)
+                <div class="summary-text text-muted"></div>
             </div>
 </td>
 </tr>
@@ -235,7 +361,8 @@
                 
     </div>
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-getParams">getParams</a></span>(<span class="small"></span>)
+        <span class="method-name"><a href="#method-details-defaults">defaults</a></span>(<span class="small"><span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$defaults</strong></span></span>)
+                <div class="summary-text text-muted"></div>
             </div>
 </td>
 </tr>
@@ -250,7 +377,8 @@
                 
     </div>
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-setSilent">setSilent</a></span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$silent</strong></span></span>)
+        <span class="method-name"><a href="#method-details-setRoutes">setRoutes</a></span>(<span class="small"><span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$routes</strong></span></span>)
+                <div class="summary-text text-muted"></div>
             </div>
 </td>
 </tr>
@@ -265,7 +393,8 @@
                 
     </div>
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-getOptions">getOptions</a></span>(<span class="small"></span>)
+        <span class="method-name"><a href="#method-details-handle">handle</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$method</strong></span>, <span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$uri</strong></span></span>)
+                <div class="summary-text text-muted"></div>
             </div>
 </td>
 </tr>
@@ -280,7 +409,8 @@
                 
     </div>
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-getRoutes">getRoutes</a></span>(<span class="small"></span>)
+        <span class="method-name"><a href="#method-details-match">match</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$uri</strong></span>, <span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$method</strong></span></span>)
+                <div class="summary-text text-muted"></div>
             </div>
 </td>
 </tr>
@@ -295,131 +425,8 @@
                 
     </div>
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-setRoutes">setRoutes</a></span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$routes</strong></span></span>)
-            </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        
-                
-    </div>
-    <div class="method-summary">
-        <span class="method-name"><a href="#method-details-getCollector">getCollector</a></span>(<span class="small"></span>)
-            </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        
-                
-    </div>
-    <div class="method-summary">
-        <span class="method-name"><a href="#method-details-setCollector">setCollector</a></span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$collector</strong></span></span>)
-            </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        
-                
-    </div>
-    <div class="method-summary">
-        <span class="method-name"><a href="#method-details-getDispatcher">getDispatcher</a></span>(<span class="small"></span>)
-            </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        
-                
-    </div>
-    <div class="method-summary">
-        <span class="method-name"><a href="#method-details-setDispatcher">setDispatcher</a></span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$dispatcher</strong></span></span>)
-            </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        
-                
-    </div>
-    <div class="method-summary">
-        <span class="method-name"><a href="#method-details-setDefaults">setDefaults</a></span>(<span class="small"><span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$defaults</strong></span></span>)
-                <div class="summary-text text-muted">Set defaults values</div>
-            </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        
-                
-    </div>
-    <div class="method-summary">
-        <span class="method-name"><a href="#method-details-setOptions">setOptions</a></span>(<span class="small"><span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$options</strong></span></span>)
-                <div class="summary-text text-muted">Set options.</div>
-            </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        
-                
-    </div>
-    <div class="method-summary">
-        <span class="method-name"><a href="#method-details-fastRoute">fastRoute</a></span>(<span class="small"></span>)
-                <div class="summary-text text-muted">Prepare the FastRoute.</div>
-            </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        
-                
-    </div>
-    <div class="method-summary">
-        <span class="method-name"><a href="#method-details-handle">handle</a></span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$method</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$uri</strong></span></span>)
-                <div class="summary-text text-muted">Handles routing information received from the FastRoute engine.</div>
+        <span class="method-name"><a href="#method-details-uri">uri</a></span>(<span class="small"><span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$params</strong></span>, <span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$method</strong></span></span>)
+                <div class="summary-text text-muted"></div>
             </div>
 </td>
 </tr>
@@ -443,6 +450,222 @@
 <div class="hidden-anchor"  id="methods-details"></div>
 <div class="methods-summary standard-bandeau">Methods Details</div>
 <ul class="method-details-list list-unstyled">
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-getRoutes"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">getRoutes</span>(<span class="small"></span>)
+                </h3>
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-getMethod"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">getMethod</span>(<span class="small"></span>)
+                </h3>
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-getModule"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">getModule</span>(<span class="small"></span>)
+                </h3>
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-getHandler"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">getHandler</span>(<span class="small"></span>)
+                </h3>
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-getAction"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">getAction</span>(<span class="small"></span>)
+                </h3>
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-getParams"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">getParams</span>(<span class="small"></span>)
+                </h3>
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-getSilent"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">getSilent</span>(<span class="small"></span>)
+                </h3>
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-setSilent"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">setSilent</span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$silent</strong></span></span>)
+                </h3>
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
     
         
 <li class="class-method clearfix">
@@ -609,7 +832,7 @@
         
 <li class="class-method clearfix">
 
-    <div class="hidden-anchor"  id="method-details-getMethod"></div>
+    <div class="hidden-anchor"  id="method-details-addRoute"></div>
     
     <div class="method-details">
         
@@ -623,8 +846,24 @@
                                 <span class="small visibility-public">public</span>
                 
                                 
-                <span class="small">function</span> <span class="method-name">getMethod</span>(<span class="small"></span>)
+                <span class="small">function</span> <span class="method-name">addRoute</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$name</strong></span>, <span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$uri</strong></span>, <span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$regex</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$method</strong></span></span>)
                 </h3>
+                                
+                    <div class="text-muted">
+                                        </div>
+                    <div>
+                    Stores a named route and returns it.
+
+     
+
+     <pre><code class="php">
+
+         $router-&gt;addRoute(&quot;default&quot;, &quot;[/{controller}[/{action}[/{id}]]]&quot;)
+
+             -&gt;setDefaults([&quot;controller&quot; =&gt; &quot;hello&quot;]);
+
+     </code></pre>                    </div>
+                
                                 
             </div>
         </div>
@@ -636,7 +875,7 @@
         
 <li class="class-method clearfix">
 
-    <div class="hidden-anchor"  id="method-details-getModule"></div>
+    <div class="hidden-anchor"  id="method-details-getRoute"></div>
     
     <div class="method-details">
         
@@ -650,8 +889,22 @@
                                 <span class="small visibility-public">public</span>
                 
                                 
-                <span class="small">function</span> <span class="method-name">getModule</span>(<span class="small"></span>)
+                <span class="small">function</span> <span class="method-name">getRoute</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$name</strong></span></span>)
                 </h3>
+                                
+                    <div class="text-muted">
+                                        </div>
+                    <div>
+                    Retrieves a named route or the current matched route.
+
+     
+
+     <pre><code class="php">
+
+         $route = $router-&gt;getRoute(&quot;default&quot;);
+
+     </code></pre>                    </div>
+                
                                 
             </div>
         </div>
@@ -663,7 +916,7 @@
         
 <li class="class-method clearfix">
 
-    <div class="hidden-anchor"  id="method-details-getHandler"></div>
+    <div class="hidden-anchor"  id="method-details-getRouteName"></div>
     
     <div class="method-details">
         
@@ -677,8 +930,14 @@
                                 <span class="small visibility-public">public</span>
                 
                                 
-                <span class="small">function</span> <span class="method-name">getHandler</span>(<span class="small"></span>)
+                <span class="small">function</span> <span class="method-name">getRouteName</span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$route</strong></span></span>)
                 </h3>
+                                
+                    <div class="text-muted">
+                                        </div>
+                    <div>
+                    Get the name of a route.                    </div>
+                
                                 
             </div>
         </div>
@@ -690,7 +949,7 @@
         
 <li class="class-method clearfix">
 
-    <div class="hidden-anchor"  id="method-details-getAction"></div>
+    <div class="hidden-anchor"  id="method-details-cache"></div>
     
     <div class="method-details">
         
@@ -704,8 +963,32 @@
                                 <span class="small visibility-public">public</span>
                 
                                 
-                <span class="small">function</span> <span class="method-name">getAction</span>(<span class="small"></span>)
+                <span class="small">function</span> <span class="method-name">cache</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$file</strong></span></span>)
                 </h3>
+                                
+                    <div class="text-muted">
+                                        </div>
+                    <div>
+                    Saves or loads the route cache.
+
+     
+
+     <pre><code class="php">
+
+         if (! $router-&gt;cache()) {
+
+             // set routes
+
+             $router-&gt;addRoute(&quot;default&quot;, &quot;[/{controller}[/{action}[/{id}]]]&quot;);
+
+             // cache routes
+
+             $router-&gt;cache($filePath);
+
+         }
+
+     </code></pre>                    </div>
+                
                                 
             </div>
         </div>
@@ -717,7 +1000,7 @@
         
 <li class="class-method clearfix">
 
-    <div class="hidden-anchor"  id="method-details-getParams"></div>
+    <div class="hidden-anchor"  id="method-details-defaults"></div>
     
     <div class="method-details">
         
@@ -731,89 +1014,22 @@
                                 <span class="small visibility-public">public</span>
                 
                                 
-                <span class="small">function</span> <span class="method-name">getParams</span>(<span class="small"></span>)
+                <span class="small">function</span> <span class="method-name">defaults</span>(<span class="small"><span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$defaults</strong></span></span>)
                 </h3>
                                 
-            </div>
-        </div>
+                    <div class="text-muted">
+                                        </div>
+                    <div>
+                    Set defaults values
 
-    </div>
+     
 
-</li>
-    
-        
-<li class="class-method clearfix">
+     <pre><code class="php">
 
-    <div class="hidden-anchor"  id="method-details-setSilent"></div>
-    
-    <div class="method-details">
-        
+         $route-&gt;defaults([&quot;controller&quot; =&gt; &quot;hello&quot;, &quot;action&quot; =&gt; &quot;world&quot;]);
 
-        
-
-        <div class="method-details-details">
-            <div class="method-signature">
-
-                <h3>
-                                <span class="small visibility-public">public</span>
+     </code></pre>                    </div>
                 
-                                
-                <span class="small">function</span> <span class="method-name">setSilent</span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$silent</strong></span></span>)
-                </h3>
-                                
-            </div>
-        </div>
-
-    </div>
-
-</li>
-    
-        
-<li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-getOptions"></div>
-    
-    <div class="method-details">
-        
-
-        
-
-        <div class="method-details-details">
-            <div class="method-signature">
-
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">getOptions</span>(<span class="small"></span>)
-                </h3>
-                                
-            </div>
-        </div>
-
-    </div>
-
-</li>
-    
-        
-<li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-getRoutes"></div>
-    
-    <div class="method-details">
-        
-
-        
-
-        <div class="method-details-details">
-            <div class="method-signature">
-
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">getRoutes</span>(<span class="small"></span>)
-                </h3>
                                 
             </div>
         </div>
@@ -839,214 +1055,35 @@
                                 <span class="small visibility-public">public</span>
                 
                                 
-                <span class="small">function</span> <span class="method-name">setRoutes</span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$routes</strong></span></span>)
-                </h3>
-                                
-            </div>
-        </div>
-
-    </div>
-
-</li>
-    
-        
-<li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-getCollector"></div>
-    
-    <div class="method-details">
-        
-
-        
-
-        <div class="method-details-details">
-            <div class="method-signature">
-
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">getCollector</span>(<span class="small"></span>)
-                </h3>
-                                
-            </div>
-        </div>
-
-    </div>
-
-</li>
-    
-        
-<li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-setCollector"></div>
-    
-    <div class="method-details">
-        
-
-        
-
-        <div class="method-details-details">
-            <div class="method-signature">
-
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">setCollector</span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$collector</strong></span></span>)
-                </h3>
-                                
-            </div>
-        </div>
-
-    </div>
-
-</li>
-    
-        
-<li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-getDispatcher"></div>
-    
-    <div class="method-details">
-        
-
-        
-
-        <div class="method-details-details">
-            <div class="method-signature">
-
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">getDispatcher</span>(<span class="small"></span>)
-                </h3>
-                                
-            </div>
-        </div>
-
-    </div>
-
-</li>
-    
-        
-<li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-setDispatcher"></div>
-    
-    <div class="method-details">
-        
-
-        
-
-        <div class="method-details-details">
-            <div class="method-signature">
-
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">setDispatcher</span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$dispatcher</strong></span></span>)
-                </h3>
-                                
-            </div>
-        </div>
-
-    </div>
-
-</li>
-    
-        
-<li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-setDefaults"></div>
-    
-    <div class="method-details">
-        
-
-        
-
-        <div class="method-details-details">
-            <div class="method-signature">
-
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">setDefaults</span>(<span class="small"><span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$defaults</strong></span></span>)
+                <span class="small">function</span> <span class="method-name">setRoutes</span>(<span class="small"><span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$routes</strong></span></span>)
                 </h3>
                                 
                     <div class="text-muted">
-                    Set defaults values                    </div>
-                    <div>
                                         </div>
-                
-                                
-            </div>
-        </div>
-
-    </div>
-
-</li>
-    
-        
-<li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-setOptions"></div>
-    
-    <div class="method-details">
-        
-
-        
-
-        <div class="method-details-details">
-            <div class="method-signature">
-
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">setOptions</span>(<span class="small"><span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$options</strong></span></span>)
-                </h3>
-                                
-                    <div class="text-muted">
-                    Set options.                    </div>
                     <div>
-                                        </div>
-                
-                                
-            </div>
-        </div>
+                    Set an array of route rules.
 
-    </div>
+     httpMethod: |null - no limit, GET, POST, PUT or PATCH
 
-</li>
-    
-        
-<li class="class-method clearfix">
+     URI pattern: [] wrap for optional, {} wrap for regex placeholder key
 
-    <div class="hidden-anchor"  id="method-details-fastRoute"></div>
-    
-    <div class="method-details">
-        
+     regex: an associate array placeholder key and regex limitation pattern
 
-        
+     defaults: default options for the module, handler and action
 
-        <div class="method-details-details">
-            <div class="method-signature">
+     
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">fastRoute</span>(<span class="small"></span>)
-                </h3>
-                                
-                    <div class="text-muted">
-                    Prepare the FastRoute.                    </div>
-                    <div>
-                                        </div>
+     <pre><code class="php">
+
+         // the rule format: [&apos;name&apos; =&gt; [&quot;httpMethod&quot;, &quot;URI pattern&quot;, &quot;regex&quot;, &quot;defaults&quot;]]
+
+         $route-&gt;setRoutes([
+
+             [&quot;default&quot; =&gt; [&quot;POST&quot;, &quot;/{controller}[.ext]&quot;, [&quot;controller&quot; =&gt; &quot;[a-z]+&quot;, &quot;ext&quot; =&gt; &quot;(?:htm|html)&quot;]]]
+
+         ]);
+
+     </code></pre>                    </div>
                 
                                 
             </div>
@@ -1073,13 +1110,87 @@
                                 <span class="small visibility-public">public</span>
                 
                                 
-                <span class="small">function</span> <span class="method-name">handle</span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$method</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$uri</strong></span></span>)
+                <span class="small">function</span> <span class="method-name">handle</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$method</strong></span>, <span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$uri</strong></span></span>)
                 </h3>
                                 
                     <div class="text-muted">
-                    Handles routing information received from the FastRoute engine.                    </div>
-                    <div>
                                         </div>
+                    <div>
+                    Handles routing information.                    </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-match"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">match</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$uri</strong></span>, <span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$method</strong></span></span>)
+                </h3>
+                                
+                    <div class="text-muted">
+                                        </div>
+                    <div>
+                    Get route matched by uri and method.                    </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-uri"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">uri</span>(<span class="small"><span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$params</strong></span>, <span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$method</strong></span></span>)
+                </h3>
+                                
+                    <div class="text-muted">
+                                        </div>
+                    <div>
+                    Generates a URI based on the parameters given. (AKA. reverse route).
+
+     
+
+     <pre><code class="php">
+
+         $uri = $router-&gt;uri([&quot;controller&quot; =&gt; &quot;blog&quot;, &quot;action&quot; =&gt; &quot;post&quot;, &quot;param&quot; =&gt; 10]);
+
+     </code></pre>                    </div>
                 
                                 
             </div>

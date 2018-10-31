@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.3.0</span>
+                                                    ice Documentation <span class="version">v1.4.0</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -71,6 +71,9 @@
 <pre class="zephir-source-file"><code>
 namespace Ice\Mvc;
 
+use Ice\Di;
+use Ice\Exception;
+
 /**
  * This class represents every route added to the router.
  *
@@ -79,44 +82,247 @@ namespace Ice\Mvc;
  * @author      Ice Team
  * @copyright   (c) 2014-2018 Ice Team
  * @license     http://iceframework.org/license
- * @uses        FastRoute https://github.com/nikic/FastRoute/commit/30470b69c785f7c28a0203be86692f4780a43bdf
  */
 class Route
 {
 
-    public httpMethod;
-    public regex;
-    public variables;
-    public handler;
+    // Route URI string
+    protected routeUri = &quot;&quot;;
+
+    // Regular expressions for route keys
+    protected regexMap = [];
+
+    // Compiled regex cache
+    protected routeRegex;
+
+    // Regular expressions for route keys
+    protected defaults = [&quot;action&quot;: &quot;index&quot;] { get, set };
+
+    protected method { get };
+    protected error { get };
+
+    // Defines the pattern of a {placeholder}
+    const REGEX_KEYWORD = &quot;\{([a-zA-Z0-9_]++)\}&quot;;
+
+    // What can be part of a {placeholder} value
+    const REGEX_PLACEHOLDER = &quot;[^/.,;?\n]++&quot;;
+
+    // What must be escaped in the route regex
+    const REGEX_ESCAPE = &quot;[.\\+*?^$=!|]&quot;;
 
     /**
-     * Constructs a route (value object).
+     * Constructs a route. Each {key} will be translated to a regular expression 
+     * using a default regular expression pattern. You can override the default pattern
+     * by providing a pattern for the key:
      *
-     * @param string httpMethod
-     * @param mixed handler
-     * @param string regex
-     * @param array variables
+     * &lt;pre&gt;&lt;code&gt;
+     *     // This route will only match when {id} is a digit
+     *     new Route(&quot;/blog/{action}/{id}&quot;, [&quot;id&quot; =&gt; &quot;\d+&quot;], [&apos;GET&apos;, &apos;POST&apos;]);
+     *
+     *     // This route will match when {path} is anything
+     *     new Route(&quot;/{path}&quot;, [&quot;path&quot; =&gt; &quot;.*&quot;]);
+     * &lt;/code&gt;&lt;/pre&gt;
+     *
+     * It is also possible to create optional segments by using parentheses in
+     * the URI definition:
+     *
+     * &lt;pre&gt;&lt;code&gt;
+     *     // This is the standard default route, and no keys are required
+     *     new Route(&apos;/{module}[/{controller}[/{action}[/{id}[/params]]]]&apos;);
+     *
+     *     // This route only requires the {file} key
+     *     new Route(&apos;[/{path}/]{file}[.{ext}]&apos;, [&apos;path&apos; =&gt; &apos;.*&apos;, &apos;ext&apos; =&gt; &apos;\w+&apos;]);
+     * &lt;/code&gt;&lt;/pre&gt;
+     *
+     * &lt;pre&gt;&lt;code&gt;
+     *     $route = new Route($uri, $regex, [&apos;GET&apos;, &apos;POST&apos;]);
+     * &lt;/code&gt;&lt;/pre&gt;
+     *
+     * @param string uri Route URI pattern
+     * @param array regexMap Key patterns map
+     * @param mix method Request method limitation, * for no limit or an array of methods
      */
-    public function __construct(string httpMethod, handler, string regex, array variables)
+    public function __construct(string uri = null, array! regexMap = null, var method = &quot;*&quot;)
     {
-        let this-&gt;httpMethod = httpMethod,
-            this-&gt;handler = handler,
-            this-&gt;regex = regex,
-            this-&gt;variables = variables;
+        var regex, search, replace, key, value;
+
+        if uri === null {
+            // Assume the route is from cache
+            return;
+        }
+
+        // Store the URI that this route will match
+        let this-&gt;routeUri = uri;
+
+        if !empty regexMap {
+            let this-&gt;regexMap = regexMap;
+        }
+
+        if empty method {
+            let this-&gt;method = &quot;*&quot;;
+        } else {
+            if typeof method == &quot;array&quot; {
+                let this-&gt;method = array_map(&quot;strtoupper&quot;, method);
+            } else {
+                let this-&gt;method = strtoupper(method);
+            }
+        }
+
+        // The URI should be considered literal except for keys and optional parts
+        // Escape everything preg_quote would escape except for : [ ] { }
+        let regex = preg_replace(&quot;#&quot; . self::REGEX_ESCAPE . &quot;#&quot;, &quot;\\\\$0&quot;, this-&gt;routeUri);
+
+        if strpos(regex, &quot;[&quot;) !== false {
+            // Make optional parts of the URI non-capturing and optional
+            let regex = str_replace([&quot;[&quot;, &quot;]&quot;], [&quot;(?:&quot;, &quot;)?&quot;], regex);
+        }
+
+        // Insert default regex for keys
+        let regex = str_replace([&quot;{&quot;, &quot;}&quot;], [&quot;(?P&lt;&quot;, &quot;&gt;&quot; . self::REGEX_PLACEHOLDER . &quot;)&quot;], regex);
+
+        if !empty this-&gt;regexMap {
+            let search = [], replace = [];
+            for key, value in this-&gt;regexMap {
+                let search[]  = &quot;&lt;&quot; . key . &quot;&gt;&quot; . self::REGEX_PLACEHOLDER,
+                    replace[] = &quot;&lt;&quot; . key . &quot;&gt;&quot; . value;
+            }
+            // Replace the default regex with the user-specified regex
+            let regex = str_replace(search, replace, regex);
+        }
+
+        // Store the compiled regex locally
+        let this-&gt;routeRegex = &quot;#^&quot; . regex . &quot;$#uD&quot;;
     }
 
     /**
-     * Tests whether this route matches the given string.
+     * Tests if the route matches a given URI and method.
      *
-     * @param string str
-     * @return bool
+     * &lt;pre&gt;&lt;code&gt;
+     *     // Params: controller = blog, action = edit, id = 10
+     *     $params = route-&gt;matches(&quot;/blog/edit/10&quot;);
+     * &lt;/code&gt;&lt;/pre&gt;
+     *
+     * @param string URI to match
+     * @param string method
+     * @return array|false|null Routed parameters, method not allowed or no match
      */
-    public function matches(string str) -&gt; boolean
+    public function matches(string uri, string method = &quot;*&quot;)
     {
-        var regex;
+        var params, key, value, matches = [];
 
-        let regex = &quot;~^&quot; . this-&gt;regex . &quot;$~&quot;;
-        return (boolean) preg_match(regex, str);
+        if !this-&gt;checkMethod(method) {
+            return false;
+        }
+
+        if !preg_match(this-&gt;routeRegex, uri, matches) {
+            // NOT FOUND
+            return null;
+        }
+
+        let params = this-&gt;defaults;
+
+        for key, value in matches {
+            if is_int(key) || value === &quot;&quot; {
+                continue;
+            }
+            let params[key] = value;
+        }
+
+        return params;
+    }
+
+    /**
+     * Tests if the route allows a given method.
+     *
+     * @param string method
+     * @return boolean
+     */
+    public function checkMethod(string method)
+    {
+        if this-&gt;method != &quot;*&quot; &amp;&amp; method != &quot;*&quot; {
+            if !empty method {
+                let method = strtoupper(method);
+            }
+            // For HEAD requests, attempt fallback to GET
+            if method === &quot;HEAD&quot; {
+                let method = &quot;GET&quot;;
+            }
+            if typeof this-&gt;method == &quot;string&quot; &amp;&amp; method != this-&gt;method
+                || typeof this-&gt;method == &quot;array&quot; &amp;&amp; !in_array(method, this-&gt;method) {
+                // METHOD NOT ALLOWED
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * Generates a URI for the current route based on the parameters given. (AKA. reverse route)
+     *
+     * &lt;pre&gt;&lt;code&gt;
+     *     // Using the &quot;default&quot; route: /blog/post/10
+     *     $uri = $route-&gt;uri([&quot;controller&quot; =&gt; &quot;blog&quot;, &quot;action&quot; =&gt; &quot;post&quot;, &quot;id&quot; =&gt; 10]);
+     *     if (!$uri) echo $route-&gt;getError();
+     * &lt;/code&gt;&lt;/pre&gt;
+     *
+     * @param array URI parameters
+     * @return string|false
+     */
+    public function uri(array! params = null)
+    {
+        var defaults, uri, param, search, key, replace, matches = [];
+
+        let uri = this-&gt;routeUri,
+            defaults = this-&gt;defaults;
+
+        if strpos(uri, &quot;{&quot;) === false &amp;&amp; strpos(uri, &quot;[&quot;) === false {
+            // This is a static route, no need to replace anything
+            return uri;
+        }
+
+        if !empty params {
+            let defaults = array_merge(defaults, params);
+        }
+
+        while preg_match(&quot;#\[[^[\]]++\]#&quot;, uri, matches) {
+            // Search for the matched value
+            let search = matches[0];
+
+            // Remove the parenthesis from the match as the replace
+            let replace = substr(search, 1, -1);
+
+            while preg_match(&quot;#&quot; . self::REGEX_KEYWORD . &quot;#&quot;, replace, matches) {
+                let key = matches[0],
+                    param = matches[1];
+
+                if isset defaults[param] {
+                    // Replace the key with the parameter value
+                    let replace = str_replace(key, defaults[param], replace);
+                } else {
+                    // This group has missing parameters
+                    let replace = &quot;&quot;;
+                    break;
+                }
+            }
+            // Replace the group in the URI
+            let uri = str_replace(search, replace, uri);
+        }
+
+        while preg_match(&quot;#&quot; . self::REGEX_KEYWORD . &quot;#&quot;, uri, matches) {
+            let key = matches[0],
+                param = matches[1];
+
+            if !isset defaults[param] {
+                // Ungrouped parameters are required
+                let this-&gt;error = &quot;Required route parameter not passed: &quot; . param;
+                return false;
+            }
+
+            let uri = str_replace(key, defaults[param], uri);
+        }
+
+        // Trim all extra slashes from the URI
+        return preg_replace(&quot;#//+#&quot;, &quot;/&quot;, rtrim(uri, &quot;/&quot;));
     }
 }
 </code></pre>                    </div>

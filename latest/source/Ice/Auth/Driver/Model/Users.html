@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.3.0</span>
+                                                    ice Documentation <span class="version">v1.4.0</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -77,7 +77,6 @@
 <pre class="zephir-source-file"><code>
 namespace Ice\Auth\Driver\Model;
 
-use Ice\Auth\Driver\Model\Roles;
 use Ice\Mvc\Model;
 
 /**
@@ -91,6 +90,25 @@ use Ice\Mvc\Model;
  */
 class Users extends Model
 {
+    /**
+     * Role class name must extend from Ice\Auth\Driver\Model\Roles
+     */
+    protected roleClass = &quot;Ice\\Auth\\Driver\\Model\\Roles&quot;;
+
+    /**
+     * Token class name must extend from Ice\Auth\Driver\Model\Users\Tokens
+     */
+    protected tokenClass = &quot;Ice\\Auth\\Driver\\Model\\Users\\Tokens&quot;;
+
+    /**
+     * User class name must extend from Ice\Auth\Driver\Model\Roles\Users
+     */
+    protected userClass = &quot;Ice\\Auth\\Driver\\Model\\Roles\\Users&quot;;
+
+    /**
+     * Social class name must extend from Ice\Auth\Driver\Model\Users\Social
+     */
+    protected socialClass = &quot;Ice\\Auth\\Driver\\Model\\Users\\Social&quot;;
 
     /**
      * Initialize user&apos;s relations.
@@ -99,17 +117,14 @@ class Users extends Model
      */
     public function initialize()
     {
-        this-&gt;hasMany(this-&gt;getIdKey(), &quot;Ice\\Auth\\Driver\\Model\\Users\\Tokens&quot;, &quot;user_id&quot;, [
-            &quot;alias&quot;: &quot;Tokens&quot;
-        ]);
+        var idKey;
+        let idKey = this-&gt;getIdKey();
 
-        this-&gt;hasMany(this-&gt;getIdKey(), &quot;Ice\\Auth\\Driver\\Model\\Roles\\Users&quot;, &quot;user_id&quot;, [
-            &quot;alias&quot;: &quot;Roles&quot;
-        ]);
+        this-&gt;hasMany(idKey, this-&gt;tokenClass, &quot;user_id&quot;, [&quot;alias&quot;: &quot;Tokens&quot;]);
 
-        this-&gt;hasOne(this-&gt;getIdKey(), &quot;Ice\\Auth\\Driver\\Model\\Users\\Social&quot;, &quot;user_id&quot;, [
-            &quot;alias&quot;: &quot;Social&quot;
-        ]);
+        this-&gt;hasMany(idKey, this-&gt;userClass, &quot;user_id&quot;, [&quot;alias&quot;: &quot;Roles&quot;]);
+
+        this-&gt;hasOne(idKey, this-&gt;socialClass, &quot;user_id&quot;, [&quot;alias&quot;: &quot;Social&quot;]);
     }
 
     /**
@@ -138,7 +153,8 @@ class Users extends Model
     {
         var role, roles;
 
-        let role = &lt;Roles&gt; Roles::findOne([&quot;name&quot;: name]);
+        let roles = this-&gt;roleClass,
+            role = {roles}::findOne([&quot;name&quot;: name]);
 
         if !role {
             // Role does not exist

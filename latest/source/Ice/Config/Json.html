@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.3.0</span>
+                                                    ice Documentation <span class="version">v1.4.0</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -89,15 +89,19 @@ class Json extends Config
     /**
      * Config json constructor.
      *
-     * @param string data Path to the json file
+     * @param string data Path to the file or json string
      */
     public function __construct(var data = null)
     {
         if typeof data != &quot;string&quot; {
-            throw new Exception(&quot;The file path must be a string&quot;);
+            throw new Exception(&quot;Data must be a json string or path to the file&quot;);
         }
 
-        parent::__construct(json_decode(file_get_contents(data), true));
+        if file_exists(data) {
+            let data = file_get_contents(data);
+        }
+
+        parent::__construct(json_decode(data, true));
     }
 }
 </code></pre>                    </div>

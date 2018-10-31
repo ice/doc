@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.3.0</span>
+                                                    ice Documentation <span class="version">v1.4.0</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -114,11 +114,13 @@ class Tag
      *
      * @param string title
      * @param string separator
-     * @return void
+     * @return object Tag
      */
-    public function appendTitle(string title, string separator = null) -&gt; void
+    public function appendTitle(string title, string separator = null)
     {
         let this-&gt;title = this-&gt;title . (separator ? separator : this-&gt;titleSeparator) . title;
+        
+        return this;
     }
 
     /**
@@ -126,11 +128,13 @@ class Tag
      *
      * @param string title
      * @param string separator
-     * @return void
+     * @return object Tag
      */
-    public function prependTitle(string title, string separator = null) -&gt; void
+    public function prependTitle(string title, string separator = null)
     {
         let this-&gt;title = title . (separator ? separator : this-&gt;titleSeparator) . this-&gt;title;
+        
+        return this;
     }
 
     /**
@@ -892,9 +896,9 @@ class Tag
      *
      * @param string id
      * @param mixed value
-     * @return void
+     * @return object Tag
      */
-    public function setValue(string! id, value) -&gt; void
+    public function setValue(string! id, value)
     {
         if value !== null {
             if typeof value == &quot;array&quot; || typeof value == &quot;object&quot; {
@@ -902,6 +906,8 @@ class Tag
             }
         }
         let this-&gt;values[id] = value;
+        
+        return this;
     }
 
     /**
@@ -909,9 +915,9 @@ class Tag
      *
      * @param array values
      * @param boolean merge
-     * @return void
+     * @return object Tag
      */
-    public function setValues(array values, boolean merge = false) -&gt; void
+    public function setValues(array values, boolean merge = false)
     {
         var current;
 
@@ -929,6 +935,8 @@ class Tag
         } else {
             let this-&gt;values = values;
         }
+        
+        return this;
     }
 
     /**

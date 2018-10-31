@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.3.0</span>
+                                                    ice Documentation <span class="version">v1.4.0</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -108,6 +108,21 @@ class Console extends Access
     }
 
     /**
+     * Add module with its dir path, initial class name and namespace
+     *
+     * @param string name
+     * @param array options The keys can be [path|class|namespace]
+     * @return object Console
+     */
+    public function addModule(string name, array options)
+    {
+        // add or replace module
+        let this-&gt;modules[name] = options;
+
+        return this;
+    }
+
+    /**
      * Handle an command-line request.
      *
      * @param array arguments
@@ -147,26 +162,26 @@ class Console extends Access
         var colors, bgColors, colored, e, foreground, background;
 
         let colors = [
-            &quot;black&quot;: &quot;30&quot;,   
-            &quot;red&quot;: &quot;31&quot;, 
-            &quot;green&quot;: &quot;32&quot;,   
-            &quot;yellow&quot;: &quot;33&quot;,  
-            &quot;blue&quot;: &quot;34&quot;,    
-            &quot;magenta&quot;: &quot;35&quot;, 
-            &quot;cyan&quot;: &quot;36&quot;,    
-            &quot;lightgray&quot;: &quot;37&quot;,   
+            &quot;black&quot;: &quot;30&quot;,
+            &quot;red&quot;: &quot;31&quot;,
+            &quot;green&quot;: &quot;32&quot;,
+            &quot;yellow&quot;: &quot;33&quot;,
+            &quot;blue&quot;: &quot;34&quot;,
+            &quot;magenta&quot;: &quot;35&quot;,
+            &quot;cyan&quot;: &quot;36&quot;,
+            &quot;lightgray&quot;: &quot;37&quot;,
             &quot;white&quot;: &quot;97&quot;
         ];
 
         let bgColors = [
-            &quot;black&quot;: &quot;40&quot;,   
-            &quot;red&quot;: &quot;41&quot;, 
-            &quot;green&quot;: &quot;42&quot;,   
-            &quot;yellow&quot;: &quot;43&quot;,  
-            &quot;blue&quot;: &quot;44&quot;,    
-            &quot;magenta&quot;: &quot;45&quot;, 
-            &quot;cyan&quot;: &quot;46&quot;,    
-            &quot;lightgray&quot;: &quot;47&quot;,  
+            &quot;black&quot;: &quot;40&quot;,
+            &quot;red&quot;: &quot;41&quot;,
+            &quot;green&quot;: &quot;42&quot;,
+            &quot;yellow&quot;: &quot;43&quot;,
+            &quot;blue&quot;: &quot;44&quot;,
+            &quot;magenta&quot;: &quot;45&quot;,
+            &quot;cyan&quot;: &quot;46&quot;,
+            &quot;lightgray&quot;: &quot;47&quot;,
             &quot;white&quot;: &quot;107&quot;
         ];
 

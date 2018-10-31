@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.3.0</span>
+                                                    ice Documentation <span class="version">v1.4.0</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -325,7 +325,7 @@
                 
     </div>
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-__construct">__construct</a></span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$filters</strong></span>, <span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$data</strong></span></span>)
+        <span class="method-name"><a href="#method-details-__construct">__construct</a></span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$filters</strong></span>, <span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$data</strong></span>, <span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$options</strong></span></span>)
                 <div class="summary-text text-muted">Model constructor. Fetch Di and set it as a property.</div>
             </div>
 </td>
@@ -517,7 +517,7 @@
                 
     </div>
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-remove">remove</a></span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$filters</strong></span></span>)
+        <span class="method-name"><a href="#method-details-delete">delete</a></span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$filters</strong></span></span>)
                 <div class="summary-text text-muted">Removes a model instance(s). Returning true on success or false otherwise.</div>
             </div>
 </td>
@@ -677,7 +677,7 @@
                 
     </div>
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-unserialize">unserialize</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$data</strong></span></span>)
+        <span class="method-name"><a href="#method-details-unserialize">unserialize</a></span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$serialized</strong></span></span>)
                 <div class="summary-text text-muted">Unserialize and set the data.</div>
             </div>
 </td>
@@ -1168,7 +1168,7 @@
                                 <span class="small visibility-public">public</span>
                 
                                 
-                <span class="small">function</span> <span class="method-name">__construct</span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$filters</strong></span>, <span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$data</strong></span></span>)
+                <span class="small">function</span> <span class="method-name">__construct</span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$filters</strong></span>, <span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$data</strong></span>, <span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$options</strong></span></span>)
                 </h3>
                                 
                     <div class="text-muted">
@@ -1586,7 +1586,7 @@
         
 <li class="class-method clearfix">
 
-    <div class="hidden-anchor"  id="method-details-remove"></div>
+    <div class="hidden-anchor"  id="method-details-delete"></div>
     
     <div class="method-details">
         
@@ -1600,7 +1600,7 @@
                                 <span class="small visibility-public">public</span>
                 
                                 
-                <span class="small">function</span> <span class="method-name">remove</span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$filters</strong></span></span>)
+                <span class="small">function</span> <span class="method-name">delete</span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$filters</strong></span></span>)
                 </h3>
                                 
                     <div class="text-muted">
@@ -1612,7 +1612,7 @@
       $user-&gt;delete();
      
       //Remove all unactive users
-      $status = (new Users())-&gt;remove([&quot;status&quot; =&gt; 0]);
+      $status = (new Users())-&gt;delete([&quot;status&quot; =&gt; 0]);
      </code></pre>                    </div>
                 
                                 
@@ -1982,7 +1982,7 @@
                                 <span class="small visibility-public">public</span>
                 
                                 
-                <span class="small">function</span> <span class="method-name">unserialize</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$data</strong></span></span>)
+                <span class="small">function</span> <span class="method-name">unserialize</span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$serialized</strong></span></span>)
                 </h3>
                                 
                     <div class="text-muted">

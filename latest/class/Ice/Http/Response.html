@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.3.0</span>
+                                                    ice Documentation <span class="version">v1.4.0</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -220,7 +220,7 @@
                 
     </div>
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-__construct">__construct</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$body</strong></span>, <span class="param-data-type text-danger">int</span>  <span class="param-name text-info"><strong>$status</strong></span></span>)
+        <span class="method-name"><a href="#method-details-__construct">__construct</a></span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$body</strong></span>, <span class="param-data-type text-danger">int</span>  <span class="param-name text-info"><strong>$status</strong></span></span>)
                 <div class="summary-text text-muted">Response constructor. Fetch Di and set it as a property.</div>
             </div>
 </td>
@@ -366,6 +366,22 @@
     <div class="method-summary">
         <span class="method-name"><a href="#method-details-send">send</a></span>(<span class="small"></span>)
                 <div class="summary-text text-muted">Send HTTP response headers.</div>
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-sendFile">sendFile</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$filename</strong></span>, <span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$mime</strong></span>, <span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$options</strong></span></span>)
+                <div class="summary-text text-muted">Send file download as the response. All execution will be halted when</div>
             </div>
 </td>
 </tr>
@@ -584,12 +600,76 @@
 
     <div class="method-return">
 
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-toJson">toJson</a></span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$data</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$option</strong></span></span>)
+                <div class="summary-text text-muted">Response data to JSON string.</div>
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-toXml">toXml</a></span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$data</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$options</strong></span></span>)
+                <div class="summary-text text-muted">Response data to XML string.</div>
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-xmlEncode">xmlEncode</a></span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$data</strong></span>, <span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$root</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$domNode</strong></span></span>)
+                <div class="summary-text text-muted">Convert data to XML string.</div>
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
         string
                 
     </div>
     <div class="method-summary">
         <span class="method-name"><a href="#method-details-__toString">__toString</a></span>(<span class="small"></span>)
                 <div class="summary-text text-muted">Magic toString, convert response to string.</div>
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        array
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-getByteRange">getByteRange</a></span>(<span class="small"><span class="param-data-type text-danger">int</span>  <span class="param-name text-info"><strong>$size</strong></span></span>)
+                <div class="summary-text text-muted"></div>
             </div>
 </td>
 </tr>
@@ -859,7 +939,7 @@
                                 <span class="small visibility-public">public</span>
                 
                                 
-                <span class="small">function</span> <span class="method-name">__construct</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$body</strong></span>, <span class="param-data-type text-danger">int</span>  <span class="param-name text-info"><strong>$status</strong></span></span>)
+                <span class="small">function</span> <span class="method-name">__construct</span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$body</strong></span>, <span class="param-data-type text-danger">int</span>  <span class="param-name text-info"><strong>$status</strong></span></span>)
                 </h3>
                                 
                     <div class="text-muted">
@@ -1163,6 +1243,60 @@
                     Send HTTP response headers.                    </div>
                     <div>
                                         </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-sendFile"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">sendFile</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$filename</strong></span>, <span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$mime</strong></span>, <span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$options</strong></span></span>)
+                </h3>
+                                
+                    <div class="text-muted">
+                    Send file download as the response. All execution will be halted when                    </div>
+                    <div>
+                    this method is called! The third parameter allows the following
+     options to be set:
+     
+     Type      | Option    | Description                        | Default Value
+     ----------|-----------|------------------------------------|--------------
+     string    | file      | file that already exists           | null
+     boolean   | inline    | Display inline instead of download | FALSE
+     boolean   | resumable | Allow to resumable download        | FALSE
+     boolean   | delete    | Delete the file after sending      | FALSE
+     int       | timeout   | Execute time for the script        | 0
+     int       | speed     | Download speed in millisecond      | 0
+     
+     Download a file that already exists:
+     
+         $request-&gt;sendFile(&apos;ice.zip&apos;, &apos;application/zip&apos;, [&apos;file&apos; =&gt; &apos;/download/latest.zip&apos;]);
+     
+     Download generated content as a file:
+     
+         $response-&gt;setContent($content);
+         $response-&gt;sendFile($filename, $mineType);
+     
+     Attention: No further processing can be done after this method is called!                    </div>
                 
                                 
             </div>
@@ -1604,6 +1738,114 @@
         
 <li class="class-method clearfix">
 
+    <div class="hidden-anchor"  id="method-details-toJson"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">toJson</span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$data</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$option</strong></span></span>)
+                </h3>
+                                
+                    <div class="text-muted">
+                    Response data to JSON string.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-toXml"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">toXml</span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$data</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$options</strong></span></span>)
+                </h3>
+                                
+                    <div class="text-muted">
+                    Response data to XML string.                    </div>
+                    <div>
+                    <pre><code class="php">
+         $response-&gt;toXml(
+             [[&apos;title&apos; =&gt; &apos;hello world&apos;, &apos;desc&apos; =&gt; &apos;dont panic&apos;]],
+             [&apos;root&apos; =&gt; &apos;blogs&apos;, &apos;namespace&apos; =&gt; &apos;http://example.com/xml/blog&apos;]
+         );
+     
+         // This will output the xml
+         &lt;?xml version=&quot;1.0&quot;?&gt;&lt;blogs xmlns=&quot;http://example.com/xml/blog&quot;&gt;
+         &lt;blog&gt;&lt;title&gt;hello world&lt;/title&gt;&lt;desc&gt;dont panic&lt;/desc&gt;&lt;/blog&gt;&lt;/blogs&gt;
+     </code></pre>                    </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-xmlEncode"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">xmlEncode</span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$data</strong></span>, <span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$root</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$domNode</strong></span></span>)
+                </h3>
+                                
+                    <div class="text-muted">
+                    Convert data to XML string.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
     <div class="hidden-anchor"  id="method-details-__toString"></div>
     
     <div class="method-details">
@@ -1625,6 +1867,48 @@
                     Magic toString, convert response to string.                    </div>
                     <div>
                                         </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-getByteRange"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-protected">protected</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">getByteRange</span>(<span class="small"><span class="param-data-type text-danger">int</span>  <span class="param-name text-info"><strong>$size</strong></span></span>)
+                </h3>
+                                
+                    <div class="text-muted">
+                                        </div>
+                    <div>
+                    At the moment we only support single ranges.
+     Multiple ranges requires some more work to ensure it works correctly
+     and comply with the spesifications:
+        http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.2
+     
+     Multirange support annouces itself with:
+     header(&apos;Accept-Ranges: bytes&apos;);
+     
+     Multirange content must be sent with multipart/byteranges mediatype,
+     as well as a boundry header to indicate the various chunks of data.                    </div>
                 
                                 
             </div>

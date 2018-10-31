@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.3.0</span>
+                                                    ice Documentation <span class="version">v1.4.0</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -179,7 +179,9 @@ class Dump
             &quot;obj&quot;: &quot;color:purple&quot;,
             &quot;other&quot;: &quot;color:maroon&quot;,
             &quot;res&quot;: &quot;color:lime&quot;,
-            &quot;str&quot;: &quot;color:teal&quot;
+            &quot;str&quot;: &quot;color:teal&quot;,
+            &quot;line&quot;: &quot;highlight-block&quot;,
+            &quot;lines&quot;: &quot;&quot;
         ];
 
         let this-&gt;styles = array_merge(defaultStyles, styles);
@@ -371,6 +373,72 @@ class Dump
         }
 
         return output;
+    }
+
+    /**
+     * Returns an HTML string, highlighting a specific line of a file, with some number of lines padded above and below.
+     *
+     * @param string file File to open
+     * @param integer line Line number to highlight
+     * @param integer padding Number of padding lines
+     * @return array Source of file, false if file is unreadable
+     */
+    public function source(string filename, int line, int padding = 5) -&gt; array|boolean
+    {
+        var file, range, format, lines, source, row;
+        int i = 0;
+
+        if empty filename || !is_readable(filename) {
+            // Continuing will cause errors
+            return false;
+        }
+
+        // Open the file and set the line position
+        let file = fopen(filename, &quot;r&quot;);
+
+        // Set the reading range
+        let range = [
+            &quot;start&quot;: line - padding,
+            &quot;end&quot;: line + padding
+        ];
+
+        // Set the zero-padding amount for line numbers
+        let format = &quot;% &quot; . strlen(range[&quot;end&quot;]) . &quot;d&quot;,
+            source = &quot;&quot;,
+            lines = [],
+            row = fgets(file);
+
+        while !feof(file) {
+            if row === false {
+                break;
+            }
+
+            // Increment the line number
+            let i++;
+
+            if i &gt; range[&quot;end&quot;] {
+                break;
+            }
+
+            if i &gt;= range[&quot;start&quot;] {
+                // Make the row safe for output
+                let row = htmlspecialchars(row, ENT_NOQUOTES, &quot;utf-8&quot;);
+
+                if i === line {
+                    // Apply highlighting to this row
+                    let lines[sprintf(format, i)] .= strtr((this-&gt;plain ? &quot;:var&quot; : &quot;&lt;div class=&apos;:class&apos;&gt;:var&lt;/div&gt;&quot;), [&quot;:class&quot;: this-&gt;getStyle(&quot;line&quot;), &quot;:var&quot;: row]);
+                } else {
+                    let lines[sprintf(format, i)] .= strtr((this-&gt;plain ? &quot;:var&quot; : &quot;&lt;div class=&apos;:class&apos;&gt;:var&lt;/div&gt;&quot;), [&quot;:class&quot;: this-&gt;getStyle(&quot;lines&quot;), &quot;:var&quot;: row]);
+                }
+            }
+
+            let row = fgets(file);
+        }
+
+        // Close the file
+        fclose(file);
+
+        return lines;
     }
 }
 </code></pre>                    </div>

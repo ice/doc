@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.3.0</span>
+                                                    ice Documentation <span class="version">v1.4.0</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -95,15 +95,13 @@ class Access
     {
         var di, service;
 
-        if typeof this-&gt;di != &quot;object&quot; || typeof this-&gt;di == &quot;object&quot; &amp;&amp; !(this-&gt;di instanceof Di) {
+        if typeof this-&gt;di != &quot;object&quot; || !(this-&gt;di instanceof Di) {
             let this-&gt;di = Di::$fetch();
         }
 
         let di = this-&gt;di;
 
         if property == &quot;di&quot; {
-            let this-&gt;{&quot;di&quot;} = di;
-
             return di;
         }
 
@@ -115,7 +113,7 @@ class Access
 
     public function __set(string property, var value)
     {
-        if typeof this-&gt;di != &quot;object&quot; || typeof this-&gt;di == &quot;object&quot; &amp;&amp; !(this-&gt;di instanceof Di) {
+        if typeof this-&gt;di != &quot;object&quot; || !(this-&gt;di instanceof Di) {
             let this-&gt;di = Di::$fetch();
         }
 

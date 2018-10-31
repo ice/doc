@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.3.0</span>
+                                                    ice Documentation <span class="version">v1.4.0</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -113,7 +113,7 @@ class Ini extends Config
      * @param mixed raw The same array but with raw strings
      * @return mixed
      */
-    private function cast(ini, raw)
+    protected function cast(ini, raw)
     {
         if typeof ini == &quot;string&quot; {
             // Decode true
@@ -150,7 +150,7 @@ class Ini extends Config
      * @param array raw
      * @return array
      */
-    private function map(ini, raw)
+    protected function map(ini, raw)
     {
         var key, value, data = [];
 

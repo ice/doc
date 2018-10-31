@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.3.0</span>
+                                                    ice Documentation <span class="version">v1.4.0</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -119,6 +119,21 @@
     </div>
     <div class="method-summary">
         <span class="method-name"><a href="#method-details-getClient">getClient</a></span>(<span class="small"></span>)
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-getDriverName">getDriverName</a></span>(<span class="small"></span>)
             </div>
 </td>
 </tr>
@@ -277,8 +292,24 @@
                 
     </div>
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-remove">remove</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$from</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$filters</strong></span></span>)
+        <span class="method-name"><a href="#method-details-delete">delete</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$from</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$filters</strong></span></span>)
                 <div class="summary-text text-muted">Remove records from the table.</div>
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-query">query</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$sql</strong></span>, <span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$values</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$obj</strong></span></span>)
+                <div class="summary-text text-muted">Query sql statement. execute the statement and populate into Model object:</div>
             </div>
 </td>
 </tr>
@@ -392,6 +423,33 @@
                 
                                 
                 <span class="small">function</span> <span class="method-name">getClient</span>(<span class="small"></span>)
+                </h3>
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-getDriverName"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">getDriverName</span>(<span class="small"></span>)
                 </h3>
                                 
             </div>
@@ -523,7 +581,10 @@
                     <div class="text-muted">
                     Find one row that match criteria.                    </div>
                     <div>
-                                        </div>
+                    <pre><code class="php">
+      //SELECT x, y FROM users WHERE a=1 or b=2 ORDER BY a desc,b asc Limit 1
+      $db-&gt;findOne(&quot;users&quot;, [&quot;OR&quot; =&gt; [[&quot;a&quot; =&gt; 1], [&quot;b&quot; =&gt; 2]]], [&quot;order&quot; =&gt; [&quot;a desc&quot;, &quot;b asc&quot;]], [&quot;x&quot;,&quot;y&quot;]);
+     </code></pre>                    </div>
                 
                                 
             </div>
@@ -558,13 +619,13 @@
                     <div>
                     <pre><code class="php">
       //SELECT FROM users WHERE a=1 and b=&quot;q&quot;
-      $db-&gt;find(&quot;users&quot;, array(&quot;a&quot; =&gt; 1, &quot;b&quot; =&gt; &quot;q&quot;));
+      $db-&gt;find(&quot;users&quot;, [&quot;a&quot; =&gt; 1, &quot;b&quot; =&gt; &quot;q&quot;]);
      
-      //SELECT FROM users WHERE age&gt;33 
-      $db-&gt;find(&quot;users&quot;, array(&quot;age&quot; =&gt; array(&quot;&gt;&quot; =&gt; 33)));
+      //SELECT FROM users WHERE age&gt;33
+      $db-&gt;find(&quot;users&quot;, [&quot;age&quot; =&gt; [&quot;&gt;&quot; =&gt; 33]]);
      
-      //SELECT FROM users WHERE a=1 or b=2 
-      $db-&gt;find(&quot;users&quot;, array(&quot;OR&quot; =&gt; array(array(&quot;a&quot; =&gt; 1), array(&quot;b&quot; =&gt; 2))));
+      //SELECT x, y FROM users WHERE a=1 or b=2 ORDER BY a desc,b asc
+      $db-&gt;find(&quot;users&quot;, [&quot;OR&quot; =&gt; [[&quot;a&quot; =&gt; 1], [&quot;b&quot; =&gt; 2]]], [&quot;order&quot; =&gt; [&quot;a desc&quot;, &quot;b asc&quot;]], [&quot;x&quot;,&quot;y&quot;]);
      </code></pre>                    </div>
                 
                                 
@@ -631,7 +692,15 @@
                     <div class="text-muted">
                     SELECT record(s) that match criteria.                    </div>
                     <div>
-                                        </div>
+                    <pre><code class="php">
+      // MySQL: SELECT FROM users WHERE a=1 or b=2 ORDER BY a desc,b asc LIMIT 10
+      // MSSQL: SELECT TOP 10 FROM users WHERE a=1 or b=2 ORDER BY a desc,b asc
+      $db-&gt;select(&quot;users&quot;, [&quot;OR&quot; =&gt; [[&quot;a&quot; =&gt; 1], [&quot;b&quot; =&gt; 2]]], [&quot;order&quot; =&gt; [&quot;a desc&quot;, &quot;b asc&quot;], &quot;limit&quot; =&gt; 10]);
+     
+      // MySQL: SELECT x, y FROM users WHERE a=1 or b=2 ORDER BY a desc,b asc LIMIT 10 offset 50
+      // MSSQL: SELECT x, y FROM users WHERE a=1 or b=2 ORDER BY a desc,b asc offset 50 ROWS FETCH NEXT 10 ROWS ONLY
+      $db-&gt;select(&quot;users&quot;, [&quot;OR&quot; =&gt; [[&quot;a&quot; =&gt; 1], [&quot;b&quot; =&gt; 2]]], [&quot;order&quot; =&gt; [&quot;a desc&quot;, &quot;b asc&quot;], &quot;limit&quot; =&gt; 10, &quot;offset&quot; =&gt; 50], [&quot;x&quot;,&quot;y&quot;]);
+     </code></pre>                    </div>
                 
                                 
             </div>
@@ -664,7 +733,10 @@
                     <div class="text-muted">
                     INSERT record into table.                    </div>
                     <div>
-                                        </div>
+                    <pre><code class="php">
+      //INSERT INTO users (a,b) VALUES (1, 2)
+      $db-&gt;insert(&quot;users&quot;, [[&quot;a&quot; =&gt; 1], [&quot;b&quot; =&gt; 2]]);
+     </code></pre>                    </div>
                 
                                 
             </div>
@@ -697,7 +769,10 @@
                     <div class="text-muted">
                     UPDATE records in the table.                    </div>
                     <div>
-                                        </div>
+                    <pre><code class="php">
+      //UPDATE users SET a=1, b=2 WHERE id=10 OR foo=&quot;bar&quot;
+      $db-&gt;update(&quot;users&quot;, [&quot;OR&quot; =&gt; [&quot;id&quot; =&gt; 10, &quot;foo&quot; =&gt; &quot;bar&quot;]], [[&quot;a&quot; =&gt; 1], [&quot;b&quot; =&gt; 2]]);
+     </code></pre>                    </div>
                 
                                 
             </div>
@@ -710,7 +785,7 @@
         
 <li class="class-method clearfix">
 
-    <div class="hidden-anchor"  id="method-details-remove"></div>
+    <div class="hidden-anchor"  id="method-details-delete"></div>
     
     <div class="method-details">
         
@@ -724,13 +799,55 @@
                                 <span class="small visibility-public">public</span>
                 
                                 
-                <span class="small">function</span> <span class="method-name">remove</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$from</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$filters</strong></span></span>)
+                <span class="small">function</span> <span class="method-name">delete</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$from</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$filters</strong></span></span>)
                 </h3>
                                 
                     <div class="text-muted">
                     Remove records from the table.                    </div>
                     <div>
-                                        </div>
+                    <pre><code class="php">
+      //DELETE FROM users WHERE id=10 OR foo=&quot;bar&quot;
+      $db-&gt;delete(&quot;users&quot;, [&quot;OR&quot; =&gt; [&quot;id&quot; =&gt; 10, &quot;foo&quot; =&gt; &quot;bar&quot;]]);
+     </code></pre>                    </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-query"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">query</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$sql</strong></span>, <span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$values</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$obj</strong></span></span>)
+                </h3>
+                                
+                    <div class="text-muted">
+                    Query sql statement. execute the statement and populate into Model object:                    </div>
+                    <div>
+                    <pre><code class="php">
+      //select from t where id=1
+      $m = $this-&gt;db-&gt;query(&apos;select from t where id=:id&apos;, [&apos;:id&apos; =&gt; 1], new stdClass);
+     
+      //select from t where id=1 OR foo=&apos;bar&apos;
+      $m = $this-&gt;db-&gt;query(&apos;select from t where id=? OR foo=?&apos;, [1, &quot;bar&quot;], &apos;\Ice\Arr&apos;);
+     </code></pre>                    </div>
                 
                                 
             </div>

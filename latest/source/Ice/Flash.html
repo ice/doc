@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.3.0</span>
+                                                    ice Documentation <span class="version">v1.4.0</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -188,9 +188,9 @@ class Flash
      *
      * @param string type
      * @param string message
-     * @return void
+     * @return object Flash
      */
-    public function message(string type, string message) -&gt; void
+    public function message(string type, string message)
     {
         var key, messages;
 
@@ -204,82 +204,90 @@ class Flash
         let messages[type][] = message;
 
         this-&gt;session-&gt;set(key, messages);
+        
+        return this;
     }
 
     /**
      * Add success message.
      *
      * @param string message
-     * @return void
+     * @return object Flash
      */
-    public function success(string message) -&gt; void
+    public function success(string message)
     {
         this-&gt;message(&quot;success&quot;, message);
+        
+        return this;
     }
 
     /**
      * Alias of success message.
+     * @return object Flash
      */
-    public function ok(string message) -&gt; void
+    public function ok(string message)
     {
-        this-&gt;message(&quot;success&quot;, message);
+        return this-&gt;message(&quot;success&quot;, message);
     }
 
     /**
      * Add info message.
      *
      * @param string message
-     * @return void
+     * @return object Flash
      */
-    public function info(string message) -&gt; void
+    public function info(string message)
     {
-        this-&gt;message(&quot;info&quot;, message);
+        return this-&gt;message(&quot;info&quot;, message);
     }
 
     /**
      * Alias of info message.
+     * @return object Flash
      */
-    public function notice(string message) -&gt; void
+    public function notice(string message)
     {
-        this-&gt;message(&quot;info&quot;, message);
+        return this-&gt;message(&quot;info&quot;, message);
     }
 
     /**
      * Add warning message.
      *
      * @param string message
-     * @return void
+     * @return object Flash
      */
-    public function warning(string message) -&gt; void
+    public function warning(string message)
     {
-        this-&gt;message(&quot;warning&quot;, message);
+        return this-&gt;message(&quot;warning&quot;, message);
     }
 
     /**
      * Alias of warning message.
+     * @return object Flash
      */
-    public function alert(string message) -&gt; void
+    public function alert(string message)
     {
-        this-&gt;message(&quot;warning&quot;, message);
+        return this-&gt;message(&quot;warning&quot;, message);
     }
 
     /**
      * Add danger message.
      *
      * @param string message
-     * @return void
+     * @return object Flash
      */
-    public function danger(string message) -&gt; void
+    public function danger(string message)
     {
-        this-&gt;message(&quot;danger&quot;, message);
+        return this-&gt;message(&quot;danger&quot;, message);
     }
 
     /**
      * Alias of danger message.
+     * @return object Flash
      */
-    public function error(string message) -&gt; void
+    public function error(string message)
     {
-        this-&gt;message(&quot;danger&quot;, message);
+        return this-&gt;message(&quot;danger&quot;, message);
     }
 }
 </code></pre>                    </div>

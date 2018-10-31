@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.3.0</span>
+                                                    ice Documentation <span class="version">v1.4.0</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -105,7 +105,7 @@ class Exception extends \Exception
         // Check if translation module is available.
         if di-&gt;has(&quot;i18n&quot;) {
             let message = di-&gt;get(&quot;i18n&quot;)-&gt;translate(str, values);
-        } elseif (typeof values == &quot;array&quot;) {
+        } elseif typeof values == &quot;array&quot; {
             // Check if values is associative or sequential
             if count(array_filter(array_keys(values), &quot;is_string&quot;)) {
                 let message = strtr(str, values);
@@ -166,7 +166,7 @@ class Exception extends \Exception
 
             let output .= sprintf(
                     &quot;#%s %s: %s(%s)\n&quot;,
-                    count, 
+                    count,
                     (isset frame[&quot;file&quot;] ? frame[&quot;file&quot;] . &quot;(&quot; . frame[&quot;line&quot;] . &quot;)&quot; : &quot;[internal function]&quot;),
                     (isset frame[&quot;class&quot;] ? frame[&quot;class&quot;] . frame[&quot;type&quot;] . frame[&quot;function&quot;] : frame[&quot;function&quot;]),
                     args
@@ -201,8 +201,22 @@ class Exception extends \Exception
      */
     public static function handler(e)
     {
-        // Create new exceptin by this class
-        create_instance_params(get_called_class(), [e-&gt;getMessage(), e-&gt;getCode(), e]);
+        var di, response;
+
+        let di = Di::$fetch(),
+            response = di-&gt;get(&quot;response&quot;);
+
+        // Clear the previous response body
+        response-&gt;setBody(&quot;&quot;);
+
+        di-&gt;applyHook(&quot;exception.after.uncaught&quot;, [e, di]);
+
+        if response-&gt;getBody() {
+            echo response-&gt;send();
+        } else {
+            throw e;
+        }
+
         exit(1);
     }
 

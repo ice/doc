@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.3.0</span>
+                                                    ice Documentation <span class="version">v1.4.0</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -90,6 +90,10 @@ use Ice\Mvc\Model;
  */
 class Roles extends Model
 {
+    /**
+     * User class name.
+     */
+    protected userClass = &quot;Ice\\Auth\\Driver\\Model\\Roles\\Users&quot;;
 
     /**
      * Initialize role&apos;s relations.
@@ -98,9 +102,7 @@ class Roles extends Model
      */
     public function initialize()
     {
-        this-&gt;hasMany(this-&gt;getIdKey(), &quot;Ice\\Auth\\Driver\\Model\\Roles\\Users&quot;, &quot;role_id&quot;, [
-            &quot;alias&quot;: &quot;RolesUsers&quot;
-        ]);
+        this-&gt;hasMany(this-&gt;getIdKey(), this-&gt;userClass, &quot;role_id&quot;, [&quot;alias&quot;: &quot;RolesUsers&quot;]);
     }
 }
 </code></pre>                    </div>

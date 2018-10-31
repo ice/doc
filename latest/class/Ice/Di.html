@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.3.0</span>
+                                                    ice Documentation <span class="version">v1.4.0</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -273,7 +273,7 @@
                 
     </div>
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-hook">hook</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$name</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$callback</strong></span>, <span class="param-data-type text-danger">int</span>  <span class="param-name text-info"><strong>$priority</strong></span></span>)
+        <span class="method-name"><a href="#method-details-hook">hook</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$name</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$callback</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$context</strong></span>, <span class="param-data-type text-danger">int</span>  <span class="param-name text-info"><strong>$priority</strong></span></span>)
                 <div class="summary-text text-muted">Assign hook.</div>
             </div>
 </td>
@@ -289,7 +289,7 @@
                 
     </div>
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-applyHook">applyHook</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$name</strong></span>, <span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$args</strong></span></span>)
+        <span class="method-name"><a href="#method-details-applyHook">applyHook</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$name</strong></span>, <span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$args</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$context</strong></span></span>)
                 <div class="summary-text text-muted">Invoke hook.</div>
             </div>
 </td>
@@ -305,7 +305,7 @@
                 
     </div>
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-getHooks">getHooks</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$name</strong></span></span>)
+        <span class="method-name"><a href="#method-details-getHooks">getHooks</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$name</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$context</strong></span></span>)
                 <div class="summary-text text-muted">Get hook listeners.</div>
             </div>
 </td>
@@ -321,7 +321,7 @@
                 
     </div>
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-clearHooks">clearHooks</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$name</strong></span></span>)
+        <span class="method-name"><a href="#method-details-clearHooks">clearHooks</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$name</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$context</strong></span></span>)
                 <div class="summary-text text-muted">Clear hook listeners.</div>
             </div>
 </td>
@@ -772,7 +772,7 @@
                                 <span class="small visibility-public">public</span>
                 
                                 
-                <span class="small">function</span> <span class="method-name">hook</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$name</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$callback</strong></span>, <span class="param-data-type text-danger">int</span>  <span class="param-name text-info"><strong>$priority</strong></span></span>)
+                <span class="small">function</span> <span class="method-name">hook</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$name</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$callback</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$context</strong></span>, <span class="param-data-type text-danger">int</span>  <span class="param-name text-info"><strong>$priority</strong></span></span>)
                 </h3>
                                 
                     <div class="text-muted">
@@ -805,7 +805,7 @@
                                 <span class="small visibility-public">public</span>
                 
                                 
-                <span class="small">function</span> <span class="method-name">applyHook</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$name</strong></span>, <span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$args</strong></span></span>)
+                <span class="small">function</span> <span class="method-name">applyHook</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$name</strong></span>, <span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$args</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$context</strong></span></span>)
                 </h3>
                                 
                     <div class="text-muted">
@@ -838,7 +838,7 @@
                                 <span class="small visibility-public">public</span>
                 
                                 
-                <span class="small">function</span> <span class="method-name">getHooks</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$name</strong></span></span>)
+                <span class="small">function</span> <span class="method-name">getHooks</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$name</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$context</strong></span></span>)
                 </h3>
                                 
                     <div class="text-muted">
@@ -873,7 +873,7 @@
                                 <span class="small visibility-public">public</span>
                 
                                 
-                <span class="small">function</span> <span class="method-name">clearHooks</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$name</strong></span></span>)
+                <span class="small">function</span> <span class="method-name">clearHooks</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$name</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$context</strong></span></span>)
                 </h3>
                                 
                     <div class="text-muted">

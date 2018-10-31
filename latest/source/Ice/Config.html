@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.3.0</span>
+                                                    ice Documentation <span class="version">v1.4.0</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -87,7 +87,15 @@ class Config extends Arr
      */
     public function __construct(var data = null)
     {
-        var key, value,hasNumericKey, subkey, subvalue;
+        var key, value, hasNumericKey, subkey, subvalue;
+
+        if typeof data == &quot;string&quot; &amp;&amp; data != &quot;&quot; {
+            if file_exists(data) {
+                let data = require data;
+            } else {
+                throw new Exception([&quot;Config file &apos;%s&apos; doesn&apos;t exist&quot;, data]);
+            }
+        }
 
         if typeof data != &quot;array&quot; {
             if data !== null {

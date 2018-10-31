@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.3.0</span>
+                                                    ice Documentation <span class="version">v1.4.0</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -308,7 +308,7 @@ class Mongodb implements DbInterface
      * @param string from Collection name
      * @param mixed filters Criteria
      */
-    public function remove(string! from, var filters = [])
+    public function delete(string! from, var filters = [])
     {
         var collection, result;
 

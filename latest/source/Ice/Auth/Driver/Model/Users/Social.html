@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../../../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.3.0</span>
+                                                    ice Documentation <span class="version">v1.4.0</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -97,6 +97,11 @@ class Social extends Model
     protected from = &quot;user_social&quot;;
 
     /**
+     * User class name.
+     */
+    protected userClass = &quot;Ice\\Auth\\Driver\\Model\\Users&quot;;
+
+    /**
      * Initialize relations.
      *
      * @return void
@@ -107,7 +112,7 @@ class Social extends Model
 
         let auth = this-&gt;getDi()-&gt;get(&quot;auth&quot;);
 
-        this-&gt;hasOne(&quot;user_id&quot;, auth-&gt;getOption(&quot;users&quot;, &quot;Ice\\Auth\\Driver\\Model\\Users&quot;), this-&gt;getIdKey(), [
+        this-&gt;hasOne(&quot;user_id&quot;, auth-&gt;getOption(&quot;users&quot;, this-&gt;userClass), this-&gt;getIdKey(), [
             &quot;alias&quot;: &quot;User&quot;
         ]);
     }

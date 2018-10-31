@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.3.0</span>
+                                                    ice Documentation <span class="version">v1.4.0</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -85,8 +85,7 @@
                 
     </div>
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-__construct">__construct</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$httpMethod</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$handler</strong></span>, <span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$regex</strong></span>, <span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$variables</strong></span></span>)
-                <div class="summary-text text-muted">Constructs a route (value object).</div>
+        <span class="method-name"><a href="#method-details-getDefaults">getDefaults</a></span>(<span class="small"></span>)
             </div>
 </td>
 </tr>
@@ -97,12 +96,120 @@
 
     <div class="method-return">
 
-        bool
+        
                 
     </div>
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-matches">matches</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$str</strong></span></span>)
-                <div class="summary-text text-muted">Tests whether this route matches the given string.</div>
+        <span class="method-name"><a href="#method-details-setDefaults">setDefaults</a></span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$defaults</strong></span></span>)
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-getMethod">getMethod</a></span>(<span class="small"></span>)
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-getError">getError</a></span>(<span class="small"></span>)
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-__construct">__construct</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$uri</strong></span>, <span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$regexMap</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$method</strong></span></span>)
+                <div class="summary-text text-muted">Constructs a route. Each {key} will be translated to a regular expression</div>
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-matches">matches</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$uri</strong></span>, <span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$method</strong></span></span>)
+                <div class="summary-text text-muted">Tests if the route matches a given URI and method.</div>
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-checkMethod">checkMethod</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$method</strong></span></span>)
+                <div class="summary-text text-muted">Tests if the route allows a given method.</div>
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-uri">uri</a></span>(<span class="small"><span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$params</strong></span></span>)
+                <div class="summary-text text-muted">Generates a URI for the current route based on the parameters given. (AKA. reverse route)</div>
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-zephir_init_properties_Ice_Mvc_Route">zephir_init_properties_Ice_Mvc_Route</a></span>(<span class="small"></span>)
             </div>
 </td>
 </tr>
@@ -111,6 +218,114 @@
 <div class="hidden-anchor"  id="methods-details"></div>
 <div class="methods-summary standard-bandeau">Methods Details</div>
 <ul class="method-details-list list-unstyled">
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-getDefaults"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">getDefaults</span>(<span class="small"></span>)
+                </h3>
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-setDefaults"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">setDefaults</span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$defaults</strong></span></span>)
+                </h3>
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-getMethod"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">getMethod</span>(<span class="small"></span>)
+                </h3>
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-getError"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">getError</span>(<span class="small"></span>)
+                </h3>
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
     
         
 <li class="class-method clearfix">
@@ -129,13 +344,37 @@
                                 <span class="small visibility-public">public</span>
                 
                                 
-                <span class="small">function</span> <span class="method-name">__construct</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$httpMethod</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$handler</strong></span>, <span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$regex</strong></span>, <span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$variables</strong></span></span>)
+                <span class="small">function</span> <span class="method-name">__construct</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$uri</strong></span>, <span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$regexMap</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$method</strong></span></span>)
                 </h3>
                                 
                     <div class="text-muted">
-                    Constructs a route (value object).                    </div>
+                    Constructs a route. Each {key} will be translated to a regular expression                    </div>
                     <div>
-                                        </div>
+                    using a default regular expression pattern. You can override the default pattern
+     by providing a pattern for the key:
+     
+     <pre><code class="php">
+         // This route will only match when {id} is a digit
+         new Route(&quot;/blog/{action}/{id}&quot;, [&quot;id&quot; =&gt; &quot;\d+&quot;], [&apos;GET&apos;, &apos;POST&apos;]);
+     
+         // This route will match when {path} is anything
+         new Route(&quot;/{path}&quot;, [&quot;path&quot; =&gt; &quot;.&quot;]);
+     </code></pre>
+     
+     It is also possible to create optional segments by using parentheses in
+     the URI definition:
+     
+     <pre><code class="php">
+         // This is the standard default route, and no keys are required
+         new Route(&apos;/{module}[/{controller}[/{action}[/{id}[/params]]]]&apos;);
+     
+         // This route only requires the {file} key
+         new Route(&apos;[/{path}/]{file}[.{ext}]&apos;, [&apos;path&apos; =&gt; &apos;.&apos;, &apos;ext&apos; =&gt; &apos;\w+&apos;]);
+     </code></pre>
+     
+     <pre><code class="php">
+         $route = new Route($uri, $regex, [&apos;GET&apos;, &apos;POST&apos;]);
+     </code></pre>                    </div>
                 
                                 
             </div>
@@ -162,14 +401,114 @@
                                 <span class="small visibility-public">public</span>
                 
                                 
-                <span class="small">function</span> <span class="method-name">matches</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$str</strong></span></span>)
+                <span class="small">function</span> <span class="method-name">matches</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$uri</strong></span>, <span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$method</strong></span></span>)
                 </h3>
                                 
                     <div class="text-muted">
-                    Tests whether this route matches the given string.                    </div>
+                    Tests if the route matches a given URI and method.                    </div>
+                    <div>
+                    <pre><code class="php">
+         // Params: controller = blog, action = edit, id = 10
+         $params = route-&gt;matches(&quot;/blog/edit/10&quot;);
+     </code></pre>                    </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-checkMethod"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">checkMethod</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$method</strong></span></span>)
+                </h3>
+                                
+                    <div class="text-muted">
+                    Tests if the route allows a given method.                    </div>
                     <div>
                                         </div>
                 
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-uri"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">uri</span>(<span class="small"><span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$params</strong></span></span>)
+                </h3>
+                                
+                    <div class="text-muted">
+                    Generates a URI for the current route based on the parameters given. (AKA. reverse route)                    </div>
+                    <div>
+                    <pre><code class="php">
+         // Using the &quot;default&quot; route: /blog/post/10
+         $uri = $route-&gt;uri([&quot;controller&quot; =&gt; &quot;blog&quot;, &quot;action&quot; =&gt; &quot;post&quot;, &quot;id&quot; =&gt; 10]);
+         if (!$uri) echo $route-&gt;getError();
+     </code></pre>                    </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-zephir_init_properties_Ice_Mvc_Route"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-internal">internal</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">zephir_init_properties_Ice_Mvc_Route</span>(<span class="small"></span>)
+                </h3>
                                 
             </div>
         </div>

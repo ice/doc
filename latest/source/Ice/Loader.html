@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.3.0</span>
+                                                    ice Documentation <span class="version">v1.4.0</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -142,23 +142,33 @@ class Loader
         // work backwards through the namespace names of the fully-qualified
         // class name to find a mapped file name
         let pos = strrpos(prefix, &quot;\\&quot;);
-        while pos !== false {
-            // retain the trailing namespace separator in the prefix
-            let prefix = substr(className, 0, pos + 1);
 
-            // the rest is the relative class name
-            let relativeClass = substr(className, pos + 1);
-
+        if pos === false {        
             // try to load a mapped file for the prefix and relative class
-            let mappedFile = this-&gt;loadMappedFile(prefix, relativeClass);
+            let mappedFile = this-&gt;loadMappedFile(&quot;\\&quot;, className);
             if mappedFile {
                 return mappedFile;
             }
+        } else {        
+            do {
+                // retain the trailing namespace separator in the prefix
+                let prefix = substr(className, 0, pos + 1);
 
-            // remove the trailing namespace separator for the next iteration
-            // of strrpos()
-            let prefix = rtrim(prefix, &quot;\\&quot;);
-            let pos = strrpos(prefix, &quot;\\&quot;);
+                // the rest is the relative class name
+                let relativeClass = substr(className, pos + 1);
+
+                // try to load a mapped file for the prefix and relative class
+                let mappedFile = this-&gt;loadMappedFile(prefix, relativeClass);
+                if mappedFile {
+                    return mappedFile;
+                }
+
+                // remove the trailing namespace separator for the next iteration
+                // of strrpos()
+                let prefix = rtrim(prefix, &quot;\\&quot;);
+                let pos = strrpos(prefix, &quot;\\&quot;);
+            } 
+            while pos !== false;
         }
 
         // never found a mapped file
@@ -181,13 +191,14 @@ class Loader
             return false;
         }
 
+        let relativeClass = str_replace(&quot;\\&quot;, DIRECTORY_SEPARATOR, relativeClass) . &quot;.php&quot;;
+
         // look through base directories for this namespace prefix
         for baseDir in this-&gt;prefixes[prefix] {
             // replace the namespace prefix with the base directory,
             // replace namespace separators with directory separators
             // in the relative class name, append with .php
-            let file = baseDir . str_replace(&quot;\\&quot;, DIRECTORY_SEPARATOR, relativeClass) . &quot;.php&quot;,
-                file = baseDir . str_replace(&quot;\\&quot;, &quot;/&quot;, relativeClass) . &quot;.php&quot;;
+            let file = baseDir . relativeClass;
 
             // if the mapped file exists, require it
             if this-&gt;requireFile(file) {

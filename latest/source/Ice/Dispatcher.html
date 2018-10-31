@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.3.0</span>
+                                                    ice Documentation <span class="version">v1.4.0</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -103,6 +103,7 @@ abstract class Dispatcher
     protected params = [] { get, set };
     protected returnedValue = null { get, set };
 
+    protected handlers = &quot;Handlers&quot; { get, set };
     protected handlerSuffix = &quot;Handler&quot; { get, set };
     protected actionSuffix = &quot;Action&quot; { get, set };
 
@@ -190,6 +191,21 @@ abstract class Dispatcher
     }
 
     /**
+     * Add module with its dir path, initial class name and namespace
+     *
+     * @param string name
+     * @param array options The keys can be [path|class|namespace]
+     * @return object Dispatcher
+     */
+    public function addModule(string name, array options)
+    {
+        // add or replace module
+        let this-&gt;modules[name] = options;
+
+        return this;
+    }
+
+    /**
      * Dispatches a handle action taking into account the routing parameters.
      *
      * @return object
@@ -246,19 +262,19 @@ abstract class Dispatcher
                     let moduleNamespace = moduleClass;
                 }
 
-                let loader = new Loader(),
+                let loader = this-&gt;di-&gt;get(&quot;loader&quot;),
                     this-&gt;$namespace = moduleNamespace;
 
                 loader-&gt;addNamespace(moduleNamespace, path)-&gt;register();
 
                 let module = &lt;ModuleInterface&gt; create_instance_params(moduleNamespace . &quot;\\&quot; . moduleClass, [this-&gt;di]);
 
-                module-&gt;registerAutoloaders();
+                module-&gt;registerAutoloaders(loader);
                 module-&gt;registerServices(this-&gt;di);
             }
 
             if !this-&gt;defaultNamespace {
-                this-&gt;setDefaultNamespace(this-&gt;$namespace . &quot;\\&quot; . this-&gt;getHandlerSuffix());
+                this-&gt;setDefaultNamespace(this-&gt;$namespace . &quot;\\&quot; . this-&gt;handlers);
             }
 
             let handlerName = this-&gt;handler,
@@ -337,6 +353,7 @@ abstract class Dispatcher
      *
      * @param array forward
      * @param boolean force
+     * @return object Dispatcher
      */
     public function forward(array! forward, boolean force = false)
     {
@@ -371,6 +388,26 @@ abstract class Dispatcher
         if force {
             this-&gt;dispatch();
         }
+
+        return this;
+    }
+    /**
+     * Reset module, handler and action to default ones, and empty the params.
+     *
+     * @return object Dispatcher
+     */
+    public function reset()
+    {
+        var router;
+
+        let router = this-&gt;di-&gt;router;
+
+        this-&gt;setModule(router-&gt;getDefaultModule())
+            -&gt;setHandler(router-&gt;getDefaultHandler())
+            -&gt;setAction(router-&gt;getDefaultAction())
+            -&gt;setParams([]);
+
+        return this;
     }
 }
 </code></pre>                    </div>

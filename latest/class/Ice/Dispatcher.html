@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.3.0</span>
+                                                    ice Documentation <span class="version">v1.4.0</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -442,6 +442,36 @@
                 
     </div>
     <div class="method-summary">
+        <span class="method-name"><a href="#method-details-getHandlers">getHandlers</a></span>(<span class="small"></span>)
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-setHandlers">setHandlers</a></span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$handlers</strong></span></span>)
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
         <span class="method-name"><a href="#method-details-getHandlerSuffix">getHandlerSuffix</a></span>(<span class="small"></span>)
             </div>
 </td>
@@ -582,6 +612,22 @@
                 
     </div>
     <div class="method-summary">
+        <span class="method-name"><a href="#method-details-addModule">addModule</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$name</strong></span>, <span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$options</strong></span></span>)
+                <div class="summary-text text-muted">Add module with its dir path, initial class name and namespace</div>
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
         <span class="method-name"><a href="#method-details-dispatch">dispatch</a></span>(<span class="small"></span>)
                 <div class="summary-text text-muted">Dispatches a handle action taking into account the routing parameters.</div>
             </div>
@@ -600,6 +646,22 @@
     <div class="method-summary">
         <span class="method-name"><a href="#method-details-forward">forward</a></span>(<span class="small"><span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$forward</strong></span>, <span class="param-data-type text-danger">bool</span>  <span class="param-name text-info"><strong>$force</strong></span></span>)
                 <div class="summary-text text-muted">Forwards the execution flow to another module/controller/action.</div>
+            </div>
+</td>
+</tr>
+    
+        
+<tr class="class-method">
+<td>
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-reset">reset</a></span>(<span class="small"></span>)
+                <div class="summary-text text-muted">Reset module, handler and action to default ones, and empty the params.</div>
             </div>
 </td>
 </tr>
@@ -1275,6 +1337,60 @@
         
 <li class="class-method clearfix">
 
+    <div class="hidden-anchor"  id="method-details-getHandlers"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">getHandlers</span>(<span class="small"></span>)
+                </h3>
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-setHandlers"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">setHandlers</span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$handlers</strong></span></span>)
+                </h3>
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
     <div class="hidden-anchor"  id="method-details-getHandlerSuffix"></div>
     
     <div class="method-details">
@@ -1559,6 +1675,39 @@
         
 <li class="class-method clearfix">
 
+    <div class="hidden-anchor"  id="method-details-addModule"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">addModule</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$name</strong></span>, <span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$options</strong></span></span>)
+                </h3>
+                                
+                    <div class="text-muted">
+                    Add module with its dir path, initial class name and namespace                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
     <div class="hidden-anchor"  id="method-details-dispatch"></div>
     
     <div class="method-details">
@@ -1611,6 +1760,39 @@
                                 
                     <div class="text-muted">
                     Forwards the execution flow to another module/controller/action.                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-reset"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <h3>
+                                <span class="small visibility-public">public</span>
+                
+                                
+                <span class="small">function</span> <span class="method-name">reset</span>(<span class="small"></span>)
+                </h3>
+                                
+                    <div class="text-muted">
+                    Reset module, handler and action to default ones, and empty the params.                    </div>
                     <div>
                                         </div>
                 

@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.3.0</span>
+                                                    ice Documentation <span class="version">v1.4.0</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -72,6 +72,7 @@
 namespace Ice\Mvc;
 
 use Ice\Di;
+use Ice\Loader;
 
 /**
  * Module interface.
@@ -85,8 +86,8 @@ use Ice\Di;
 interface ModuleInterface
 {
 
-    public function registerAutoloaders();
-    
+    public function registerAutoloaders(&lt;Loader&gt; loader = null);
+
     public function registerServices(&lt;Di&gt; di);
 }
 </code></pre>                    </div>

@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.3.0</span>
+                                                    ice Documentation <span class="version">v1.4.0</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -95,7 +95,7 @@ class Arr implements \ArrayAccess, \Countable, \IteratorAggregate
     }
 
     /**
-     * Whether or not an data exists by key.
+     * Whether or not a data exists by key.
      *
      * @param string key The data key
      * @return boolean
@@ -129,26 +129,30 @@ class Arr implements \ArrayAccess, \Countable, \IteratorAggregate
      *
      * @param string key The data key
      * @param mixed value
-     * @return void
+     * @return object Arr
      */
-    public function set(string key, var value) -&gt; void
+    public function set(string key, var value)
     {
         let this-&gt;data[key] = value;
+
+        return this;
     }
 
     /**
      * Add data to set, replaces the existing data.
      *
      * @param array data
-     * @return void
+     * @return Arr
      */
-    public function replace(array! data) -&gt; void
+    public function replace(array! data)
     {
         var key, value;
 
         for key, value in data {
             this-&gt;set(key, value);
         }
+
+        return this;
     }
 
     /**
@@ -236,28 +240,32 @@ class Arr implements \ArrayAccess, \Countable, \IteratorAggregate
      */
     public function keys() -&gt; array
     {
-        return array_keys(this-&gt;data);
+        return array_keys(this-&gt;getData());
     }
 
     /**
-     * Remove an data by key.
+     * Remove a data by key.
      *
      * @param string key The data key
-     * @return void
+     * @return object Arr
      */
-    public function remove(string key) -&gt; void
+    public function remove(string key)
     {
         unset this-&gt;data[key];
+
+        return this;
     }
 
     /**
      * Clear all values.
      *
-     * @return void
+     * @return object Arr
      */
-    public function clear() -&gt; void
+    public function clear()
     {
         let this-&gt;data = [];
+
+        return this;
     }
 
     /**
@@ -267,7 +275,7 @@ class Arr implements \ArrayAccess, \Countable, \IteratorAggregate
      */
     public function count() -&gt; int
     {
-        return count(this-&gt;data);
+        return count(this-&gt;getData());
     }
 
     /**
@@ -277,7 +285,7 @@ class Arr implements \ArrayAccess, \Countable, \IteratorAggregate
      */
     public function getIterator() -&gt; &lt;ArrayIterator&gt;
     {
-        return new ArrayIterator(this-&gt;data);
+        return new ArrayIterator(this-&gt;getData());
     }
 
     /**
@@ -302,7 +310,7 @@ class Arr implements \ArrayAccess, \Countable, \IteratorAggregate
     {
         var data, keys, key;
 
-        let data = this-&gt;data;
+        let data = this-&gt;getData();
 
         if typeof path == &quot;array&quot; {
             // The path has already been separated into keys
@@ -384,7 +392,7 @@ class Arr implements \ArrayAccess, \Countable, \IteratorAggregate
         var key, value, tmp;
 
         let tmp = [];
-        for key, value in this-&gt;data {
+        for key, value in this-&gt;getData() {
             if typeof value == &quot;object&quot; {
                 if method_exists(value, &quot;toArray&quot;) {
                     let tmp[key] = value-&gt;toArray();
@@ -405,7 +413,7 @@ class Arr implements \ArrayAccess, \Countable, \IteratorAggregate
      * @return boolean
      * @abstracting ArrayAccess
      */
-    public function offsetExists(string offset) -&gt; boolean
+    public function offsetExists(offset) -&gt; boolean
     {
         return this-&gt;has(offset);
     }
@@ -417,7 +425,7 @@ class Arr implements \ArrayAccess, \Countable, \IteratorAggregate
      * @return mixed
      * @abstracting ArrayAccess
      */
-    public function offsetGet(string offset)
+    public function offsetGet(offset)
     {
         return this-&gt;get(offset);
     }
@@ -430,7 +438,7 @@ class Arr implements \ArrayAccess, \Countable, \IteratorAggregate
      * @return void
      * @abstracting ArrayAccess
      */
-    public function offsetSet(string offset, var value) -&gt; void
+    public function offsetSet(offset, var value) -&gt; void
     {
         this-&gt;set(offset, value);
     }
@@ -442,7 +450,7 @@ class Arr implements \ArrayAccess, \Countable, \IteratorAggregate
      * @return void
      * @abstracting ArrayAccess
      */
-    public function offsetUnset(string offset) -&gt; void
+    public function offsetUnset(offset) -&gt; void
     {
         this-&gt;remove(offset);
     }
@@ -485,7 +493,7 @@ class Arr implements \ArrayAccess, \Countable, \IteratorAggregate
      */
     public function __unset(key) -&gt; void
     {
-        unset this-&gt;data[key];
+        this-&gt;remove(key);
     }
 }
 </code></pre>                    </div>

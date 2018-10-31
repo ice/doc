@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.3.0</span>
+                                                    ice Documentation <span class="version">v1.4.0</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -78,7 +78,7 @@
 namespace Ice\Mvc\Route\Dispatcher;
 
 use Ice\Mvc\Route\Dispatcher\Regex;
-use Ice\Mvc\Router;
+use Ice\Mvc\FastRouter;
 
 class GroupCount extends Regex
 {
@@ -118,12 +118,13 @@ class GroupCount extends Regex
                     vars[varName] = matches[i];
             }
 
-            return [Router::FOUND, handler, vars];
+            return [FastRouter::FOUND, handler, vars];
         }
 
-        return [Router::NOT_FOUND];
+        return [FastRouter::NOT_FOUND];
     }
-}</code></pre>                    </div>
+}
+</code></pre>                    </div>
                 </div>
             </div>
         </div>

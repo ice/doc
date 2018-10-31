@@ -11,7 +11,7 @@
             <div id="top-bar" class="container-fluid">
                 <div id="top-left" class="navbar-header">
                     <a href="../../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.3.0</span>
+                                                    ice Documentation <span class="version">v1.4.0</span>
                                             </a>
                 </div>
                 <div id="top-right" class="collapse navbar-collapse">
@@ -113,6 +113,7 @@ class Collector
      * @param string|array $httpMethod
      * @param string $route
      * @param mixed  $handler
+     * @return object Collector
      */
     public function addRoute(var httpMethod, string route, handler = null)
     {
@@ -130,6 +131,8 @@ class Collector
                 this-&gt;dataGenerator-&gt;addRoute(method, routeData, handler);
             }
         }
+        
+        return this;
     }
 
     /**
@@ -141,7 +144,8 @@ class Collector
     {
         return this-&gt;dataGenerator-&gt;getData();
     }
-}</code></pre>                    </div>
+}
+</code></pre>                    </div>
                 </div>
             </div>
         </div>
