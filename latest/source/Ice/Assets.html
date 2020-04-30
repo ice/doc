@@ -1,39 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <link rel="stylesheet" type="text/css" href="../../asset/static/css/bootstrap.min.css" />
-        <link rel="stylesheet" type="text/css" href="../../asset/static/css/tomorrow.min.css" id="tomorrow" />
-        <link rel="stylesheet" type="text/css" href="../../asset/static/css/tomorrow-night.min.css" id="tomorrow-night" disabled />
-        <link rel="stylesheet" type="text/css" href="../../asset/static/css/style.css" />
-    </head>
-    <body>
-        <header class="navbar navbar-default navbar-fixed-top">
-            <div id="top-bar" class="container-fluid">
-                <div id="top-left" class="navbar-header">
-                    <a href="../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.4.0</span>
-                                            </a>
-                </div>
-                <div id="top-right" class="collapse navbar-collapse">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta content="ice API doc" name="description">
+    <title>
+                    ice API Documentation
+            </title>
+    <link rel="stylesheet" type="text/css" href="../../asset/static/prettify.css" />
 
-                </div>
+<script src="../../asset/static/prettify.js"></script>
+<script src="../../asset/api_definition.js"></script>
+
+
+                        <link rel="stylesheet" type="text/css" href="../../asset/static/prettify.css" />
+                    <link rel="stylesheet" type="text/css" href="../../asset/static/zephir-theme.css" />
+            
+    
+
+                        <script src="../../asset/static/prettify.js"></script>
+                                    <script src="../../asset/api_definition.js"></script>
+                    <script src="../../asset/static/jquery.min.js"></script>
+                    <script src="../../asset/static/zephir-doc.js"></script>
+                <script type="application/javascript">let ZepCurrentPath = '../../'</script>
+    </head>
+ <body onload="prettyPrint()">
+        <div id="top-bar">
+            <div id="top-left" style="color: #555">
+                                    <a href="https://doc.iceframework.org" title="ice framework documentation" style="color: #444"><img src="https://www.iceframework.org/img/logo.png" alt="ice framework documentation" width="30" height="30"> ice doc</a> <span class="version">v1.6.0</span>
+                            </div>
+            <div id="top-right">
             </div>
-        </header>
-        <div id="body" class="container-fluid">
-            <div class="row">
-                <div id="body-left" class="col-lg-3 col-sm-4">
-                    <div class="header-search">
-                        <input class="search-box form-control" placeholder="Search for a class or namespace " type="text" />
-                        <div id="menu-wrapper">
-                        </div>
+        </div>
+        <div id="body">
+            <div id="body-left">
+                <div class="header-search">
+                    <input class="search-box" placeholder="Search for a class or namespace " type="text" />
+                    <div id="menu-wrapper">
                     </div>
                 </div>
-                <div id="body-right" class="col-lg-9 col-sm-8">
-                    <div class="content">
-                        
-<div>
+            </div>
+            <div id="body-right">
+                <div class="content">
+                    
+<div class="breadcrumb">
     
-    <ul class="breadcrumb">
+    <ul>
         
         <li><a href="../../index.html">Home</a></li>
         
@@ -45,27 +57,30 @@
     
 </div>
 <div class="class-header source clearfix">
-    
-    <div class="access-buttons pull-right">
-        <a class="zep-button btn btn-default" href="../../class/Ice/Assets.html">Class</a>
 
-                <a class="zep-button btn btn-default" href="https://github.com/ice/framework/tree/dev/ice/assets.zep">Github</a>
+    <div class="access-buttons">
+        <a class="zep-button" href="../../class/Ice/Assets.html">Class</a>
+
+                <a class="zep-button"
+           href="https://github.com/ice/framework/tree/dev/ice/assets.zep">
+            Github
+        </a>
             </div>
-    
+
     <div class="class-full-name">
-        
         <span class="class-type">Class</span>
-        
+
                 <span class="namespace-piece">
             <a href="../../namespace/Ice.html">Ice</a>
         </span>
-                <h1 class="class-name">Assets</h1>
+        
+        <h1 class="class-name">Assets</h1>
     </div>
-    
+
 </div>
 
-
-<pre class="zephir-source-file"><code>
+<pre class="zephir-source-file prettyprint linenums">
+    
 namespace Ice;
 
 /**
@@ -74,12 +89,11 @@ namespace Ice;
  * @package     Ice/Assets
  * @category    Helper
  * @author      Ice Team
- * @copyright   (c) 2014-2018 Ice Team
+ * @copyright   (c) 2014-2020 Ice Team
  * @license     http://iceframework.org/license
  */
 class Assets
 {
-
     protected di;
     protected collections = [] { set, get };
     protected options = [] { set };
@@ -94,7 +108,7 @@ class Assets
      */
     public function __construct()
     {
-        let this-&gt;di = Di::$fetch();
+        let this->di = Di::$fetch();
     }
 
     /**
@@ -108,7 +122,7 @@ class Assets
     {
         var value;
 
-        if fetch value, this-&gt;options[key] {
+        if fetch value, this->options[key] {
             return value;
         }
 
@@ -128,28 +142,28 @@ class Assets
     {
         var content, type, link;
 
-        if typeof parameters == &quot;string&quot; {
+        if typeof parameters == "string" {
             let link = parameters,
                 parameters = [],
                 parameters[] = link;
         }
 
-        if !fetch content, parameters[&quot;content&quot;] {
+        if !fetch content, parameters["content"] {
             fetch content, parameters[0];
         }
 
-        fetch type, parameters[&quot;type&quot;];
+        fetch type, parameters["type"];
 
-        if ends_with(content, &quot;.css&quot;) || type == &quot;text/css&quot; {
+        if ends_with(content, ".css") || type == "text/css" {
             if !collection {
-                let collection = &quot;css&quot;;
+                let collection = "css";
             }
-            this-&gt;addCss(parameters, version, collection, minify);
-        } elseif ends_with(content, &quot;.js&quot;) || type == &quot;text/javascript&quot; {
+            this->addCss(parameters, version, collection, minify);
+        } elseif ends_with(content, ".js") || type == "text/javascript" {
             if !collection {
-                let collection = &quot;js&quot;;
+                let collection = "js";
             }
-            this-&gt;addJs(parameters, version, collection, minify);
+            this->addJs(parameters, version, collection, minify);
         }
 
         return this;
@@ -164,38 +178,38 @@ class Assets
      * @param mixed minify Local minify option
      * @return object this
      */
-    public function addCss(array! parameters, string version = null, string collection = &quot;css&quot;, var minify = null)
+    public function addCss(array! parameters, string version = null, string collection = "css", var minify = null)
     {
 
         var content, local, tag;
 
-        let tag = this-&gt;di-&gt;get(&quot;tag&quot;);
+        let tag = this->di->get("tag");
 
-        if !fetch content, parameters[&quot;content&quot;] {
+        if !fetch content, parameters["content"] {
             fetch content, parameters[0];
         }
 
-        if !fetch local, parameters[&quot;local&quot;] {
+        if !fetch local, parameters["local"] {
             let local = true;
         }
 
         // If local minify is not set
         if minify === null {
             // Get global minify option, default is NEVER
-            let minify = this-&gt;getOption(&quot;minify&quot;, self::NEVER);
+            let minify = this->getOption("minify", self::NEVER);
         }
 
         // Do not minify external or minified resources
-        if !local || ends_with(content, &quot;.min.css&quot;) {
+        if !local || ends_with(content, ".min.css") {
             let minify = self::NEVER;
         }
 
         // Check if resource is inline or in file
-        if isset parameters[&quot;content&quot;] {
-            this-&gt;addToCollection(collection, tag-&gt;style([&quot;content&quot;: minify ? this-&gt;minify(content, &quot;css&quot;) : content]));
+        if isset parameters["content"] {
+            this->addToCollection(collection, tag->style(["content": minify ? this->minify(content, "css") : content]));
         } else {
-            let parameters[&quot;href&quot;] = this-&gt;prepare(content, &quot;css&quot;, minify) . (version ? &quot;?v=&quot; . version : &quot;&quot;);
-            this-&gt;addToCollection(collection, tag-&gt;link(parameters));
+            let parameters["href"] = this->prepare(content, "css", minify) . (version ? "?v=" . version : "");
+            this->addToCollection(collection, tag->link(parameters));
         }
 
         return this;
@@ -210,37 +224,37 @@ class Assets
      * @param mixed minify Local minify option
      * @return object this
      */
-    public function addJs(array! parameters, string version = null, string collection = &quot;js&quot;, var minify = null)
+    public function addJs(array! parameters, string version = null, string collection = "js", var minify = null)
     {
         var content, local, tag;
 
-        let tag = this-&gt;di-&gt;get(&quot;tag&quot;);
+        let tag = this->di->get("tag");
 
-        if !fetch content, parameters[&quot;content&quot;] {
+        if !fetch content, parameters["content"] {
             fetch content, parameters[0];
         }
 
-        if !fetch local, parameters[&quot;local&quot;] {
+        if !fetch local, parameters["local"] {
             let local = true;
         }
 
         // If local minify is not set
         if minify === null {
             // Get global minify option, default is NEVER
-            let minify = this-&gt;getOption(&quot;minify&quot;, self::NEVER);
+            let minify = this->getOption("minify", self::NEVER);
         }
 
         // Do not minify external or minified resources
-        if !local || ends_with(content, &quot;.min.js&quot;) {
+        if !local || ends_with(content, ".min.js") {
             let minify = self::NEVER;
         }
 
         // Check if resource is inline or in file
-        if isset parameters[&quot;content&quot;] {
-            this-&gt;addToCollection(collection, tag-&gt;script([&quot;content&quot;: minify ? this-&gt;minify(content, &quot;js&quot;) : content]));
+        if isset parameters["content"] {
+            this->addToCollection(collection, tag->script(["content": minify ? this->minify(content, "js") : content]));
         } else {
-            let parameters[&quot;src&quot;] = this-&gt;prepare(content, &quot;js&quot;, minify) . (version ? &quot;?v=&quot; . version : &quot;&quot;);
-            this-&gt;addToCollection(collection, tag-&gt;script(parameters));
+            let parameters["src"] = this->prepare(content, "js", minify) . (version ? "?v=" . version : "");
+            this->addToCollection(collection, tag->script(parameters));
         }
 
         return this;
@@ -254,11 +268,11 @@ class Assets
      */
     public function addToCollection(key, value)
     {
-        if !isset this-&gt;collections[key] {
-            let this-&gt;collections[key] = [];
+        if !isset this->collections[key] {
+            let this->collections[key] = [];
         }
 
-        let this-&gt;collections[key][] = value;
+        let this->collections[key][] = value;
     }
 
     /**
@@ -268,7 +282,7 @@ class Assets
      */
     public function getCss()
     {
-        return this-&gt;get(&quot;css&quot;);
+        return this->get("css");
     }
 
     /**
@@ -278,7 +292,7 @@ class Assets
      */
     public function getJs()
     {
-        return this-&gt;get(&quot;js&quot;);
+        return this->get("js");
     }
 
     /**
@@ -291,7 +305,7 @@ class Assets
     {
         var collection;
 
-        fetch collection, this-&gt;collections[key];
+        fetch collection, this->collections[key];
 
         return collection ? collection : [];
     }
@@ -305,7 +319,7 @@ class Assets
      */
     protected function minify(string! content, type)
     {
-        return this-&gt;di-&gt;get(&quot;filter&quot;)-&gt;sanitize(content, type . &quot;min&quot;);
+        return this->di->get("filter")->sanitize(content, type . "min");
     }
 
     /**
@@ -320,11 +334,11 @@ class Assets
     {
         var source, target, dir, file, uriMin, destination, exist, old, minified;
 
-        let source = this-&gt;getOption(&quot;source&quot;),
-            target = this-&gt;getOption(&quot;target&quot;),
+        let source = this->getOption("source"),
+            target = this->getOption("target"),
             dir = dirname(uri) . DIRECTORY_SEPARATOR,
-            file = basename(uri, &quot;.&quot; . type),
-            uriMin = target . dir . file . &quot;.min.&quot; . type,
+            file = basename(uri, "." . type),
+            uriMin = target . dir . file . ".min." . type,
             destination = source . uriMin,
             exist = false;
 
@@ -345,7 +359,7 @@ class Assets
             default: // self::NEVER:
                 let minify = false;
 
-                if this-&gt;getOption(&quot;forceMinified&quot;) {
+                if this->getOption("forceMinified") {
                     let exist = file_exists(destination);
                 }
             break;
@@ -354,10 +368,10 @@ class Assets
         if !minify {
             return exist ? uriMin : uri;
         } else {
-            let minified = this-&gt;minify(file_get_contents(source . uri), type);
+            let minified = this->minify(file_get_contents(source . uri), type);
 
             // Check if file was changed
-            if typeof minify == &quot;string&quot; {
+            if typeof minify == "string" {
                 if minify != md5(minified) {
                     let minify = true;
                 }
@@ -373,38 +387,16 @@ class Assets
                 }
 
                 if file_put_contents(destination, minified) === false {
-                    throw new Exception(&quot;Directory can&apos;t be written&quot;);
+                    throw new Exception("Directory can't be written");
                 }
             }
 
             return uriMin;
         }
     }
-}</code></pre>                    </div>
+}</pre>
                 </div>
             </div>
         </div>
-
-        <script src="../../asset/static/js/jquery.min.js"></script>
-        <script src="../../asset/static/js/bootstrap.min.js"></script>
-        <script src="../../asset/static/js/highlight.pack.js"></script>
-        <script src="../../asset/static/js/jquery.slimscroll.min.js"></script>
-        <script src="../../asset/api_definition.js"></script>
-
-        <script>var ZepCurrentPath = '../../'</script>
-        <script src="../../asset/static/js/script.js"></script>
-        <script type="text/javascript">
-            $(window).on("load resize", function() {
-                $('#menu-wrapper').slimscroll({ height: $(window).height() - 100, size: '3px' });
-            });
-        </script>
-        <script type="text/javascript">
-            $(document).ready(function() { $('pre code').each(function(i, block) { hljs.highlightBlock(block); }); });
-            if ($('.zephir-source-file').length) {
-                $('link[id]').each(function(i, link) {
-                    link.disabled = (link.id != 'tomorrow-night');
-                });
-            }
-        </script>
-            </body>
+    </body>
 </html>

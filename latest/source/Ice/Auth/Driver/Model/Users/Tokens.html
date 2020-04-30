@@ -1,39 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <link rel="stylesheet" type="text/css" href="../../../../../../asset/static/css/bootstrap.min.css" />
-        <link rel="stylesheet" type="text/css" href="../../../../../../asset/static/css/tomorrow.min.css" id="tomorrow" />
-        <link rel="stylesheet" type="text/css" href="../../../../../../asset/static/css/tomorrow-night.min.css" id="tomorrow-night" disabled />
-        <link rel="stylesheet" type="text/css" href="../../../../../../asset/static/css/style.css" />
-    </head>
-    <body>
-        <header class="navbar navbar-default navbar-fixed-top">
-            <div id="top-bar" class="container-fluid">
-                <div id="top-left" class="navbar-header">
-                    <a href="../../../../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.4.0</span>
-                                            </a>
-                </div>
-                <div id="top-right" class="collapse navbar-collapse">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta content="ice API doc" name="description">
+    <title>
+                    ice API Documentation
+            </title>
+    <link rel="stylesheet" type="text/css" href="../../../../../../asset/static/prettify.css" />
 
-                </div>
+<script src="../../../../../../asset/static/prettify.js"></script>
+<script src="../../../../../../asset/api_definition.js"></script>
+
+
+                        <link rel="stylesheet" type="text/css" href="../../../../../../asset/static/prettify.css" />
+                    <link rel="stylesheet" type="text/css" href="../../../../../../asset/static/zephir-theme.css" />
+            
+    
+
+                        <script src="../../../../../../asset/static/prettify.js"></script>
+                                    <script src="../../../../../../asset/api_definition.js"></script>
+                    <script src="../../../../../../asset/static/jquery.min.js"></script>
+                    <script src="../../../../../../asset/static/zephir-doc.js"></script>
+                <script type="application/javascript">let ZepCurrentPath = '../../../../../../'</script>
+    </head>
+ <body onload="prettyPrint()">
+        <div id="top-bar">
+            <div id="top-left" style="color: #555">
+                                    <a href="https://doc.iceframework.org" title="ice framework documentation" style="color: #444"><img src="https://www.iceframework.org/img/logo.png" alt="ice framework documentation" width="30" height="30"> ice doc</a> <span class="version">v1.6.0</span>
+                            </div>
+            <div id="top-right">
             </div>
-        </header>
-        <div id="body" class="container-fluid">
-            <div class="row">
-                <div id="body-left" class="col-lg-3 col-sm-4">
-                    <div class="header-search">
-                        <input class="search-box form-control" placeholder="Search for a class or namespace " type="text" />
-                        <div id="menu-wrapper">
-                        </div>
+        </div>
+        <div id="body">
+            <div id="body-left">
+                <div class="header-search">
+                    <input class="search-box" placeholder="Search for a class or namespace " type="text" />
+                    <div id="menu-wrapper">
                     </div>
                 </div>
-                <div id="body-right" class="col-lg-9 col-sm-8">
-                    <div class="content">
-                        
-<div>
+            </div>
+            <div id="body-right">
+                <div class="content">
+                    
+<div class="breadcrumb">
     
-    <ul class="breadcrumb">
+    <ul>
         
         <li><a href="../../../../../../index.html">Home</a></li>
         
@@ -45,17 +57,19 @@
     
 </div>
 <div class="class-header source clearfix">
-    
-    <div class="access-buttons pull-right">
-        <a class="zep-button btn btn-default" href="../../../../../../class/Ice/Auth/Driver/Model/Users/Tokens.html">Class</a>
 
-                <a class="zep-button btn btn-default" href="https://github.com/ice/framework/tree/dev/ice/auth/driver/model/users/tokens.zep">Github</a>
+    <div class="access-buttons">
+        <a class="zep-button" href="../../../../../../class/Ice/Auth/Driver/Model/Users/Tokens.html">Class</a>
+
+                <a class="zep-button"
+           href="https://github.com/ice/framework/tree/dev/ice/auth/driver/model/users/tokens.zep">
+            Github
+        </a>
             </div>
-    
+
     <div class="class-full-name">
-        
         <span class="class-type">Class</span>
-        
+
                 <span class="namespace-piece">
             <a href="../../../../../../namespace/Ice.html">Ice</a>
         </span>
@@ -71,13 +85,14 @@
                 <span class="namespace-piece">
             <a href="../../../../../../namespace/Ice/Auth/Driver/Model/Users.html">Users</a>
         </span>
-                <h1 class="class-name">Tokens</h1>
+        
+        <h1 class="class-name">Tokens</h1>
     </div>
-    
+
 </div>
 
-
-<pre class="zephir-source-file"><code>
+<pre class="zephir-source-file prettyprint linenums">
+    
 namespace Ice\Auth\Driver\Model\Users;
 
 use Ice\Text;
@@ -85,26 +100,25 @@ use Ice\Mvc\Model;
 use Ice\Validation;
 
 /**
- * Model user&apos;s Tokens.
+ * Model user's Tokens.
  *
  * @package     Ice/Auth
  * @category    Model
  * @author      Ice Team
- * @copyright   (c) 2014-2018 Ice Team
+ * @copyright   (c) 2014-2020 Ice Team
  * @license     http://iceframework.org/license
  */
 class Tokens extends Model
 {
-
-    protected from = &quot;user_tokens&quot;;
+    protected from = "user_tokens";
 
     /**
      * User class name.
      */
-    protected userClass = &quot;Ice\\Auth\\Driver\\Model\\Users&quot;;
+    protected userClass = "Ice\\Auth\\Driver\\Model\\Users";
 
     /**
-     * Initialize token&apos;s relations, remove expired tokens.
+     * Initialize token's relations, remove expired tokens.
      *
      * @return void
      */
@@ -112,23 +126,23 @@ class Tokens extends Model
     {
         var auth, expire;
 
-        let auth = this-&gt;di-&gt;get(&quot;auth&quot;);
+        let auth = this->di->get("auth");
 
-        this-&gt;belongsTo(&quot;user_id&quot;, auth-&gt;getOption(&quot;users&quot;, this-&gt;userClass), this-&gt;getIdKey(), [
-            &quot;alias&quot;: &quot;User&quot;,
-            &quot;foreignKey&quot;: true
+        this->belongsTo("user_id", auth->getOption("users", this->userClass), this->getIdKey(), [
+            "alias": "User",
+            "foreignKey": true
         ]);
 
         // Do garbage collection
         if mt_rand(1, 100) === 1 {
-            this-&gt;deleteExpired();
+            this->deleteExpired();
         }
 
-        let expire = this-&gt;get(&quot;expires&quot;);
+        let expire = this->get("expires");
 
         // This object has expired
-        if expire &gt; 0 &amp;&amp; expire &lt; time() {
-            this-&gt;delete();
+        if expire > 0 && expire < time() {
+            this->delete();
         }
     }
 
@@ -139,9 +153,9 @@ class Tokens extends Model
      * @param object extra Extra validation
      * @return mixed
      */
-    public function create(var fields = [], &lt;Validation&gt; extra = null)
+    public function create(var fields = [], <Validation> extra = null)
     {
-        let this-&gt;{&quot;token&quot;} = this-&gt;generate();
+        let this->{"token"} = this->generate();
 
         return parent::create(fields);
     }
@@ -153,8 +167,8 @@ class Tokens extends Model
      */
     public function deleteExpired()
     {
-        return this-&gt;delete([
-            &quot;expires&quot;: [&quot;&lt;&quot;: time()]
+        return this->delete([
+            "expires": ["<": time()]
         ]);
     }
 
@@ -165,9 +179,9 @@ class Tokens extends Model
      * @param object extra Extra validation
      * @return mixed
      */
-    public function update(var fields = [], &lt;Validation&gt; extra = null)
+    public function update(var fields = [], <Validation> extra = null)
     {
-        let this-&gt;{&quot;token&quot;} = this-&gt;generate();
+        let this->{"token"} = this->generate();
 
         return parent::update(fields);
     }
@@ -178,42 +192,20 @@ class Tokens extends Model
      * @return string
      * @uses Text::random()
      */
-    protected function generate() -&gt; string
+    protected function generate() -> string
     {
         var token;
 
         do {
             let token = bin2hex(openssl_random_pseudo_bytes(16));
-        } while static::findOne([&quot;token&quot;: token]);
+        } while static::findOne(["token": token]);
 
         return token;
     }
 }
-</code></pre>                    </div>
+</pre>
                 </div>
             </div>
         </div>
-
-        <script src="../../../../../../asset/static/js/jquery.min.js"></script>
-        <script src="../../../../../../asset/static/js/bootstrap.min.js"></script>
-        <script src="../../../../../../asset/static/js/highlight.pack.js"></script>
-        <script src="../../../../../../asset/static/js/jquery.slimscroll.min.js"></script>
-        <script src="../../../../../../asset/api_definition.js"></script>
-
-        <script>var ZepCurrentPath = '../../../../../../'</script>
-        <script src="../../../../../../asset/static/js/script.js"></script>
-        <script type="text/javascript">
-            $(window).on("load resize", function() {
-                $('#menu-wrapper').slimscroll({ height: $(window).height() - 100, size: '3px' });
-            });
-        </script>
-        <script type="text/javascript">
-            $(document).ready(function() { $('pre code').each(function(i, block) { hljs.highlightBlock(block); }); });
-            if ($('.zephir-source-file').length) {
-                $('link[id]').each(function(i, link) {
-                    link.disabled = (link.id != 'tomorrow-night');
-                });
-            }
-        </script>
-            </body>
+    </body>
 </html>

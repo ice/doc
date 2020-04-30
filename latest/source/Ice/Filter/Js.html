@@ -1,39 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <link rel="stylesheet" type="text/css" href="../../../asset/static/css/bootstrap.min.css" />
-        <link rel="stylesheet" type="text/css" href="../../../asset/static/css/tomorrow.min.css" id="tomorrow" />
-        <link rel="stylesheet" type="text/css" href="../../../asset/static/css/tomorrow-night.min.css" id="tomorrow-night" disabled />
-        <link rel="stylesheet" type="text/css" href="../../../asset/static/css/style.css" />
-    </head>
-    <body>
-        <header class="navbar navbar-default navbar-fixed-top">
-            <div id="top-bar" class="container-fluid">
-                <div id="top-left" class="navbar-header">
-                    <a href="../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.4.0</span>
-                                            </a>
-                </div>
-                <div id="top-right" class="collapse navbar-collapse">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta content="ice API doc" name="description">
+    <title>
+                    ice API Documentation
+            </title>
+    <link rel="stylesheet" type="text/css" href="../../../asset/static/prettify.css" />
 
-                </div>
+<script src="../../../asset/static/prettify.js"></script>
+<script src="../../../asset/api_definition.js"></script>
+
+
+                        <link rel="stylesheet" type="text/css" href="../../../asset/static/prettify.css" />
+                    <link rel="stylesheet" type="text/css" href="../../../asset/static/zephir-theme.css" />
+            
+    
+
+                        <script src="../../../asset/static/prettify.js"></script>
+                                    <script src="../../../asset/api_definition.js"></script>
+                    <script src="../../../asset/static/jquery.min.js"></script>
+                    <script src="../../../asset/static/zephir-doc.js"></script>
+                <script type="application/javascript">let ZepCurrentPath = '../../../'</script>
+    </head>
+ <body onload="prettyPrint()">
+        <div id="top-bar">
+            <div id="top-left" style="color: #555">
+                                    <a href="https://doc.iceframework.org" title="ice framework documentation" style="color: #444"><img src="https://www.iceframework.org/img/logo.png" alt="ice framework documentation" width="30" height="30"> ice doc</a> <span class="version">v1.6.0</span>
+                            </div>
+            <div id="top-right">
             </div>
-        </header>
-        <div id="body" class="container-fluid">
-            <div class="row">
-                <div id="body-left" class="col-lg-3 col-sm-4">
-                    <div class="header-search">
-                        <input class="search-box form-control" placeholder="Search for a class or namespace " type="text" />
-                        <div id="menu-wrapper">
-                        </div>
+        </div>
+        <div id="body">
+            <div id="body-left">
+                <div class="header-search">
+                    <input class="search-box" placeholder="Search for a class or namespace " type="text" />
+                    <div id="menu-wrapper">
                     </div>
                 </div>
-                <div id="body-right" class="col-lg-9 col-sm-8">
-                    <div class="content">
-                        
-<div>
+            </div>
+            <div id="body-right">
+                <div class="content">
+                    
+<div class="breadcrumb">
     
-    <ul class="breadcrumb">
+    <ul>
         
         <li><a href="../../../index.html">Home</a></li>
         
@@ -45,30 +57,33 @@
     
 </div>
 <div class="class-header source clearfix">
-    
-    <div class="access-buttons pull-right">
-        <a class="zep-button btn btn-default" href="../../../class/Ice/Filter/Js.html">Class</a>
 
-                <a class="zep-button btn btn-default" href="https://github.com/ice/framework/tree/dev/ice/filter/js.zep">Github</a>
+    <div class="access-buttons">
+        <a class="zep-button" href="../../../class/Ice/Filter/Js.html">Class</a>
+
+                <a class="zep-button"
+           href="https://github.com/ice/framework/tree/dev/ice/filter/js.zep">
+            Github
+        </a>
             </div>
-    
+
     <div class="class-full-name">
-        
         <span class="class-type">Class</span>
-        
+
                 <span class="namespace-piece">
             <a href="../../../namespace/Ice.html">Ice</a>
         </span>
                 <span class="namespace-piece">
             <a href="../../../namespace/Ice/Filter.html">Filter</a>
         </span>
-                <h1 class="class-name">Js</h1>
+        
+        <h1 class="class-name">Js</h1>
     </div>
-    
+
 </div>
 
-
-<pre class="zephir-source-file"><code>
+<pre class="zephir-source-file prettyprint linenums">
+    
 namespace Ice\Filter;
 
 use Ice\Exception;
@@ -79,25 +94,24 @@ use Ice\Exception;
  * @package     Ice/Filter
  * @category    Minification
  * @author      Ice Team
- * @copyright   (c) 2014-2018 Ice Team
+ * @copyright   (c) 2014-2020 Ice Team
  * @license     http://iceframework.org/license
  * @uses        jsmin.c www.crockford.com
  */
 class Js
 {
-
     const ORD_LF = 10;
     const ORD_SPACE = 32;
     const ACTION_KEEP_A = 1;
     const ACTION_DELETE_A = 2;
     const ACTION_DELETE_A_B = 3;
-    protected a = &quot;&quot;;
-    protected b = &quot;&quot;;
-    protected input = &quot;&quot;;
+    protected a = "";
+    protected b = "";
+    protected input = "";
     protected inputIndex = 0;
     protected inputLength = 0;
     protected lookAhead = null;
-    protected output = &quot;&quot; { get };
+    protected output = "" { get };
 
     /**
      * Minify the js.
@@ -107,15 +121,15 @@ class Js
      */
     public function sanitize(string js)
     {
-        let this-&gt;a = &quot;&quot;,
-            this-&gt;b = &quot;&quot;,
-            this-&gt;input = str_replace(&quot;\r\n&quot;, &quot;\n&quot;, js),
-            this-&gt;inputLength = strlen(this-&gt;input),
-            this-&gt;inputIndex = 0,
-            this-&gt;lookAhead = null,
-            this-&gt;output = &quot;&quot;;
+        let this->a = "",
+            this->b = "",
+            this->input = str_replace("\r\n", "\n", js),
+            this->inputLength = strlen(this->input),
+            this->inputIndex = 0,
+            this->lookAhead = null,
+            this->output = "";
 
-        return this-&gt;min();
+        return this->min();
     }
 
     /**
@@ -139,29 +153,29 @@ class Js
         //switch command {
             //case self::ACTION_KEEP_A: //1
             if command == self::ACTION_KEEP_A {
-                let this-&gt;output = this-&gt;output . this-&gt;a;
+                let this->output = this->output . this->a;
             }
 
             //case self::ACTION_DELETE_A: //1, 2
             if command == self::ACTION_KEEP_A || command == self::ACTION_DELETE_A {
-                let this-&gt;a = this-&gt;b;
+                let this->a = this->b;
 
-                if this-&gt;a === &quot;&apos;&quot; || this-&gt;a === &quot;\&quot;&quot; {
+                if this->a === "'" || this->a === "\"" {
                     while 1 {
-                        let this-&gt;output = this-&gt;output . this-&gt;a,
-                            this-&gt;a = this-&gt;get();
+                        let this->output = this->output . this->a,
+                            this->a = this->get();
 
-                        if this-&gt;a === this-&gt;b {
+                        if this->a === this->b {
                             break;
                         }
 
-                        if ord(this-&gt;a) &lt;= self::ORD_LF {
-                            throw new Exception(&quot;Unterminated string literal.&quot;);
+                        if ord(this->a) <= self::ORD_LF {
+                            throw new Exception("Unterminated string literal.");
                         }
 
-                        if this-&gt;a === &quot;\\&quot; {
-                            let this-&gt;output = this-&gt;output . this-&gt;a,
-                                this-&gt;a = this-&gt;get();
+                        if this->a === "\\" {
+                            let this->output = this->output . this->a,
+                                this->a = this->get();
                         }
                     }
                 }
@@ -169,49 +183,49 @@ class Js
 
             //case self::ACTION_DELETE_A_B: //1, 2, 3
             if command == self::ACTION_KEEP_A || command == self::ACTION_DELETE_A || command == self::ACTION_DELETE_A_B {
-                let this-&gt;b = this-&gt;next();
+                let this->b = this->next();
 
-                if this-&gt;b === &quot;/&quot; &amp;&amp; (
-                    this-&gt;a === &quot;(&quot; || this-&gt;a === &quot;,&quot; || this-&gt;a === &quot;=&quot; ||
-                    this-&gt;a === &quot;:&quot; || this-&gt;a === &quot;[&quot; || this-&gt;a === &quot;!&quot; ||
-                    this-&gt;a === &quot;&amp;&quot; || this-&gt;a === &quot;|&quot; || this-&gt;a === &quot;?&quot; ||
-                    this-&gt;a === &quot;{&quot; || this-&gt;a === &quot;}&quot; || this-&gt;a === &quot;;&quot; ||
-                    this-&gt;a === &quot;\n&quot; ) {
-                    let this-&gt;output = this-&gt;output . this-&gt;a . this-&gt;b;
+                if this->b === "/" && (
+                    this->a === "(" || this->a === "," || this->a === "=" ||
+                    this->a === ":" || this->a === "[" || this->a === "!" ||
+                    this->a === "&" || this->a === "|" || this->a === "?" ||
+                    this->a === "{" || this->a === "}" || this->a === ";" ||
+                    this->a === "\n" ) {
+                    let this->output = this->output . this->a . this->b;
 
                     while 1 {
-                        let this-&gt;a = this-&gt;get();
-                        if this-&gt;a === &quot;[&quot; {
+                        let this->a = this->get();
+                        if this->a === "[" {
                             /*
-                            inside a regex [...] set, which MAY contain a &quot;/&quot; itself. Example: mootools Form.Validator near line 460:
-                            return Form.Validator.getValidator(&quot;IsEmpty&quot;).test(element) || (/^(?:[a-z0-9!#$%&amp;&apos;*+/=?^_`{|}~-]\.?){0,63}[a-z0-9!#$%&amp;&apos;*+/=?^_`{|}~-]@(?:(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)*[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\])$/i).test(element.get(&quot;value&quot;));
+                            inside a regex [...] set, which MAY contain a "/" itself. Example: mootools Form.Validator near line 460:
+                            return Form.Validator.getValidator("IsEmpty").test(element) || (/^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]\.?){0,63}[a-z0-9!#$%&'*+/=?^_`{|}~-]@(?:(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)*[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\])$/i).test(element.get("value"));
                             */
                             while 1 {
-                                let this-&gt;output = this-&gt;output . this-&gt;a,
-                                    this-&gt;a = this-&gt;get();
+                                let this->output = this->output . this->a,
+                                    this->a = this->get();
 
-                                if this-&gt;a === &quot;]&quot; {
+                                if this->a === "]" {
                                     break;
-                                } elseif this-&gt;a === &quot;\\&quot; {
-                                    let this-&gt;output = this-&gt;output . this-&gt;a,
-                                        this-&gt;a = this-&gt;get();
-                                } elseif ord(this-&gt;a) &lt;= self::ORD_LF {
-                                    throw new Exception(&quot;Unterminated regular expression set in regex literal.&quot;);
+                                } elseif this->a === "\\" {
+                                    let this->output = this->output . this->a,
+                                        this->a = this->get();
+                                } elseif ord(this->a) <= self::ORD_LF {
+                                    throw new Exception("Unterminated regular expression set in regex literal.");
                                 }
                             }
-                        } elseif this-&gt;a === &quot;/&quot; {
+                        } elseif this->a === "/" {
                             break;
-                        } elseif this-&gt;a === &quot;\\&quot; {
-                            let this-&gt;output = this-&gt;output . this-&gt;a,
-                                this-&gt;a = this-&gt;get();
-                        } elseif ord(this-&gt;a) &lt;= self::ORD_LF {
-                            throw new Exception(&quot;Unterminated regular expression literal.&quot;);
+                        } elseif this->a === "\\" {
+                            let this->output = this->output . this->a,
+                                this->a = this->get();
+                        } elseif ord(this->a) <= self::ORD_LF {
+                            throw new Exception("Unterminated regular expression literal.");
                         }
 
-                        let this-&gt;output = this-&gt;output . this-&gt;a;
+                        let this->output = this->output . this->a;
                     }
 
-                    let this-&gt;b = this-&gt;next();
+                    let this->b = this->next();
                 }
             }
         //}
@@ -226,28 +240,28 @@ class Js
     {
         var c, i;
 
-        let c = this-&gt;lookAhead,
-            this-&gt;lookAhead = null;
+        let c = this->lookAhead,
+            this->lookAhead = null;
 
         if c === null {
-            if this-&gt;inputIndex &lt; this-&gt;inputLength {
-                let c = substr(this-&gt;input, this-&gt;inputIndex, 1),
-                    i = this-&gt;inputIndex,
-                    this-&gt;inputIndex = i + 1;
+            if this->inputIndex < this->inputLength {
+                let c = substr(this->input, this->inputIndex, 1),
+                    i = this->inputIndex,
+                    this->inputIndex = i + 1;
             } else {
                 let c = null;
             }
         }
 
-        if c === &quot;\r&quot; {
-            return &quot;\n&quot;;
+        if c === "\r" {
+            return "\n";
         }
 
-        if c === null || c === &quot;\n&quot; || ord(c) &gt;= self::ORD_SPACE {
+        if c === null || c === "\n" || ord(c) >= self::ORD_SPACE {
             return c;
         }
 
-        return &quot; &quot;;
+        return " ";
     }
 
     /**
@@ -257,7 +271,7 @@ class Js
      */
     protected function isAlphaNum(c)
     {
-        return ord(c) &gt; 126 || c === &quot;\\&quot; || preg_match(&quot;/^[\\w\\$]$/&quot;, c) === 1;
+        return ord(c) > 126 || c === "\\" || preg_match("/^[\\w\\$]$/", c) === 1;
     }
 
     /**
@@ -267,87 +281,87 @@ class Js
      */
     protected function min()
     {
-        if 0 == strncmp(this-&gt;peek(), &quot;\xef&quot;, 1) {
-            this-&gt;get();
-            this-&gt;get();
-            this-&gt;get();
+        if 0 == strncmp(this->peek(), "\xef", 1) {
+            this->get();
+            this->get();
+            this->get();
         }
 
-        let this-&gt;a = &quot;\n&quot;;
-        this-&gt;action(self::ACTION_DELETE_A_B);
+        let this->a = "\n";
+        this->action(self::ACTION_DELETE_A_B);
 
-        while this-&gt;a !== null {
-            switch this-&gt;a {
-                case &quot; &quot;:
-                    if this-&gt;isAlphaNum(this-&gt;b) {
-                        this-&gt;action(self::ACTION_KEEP_A);
+        while this->a !== null {
+            switch this->a {
+                case " ":
+                    if this->isAlphaNum(this->b) {
+                        this->action(self::ACTION_KEEP_A);
                     } else {
-                        this-&gt;action(self::ACTION_DELETE_A);
+                        this->action(self::ACTION_DELETE_A);
                     }
                 break;
-                case &quot;\n&quot;:
-                    switch this-&gt;b {
-                        case &quot;{&quot;:
-                        case &quot;[&quot;:
-                        case &quot;(&quot;:
-                        case &quot;+&quot;:
-                        case &quot;-&quot;:
-                        case &quot;!&quot;:
-                        case &quot;~&quot;:
-                            this-&gt;action(self::ACTION_KEEP_A);
+                case "\n":
+                    switch this->b {
+                        case "{":
+                        case "[":
+                        case "(":
+                        case "+":
+                        case "-":
+                        case "!":
+                        case "~":
+                            this->action(self::ACTION_KEEP_A);
                         break;
-                        case &quot; &quot;:
-                            this-&gt;action(self::ACTION_DELETE_A_B);
+                        case " ":
+                            this->action(self::ACTION_DELETE_A_B);
                         break;
                         default:
-                            if this-&gt;isAlphaNum(this-&gt;b) {
-                                this-&gt;action(self::ACTION_KEEP_A);
+                            if this->isAlphaNum(this->b) {
+                                this->action(self::ACTION_KEEP_A);
                             } else {
-                                this-&gt;action(self::ACTION_DELETE_A);
+                                this->action(self::ACTION_DELETE_A);
                             }
                     }
                 break;
-                default:       
-                    switch this-&gt;b {
-                        case &quot; &quot;:
-                            if this-&gt;isAlphaNum(this-&gt;a) {
-                                this-&gt;action(self::ACTION_KEEP_A);
+                default:
+                    switch this->b {
+                        case " ":
+                            if this->isAlphaNum(this->a) {
+                                this->action(self::ACTION_KEEP_A);
                                 break;
                             }
-                            this-&gt;action(self::ACTION_DELETE_A_B);
+                            this->action(self::ACTION_DELETE_A_B);
                         break;
-                        case &quot;\n&quot;:
-                            switch this-&gt;a {
-                                case &quot;}&quot;:
-                                case &quot;]&quot;:
-                                case &quot;)&quot;:
-                                case &quot;+&quot;:
-                                case &quot;-&quot;:
-                                case &quot;\&quot;&quot;:
-                                case &quot;&apos;&quot;:
-                                    this-&gt;action(self::ACTION_KEEP_A);
+                        case "\n":
+                            switch this->a {
+                                case "}":
+                                case "]":
+                                case ")":
+                                case "+":
+                                case "-":
+                                case "\"":
+                                case "'":
+                                    this->action(self::ACTION_KEEP_A);
                                 break;
                                 default:
-                                    if this-&gt;isAlphaNum(this-&gt;a) {
-                                        this-&gt;action(self::ACTION_KEEP_A);
+                                    if this->isAlphaNum(this->a) {
+                                        this->action(self::ACTION_KEEP_A);
                                     } else {
-                                        this-&gt;action(self::ACTION_DELETE_A_B);
+                                        this->action(self::ACTION_DELETE_A_B);
                                     }
                             }
                         break;
                         default:
-                            this-&gt;action(self::ACTION_KEEP_A);
+                            this->action(self::ACTION_KEEP_A);
                         break;
                     }
             }
-        }        
-        
-        return this-&gt;output;
+        }
+
+        return this->output;
     }
 
     /**
      * Get the next character, skipping over comments. peek() is used to see
-     *  if a &quot;/&quot; is followed by a &quot;/&quot; or &quot;*&quot;.
+     *  if a "/" is followed by a "/" or "*".
      *
      * @throws Exception On unterminated comment.
      * @return string
@@ -356,30 +370,30 @@ class Js
     {
         var c;
 
-        let c = this-&gt;get();
+        let c = this->get();
 
-        if c === &quot;/&quot; {
-            switch this-&gt;peek() {
-                case &quot;/&quot;:
+        if c === "/" {
+            switch this->peek() {
+                case "/":
                     while 1 {
-                        let c = this-&gt;get();
-                        if ord(c) &lt;= self::ORD_LF {
+                        let c = this->get();
+                        if ord(c) <= self::ORD_LF {
                             return c;
                         }
                     }
-                case &quot;*&quot;:
-                    this-&gt;get();
+                case "*":
+                    this->get();
 
                     while 1 {
-                        switch this-&gt;get() {
-                            case &quot;*&quot;:
-                                if this-&gt;peek() === &quot;/&quot; {
-                                    this-&gt;get();
-                                    return &quot; &quot;;
+                        switch this->get() {
+                            case "*":
+                                if this->peek() === "/" {
+                                    this->get();
+                                    return " ";
                                 }
                             break;
                             case null:
-                                throw new Exception(&quot;Unterminated comment.&quot;);
+                                throw new Exception("Unterminated comment.");
                         }
                     }
                 default:
@@ -396,35 +410,13 @@ class Js
      */
     protected function peek()
     {
-        let this-&gt;lookAhead = this-&gt;get();
-        return this-&gt;lookAhead;
+        let this->lookAhead = this->get();
+        return this->lookAhead;
     }
 }
-</code></pre>                    </div>
+</pre>
                 </div>
             </div>
         </div>
-
-        <script src="../../../asset/static/js/jquery.min.js"></script>
-        <script src="../../../asset/static/js/bootstrap.min.js"></script>
-        <script src="../../../asset/static/js/highlight.pack.js"></script>
-        <script src="../../../asset/static/js/jquery.slimscroll.min.js"></script>
-        <script src="../../../asset/api_definition.js"></script>
-
-        <script>var ZepCurrentPath = '../../../'</script>
-        <script src="../../../asset/static/js/script.js"></script>
-        <script type="text/javascript">
-            $(window).on("load resize", function() {
-                $('#menu-wrapper').slimscroll({ height: $(window).height() - 100, size: '3px' });
-            });
-        </script>
-        <script type="text/javascript">
-            $(document).ready(function() { $('pre code').each(function(i, block) { hljs.highlightBlock(block); }); });
-            if ($('.zephir-source-file').length) {
-                $('link[id]').each(function(i, link) {
-                    link.disabled = (link.id != 'tomorrow-night');
-                });
-            }
-        </script>
-            </body>
+    </body>
 </html>

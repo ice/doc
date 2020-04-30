@@ -1,39 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <link rel="stylesheet" type="text/css" href="../../../../asset/static/css/bootstrap.min.css" />
-        <link rel="stylesheet" type="text/css" href="../../../../asset/static/css/tomorrow.min.css" id="tomorrow" />
-        <link rel="stylesheet" type="text/css" href="../../../../asset/static/css/tomorrow-night.min.css" id="tomorrow-night" disabled />
-        <link rel="stylesheet" type="text/css" href="../../../../asset/static/css/style.css" />
-    </head>
-    <body>
-        <header class="navbar navbar-default navbar-fixed-top">
-            <div id="top-bar" class="container-fluid">
-                <div id="top-left" class="navbar-header">
-                    <a href="../../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.4.0</span>
-                                            </a>
-                </div>
-                <div id="top-right" class="collapse navbar-collapse">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta content="ice API doc" name="description">
+    <title>
+                    ice API Documentation
+            </title>
+    <link rel="stylesheet" type="text/css" href="../../../../asset/static/prettify.css" />
 
-                </div>
+<script src="../../../../asset/static/prettify.js"></script>
+<script src="../../../../asset/api_definition.js"></script>
+
+
+                        <link rel="stylesheet" type="text/css" href="../../../../asset/static/prettify.css" />
+                    <link rel="stylesheet" type="text/css" href="../../../../asset/static/zephir-theme.css" />
+            
+    
+
+                        <script src="../../../../asset/static/prettify.js"></script>
+                                    <script src="../../../../asset/api_definition.js"></script>
+                    <script src="../../../../asset/static/jquery.min.js"></script>
+                    <script src="../../../../asset/static/zephir-doc.js"></script>
+                <script type="application/javascript">let ZepCurrentPath = '../../../../'</script>
+    </head>
+ <body onload="prettyPrint()">
+        <div id="top-bar">
+            <div id="top-left" style="color: #555">
+                                    <a href="https://doc.iceframework.org" title="ice framework documentation" style="color: #444"><img src="https://www.iceframework.org/img/logo.png" alt="ice framework documentation" width="30" height="30"> ice doc</a> <span class="version">v1.6.0</span>
+                            </div>
+            <div id="top-right">
             </div>
-        </header>
-        <div id="body" class="container-fluid">
-            <div class="row">
-                <div id="body-left" class="col-lg-3 col-sm-4">
-                    <div class="header-search">
-                        <input class="search-box form-control" placeholder="Search for a class or namespace " type="text" />
-                        <div id="menu-wrapper">
-                        </div>
+        </div>
+        <div id="body">
+            <div id="body-left">
+                <div class="header-search">
+                    <input class="search-box" placeholder="Search for a class or namespace " type="text" />
+                    <div id="menu-wrapper">
                     </div>
                 </div>
-                <div id="body-right" class="col-lg-9 col-sm-8">
-                    <div class="content">
-                        
-<div>
+            </div>
+            <div id="body-right">
+                <div class="content">
+                    
+<div class="breadcrumb">
     
-    <ul class="breadcrumb">
+    <ul>
         
         <li><a href="../../../../index.html">Home</a></li>
         
@@ -44,786 +56,754 @@
     
 </div>
 <div class="class-header clearfix">
-    
-    
-    <div class="access-buttons pull-right">
-        <a class="zep-button btn btn-default" href="../../../../source/Ice/Cli/Websocket/Server.html">Source</a>
 
-                <a class="zep-button btn btn-default" href="https://github.com/ice/framework/tree/dev/ice/cli/websocket/server.zep">Github</a>
+    <div class="access-buttons">
+        <a class="zep-button" href="../../../../source/Ice/Cli/Websocket/Server.html">Source</a>
+                <a class="zep-button"
+           href="https://github.com/ice/framework/tree/dev/ice/cli/websocket/server.zep">
+            GitHub
+        </a>
             </div>
-    
-    <div class="class-full-name">
-        
-        <span class="class-type">Class</span>
-        
-                <span class="namespace-piece">
-            <a href="../../../../namespace/Ice.html">Ice</a>
-        </span>
-                <span class="namespace-piece">
-            <a href="../../../../namespace/Ice/Cli.html">Cli</a>
-        </span>
-                <span class="namespace-piece">
-            <a href="../../../../namespace/Ice/Cli/Websocket.html">Websocket</a>
-        </span>
-                <h1 class="class-name">Server</h1>
-    </div>
 
+    <div class="class-full-name">
+        <span class="class-type">Class</span>
+
+                <span class="namespace-piece">
+            <a href="../../../../namespace/Ice.html">
+                Ice            </a>
+        </span>
+                <span class="namespace-piece">
+            <a href="../../../../namespace/Ice/Cli.html">
+                Cli            </a>
+        </span>
+                <span class="namespace-piece">
+            <a href="../../../../namespace/Ice/Cli/Websocket.html">
+                Websocket            </a>
+        </span>
+        
+        <h1 class="class-name">Server</h1>
+    </div>
 </div>
-    <div class="text-muted">
-    Websocket server.    </div>
-    <div>
-        </div>
+
 
 <div class="hidden-anchor"  id="methods"></div>
 <div class="methods-summary standard-bandeau">Methods</div>
-<table class="method-summary-list table table-striped table-hover">
-    
-        
-<tr class="class-method">
-<td>
 
-    <div class="method-return">
-
-        
-                
-    </div>
+<ul class="method-summary-list">
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-setVerbose">setVerbose</a></span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$verbose</strong></span></span>)
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-setVerbose">setVerbose</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">variable</span> <span class="variable param-name">$verbose</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        
-                
-    </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-getServer">getServer</a></span>(<span class="small"></span>)
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-getAddress">getAddress</a><!--
+            --></span><!--
+            -->()<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        
-                
-    </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-getClients">getClients</a></span>(<span class="small"></span>)
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-getServer">getServer</a><!--
+            --></span><!--
+            -->()<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        
-                
-    </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-__construct">__construct</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$address</strong></span>, <span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$options</strong></span></span>)
-                <div class="summary-text text-muted">Create an instance.</div>
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-getClients">getClients</a><!--
+            --></span><!--
+            -->()<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        
-                
-    </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-run">run</a></span>(<span class="small"></span>)
-                <div class="summary-text text-muted">Start processing requests. This method runs in an infinite loop.</div>
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-__construct">__construct</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">string</span> <span class="variable param-name">$address</span>, <span class="param-data-type">array</span> <span class="variable param-name">$options</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Create an instance.                </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        bool
-                
-    </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-connect">connect</a></span>(<span class="small"><span class="param-data-type text-danger">resource</span>  <span class="param-name text-info"><strong>$socket</strong></span></span>)
-                <div class="summary-text text-muted">Connect a socket to the server.</div>
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-run">run</a><!--
+            --></span><!--
+            -->()<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Start processing requests. This method runs in an infinite loop.                </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        
-                
-    </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-disconnect">disconnect</a></span>(<span class="small"><span class="param-data-type text-danger">resource</span>  <span class="param-name text-info"><strong>$socket</strong></span></span>)
-                <div class="summary-text text-muted">Disconnect a socket from the server.</div>
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-connect">connect</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">resource</span> <span class="variable param-name">$socket</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    bool                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Connect a socket to the server.                </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        <a href='../../../../class/Ice/Cli/Websocket/self.html'>Ice\Cli\Websocket\self</a>
-                
-    </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-onValidate">onValidate</a></span>(<span class="small"><span class="param-data-type text-danger">callable</span>  <span class="param-name text-info"><strong>$callback</strong></span></span>)
-                <div class="summary-text text-muted">Set a callback to be executed when a client connects, returning `false` will prevent the client from connecting.</div>
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-disconnect">disconnect</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">resource</span> <span class="variable param-name">$socket</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Disconnect a socket from the server.                </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        <a href='../../../../class/Ice/Cli/Websocket/self.html'>Ice\Cli\Websocket\self</a>
-                
-    </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-onConnect">onConnect</a></span>(<span class="small"><span class="param-data-type text-danger">callable</span>  <span class="param-name text-info"><strong>$callback</strong></span></span>)
-                <div class="summary-text text-muted">Set a callback to be executed when a client is connected.</div>
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-onValidate">onValidate</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">callable</span> <span class="variable param-name">$callback</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Set a callback to be executed when a client connects, returning `false` will prevent the client from connecting.                </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        <a href='../../../../class/Ice/Cli/Websocket/self.html'>Ice\Cli\Websocket\self</a>
-                
-    </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-onDisconnect">onDisconnect</a></span>(<span class="small"><span class="param-data-type text-danger">callable</span>  <span class="param-name text-info"><strong>$callback</strong></span></span>)
-                <div class="summary-text text-muted">Set a callback to execute when a client disconnects.</div>
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-onConnect">onConnect</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">callable</span> <span class="variable param-name">$callback</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Set a callback to be executed when a client is connected.                </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        <a href='../../../../class/Ice/Cli/Websocket/self.html'>Ice\Cli\Websocket\self</a>
-                
-    </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-onMessage">onMessage</a></span>(<span class="small"><span class="param-data-type text-danger">callable</span>  <span class="param-name text-info"><strong>$callback</strong></span></span>)
-                <div class="summary-text text-muted">Set a callback to execute when a client sends a message.</div>
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-onDisconnect">onDisconnect</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">callable</span> <span class="variable param-name">$callback</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Set a callback to execute when a client disconnects.                </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        <a href='../../../../class/Ice/Cli/Websocket/self.html'>Ice\Cli\Websocket\self</a>
-                
-    </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-onTick">onTick</a></span>(<span class="small"><span class="param-data-type text-danger">callable</span>  <span class="param-name text-info"><strong>$callback</strong></span></span>)
-                <div class="summary-text text-muted">Set a callback to execute every few milliseconds.</div>
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-onMessage">onMessage</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">callable</span> <span class="variable param-name">$callback</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Set a callback to execute when a client sends a message.                </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        <a href='../../../../class/Ice/Cli/Websocket/self.html'>Ice\Cli\Websocket\self</a>
-                
-    </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-onBoot">onBoot</a></span>(<span class="small"><span class="param-data-type text-danger">callable</span>  <span class="param-name text-info"><strong>$callback</strong></span></span>)
-                <div class="summary-text text-muted">Set a callback to execute on boot the server.</div>
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-onTick">onTick</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">callable</span> <span class="variable param-name">$callback</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Set a callback to execute every few milliseconds.                </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        <a href='../../../../class/Ice/Cli/Websocket/self.html'>Ice\Cli\Websocket\self</a>
-                
-    </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-callback">callback</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$key</strong></span>, <span class="param-data-type text-danger">callable</span>  <span class="param-name text-info"><strong>$callback</strong></span></span>)
-                <div class="summary-text text-muted">Register a callback to execute.</div>
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-onBoot">onBoot</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">callable</span> <span class="variable param-name">$callback</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Set a callback to execute on boot the server.                </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        
-                
-    </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-zephir_init_properties_Ice_Cli_Websocket_Server">zephir_init_properties_Ice_Cli_Websocket_Server</a></span>(<span class="small"></span>)
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-callback">callback</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">string</span> <span class="variable param-name">$key</span>, <span class="param-data-type">callable</span> <span class="variable param-name">$callback</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Register a callback to execute.                </div>
             </div>
-</td>
-</tr>
-    </table>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-zephir_init_properties_Ice_Cli_Websocket_Server">zephir_init_properties_Ice_Cli_Websocket_Server</a><!--
+            --></span><!--
+            -->()<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
+            </div>
+</li>
+    </ul>
 
-<div class="hidden-anchor"  id="methods-details"></div>
+<div class="hidden-anchor" id="methods-details"></div>
 <div class="methods-summary standard-bandeau">Methods Details</div>
-<ul class="method-details-list list-unstyled">
-    
-        
+
+<ul class="method-details-list">
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-setVerbose"></div>
-    
+    <div class="hidden-anchor" id="method-details-setVerbose"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">setVerbose</span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$verbose</strong></span></span>)
-                </h3>
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">setVerbose</span><!--
+                -->(<span class="param-data-type">variable</span> <span class="variable param-name">$verbose</span>)
+            </p>
+
+            <div class="method-doc">
+                                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-getServer"></div>
-    
+    <div class="hidden-anchor" id="method-details-getAddress"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">getServer</span>(<span class="small"></span>)
-                </h3>
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">getAddress</span><!--
+                -->()
+            </p>
+
+            <div class="method-doc">
+                                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-getClients"></div>
-    
+    <div class="hidden-anchor" id="method-details-getServer"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">getClients</span>(<span class="small"></span>)
-                </h3>
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">getServer</span><!--
+                -->()
+            </p>
+
+            <div class="method-doc">
+                                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-__construct"></div>
-    
+    <div class="hidden-anchor" id="method-details-getClients"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">__construct</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$address</strong></span>, <span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$options</strong></span></span>)
-                </h3>
-                                
-                    <div class="text-muted">
-                    Create an instance.                    </div>
-                    <div>
-                                        </div>
-                
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">getClients</span><!--
+                -->()
+            </p>
+
+            <div class="method-doc">
+                                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-run"></div>
-    
+    <div class="hidden-anchor" id="method-details-__construct"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">run</span>(<span class="small"></span>)
-                </h3>
-                                
-                    <div class="text-muted">
-                    Start processing requests. This method runs in an infinite loop.                    </div>
-                    <div>
-                                        </div>
-                
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">__construct</span><!--
+                -->(<span class="param-data-type">string</span> <span class="variable param-name">$address</span>, <span class="param-data-type">array</span> <span class="variable param-name">$options</span>)
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Create an instance.                    </div>
+                    <div class="description">
+                                            </div>
+                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-connect"></div>
-    
+    <div class="hidden-anchor" id="method-details-run"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-protected">protected</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">connect</span>(<span class="small"><span class="param-data-type text-danger">resource</span>  <span class="param-name text-info"><strong>$socket</strong></span></span>)
-                </h3>
-                                
-                    <div class="text-muted">
-                    Connect a socket to the server.                    </div>
-                    <div>
-                                        </div>
-                
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">run</span><!--
+                -->()
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Start processing requests. This method runs in an infinite loop.                    </div>
+                    <div class="description">
+                                            </div>
+                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-disconnect"></div>
-    
+    <div class="hidden-anchor" id="method-details-connect"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">disconnect</span>(<span class="small"><span class="param-data-type text-danger">resource</span>  <span class="param-name text-info"><strong>$socket</strong></span></span>)
-                </h3>
-                                
-                    <div class="text-muted">
-                    Disconnect a socket from the server.                    </div>
-                    <div>
-                                        </div>
-                
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-protected keyword">protected</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">connect</span><!--
+                -->(<span class="param-data-type">resource</span> <span class="variable param-name">$socket</span>)
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Connect a socket to the server.                    </div>
+                    <div class="description">
+                                            </div>
+                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-onValidate"></div>
-    
+    <div class="hidden-anchor" id="method-details-disconnect"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">onValidate</span>(<span class="small"><span class="param-data-type text-danger">callable</span>  <span class="param-name text-info"><strong>$callback</strong></span></span>)
-                </h3>
-                                
-                    <div class="text-muted">
-                    Set a callback to be executed when a client connects, returning `false` will prevent the client from connecting.                    </div>
-                    <div>
-                    The callable will receive:
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">disconnect</span><!--
+                -->(<span class="param-data-type">resource</span> <span class="variable param-name">$socket</span>)
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Disconnect a socket from the server.                    </div>
+                    <div class="description">
+                                            </div>
+                            </div>
+
+        </div>
+    </div>
+</li>
+            
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-onValidate"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">onValidate</span><!--
+                -->(<span class="param-data-type">callable</span> <span class="variable param-name">$callback</span>)
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Set a callback to be executed when a client connects, returning `false` will prevent the client from connecting.                    </div>
+                    <div class="description">
+                        The callable will receive:
       - an associative array with client data
       - the current server instance
      The callable should return `true` if the client should be allowed to connect or `false` otherwise.                    </div>
-                
-                                
-            </div>
+                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-onConnect"></div>
-    
+    <div class="hidden-anchor" id="method-details-onConnect"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">onConnect</span>(<span class="small"><span class="param-data-type text-danger">callable</span>  <span class="param-name text-info"><strong>$callback</strong></span></span>)
-                </h3>
-                                
-                    <div class="text-muted">
-                    Set a callback to be executed when a client is connected.                    </div>
-                    <div>
-                    The callable will receive:
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">onConnect</span><!--
+                -->(<span class="param-data-type">callable</span> <span class="variable param-name">$callback</span>)
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Set a callback to be executed when a client is connected.                    </div>
+                    <div class="description">
+                        The callable will receive:
       - an associative array with client data
       - the current server instance                    </div>
-                
-                                
-            </div>
+                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-onDisconnect"></div>
-    
+    <div class="hidden-anchor" id="method-details-onDisconnect"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">onDisconnect</span>(<span class="small"><span class="param-data-type text-danger">callable</span>  <span class="param-name text-info"><strong>$callback</strong></span></span>)
-                </h3>
-                                
-                    <div class="text-muted">
-                    Set a callback to execute when a client disconnects.                    </div>
-                    <div>
-                    The callable will receive:
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">onDisconnect</span><!--
+                -->(<span class="param-data-type">callable</span> <span class="variable param-name">$callback</span>)
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Set a callback to execute when a client disconnects.                    </div>
+                    <div class="description">
+                        The callable will receive:
       - an associative array with client data
       - the current server instance                    </div>
-                
-                                
-            </div>
+                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-onMessage"></div>
-    
+    <div class="hidden-anchor" id="method-details-onMessage"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">onMessage</span>(<span class="small"><span class="param-data-type text-danger">callable</span>  <span class="param-name text-info"><strong>$callback</strong></span></span>)
-                </h3>
-                                
-                    <div class="text-muted">
-                    Set a callback to execute when a client sends a message.                    </div>
-                    <div>
-                    The callable will receive:
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">onMessage</span><!--
+                -->(<span class="param-data-type">callable</span> <span class="variable param-name">$callback</span>)
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Set a callback to execute when a client sends a message.                    </div>
+                    <div class="description">
+                        The callable will receive:
       - an associative array with client data
       - the message string
       - the current server instance                    </div>
-                
-                                
-            </div>
+                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-onTick"></div>
-    
+    <div class="hidden-anchor" id="method-details-onTick"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">onTick</span>(<span class="small"><span class="param-data-type text-danger">callable</span>  <span class="param-name text-info"><strong>$callback</strong></span></span>)
-                </h3>
-                                
-                    <div class="text-muted">
-                    Set a callback to execute every few milliseconds.                    </div>
-                    <div>
-                    The callable will receive the server instance. If it returns boolean `false` the server will stop listening.                    </div>
-                
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">onTick</span><!--
+                -->(<span class="param-data-type">callable</span> <span class="variable param-name">$callback</span>)
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Set a callback to execute every few milliseconds.                    </div>
+                    <div class="description">
+                        The callable will receive the server instance. If it returns boolean `false` the server will stop listening.                    </div>
+                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-onBoot"></div>
-    
+    <div class="hidden-anchor" id="method-details-onBoot"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">onBoot</span>(<span class="small"><span class="param-data-type text-danger">callable</span>  <span class="param-name text-info"><strong>$callback</strong></span></span>)
-                </h3>
-                                
-                    <div class="text-muted">
-                    Set a callback to execute on boot the server.                    </div>
-                    <div>
-                    The callable will receive the server instance.                    </div>
-                
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">onBoot</span><!--
+                -->(<span class="param-data-type">callable</span> <span class="variable param-name">$callback</span>)
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Set a callback to execute on boot the server.                    </div>
+                    <div class="description">
+                        The callable will receive the server instance.                    </div>
+                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-callback"></div>
-    
+    <div class="hidden-anchor" id="method-details-callback"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">callback</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$key</strong></span>, <span class="param-data-type text-danger">callable</span>  <span class="param-name text-info"><strong>$callback</strong></span></span>)
-                </h3>
-                                
-                    <div class="text-muted">
-                    Register a callback to execute.                    </div>
-                    <div>
-                                        </div>
-                
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">callback</span><!--
+                -->(<span class="param-data-type">string</span> <span class="variable param-name">$key</span>, <span class="param-data-type">callable</span> <span class="variable param-name">$callback</span>)
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Register a callback to execute.                    </div>
+                    <div class="description">
+                                            </div>
+                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-zephir_init_properties_Ice_Cli_Websocket_Server"></div>
-    
+    <div class="hidden-anchor" id="method-details-zephir_init_properties_Ice_Cli_Websocket_Server"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-internal">internal</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">zephir_init_properties_Ice_Cli_Websocket_Server</span>(<span class="small"></span>)
-                </h3>
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-internal keyword">internal</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">zephir_init_properties_Ice_Cli_Websocket_Server</span><!--
+                -->()
+            </p>
+
+            <div class="method-doc">
+                                            </div>
+
         </div>
-
     </div>
-
 </li>
-    </ul>                    </div>
+    </ul>
                 </div>
             </div>
         </div>
-
-        <script src="../../../../asset/static/js/jquery.min.js"></script>
-        <script src="../../../../asset/static/js/bootstrap.min.js"></script>
-        <script src="../../../../asset/static/js/highlight.pack.js"></script>
-        <script src="../../../../asset/static/js/jquery.slimscroll.min.js"></script>
-        <script src="../../../../asset/api_definition.js"></script>
-
-        <script>var ZepCurrentPath = '../../../../'</script>
-        <script src="../../../../asset/static/js/script.js"></script>
-        <script type="text/javascript">
-            $(window).on("load resize", function() {
-                $('#menu-wrapper').slimscroll({ height: $(window).height() - 100, size: '3px' });
-            });
-        </script>
-        <script type="text/javascript">
-            $(document).ready(function() { $('pre code').each(function(i, block) { hljs.highlightBlock(block); }); });
-            if ($('.zephir-source-file').length) {
-                $('link[id]').each(function(i, link) {
-                    link.disabled = (link.id != 'tomorrow-night');
-                });
-            }
-        </script>
-            </body>
+    </body>
 </html>

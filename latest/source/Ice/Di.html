@@ -1,39 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <link rel="stylesheet" type="text/css" href="../../asset/static/css/bootstrap.min.css" />
-        <link rel="stylesheet" type="text/css" href="../../asset/static/css/tomorrow.min.css" id="tomorrow" />
-        <link rel="stylesheet" type="text/css" href="../../asset/static/css/tomorrow-night.min.css" id="tomorrow-night" disabled />
-        <link rel="stylesheet" type="text/css" href="../../asset/static/css/style.css" />
-    </head>
-    <body>
-        <header class="navbar navbar-default navbar-fixed-top">
-            <div id="top-bar" class="container-fluid">
-                <div id="top-left" class="navbar-header">
-                    <a href="../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.4.0</span>
-                                            </a>
-                </div>
-                <div id="top-right" class="collapse navbar-collapse">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta content="ice API doc" name="description">
+    <title>
+                    ice API Documentation
+            </title>
+    <link rel="stylesheet" type="text/css" href="../../asset/static/prettify.css" />
 
-                </div>
+<script src="../../asset/static/prettify.js"></script>
+<script src="../../asset/api_definition.js"></script>
+
+
+                        <link rel="stylesheet" type="text/css" href="../../asset/static/prettify.css" />
+                    <link rel="stylesheet" type="text/css" href="../../asset/static/zephir-theme.css" />
+            
+    
+
+                        <script src="../../asset/static/prettify.js"></script>
+                                    <script src="../../asset/api_definition.js"></script>
+                    <script src="../../asset/static/jquery.min.js"></script>
+                    <script src="../../asset/static/zephir-doc.js"></script>
+                <script type="application/javascript">let ZepCurrentPath = '../../'</script>
+    </head>
+ <body onload="prettyPrint()">
+        <div id="top-bar">
+            <div id="top-left" style="color: #555">
+                                    <a href="https://doc.iceframework.org" title="ice framework documentation" style="color: #444"><img src="https://www.iceframework.org/img/logo.png" alt="ice framework documentation" width="30" height="30"> ice doc</a> <span class="version">v1.6.0</span>
+                            </div>
+            <div id="top-right">
             </div>
-        </header>
-        <div id="body" class="container-fluid">
-            <div class="row">
-                <div id="body-left" class="col-lg-3 col-sm-4">
-                    <div class="header-search">
-                        <input class="search-box form-control" placeholder="Search for a class or namespace " type="text" />
-                        <div id="menu-wrapper">
-                        </div>
+        </div>
+        <div id="body">
+            <div id="body-left">
+                <div class="header-search">
+                    <input class="search-box" placeholder="Search for a class or namespace " type="text" />
+                    <div id="menu-wrapper">
                     </div>
                 </div>
-                <div id="body-right" class="col-lg-9 col-sm-8">
-                    <div class="content">
-                        
-<div>
+            </div>
+            <div id="body-right">
+                <div class="content">
+                    
+<div class="breadcrumb">
     
-    <ul class="breadcrumb">
+    <ul>
         
         <li><a href="../../index.html">Home</a></li>
         
@@ -45,27 +57,30 @@
     
 </div>
 <div class="class-header source clearfix">
-    
-    <div class="access-buttons pull-right">
-        <a class="zep-button btn btn-default" href="../../class/Ice/Di.html">Class</a>
 
-                <a class="zep-button btn btn-default" href="https://github.com/ice/framework/tree/dev/ice/di.zep">Github</a>
+    <div class="access-buttons">
+        <a class="zep-button" href="../../class/Ice/Di.html">Class</a>
+
+                <a class="zep-button"
+           href="https://github.com/ice/framework/tree/dev/ice/di.zep">
+            Github
+        </a>
             </div>
-    
+
     <div class="class-full-name">
-        
         <span class="class-type">Class</span>
-        
+
                 <span class="namespace-piece">
             <a href="../../namespace/Ice.html">Ice</a>
         </span>
-                <h1 class="class-name">Di</h1>
+        
+        <h1 class="class-name">Di</h1>
     </div>
-    
+
 </div>
 
-
-<pre class="zephir-source-file"><code>
+<pre class="zephir-source-file prettyprint linenums">
+    
 namespace Ice;
 
 use ReflectionClass;
@@ -77,12 +92,11 @@ use ReflectionParameter;
  * @package     Ice/Di
  * @category    Component
  * @author      Ice Team
- * @copyright   (c) 2014-2018 Ice Team
+ * @copyright   (c) 2014-2020 Ice Team
  * @license     http://iceframework.org/license
  */
 class Di extends Arr
 {
-
     protected static di;
     protected hooks = [];
     protected defaults = [] { set };
@@ -104,7 +118,7 @@ class Di extends Arr
      *
      * @return Di
      */
-    public static function $fetch() -&gt; &lt;Di&gt;
+    public static function $fetch() -> <Di>
     {
         return self::di;
     }
@@ -119,12 +133,12 @@ class Di extends Arr
     {
         var predefined;
 
-        if this-&gt;has(key) {
+        if this->has(key) {
             return parent::get(key, parameters);
         } else {
-            fetch predefined, this-&gt;getDefaults()[key];
+            fetch predefined, this->getDefaults()[key];
 
-            return this-&gt;set(key, predefined ? predefined : parameters);
+            return this->set(key, predefined ? predefined : parameters);
         }
     }
 
@@ -138,8 +152,8 @@ class Di extends Arr
     {
         var service;
 
-        let service = this-&gt;resolve(value),
-            this-&gt;data[key] = service;
+        let service = this->resolve(value),
+            this->data[key] = service;
 
         return service;
     }
@@ -152,23 +166,23 @@ class Di extends Arr
     public function getDefaults()
     {
         return array_merge([
-            &quot;assets&quot;: &quot;Ice\\Assets&quot;,
-            &quot;cookies&quot;: &quot;Ice\\Cookies&quot;,
-            &quot;crypt&quot;: &quot;Ice\\Crypt&quot;,
-            &quot;dispatcher&quot;: &quot;Ice\\Mvc\\Dispatcher&quot;,
-            &quot;dump&quot;: &quot;Ice\\Dump&quot;,
-            &quot;filter&quot;: &quot;Ice\\Filter&quot;,
-            &quot;flash&quot;: &quot;Ice\\Flash&quot;,
-            &quot;loader&quot;: &quot;Ice\\Loader&quot;,
-            &quot;request&quot;: &quot;Ice\\Http\\Request&quot;,
-            &quot;response&quot;: &quot;Ice\\Http\\Response&quot;,
-            &quot;router&quot;: &quot;Ice\\Mvc\\Router&quot;,
-            &quot;session&quot;: &quot;Ice\\Session&quot;,
-            &quot;tag&quot;: &quot;Ice\\Tag&quot;,
-            &quot;text&quot;: &quot;Ice\\Text&quot;,
-            &quot;url&quot;: &quot;Ice\\Mvc\\Url&quot;,
-            &quot;view&quot;: &quot;Ice\\Mvc\\View&quot;
-        ], this-&gt;defaults);
+            "assets": "Ice\\Assets",
+            "cookies": "Ice\\Cookies",
+            "crypt": "Ice\\Crypt",
+            "dispatcher": "Ice\\Mvc\\Dispatcher",
+            "dump": "Ice\\Dump",
+            "filter": "Ice\\Filter",
+            "flash": "Ice\\Flash",
+            "loader": "Ice\\Loader",
+            "request": "Ice\\Http\\Request",
+            "response": "Ice\\Http\\Response",
+            "router": "Ice\\Mvc\\Router",
+            "session": "Ice\\Session",
+            "tag": "Ice\\Tag",
+            "text": "Ice\\Text",
+            "url": "Ice\\Mvc\\Url",
+            "view": "Ice\\Mvc\\View"
+        ], this->defaults);
     }
 
     /**
@@ -181,28 +195,28 @@ class Di extends Arr
     {
         var params;
 
-        if typeof service == &quot;null&quot; {
+        if typeof service == "null" {
             return null;
-        } elseif typeof service == &quot;string&quot; {
+        } elseif typeof service == "string" {
             if class_exists(service) {
-                let service = this-&gt;build(service);
+                let service = this->build(service);
             }
         } else {
-            if typeof service == &quot;object&quot; {
+            if typeof service == "object" {
                 if service instanceof \Closure {
                     let service = call_user_func(service);
                 }
             } else {
                 // Array definitions store class name at first parameter
-                if typeof service == &quot;array&quot; {
+                if typeof service == "array" {
                     let params = current(service),
-                        service = this-&gt;build(key(service), typeof params == &quot;array&quot; ? params : [params]);
+                        service = this->build(key(service), typeof params == "array" ? params : [params]);
                 }
             }
         }
 
-        if typeof service != &quot;object&quot; {
-            throw new Exception(sprintf(&quot;Service &apos;%s&apos; cannot be resolved&quot;, service));
+        if typeof service != "object" {
+            throw new Exception(sprintf("Service '%s' cannot be resolved", service));
         }
 
         return service;
@@ -210,7 +224,7 @@ class Di extends Arr
 
     /**
      * Build an instance of the given class.
-     * 
+     *
      * @param string service
      * @return mixed
      */
@@ -218,7 +232,7 @@ class Di extends Arr
     {
         var reflector, constructor, dependencies;
 
-        if typeof service == &quot;object&quot; {
+        if typeof service == "object" {
             if service instanceof \Closure {
                 return call_user_func_array(service, parameters);
             }
@@ -226,23 +240,23 @@ class Di extends Arr
 
         let reflector = new ReflectionClass(service);
 
-        if !reflector-&gt;isInstantiable() {
-            throw new Exception([&quot;Service &apos;%s&apos; is not instantiable&quot;, service]);
+        if !reflector->isInstantiable() {
+            throw new Exception(["Service '%s' is not instantiable", service]);
         }
-        
-        let constructor = reflector-&gt;getConstructor();
-        
+
+        let constructor = reflector->getConstructor();
+
         if is_null(constructor) {
             return create_instance(service);
         }
 
-        let dependencies = constructor-&gt;getParameters(),
-            parameters = this-&gt;getParameters(dependencies, parameters),
-            dependencies = this-&gt;getDependencies(dependencies, parameters);
+        let dependencies = constructor->getParameters(),
+            parameters = this->getParameters(dependencies, parameters),
+            dependencies = this->getDependencies(dependencies, parameters);
 
-        return reflector-&gt;newInstanceArgs(dependencies);
+        return reflector->newInstanceArgs(dependencies);
     }
-    
+
     /**
      * If extra parameters are passed by numeric ID, rekey them by argument name.
      *
@@ -259,7 +273,7 @@ class Di extends Arr
                 unset parameters[key];
 
                 let dependency = dependencies[key],
-                    parameters[dependency-&gt;name] = value;
+                    parameters[dependency->name] = value;
             }
         }
 
@@ -277,24 +291,24 @@ class Di extends Arr
         var dependencies, parameter, dependency;
 
         let dependencies = [];
-        
+
         for parameter in parameters {
-            let dependency = parameter-&gt;getClass();
-            
-            if array_key_exists(parameter-&gt;name, primitives) {
-                let dependencies[] = primitives[parameter-&gt;name];
+            let dependency = parameter->getClass();
+
+            if array_key_exists(parameter->name, primitives) {
+                let dependencies[] = primitives[parameter->name];
             } elseif is_null(dependency) {
-                if !parameter-&gt;isOptional() {
-                    let dependencies[] = this-&gt;resolveNonClass(parameter);
+                if !parameter->isOptional() {
+                    let dependencies[] = this->resolveNonClass(parameter);
                 }
             } else {
-                let dependencies[] = this-&gt;build(dependency-&gt;name);
+                let dependencies[] = this->build(dependency->name);
             }
         }
-        
+
         return dependencies;
     }
-    
+
     /**
      * Determine what to do with a non-class value.
      *
@@ -303,13 +317,13 @@ class Di extends Arr
      *
      * @throws Exception
      */
-    public function resolveNonClass(&lt;ReflectionParameter&gt; parameter)
+    public function resolveNonClass(<ReflectionParameter> parameter)
     {
-        if parameter-&gt;isDefaultValueAvailable() {
-            return parameter-&gt;getDefaultValue();
+        if parameter->isDefaultValueAvailable() {
+            return parameter->getDefaultValue();
         }
-        
-        throw new Exception([&quot;Unresolvable dependency resolving &apos;%s&apos; in class &apos;%s&apos;&quot;, parameter, parameter-&gt;getDeclaringClass()-&gt;getName()]);
+
+        throw new Exception(["Unresolvable dependency resolving '%s' in class '%s'", parameter, parameter->getDeclaringClass()->getName()]);
     }
 
     /**
@@ -319,16 +333,16 @@ class Di extends Arr
      * @param string className
      * @return object Di
      */
-    public function errors(string className = &quot;Ice\\Exception&quot;)
+    public function errors(string className = "Ice\\Exception")
     {
         // Enable Ice exception handling, adds stack traces and error source.
-        set_exception_handler([className, &quot;handler&quot;]);
+        set_exception_handler([className, "handler"]);
 
         // Enable Ice error handling, converts all PHP errors to exceptions.
-        set_error_handler([className, &quot;errorHandler&quot;]);
+        set_error_handler([className, "errorHandler"]);
 
         // Enable Ice shutdown handler, which catches E_FATAL errors.
-        register_shutdown_function([className, &quot;shutdownHandler&quot;]);
+        register_shutdown_function([className, "shutdownHandler"]);
 
         return this;
     }
@@ -344,14 +358,14 @@ class Di extends Arr
      */
     public function hook(string name, var callback, var context = null, int priority = 10)
     {
-        if typeof callback == &quot;callable&quot; {
-            if context != null &amp;&amp; is_object(context) {
+        if typeof callback == "callable" {
+            if context != null && is_object(context) {
                 let name .= spl_object_hash(context);
             }
-            if !isset this-&gt;hooks[name] {
-                let this-&gt;hooks[name] = [[]];
+            if !isset this->hooks[name] {
+                let this->hooks[name] = [[]];
             }
-            let this-&gt;hooks[name][priority][] = callback;
+            let this->hooks[name][priority][] = callback;
         }
         return this;
     }
@@ -368,21 +382,21 @@ class Di extends Arr
     {
         var priority, callback;
 
-        if context != null &amp;&amp; is_object(context) {
+        if context != null && is_object(context) {
             let name .= spl_object_hash(context);
         }
 
-        if !isset this-&gt;hooks[name] {
-            let this-&gt;hooks[name] = [[]];
+        if !isset this->hooks[name] {
+            let this->hooks[name] = [[]];
         }
 
-        if !empty this-&gt;hooks[name] {
-            // Sort by priority, low to high, if there&apos;s more than one priority
-            //if count(this-&gt;hooks[name]) &gt; 1 {
-            //    ksort(this-&gt;hooks[name]);
+        if !empty this->hooks[name] {
+            // Sort by priority, low to high, if there's more than one priority
+            //if count(this->hooks[name]) > 1 {
+            //    ksort(this->hooks[name]);
             //}
 
-            for priority in this-&gt;hooks[name] {
+            for priority in this->hooks[name] {
                 if !empty priority {
                     for callback in priority {
                         call_user_func_array(callback, args);
@@ -403,15 +417,15 @@ class Di extends Arr
      * @param mixed context The callback bind to the object
      * @return array|null
      */
-    public function getHooks(string name = null, var context = null) -&gt; array | null
+    public function getHooks(string name = null, var context = null) -> array | null
     {
         if name {
-            if context != null &amp;&amp; is_object(context) {
+            if context != null && is_object(context) {
                 let name .= spl_object_hash(context);
             }
-            return isset this-&gt;hooks[name] ? this-&gt;hooks[name] : null;
+            return isset this->hooks[name] ? this->hooks[name] : null;
         } else {
-            return this-&gt;hooks;
+            return this->hooks;
         }
     }
 
@@ -426,13 +440,13 @@ class Di extends Arr
      */
     public function clearHooks(string name = null, var context = null)
     {
-        if name {            
-            if context != null &amp;&amp; is_object(context) {
+        if name {
+            if context != null && is_object(context) {
                 let name .= spl_object_hash(context);
             }
-            unset this-&gt;hooks[name];
+            unset this->hooks[name];
         } else {
-            let this-&gt;hooks = [];
+            let this->hooks = [];
         }
         return this;
     }
@@ -448,47 +462,25 @@ class Di extends Arr
     {
         var value;
 
-        // If the magic method starts with &quot;get&quot; we try to get a service with that name
-        if starts_with(method, &quot;get&quot;) {
+        // If the magic method starts with "get" we try to get a service with that name
+        if starts_with(method, "get") {
             fetch value, arguments[0];
-            return this-&gt;get(lcfirst(substr(method, 3)), value);
+            return this->get(lcfirst(substr(method, 3)), value);
         }
 
-        // If the magic method starts with &quot;set&quot; we try to set a service using that name
-        if starts_with(method, &quot;set&quot;) {
+        // If the magic method starts with "set" we try to set a service using that name
+        if starts_with(method, "set") {
             fetch value, arguments[0];
-            return this-&gt;set(lcfirst(substr(method, 3)), value);
+            return this->set(lcfirst(substr(method, 3)), value);
         }
 
-        // The method doesn&apos;t start with set/get throw an exception
-        throw new Exception(&quot;Call to undefined method or service &apos;&quot; . method . &quot;&apos;&quot;);
+        // The method doesn't start with set/get throw an exception
+        throw new Exception("Call to undefined method or service '" . method . "'");
     }
 }
-</code></pre>                    </div>
+</pre>
                 </div>
             </div>
         </div>
-
-        <script src="../../asset/static/js/jquery.min.js"></script>
-        <script src="../../asset/static/js/bootstrap.min.js"></script>
-        <script src="../../asset/static/js/highlight.pack.js"></script>
-        <script src="../../asset/static/js/jquery.slimscroll.min.js"></script>
-        <script src="../../asset/api_definition.js"></script>
-
-        <script>var ZepCurrentPath = '../../'</script>
-        <script src="../../asset/static/js/script.js"></script>
-        <script type="text/javascript">
-            $(window).on("load resize", function() {
-                $('#menu-wrapper').slimscroll({ height: $(window).height() - 100, size: '3px' });
-            });
-        </script>
-        <script type="text/javascript">
-            $(document).ready(function() { $('pre code').each(function(i, block) { hljs.highlightBlock(block); }); });
-            if ($('.zephir-source-file').length) {
-                $('link[id]').each(function(i, link) {
-                    link.disabled = (link.id != 'tomorrow-night');
-                });
-            }
-        </script>
-            </body>
+    </body>
 </html>

@@ -1,39 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <link rel="stylesheet" type="text/css" href="../../../asset/static/css/bootstrap.min.css" />
-        <link rel="stylesheet" type="text/css" href="../../../asset/static/css/tomorrow.min.css" id="tomorrow" />
-        <link rel="stylesheet" type="text/css" href="../../../asset/static/css/tomorrow-night.min.css" id="tomorrow-night" disabled />
-        <link rel="stylesheet" type="text/css" href="../../../asset/static/css/style.css" />
-    </head>
-    <body>
-        <header class="navbar navbar-default navbar-fixed-top">
-            <div id="top-bar" class="container-fluid">
-                <div id="top-left" class="navbar-header">
-                    <a href="../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.4.0</span>
-                                            </a>
-                </div>
-                <div id="top-right" class="collapse navbar-collapse">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta content="ice API doc" name="description">
+    <title>
+                    ice API Documentation
+            </title>
+    <link rel="stylesheet" type="text/css" href="../../../asset/static/prettify.css" />
 
-                </div>
+<script src="../../../asset/static/prettify.js"></script>
+<script src="../../../asset/api_definition.js"></script>
+
+
+                        <link rel="stylesheet" type="text/css" href="../../../asset/static/prettify.css" />
+                    <link rel="stylesheet" type="text/css" href="../../../asset/static/zephir-theme.css" />
+            
+    
+
+                        <script src="../../../asset/static/prettify.js"></script>
+                                    <script src="../../../asset/api_definition.js"></script>
+                    <script src="../../../asset/static/jquery.min.js"></script>
+                    <script src="../../../asset/static/zephir-doc.js"></script>
+                <script type="application/javascript">let ZepCurrentPath = '../../../'</script>
+    </head>
+ <body onload="prettyPrint()">
+        <div id="top-bar">
+            <div id="top-left" style="color: #555">
+                                    <a href="https://doc.iceframework.org" title="ice framework documentation" style="color: #444"><img src="https://www.iceframework.org/img/logo.png" alt="ice framework documentation" width="30" height="30"> ice doc</a> <span class="version">v1.6.0</span>
+                            </div>
+            <div id="top-right">
             </div>
-        </header>
-        <div id="body" class="container-fluid">
-            <div class="row">
-                <div id="body-left" class="col-lg-3 col-sm-4">
-                    <div class="header-search">
-                        <input class="search-box form-control" placeholder="Search for a class or namespace " type="text" />
-                        <div id="menu-wrapper">
-                        </div>
+        </div>
+        <div id="body">
+            <div id="body-left">
+                <div class="header-search">
+                    <input class="search-box" placeholder="Search for a class or namespace " type="text" />
+                    <div id="menu-wrapper">
                     </div>
                 </div>
-                <div id="body-right" class="col-lg-9 col-sm-8">
-                    <div class="content">
-                        
-<div>
+            </div>
+            <div id="body-right">
+                <div class="content">
+                    
+<div class="breadcrumb">
     
-    <ul class="breadcrumb">
+    <ul>
         
         <li><a href="../../../index.html">Home</a></li>
         
@@ -45,30 +57,33 @@
     
 </div>
 <div class="class-header source clearfix">
-    
-    <div class="access-buttons pull-right">
-        <a class="zep-button btn btn-default" href="../../../class/Ice/Http/Response.html">Class</a>
 
-                <a class="zep-button btn btn-default" href="https://github.com/ice/framework/tree/dev/ice/http/response.zep">Github</a>
+    <div class="access-buttons">
+        <a class="zep-button" href="../../../class/Ice/Http/Response.html">Class</a>
+
+                <a class="zep-button"
+           href="https://github.com/ice/framework/tree/dev/ice/http/response.zep">
+            Github
+        </a>
             </div>
-    
+
     <div class="class-full-name">
-        
         <span class="class-type">Class</span>
-        
+
                 <span class="namespace-piece">
             <a href="../../../namespace/Ice.html">Ice</a>
         </span>
                 <span class="namespace-piece">
             <a href="../../../namespace/Ice/Http.html">Http</a>
         </span>
-                <h1 class="class-name">Response</h1>
+        
+        <h1 class="class-name">Response</h1>
     </div>
-    
+
 </div>
 
-
-<pre class="zephir-source-file"><code>
+<pre class="zephir-source-file prettyprint linenums">
+    
 namespace Ice\Http;
 
 use Ice\Di;
@@ -83,13 +98,12 @@ use Ice\Http\Response\ResponseInterface;
  * @package     Ice/Http
  * @category    Component
  * @author      Ice Team
- * @copyright   (c) 2014-2018 Ice Team
+ * @copyright   (c) 2014-2020 Ice Team
  * @license     http://iceframework.org/license
  */
 class Response implements ResponseInterface
 {
-
-    protected protocolVersion = &quot;HTTP/1.1&quot; { get, set };
+    protected protocolVersion = "HTTP/1.1" { get, set };
     protected status = 200 { get, set };
     protected headers;
     protected loops = 16 { get, set };
@@ -104,11 +118,11 @@ class Response implements ResponseInterface
      */
     public function __construct(var body = null, int status = 200)
     {
-        let this-&gt;headers = new Headers(),
-            this-&gt;status = status,
-            this-&gt;body = body;
+        let this->headers = new Headers(),
+            this->status = status,
+            this->body = body;
 
-        this-&gt;headers-&gt;set(&quot;Content-Type&quot;, &quot;text/html&quot;);
+        this->headers->set("Content-Type", "text/html");
     }
 
     /**
@@ -116,9 +130,9 @@ class Response implements ResponseInterface
      *
      * @return array
      */
-    public function getHeaders() -&gt; array
+    public function getHeaders() -> array
     {
-        return this-&gt;headers-&gt;all();
+        return this->headers->all();
     }
 
     /**
@@ -127,9 +141,9 @@ class Response implements ResponseInterface
      * @param string name
      * @return boolean
      */
-    public function hasHeader(string name) -&gt; boolean
+    public function hasHeader(string name) -> boolean
     {
-        return this-&gt;headers-&gt;has(name);
+        return this->headers->has(name);
     }
 
     /**
@@ -138,9 +152,9 @@ class Response implements ResponseInterface
      * @param string name
      * @return string
      */
-    public function getHeader(string name) -&gt; string
+    public function getHeader(string name) -> string
     {
-        return this-&gt;headers-&gt;get(name);
+        return this->headers->get(name);
     }
 
     /**
@@ -152,8 +166,8 @@ class Response implements ResponseInterface
      */
     public function setHeader(string name, string value)
     {
-        this-&gt;headers-&gt;set(name, value);
-        
+        this->headers->set(name, value);
+
         return this;
     }
 
@@ -165,8 +179,8 @@ class Response implements ResponseInterface
      */
     public function setHeaders(array headers)
     {
-        this-&gt;headers-&gt;replace(headers);
-        
+        this->headers->replace(headers);
+
         return this;
     }
 
@@ -174,12 +188,12 @@ class Response implements ResponseInterface
      * Remove header by index name.
      *
      * @param string name
-     * @return object Response     
+     * @return object Response
      */
     public function removeHeader(string name)
     {
-        this-&gt;headers-&gt;remove(name);
-        
+        this->headers->remove(name);
+
         return this;
     }
 
@@ -189,9 +203,9 @@ class Response implements ResponseInterface
      * @param string content
      * @return object Response
      */
-    public function setContent(string contet) -&gt; object
+    public function setContent(string contet) -> object
     {
-        let this-&gt;body = contet;
+        let this->body = contet;
 
         return this;
     }
@@ -203,26 +217,26 @@ class Response implements ResponseInterface
      * @param RequestInterface request
      * @return object Response
      */
-    public function finalize(&lt;RequestInterface&gt; request)
+    public function finalize(<RequestInterface> request)
     {
         var sendBody;
 
         let sendBody = true;
 
-        if in_array(this-&gt;status, [204, 304]) {
-            this-&gt;headers-&gt;remove(&quot;Content-Type&quot;);
-            this-&gt;headers-&gt;remove(&quot;Content-Length&quot;);
+        if in_array(this->status, [204, 304]) {
+            this->headers->remove("Content-Type");
+            this->headers->remove("Content-Length");
             let sendBody = false;
         }
 
         // Remove body if HEAD request
-        if request-&gt;isHead() {
+        if request->isHead() {
             let sendBody = false;
         }
 
         // Truncate body if it should not be sent with response
         if !sendBody {
-            let this-&gt;body = &quot;&quot;;
+            let this->body = "";
         }
 
         return this;
@@ -236,19 +250,19 @@ class Response implements ResponseInterface
     public function send()
     {
         if !headers_sent() {
-            if strpos(PHP_SAPI, &quot;cgi&quot;) === 0 {
-                header(sprintf(&quot;Status: %d %s&quot;, this-&gt;status, this-&gt;getMessage(this-&gt;status)));
+            if strpos(PHP_SAPI, "cgi") === 0 {
+                header(sprintf("Status: %d %s", this->status, this->getMessage(this->status)));
             } else {
-                header(sprintf(&quot;%s %d %s&quot;, this-&gt;getProtocolVersion(), this-&gt;status, this-&gt;getMessage(this-&gt;status)));
+                header(sprintf("%s %d %s", this->getProtocolVersion(), this->status, this->getMessage(this->status)));
             }
 
             var di = Di::$fetch();
 
-            if di-&gt;has(&quot;session&quot;) &amp;&amp; !this-&gt;isRedirect() {
-                di-&gt;get(&quot;session&quot;)-&gt;remove(&quot;_redirects&quot;);
+            if di->has("session") && !this->isRedirect() {
+                di->get("session")->remove("_redirects");
             }
 
-            this-&gt;headers-&gt;send();
+            this->headers->send();
         }
 
         return this;
@@ -270,12 +284,12 @@ class Response implements ResponseInterface
      *
      * Download a file that already exists:
      *
-     *     $request-&gt;sendFile(&apos;ice.zip&apos;, &apos;application/zip&apos;, [&apos;file&apos; =&gt; &apos;/download/latest.zip&apos;]);
+     *     $request->sendFile('ice.zip', 'application/zip', ['file' => '/download/latest.zip']);
      *
      * Download generated content as a file:
      *
-     *     $response-&gt;setContent($content);
-     *     $response-&gt;sendFile($filename, $mineType);
+     *     $response->setContent($content);
+     *     $response->sendFile($filename, $mineType);
      *
      * Attention: No further processing can be done after this method is called!
      *
@@ -288,9 +302,9 @@ class Response implements ResponseInterface
     {
         var file, filepath, data, size, isDelete, disposition, block, pos, speed, range, start, end;
 
-        if empty options[&quot;file&quot;] {
+        if empty options["file"] {
             // Force the data to be rendered if
-            let data = (string) this-&gt;body;
+            let data = (string) this->body;
 
             // Get the content size
             let size = strlen(data);
@@ -304,58 +318,58 @@ class Response implements ResponseInterface
             let isDelete = false;
         } else {
             // Get the complete file path
-            let filepath = realpath(options[&quot;file&quot;]);
+            let filepath = realpath(options["file"]);
 
             // Get the file size
             let size = filesize(filepath);
 
             // Open the file for reading
-            let file = fopen(filepath, &quot;rb&quot;);
+            let file = fopen(filepath, "rb");
 
-            fetch isDelete, options[&quot;delete&quot;];
+            fetch isDelete, options["delete"];
         }
 
         if !is_resource(file) {
-            throw new Exception([&quot;Could not read file to send: %s&quot;,  filename]);
+            throw new Exception(["Could not read file to send: %s",  filename]);
         }
 
-        if empty options[&quot;inline&quot;] {
-            let disposition = &quot;attachment&quot;;
+        if empty options["inline"] {
+            let disposition = "attachment";
         } else {
-            let disposition = &quot;inline&quot;;
+            let disposition = "inline";
         }
 
-        if empty options[&quot;resumable&quot;] {
-            this-&gt;headers-&gt;set(&quot;Content-Length&quot;, size);
+        if empty options["resumable"] {
+            this->headers->set("Content-Length", size);
         } else {
             // Calculate byte range to download.
-            let range = this-&gt;getByteRange(size),
+            let range = this->getByteRange(size),
                 start = range[0],
                 end = range[1];
 
             // HTTP/1.1 416 Requested Range Not Satisfiable
-            if this-&gt;status == 416 {                
-                header(sprintf(&quot;%s %d %s&quot;, this-&gt;getProtocolVersion(), this-&gt;status, this-&gt;getMessage(this-&gt;status)));
+            if this->status == 416 {
+                header(sprintf("%s %d %s", this->getProtocolVersion(), this->status, this->getMessage(this->status)));
                 exit();
             }
 
             // Partial Content
-            if start &gt; 0 || end &lt; size - 1 {
-                let this-&gt;status = 206;
+            if start > 0 || end < size - 1 {
+                let this->status = 206;
             }
 
             // Range of bytes being sent
-            this-&gt;headers-&gt;set(&quot;Accept-Ranges&quot;, &quot;bytes&quot;);
-            this-&gt;headers-&gt;set(&quot;Content-Range&quot;, &quot;bytes &quot;.start.&quot;-&quot;.end.&quot;/&quot;.size);
-            this-&gt;headers-&gt;set(&quot;Content-Length&quot;, end - start + 1);
+            this->headers->set("Accept-Ranges", "bytes");
+            this->headers->set("Content-Range", "bytes ".start."-".end."/".size);
+            this->headers->set("Content-Length", end - start + 1);
         }
 
         // Set the headers for a download
-        this-&gt;headers-&gt;set(&quot;Content-Disposition&quot;, disposition.&quot;; filename=\&quot;&quot;.filename.&quot;\&quot;&quot;);
-        this-&gt;headers-&gt;set(&quot;Content-Type&quot;, mime);
+        this->headers->set("Content-Disposition", disposition."; filename=\"".filename."\"");
+        this->headers->set("Content-Type", mime);
 
         // Send all headers now
-        this-&gt;headers-&gt;send();
+        this->headers->send();
 
         while ob_get_level() {
             // Flush all output buffers
@@ -365,18 +379,18 @@ class Response implements ResponseInterface
         // Manually stop execution
         ignore_user_abort(true);
 
-        if empty options[&quot;timeout&quot;] {
+        if empty options["timeout"] {
             // Keep the script running forever
             set_time_limit(0);
         } else {
-            set_time_limit((int)options[&quot;timeout&quot;]);
+            set_time_limit((int)options["timeout"]);
         }
 
         // Send data in 16kb blocks
         let block = 1024 * 16;
 
-        if !empty options[&quot;sleep&quot;] {
-            let speed = ((int)options[&quot;sleep&quot;]) * 1000;
+        if !empty options["sleep"] {
+            let speed = ((int)options["sleep"]) * 1000;
         } else {
             let speed = 0;
         }
@@ -386,12 +400,12 @@ class Response implements ResponseInterface
         while !feof(file)  {
             let pos = ftell(file);
 
-            if pos &gt; end || connection_aborted() {
+            if pos > end || connection_aborted() {
                 break;
             }
 
-            if pos + block &gt; end {
-                // Don&apos;t read past the buffer.
+            if pos + block > end {
+                // Don't read past the buffer.
                 let block = end - pos + 1;
             }
 
@@ -401,7 +415,7 @@ class Response implements ResponseInterface
             // Send the data now
             flush();
 
-            if speed &gt; 0 {
+            if speed > 0 {
                 usleep(speed);
             }
         }
@@ -436,27 +450,27 @@ class Response implements ResponseInterface
         var url, di = Di::$fetch();;
         int redirects;
 
-        this-&gt;setStatus(status);
+        this->setStatus(status);
 
         if !external {
-            let url = di-&gt;get(&quot;url&quot;),
-                location = url-&gt;get(location);
+            let url = di->get("url"),
+                location = url->get(location);
         }
 
-        if di-&gt;has(&quot;session&quot;) &amp;&amp; this-&gt;loops {
-            var session = di-&gt;get(&quot;session&quot;);
+        if di->has("session") && this->loops {
+            var session = di->get("session");
 
-            let redirects = (int) session-&gt;get(&quot;_redirects&quot;, 0) + 1,
-                this-&gt;redirects = redirects;
+            let redirects = (int) session->get("_redirects", 0) + 1,
+                this->redirects = redirects;
 
-            session-&gt;set(&quot;_redirects&quot;, redirects);
+            session->set("_redirects", redirects);
 
-            if this-&gt;redirects &gt; this-&gt;loops {
+            if this->redirects > this->loops {
                 return this;
             }
         }
 
-        this-&gt;headers-&gt;set(&quot;Location&quot;, location);
+        this->headers->set("Location", location);
 
         return this;
     }
@@ -466,9 +480,9 @@ class Response implements ResponseInterface
      *
      * @return boolean
      */
-    public function isEmpty() -&gt; boolean
+    public function isEmpty() -> boolean
     {
-        return in_array(this-&gt;status, [201, 204, 304]);
+        return in_array(this->status, [201, 204, 304]);
     }
 
     /**
@@ -476,9 +490,9 @@ class Response implements ResponseInterface
      *
      * @return boolean
      */
-    public function isInformational() -&gt; boolean
+    public function isInformational() -> boolean
     {
-        return this-&gt;status &gt;= 100 &amp;&amp; this-&gt;status &lt; 200;
+        return this->status >= 100 && this->status < 200;
     }
 
     /**
@@ -486,9 +500,9 @@ class Response implements ResponseInterface
      *
      * @return boolean
      */
-    public function isOk() -&gt; boolean
+    public function isOk() -> boolean
     {
-        return this-&gt;status === 200;
+        return this->status === 200;
     }
 
     /**
@@ -496,9 +510,9 @@ class Response implements ResponseInterface
      *
      * @return boolean
      */
-    public function isSuccessful() -&gt; boolean
+    public function isSuccessful() -> boolean
     {
-        return this-&gt;status &gt;= 200 &amp;&amp; this-&gt;status &lt; 300;
+        return this->status >= 200 && this->status < 300;
     }
 
     /**
@@ -506,9 +520,9 @@ class Response implements ResponseInterface
      *
      * @return boolean
      */
-    public function isRedirect() -&gt; boolean
+    public function isRedirect() -> boolean
     {
-        return in_array(this-&gt;status, [301, 302, 303, 307]);
+        return in_array(this->status, [301, 302, 303, 307]);
     }
 
     /**
@@ -516,9 +530,9 @@ class Response implements ResponseInterface
      *
      * @return boolean
      */
-    public function isRedirection() -&gt; boolean
+    public function isRedirection() -> boolean
     {
-        return this-&gt;status &gt;= 300 &amp;&amp; this-&gt;status &lt; 400;
+        return this->status >= 300 && this->status < 400;
     }
 
     /**
@@ -526,9 +540,9 @@ class Response implements ResponseInterface
      *
      * @return boolean
      */
-    public function isForbidden() -&gt; boolean
+    public function isForbidden() -> boolean
     {
-        return this-&gt;status === 403;
+        return this->status === 403;
     }
 
     /**
@@ -536,9 +550,9 @@ class Response implements ResponseInterface
      *
      * @return boolean
      */
-    public function isNotFound() -&gt; boolean
+    public function isNotFound() -> boolean
     {
-        return this-&gt;status === 404;
+        return this->status === 404;
     }
 
     /**
@@ -546,9 +560,9 @@ class Response implements ResponseInterface
      *
      * @return boolean
      */
-    public function isClientError() -&gt; boolean
+    public function isClientError() -> boolean
     {
-        return this-&gt;status &gt;= 400 &amp;&amp; this-&gt;status &lt; 500;
+        return this->status >= 400 && this->status < 500;
     }
 
     /**
@@ -556,9 +570,9 @@ class Response implements ResponseInterface
      *
      * @return boolean
      */
-    public function isServerError() -&gt; boolean
+    public function isServerError() -> boolean
     {
-        return this-&gt;status &gt;= 500 &amp;&amp; this-&gt;status &lt; 600;
+        return this->status >= 500 && this->status < 600;
     }
 
     /**
@@ -567,13 +581,13 @@ class Response implements ResponseInterface
      * @param int code Status code
      * @return string
      */
-    public function getMessage(int code = 200) -&gt; string
+    public function getMessage(int code = 200) -> string
     {
         var message;
 
-        fetch message, this-&gt;getMessages()[code];
+        fetch message, this->getMessages()[code];
 
-        return message ? message : &quot;&quot;;
+        return message ? message : "";
     }
 
     /**
@@ -581,74 +595,74 @@ class Response implements ResponseInterface
      *
      * @return array
      */
-    public function getMessages() -&gt; array
+    public function getMessages() -> array
     {
         return [
             //Informational 1xx
-            100: &quot;Continue&quot;,
-            101: &quot;Switching Protocols&quot;,
-            102: &quot;Processing&quot;,
+            100: "Continue",
+            101: "Switching Protocols",
+            102: "Processing",
             //Successful 2xx
-            200: &quot;OK&quot;,
-            201: &quot;Created&quot;,
-            202: &quot;Accepted&quot;,
-            203: &quot;Non-Authoritative Information&quot;,
-            204: &quot;No Content&quot;,
-            205: &quot;Reset Content&quot;,
-            206: &quot;Partial Content&quot;,
-            207: &quot;Multi-Status&quot;,
-            208: &quot;Already Reported&quot;,
-            226: &quot;IM Used&quot;,
+            200: "OK",
+            201: "Created",
+            202: "Accepted",
+            203: "Non-Authoritative Information",
+            204: "No Content",
+            205: "Reset Content",
+            206: "Partial Content",
+            207: "Multi-Status",
+            208: "Already Reported",
+            226: "IM Used",
             //Redirection 3xx
-            300: &quot;Multiple Choices&quot;,
-            301: &quot;Moved Permanently&quot;,
-            302: &quot;Found&quot;,
-            303: &quot;See Other&quot;,
-            304: &quot;Not Modified&quot;,
-            305: &quot;Use Proxy&quot;,
-            306: &quot;(Unused)&quot;,
-            307: &quot;Temporary Redirect&quot;,
-            308: &quot;Permanent Redirect&quot;,
-            310: &quot;Too Many Redirects&quot;,
+            300: "Multiple Choices",
+            301: "Moved Permanently",
+            302: "Found",
+            303: "See Other",
+            304: "Not Modified",
+            305: "Use Proxy",
+            306: "(Unused)",
+            307: "Temporary Redirect",
+            308: "Permanent Redirect",
+            310: "Too Many Redirects",
             //Client Error 4xx
-            400: &quot;Bad Request&quot;,
-            401: &quot;Unauthorized&quot;,
-            402: &quot;Payment Required&quot;,
-            403: &quot;Forbidden&quot;,
-            404: &quot;Not Found&quot;,
-            405: &quot;Method Not Allowed&quot;,
-            406: &quot;Not Acceptable&quot;,
-            407: &quot;Proxy Authentication Required&quot;,
-            408: &quot;Request Timeout&quot;,
-            409: &quot;Conflict&quot;,
-            410: &quot;Gone&quot;,
-            411: &quot;Length Required&quot;,
-            412: &quot;Precondition Failed&quot;,
-            413: &quot;Request Entity Too Large&quot;,
-            414: &quot;Request-URI Too Long&quot;,
-            415: &quot;Unsupported Media Type&quot;,
-            416: &quot;Requested Range Not Satisfiable&quot;,
-            417: &quot;Expectation Failed&quot;,
-            418: &quot;I&apos;m a teapot&quot;,
-            422: &quot;Unprocessable Entity&quot;,
-            423: &quot;Locked&quot;,
-            424: &quot;Failed Dependency&quot;,
-            426: &quot;Upgrade Required&quot;,
-            428: &quot;Precondition Required&quot;,
-            429: &quot;Too Many Requests&quot;,
-            431: &quot;Request Header Fields Too Large&quot;,
+            400: "Bad Request",
+            401: "Unauthorized",
+            402: "Payment Required",
+            403: "Forbidden",
+            404: "Not Found",
+            405: "Method Not Allowed",
+            406: "Not Acceptable",
+            407: "Proxy Authentication Required",
+            408: "Request Timeout",
+            409: "Conflict",
+            410: "Gone",
+            411: "Length Required",
+            412: "Precondition Failed",
+            413: "Request Entity Too Large",
+            414: "Request-URI Too Long",
+            415: "Unsupported Media Type",
+            416: "Requested Range Not Satisfiable",
+            417: "Expectation Failed",
+            418: "I'm a teapot",
+            422: "Unprocessable Entity",
+            423: "Locked",
+            424: "Failed Dependency",
+            426: "Upgrade Required",
+            428: "Precondition Required",
+            429: "Too Many Requests",
+            431: "Request Header Fields Too Large",
             //Server Error 5xx
-            500: &quot;Internal Server Error&quot;,
-            501: &quot;Not Implemented&quot;,
-            502: &quot;Bad Gateway&quot;,
-            503: &quot;Service Unavailable&quot;,
-            504: &quot;Gateway Timeout&quot;,
-            505: &quot;HTTP Version Not Supported&quot;,
-            506: &quot;Variant Also Negotiates&quot;,
-            507: &quot;Insufficient Storage&quot;,
-            508: &quot;Loop Detected&quot;,
-            510: &quot;Not Extended&quot;,
-            511: &quot;Network Authentication Required&quot;
+            500: "Internal Server Error",
+            501: "Not Implemented",
+            502: "Bad Gateway",
+            503: "Service Unavailable",
+            504: "Gateway Timeout",
+            505: "HTTP Version Not Supported",
+            506: "Variant Also Negotiates",
+            507: "Insufficient Storage",
+            508: "Loop Detected",
+            510: "Not Extended",
+            511: "Network Authentication Required"
         ];
     }
 
@@ -661,9 +675,9 @@ class Response implements ResponseInterface
      */
     public function toJson(var data, var option = null)
     {
-        this-&gt;headers-&gt;set(&quot;Content-Type&quot;, &quot;application/json;charset=utf-8&quot;);
+        this->headers->set("Content-Type", "application/json;charset=utf-8");
 
-        let this-&gt;body = json_encode(data, option);
+        let this->body = json_encode(data, option);
 
         return this;
     }
@@ -671,16 +685,16 @@ class Response implements ResponseInterface
     /**
      * Response data to XML string.
      *
-     * &lt;pre&gt;&lt;code&gt;
-     *     $response-&gt;toXml(
-     *         [[&apos;title&apos; =&gt; &apos;hello world&apos;, &apos;desc&apos; =&gt; &apos;dont panic&apos;]],
-     *         [&apos;root&apos; =&gt; &apos;blogs&apos;, &apos;namespace&apos; =&gt; &apos;http://example.com/xml/blog&apos;]
+     * <pre><code>
+     *     $response->toXml(
+     *         [['title' => 'hello world', 'desc' => 'dont panic']],
+     *         ['root' => 'blogs', 'namespace' => 'http://example.com/xml/blog']
      *     );
      *
      *     // This will output the xml
-     *     &lt;?xml version=&quot;1.0&quot;?&gt;&lt;blogs xmlns=&quot;http://example.com/xml/blog&quot;&gt;
-     *     &lt;blog&gt;&lt;title&gt;hello world&lt;/title&gt;&lt;desc&gt;dont panic&lt;/desc&gt;&lt;/blog&gt;&lt;/blogs&gt;
-     * &lt;/code&gt;&lt;/pre&gt;
+     *     <?xml version="1.0"?><blogs xmlns="http://example.com/xml/blog">
+     *     <blog><title>hello world</title><desc>dont panic</desc></blog></blogs>
+     * </code></pre>
      *
      * @param mixed data Can be any type excepta resource
      * @param array options The options can be [root|charset|namespace]
@@ -690,20 +704,20 @@ class Response implements ResponseInterface
     {
         var doc, ns, rootName, charset;
 
-        let rootName = isset options[&quot;root&quot;] ? options[&quot;root&quot;] : &quot;result&quot;,
-            charset = isset options[&quot;charset&quot;] ? options[&quot;charset&quot;] : &quot;utf-8&quot;,
-            doc = this-&gt;xmlEncode(data, rootName),
-            doc-&gt;preserveWhiteSpace = false,
-            doc-&gt;formatOutput = true,
-            doc-&gt;encoding = charset;
+        let rootName = isset options["root"] ? options["root"] : "result",
+            charset = isset options["charset"] ? options["charset"] : "utf-8",
+            doc = this->xmlEncode(data, rootName),
+            doc->preserveWhiteSpace = false,
+            doc->formatOutput = true,
+            doc->encoding = charset;
 
-        if fetch ns, options[&quot;namespace&quot;] {
-            doc-&gt;createAttributeNS(ns, &quot;xmlns&quot;);
+        if fetch ns, options["namespace"] {
+            doc->createAttributeNS(ns, "xmlns");
         }
 
-        this-&gt;headers-&gt;set(&quot;Content-Type&quot;, &quot;application/xml;charset=&quot; . charset);
+        this->headers->set("Content-Type", "application/xml;charset=" . charset);
 
-        let this-&gt;body = doc-&gt;saveXML();
+        let this->body = doc->saveXML();
 
         return this;
     }
@@ -716,53 +730,53 @@ class Response implements ResponseInterface
      * @param DOMElement domNode null, ONLY FOR INTERNAL USE
      * @return DOMDocument domDoc object
      */
-    public function xmlEncode(var data, string root = &quot;root&quot;, &lt;\DOMElement&gt; domNode = null)
+    public function xmlEncode(var data, string root = "root", <\DOMElement> domNode = null)
     {
         var domDoc, type, key, val, node;
 
         if domNode === null {
             let domDoc = new \DOMDocument,
-                domNode = domDoc-&gt;createElement(root);
+                domNode = domDoc->createElement(root);
 
-            domDoc-&gt;appendChild(domNode);
-            this-&gt;xmlEncode(data, null, domNode);
+            domDoc->appendChild(domNode);
+            this->xmlEncode(data, null, domNode);
 
             return domDoc;
         }
 
-        let domDoc = domNode-&gt;ownerDocument,
+        let domDoc = domNode->ownerDocument,
             type = typeof data;
 
-        if type == &quot;array&quot; {
+        if type == "array" {
             for key, val in data {
-                if typeof key == &quot;integer&quot; {
-                    let node = domDoc-&gt;createElement(rtrim(domNode-&gt;tagName, &quot;s&quot;));
-                    node-&gt;setAttribute(&quot;i&quot;, key);
+                if typeof key == "integer" {
+                    let node = domDoc->createElement(rtrim(domNode->tagName, "s"));
+                    node->setAttribute("i", key);
                 } else {
-                    let node = domDoc-&gt;createElement(key);
+                    let node = domDoc->createElement(key);
                 }
-                domNode-&gt;appendChild(node);
+                domNode->appendChild(node);
 
-                this-&gt;xmlEncode(val, null, node);
+                this->xmlEncode(val, null, node);
             }
-        } elseif type == &quot;object&quot; {
+        } elseif type == "object" {
             // set internal attr __is__ eq object
-            domNode-&gt;setAttribute(&quot;__is__&quot;, &quot;obj&quot;);
+            domNode->setAttribute("__is__", "obj");
 
             for key, val in get_object_vars(data) {
-                if typeof val == &quot;array&quot; || typeof val == &quot;object&quot; {
-                    let node = domDoc-&gt;createElement(key);
-                    domNode-&gt;appendChild(node);
-                    this-&gt;xmlEncode(val, null, node);
+                if typeof val == "array" || typeof val == "object" {
+                    let node = domDoc->createElement(key);
+                    domNode->appendChild(node);
+                    this->xmlEncode(val, null, node);
                 } else {
-                    domNode-&gt;setAttribute(key, val);
+                    domNode->setAttribute(key, val);
                 }
             }
         } else {
-            if type == &quot;boolean&quot; {
-                let data = data ? &quot;true&quot; : &quot;false&quot;;
+            if type == "boolean" {
+                let data = data ? "true" : "false";
             }
-            domNode-&gt;appendChild(domDoc-&gt;createTextNode(data));
+            domNode->appendChild(domDoc->createTextNode(data));
         }
     }
 
@@ -771,9 +785,9 @@ class Response implements ResponseInterface
      *
      * @return string
      */
-    public function __toString() -&gt; string
+    public function __toString() -> string
     {
-        return (string) this-&gt;body;
+        return (string) this->body;
     }
 
     /**
@@ -784,79 +798,57 @@ class Response implements ResponseInterface
      *    http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.2
      *
      * Multirange support annouces itself with:
-     * header(&apos;Accept-Ranges: bytes&apos;);
+     * header('Accept-Ranges: bytes');
      *
      * Multirange content must be sent with multipart/byteranges mediatype,
      * as well as a boundry header to indicate the various chunks of data.
      *
      * @return array The bytes range start and end, error message if there is
      */
-    protected function getByteRange(int size) -&gt; array
+    protected function getByteRange(int size) -> array
     {
         var start, end, range;
 
         let start = 0,
             end = size - 1;
 
-        // Defaults to start with when the HTTP_RANGE header doesn&apos;t exist.
-        if isset _SERVER[&quot;HTTP_RANGE&quot;] {
-            let range = explode(&quot;=&quot;, _SERVER[&quot;HTTP_RANGE&quot;], 2);
+        // Defaults to start with when the HTTP_RANGE header doesn't exist.
+        if isset _SERVER["HTTP_RANGE"] {
+            let range = explode("=", _SERVER["HTTP_RANGE"], 2);
 
-            if range[0] != &quot;bytes&quot; {
-                let this-&gt;status = 416;
+            if range[0] != "bytes" {
+                let this->status = 416;
             } else {
                 // multiple ranges could be specified at the same time,
                 // but for simplicity only serve the first range ATM
-                let range = explode(&quot;,&quot;, range[1], 2), range = range[0];
+                let range = explode(",", range[1], 2), range = range[0];
 
                 // A negative value means we start from the end
-                if range[0] == &quot;-&quot; {
+                if range[0] == "-" {
                     let start = abs(size - abs((int)range));
                 } else {
-                    let range = explode(&quot;-&quot;, range), start = abs((int)range[0]);
+                    let range = explode("-", range), start = abs((int)range[0]);
 
-                    if range[1] &amp;&amp; is_numeric(range[1]) {
+                    if range[1] && is_numeric(range[1]) {
                         let end = (int)range[1];
                     }
                 }
 
-                if end &gt; size {
+                if end > size {
                     let end = size - 1;
                 }
 
-                if start &gt; end || start &gt; size - 1 || end &gt;= size {
-                    let this-&gt;status = 416;
+                if start > end || start > size - 1 || end >= size {
+                    let this->status = 416;
                 }
             }
         }
         return [start, end];
     }
 }
-</code></pre>                    </div>
+</pre>
                 </div>
             </div>
         </div>
-
-        <script src="../../../asset/static/js/jquery.min.js"></script>
-        <script src="../../../asset/static/js/bootstrap.min.js"></script>
-        <script src="../../../asset/static/js/highlight.pack.js"></script>
-        <script src="../../../asset/static/js/jquery.slimscroll.min.js"></script>
-        <script src="../../../asset/api_definition.js"></script>
-
-        <script>var ZepCurrentPath = '../../../'</script>
-        <script src="../../../asset/static/js/script.js"></script>
-        <script type="text/javascript">
-            $(window).on("load resize", function() {
-                $('#menu-wrapper').slimscroll({ height: $(window).height() - 100, size: '3px' });
-            });
-        </script>
-        <script type="text/javascript">
-            $(document).ready(function() { $('pre code').each(function(i, block) { hljs.highlightBlock(block); }); });
-            if ($('.zephir-source-file').length) {
-                $('link[id]').each(function(i, link) {
-                    link.disabled = (link.id != 'tomorrow-night');
-                });
-            }
-        </script>
-            </body>
+    </body>
 </html>

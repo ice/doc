@@ -1,39 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <link rel="stylesheet" type="text/css" href="../../asset/static/css/bootstrap.min.css" />
-        <link rel="stylesheet" type="text/css" href="../../asset/static/css/tomorrow.min.css" id="tomorrow" />
-        <link rel="stylesheet" type="text/css" href="../../asset/static/css/tomorrow-night.min.css" id="tomorrow-night" disabled />
-        <link rel="stylesheet" type="text/css" href="../../asset/static/css/style.css" />
-    </head>
-    <body>
-        <header class="navbar navbar-default navbar-fixed-top">
-            <div id="top-bar" class="container-fluid">
-                <div id="top-left" class="navbar-header">
-                    <a href="../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.4.0</span>
-                                            </a>
-                </div>
-                <div id="top-right" class="collapse navbar-collapse">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta content="ice API doc" name="description">
+    <title>
+                    ice API Documentation
+            </title>
+    <link rel="stylesheet" type="text/css" href="../../asset/static/prettify.css" />
 
-                </div>
+<script src="../../asset/static/prettify.js"></script>
+<script src="../../asset/api_definition.js"></script>
+
+
+                        <link rel="stylesheet" type="text/css" href="../../asset/static/prettify.css" />
+                    <link rel="stylesheet" type="text/css" href="../../asset/static/zephir-theme.css" />
+            
+    
+
+                        <script src="../../asset/static/prettify.js"></script>
+                                    <script src="../../asset/api_definition.js"></script>
+                    <script src="../../asset/static/jquery.min.js"></script>
+                    <script src="../../asset/static/zephir-doc.js"></script>
+                <script type="application/javascript">let ZepCurrentPath = '../../'</script>
+    </head>
+ <body onload="prettyPrint()">
+        <div id="top-bar">
+            <div id="top-left" style="color: #555">
+                                    <a href="https://doc.iceframework.org" title="ice framework documentation" style="color: #444"><img src="https://www.iceframework.org/img/logo.png" alt="ice framework documentation" width="30" height="30"> ice doc</a> <span class="version">v1.6.0</span>
+                            </div>
+            <div id="top-right">
             </div>
-        </header>
-        <div id="body" class="container-fluid">
-            <div class="row">
-                <div id="body-left" class="col-lg-3 col-sm-4">
-                    <div class="header-search">
-                        <input class="search-box form-control" placeholder="Search for a class or namespace " type="text" />
-                        <div id="menu-wrapper">
-                        </div>
+        </div>
+        <div id="body">
+            <div id="body-left">
+                <div class="header-search">
+                    <input class="search-box" placeholder="Search for a class or namespace " type="text" />
+                    <div id="menu-wrapper">
                     </div>
                 </div>
-                <div id="body-right" class="col-lg-9 col-sm-8">
-                    <div class="content">
-                        
-<div>
+            </div>
+            <div id="body-right">
+                <div class="content">
+                    
+<div class="breadcrumb">
     
-    <ul class="breadcrumb">
+    <ul>
         
         <li><a href="../../index.html">Home</a></li>
         
@@ -45,27 +57,30 @@
     
 </div>
 <div class="class-header source clearfix">
-    
-    <div class="access-buttons pull-right">
-        <a class="zep-button btn btn-default" href="../../class/Ice/Cookies.html">Class</a>
 
-                <a class="zep-button btn btn-default" href="https://github.com/ice/framework/tree/dev/ice/cookies.zep">Github</a>
+    <div class="access-buttons">
+        <a class="zep-button" href="../../class/Ice/Cookies.html">Class</a>
+
+                <a class="zep-button"
+           href="https://github.com/ice/framework/tree/dev/ice/cookies.zep">
+            Github
+        </a>
             </div>
-    
+
     <div class="class-full-name">
-        
         <span class="class-type">Class</span>
-        
+
                 <span class="namespace-piece">
             <a href="../../namespace/Ice.html">Ice</a>
         </span>
-                <h1 class="class-name">Cookies</h1>
+        
+        <h1 class="class-name">Cookies</h1>
     </div>
-    
+
 </div>
 
-
-<pre class="zephir-source-file"><code>
+<pre class="zephir-source-file prettyprint linenums">
+    
 namespace Ice;
 
 /**
@@ -74,16 +89,15 @@ namespace Ice;
  * @package     Ice/Cookies
  * @category    Helper
  * @author      Ice Team
- * @copyright   (c) 2014-2018 Ice Team
+ * @copyright   (c) 2014-2020 Ice Team
  * @license     http://iceframework.org/license
  */
 class Cookies
 {
-
     protected di;
     protected salt { get, set };
     protected expiration = 0 { get, set };
-    protected path = &quot;/&quot; { get, set };
+    protected path = "/" { get, set };
     protected domain = null { get, set };
     protected secure = false { get, set };
     protected httpOnly = false { get, set };
@@ -91,10 +105,10 @@ class Cookies
 
     public function __construct(string salt = null)
     {
-        let this-&gt;di = Di::$fetch();
-        let this-&gt;salt = salt;
+        let this->di = Di::$fetch();
+        let this->salt = salt;
 
-        //let this-&gt;data = &amp;_COOKIE;
+        //let this->data = &_COOKIE;
     }
 
     /**
@@ -103,13 +117,13 @@ class Cookies
      * @param string key The cookie key
      * @return boolean
      */
-    public function has(string key) -&gt; boolean
+    public function has(string key) -> boolean
     {
         return isset _COOKIE[key];
     }
 
     /**
-     * Gets the value of a signed cookie. 
+     * Gets the value of a signed cookie.
      * Cookies without signatures will not be returned. If the cookie signature is present, but invalid, the cookie
      * will be deleted.
      *
@@ -125,31 +139,31 @@ class Cookies
         }
 
         // Find the position of the split between salt and contents
-        if strpos(cookie, &quot;~&quot;) !== false {
+        if strpos(cookie, "~") !== false {
             // Separate the salt and the value
-            //list (hash, value) = explode(&quot;~&quot;, cookie, 2);
-            let tmp = explode(&quot;~&quot;, cookie, 2),
+            //list (hash, value) = explode("~", cookie, 2);
+            let tmp = explode("~", cookie, 2),
                 hash = tmp[0],
                 value = tmp[1];
 
-            if this-&gt;salt(key, value) == hash {
+            if this->salt(key, value) == hash {
                 // Cookie signature is valid
-                if this-&gt;encrypt {
-                    let value = this-&gt;di-&gt;get(&quot;crypt&quot;)-&gt;decrypt(value);
+                if this->encrypt {
+                    let value = this->di->get("crypt")->decrypt(value);
                 }
 
                 return value;
             }
 
             // The cookie signature is invalid, delete it
-            this-&gt;remove(key);
+            this->remove(key);
         }
 
         return defaultValue;
     }
 
     /**
-     * Sets a signed cookie. 
+     * Sets a signed cookie.
      * Note that all cookie values must be strings and no automatic serialization will be performed!
      *
      * @param string key Name of cookie
@@ -161,19 +175,19 @@ class Cookies
     {
         if !lifetime {
             // Use the default expiration
-            let lifetime = (int) this-&gt;expiration;
+            let lifetime = (int) this->expiration;
         }
 
-        if this-&gt;encrypt {
+        if this->encrypt {
             if !empty value {
-                let value = this-&gt;di-&gt;get(&quot;crypt&quot;)-&gt;encrypt(value);
+                let value = this->di->get("crypt")->encrypt(value);
             }
         }
 
         // Add the salt to the cookie value
-        let value = this-&gt;salt(key, value) . &quot;~&quot; . value;
+        let value = this->salt(key, value) . "~" . value;
 
-        return this-&gt;setcookie(key, value, lifetime, this-&gt;path, this-&gt;domain, this-&gt;secure, this-&gt;httpOnly);
+        return this->setcookie(key, value, lifetime, this->path, this->domain, this->secure, this->httpOnly);
     }
 
     /**
@@ -182,13 +196,13 @@ class Cookies
      * @param string key cookie name
      * @return boolean
      */
-    public function remove(string key) -&gt; boolean
+    public function remove(string key) -> boolean
     {
         // Remove the cookie
         unset _COOKIE[key];
 
         // Nullify the cookie and make it expire
-        return this-&gt;setcookie(key, null, -86400, this-&gt;path, this-&gt;domain, this-&gt;secure, this-&gt;httpOnly);
+        return this->setcookie(key, null, -86400, this->path, this->domain, this->secure, this->httpOnly);
     }
 
     /**
@@ -199,19 +213,19 @@ class Cookies
      * @throws Exception if salt is not configured
      * @return string
      */
-    public function salt(name, value) -&gt; string
+    public function salt(name, value) -> string
     {
         var userAgent;
 
         // Require a valid salt
-        if !this-&gt;salt {
-            throw new Exception(&quot;A valid cookie salt is required.&quot;);
+        if !this->salt {
+            throw new Exception("A valid cookie salt is required.");
         }
 
         // Determine the user agent
-        let userAgent = this-&gt;di-&gt;get(&quot;request&quot;)-&gt;getUserAgent();
+        let userAgent = this->di->get("request")->getUserAgent();
 
-        return sha1(userAgent . name . value . this-&gt;salt);
+        return sha1(userAgent . name . value . this->salt);
     }
 
     /**
@@ -233,31 +247,9 @@ class Cookies
         return setcookie(name, value, expire, path, domain, secure, httpOnly);
     }
 }
-</code></pre>                    </div>
+</pre>
                 </div>
             </div>
         </div>
-
-        <script src="../../asset/static/js/jquery.min.js"></script>
-        <script src="../../asset/static/js/bootstrap.min.js"></script>
-        <script src="../../asset/static/js/highlight.pack.js"></script>
-        <script src="../../asset/static/js/jquery.slimscroll.min.js"></script>
-        <script src="../../asset/api_definition.js"></script>
-
-        <script>var ZepCurrentPath = '../../'</script>
-        <script src="../../asset/static/js/script.js"></script>
-        <script type="text/javascript">
-            $(window).on("load resize", function() {
-                $('#menu-wrapper').slimscroll({ height: $(window).height() - 100, size: '3px' });
-            });
-        </script>
-        <script type="text/javascript">
-            $(document).ready(function() { $('pre code').each(function(i, block) { hljs.highlightBlock(block); }); });
-            if ($('.zephir-source-file').length) {
-                $('link[id]').each(function(i, link) {
-                    link.disabled = (link.id != 'tomorrow-night');
-                });
-            }
-        </script>
-            </body>
+    </body>
 </html>

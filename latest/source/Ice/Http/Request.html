@@ -1,39 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <link rel="stylesheet" type="text/css" href="../../../asset/static/css/bootstrap.min.css" />
-        <link rel="stylesheet" type="text/css" href="../../../asset/static/css/tomorrow.min.css" id="tomorrow" />
-        <link rel="stylesheet" type="text/css" href="../../../asset/static/css/tomorrow-night.min.css" id="tomorrow-night" disabled />
-        <link rel="stylesheet" type="text/css" href="../../../asset/static/css/style.css" />
-    </head>
-    <body>
-        <header class="navbar navbar-default navbar-fixed-top">
-            <div id="top-bar" class="container-fluid">
-                <div id="top-left" class="navbar-header">
-                    <a href="../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.4.0</span>
-                                            </a>
-                </div>
-                <div id="top-right" class="collapse navbar-collapse">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta content="ice API doc" name="description">
+    <title>
+                    ice API Documentation
+            </title>
+    <link rel="stylesheet" type="text/css" href="../../../asset/static/prettify.css" />
 
-                </div>
+<script src="../../../asset/static/prettify.js"></script>
+<script src="../../../asset/api_definition.js"></script>
+
+
+                        <link rel="stylesheet" type="text/css" href="../../../asset/static/prettify.css" />
+                    <link rel="stylesheet" type="text/css" href="../../../asset/static/zephir-theme.css" />
+            
+    
+
+                        <script src="../../../asset/static/prettify.js"></script>
+                                    <script src="../../../asset/api_definition.js"></script>
+                    <script src="../../../asset/static/jquery.min.js"></script>
+                    <script src="../../../asset/static/zephir-doc.js"></script>
+                <script type="application/javascript">let ZepCurrentPath = '../../../'</script>
+    </head>
+ <body onload="prettyPrint()">
+        <div id="top-bar">
+            <div id="top-left" style="color: #555">
+                                    <a href="https://doc.iceframework.org" title="ice framework documentation" style="color: #444"><img src="https://www.iceframework.org/img/logo.png" alt="ice framework documentation" width="30" height="30"> ice doc</a> <span class="version">v1.6.0</span>
+                            </div>
+            <div id="top-right">
             </div>
-        </header>
-        <div id="body" class="container-fluid">
-            <div class="row">
-                <div id="body-left" class="col-lg-3 col-sm-4">
-                    <div class="header-search">
-                        <input class="search-box form-control" placeholder="Search for a class or namespace " type="text" />
-                        <div id="menu-wrapper">
-                        </div>
+        </div>
+        <div id="body">
+            <div id="body-left">
+                <div class="header-search">
+                    <input class="search-box" placeholder="Search for a class or namespace " type="text" />
+                    <div id="menu-wrapper">
                     </div>
                 </div>
-                <div id="body-right" class="col-lg-9 col-sm-8">
-                    <div class="content">
-                        
-<div>
+            </div>
+            <div id="body-right">
+                <div class="content">
+                    
+<div class="breadcrumb">
     
-    <ul class="breadcrumb">
+    <ul>
         
         <li><a href="../../../index.html">Home</a></li>
         
@@ -45,30 +57,33 @@
     
 </div>
 <div class="class-header source clearfix">
-    
-    <div class="access-buttons pull-right">
-        <a class="zep-button btn btn-default" href="../../../class/Ice/Http/Request.html">Class</a>
 
-                <a class="zep-button btn btn-default" href="https://github.com/ice/framework/tree/dev/ice/http/request.zep">Github</a>
+    <div class="access-buttons">
+        <a class="zep-button" href="../../../class/Ice/Http/Request.html">Class</a>
+
+                <a class="zep-button"
+           href="https://github.com/ice/framework/tree/dev/ice/http/request.zep">
+            Github
+        </a>
             </div>
-    
+
     <div class="class-full-name">
-        
         <span class="class-type">Class</span>
-        
+
                 <span class="namespace-piece">
             <a href="../../../namespace/Ice.html">Ice</a>
         </span>
                 <span class="namespace-piece">
             <a href="../../../namespace/Ice/Http.html">Http</a>
         </span>
-                <h1 class="class-name">Request</h1>
+        
+        <h1 class="class-name">Request</h1>
     </div>
-    
+
 </div>
 
-
-<pre class="zephir-source-file"><code>
+<pre class="zephir-source-file prettyprint linenums">
+    
 namespace Ice\Http;
 
 use Ice\Arr;
@@ -81,12 +96,11 @@ use Ice\Http\Request\RequestInterface;
  * @package     Ice/Http
  * @category    Component
  * @author      Ice Team
- * @copyright   (c) 2014-2018 Ice Team
+ * @copyright   (c) 2014-2020 Ice Team
  * @license     http://iceframework.org/license
  */
 class Request extends Arr implements RequestInterface
 {
-
     protected files;
     protected get;
     protected post;
@@ -97,10 +111,10 @@ class Request extends Arr implements RequestInterface
      */
     public function __construct()
     {
-        let this-&gt;files = new Arr(_FILES),
-            this-&gt;get = new Arr(_GET),
-            this-&gt;post = new Arr(_POST),
-            this-&gt;server = new Arr(_SERVER);
+        let this->files = new Arr(_FILES),
+            this->get = new Arr(_GET),
+            this->post = new Arr(_POST),
+            this->server = new Arr(_SERVER);
 
         parent::__construct(_REQUEST);
     }
@@ -111,9 +125,9 @@ class Request extends Arr implements RequestInterface
      * @param string name Index name
      * @return boolean
      */
-    public function hasRequest(string! name) -&gt; boolean
+    public function hasRequest(string! name) -> boolean
     {
-        return this-&gt;has(name);
+        return this->has(name);
     }
 
     /**
@@ -122,9 +136,9 @@ class Request extends Arr implements RequestInterface
      * @param string name Index name
      * @return boolean
      */
-    public function hasPost(string! name) -&gt; boolean
+    public function hasPost(string! name) -> boolean
     {
-        return this-&gt;post-&gt;has(name);
+        return this->post->has(name);
     }
 
     /**
@@ -133,9 +147,9 @@ class Request extends Arr implements RequestInterface
      * @param string name Index name
      * @return boolean
      */
-    public function hasGet(string! name) -&gt; boolean
+    public function hasGet(string! name) -> boolean
     {
-        return this-&gt;get-&gt;has(name);
+        return this->get->has(name);
     }
 
     /**
@@ -144,9 +158,9 @@ class Request extends Arr implements RequestInterface
      * @param string name Index name
      * @return boolean
      */
-    public function hasServer(string! name) -&gt; boolean
+    public function hasServer(string! name) -> boolean
     {
-        return this-&gt;server-&gt;has(name);
+        return this->server->has(name);
     }
 
     /**
@@ -155,9 +169,9 @@ class Request extends Arr implements RequestInterface
      * @param string name Index name
      * @return boolean
      */
-    public function hasFile(string! name) -&gt; boolean
+    public function hasFile(string! name) -> boolean
     {
-        return this-&gt;files-&gt;has(name);
+        return this->files->has(name);
     }
 
     /**
@@ -165,9 +179,9 @@ class Request extends Arr implements RequestInterface
      *
      * @return boolean
      */
-    public function isPost() -&gt; boolean
+    public function isPost() -> boolean
     {
-        return this-&gt;getMethod() == &quot;POST&quot;;
+        return this->getMethod() == "POST";
     }
 
     /**
@@ -175,9 +189,9 @@ class Request extends Arr implements RequestInterface
      *
      * @return boolean
      */
-    public function isGet() -&gt; boolean
+    public function isGet() -> boolean
     {
-        return this-&gt;getMethod() == &quot;GET&quot;;
+        return this->getMethod() == "GET";
     }
 
     /**
@@ -185,9 +199,9 @@ class Request extends Arr implements RequestInterface
      *
      * @return boolean
      */
-    public function isPut() -&gt; boolean
+    public function isPut() -> boolean
     {
-        return this-&gt;getMethod() == &quot;PUT&quot;;
+        return this->getMethod() == "PUT";
     }
 
     /**
@@ -195,9 +209,9 @@ class Request extends Arr implements RequestInterface
      *
      * @return boolean
      */
-    public function isPatch() -&gt; boolean
+    public function isPatch() -> boolean
     {
-        return this-&gt;getMethod() == &quot;PATCH&quot;;
+        return this->getMethod() == "PATCH";
     }
 
     /**
@@ -205,9 +219,9 @@ class Request extends Arr implements RequestInterface
      *
      * @return boolean
      */
-    public function isHead() -&gt; boolean
+    public function isHead() -> boolean
     {
-        return this-&gt;getMethod() == &quot;HEAD&quot;;
+        return this->getMethod() == "HEAD";
     }
 
     /**
@@ -215,9 +229,9 @@ class Request extends Arr implements RequestInterface
      *
      * @return boolean
      */
-    public function isDelete() -&gt; boolean
+    public function isDelete() -> boolean
     {
-        return this-&gt;getMethod() == &quot;DELETE&quot;;
+        return this->getMethod() == "DELETE";
     }
 
     /**
@@ -225,9 +239,9 @@ class Request extends Arr implements RequestInterface
      *
      * @return boolean
      */
-    public function isOptions() -&gt; boolean
+    public function isOptions() -> boolean
     {
-        return this-&gt;getMethod() == &quot;OPTIONS&quot;;
+        return this->getMethod() == "OPTIONS";
     }
 
     /**
@@ -235,9 +249,9 @@ class Request extends Arr implements RequestInterface
      *
      * @return boolean
      */
-    public function isAjax() -&gt; boolean
+    public function isAjax() -> boolean
     {
-        return this-&gt;server-&gt;get(&quot;HTTP_X_REQUESTED_WITH&quot;) == &quot;XMLHttpRequest&quot;;
+        return this->server->get("HTTP_X_REQUESTED_WITH") == "XMLHttpRequest";
     }
 
     /**
@@ -245,9 +259,9 @@ class Request extends Arr implements RequestInterface
      *
      * @return string
      */
-    public function getMethod() -&gt; string
+    public function getMethod() -> string
     {
-        return this-&gt;server-&gt;get(&quot;REQUEST_METHOD&quot;, &quot;&quot;);
+        return this->server->get("REQUEST_METHOD", "");
     }
 
     /**
@@ -255,9 +269,9 @@ class Request extends Arr implements RequestInterface
      *
      * @return string
      */
-    public function getUserAgent() -&gt; string
+    public function getUserAgent() -> string
     {
-        return this-&gt;server-&gt;get(&quot;HTTP_USER_AGENT&quot;, &quot;&quot;);
+        return this->server->get("HTTP_USER_AGENT", "");
     }
 
     /**
@@ -265,9 +279,9 @@ class Request extends Arr implements RequestInterface
      *
      * @return string
      */
-    public function getHTTPReferer() -&gt; string
+    public function getHTTPReferer() -> string
     {
-        return this-&gt;server-&gt;get(&quot;HTTP_REFERER&quot;, &quot;&quot;);
+        return this->server->get("HTTP_REFERER", "");
     }
 
     /**
@@ -275,13 +289,13 @@ class Request extends Arr implements RequestInterface
      *
      * @return string
      */
-    public function getClientAddress() -&gt; string
+    public function getClientAddress() -> string
     {
         var client, forward, remote, ip;
 
-        let client = this-&gt;server-&gt;get(&quot;HTTP_CLIENT_IP&quot;),
-            forward = this-&gt;server-&gt;get(&quot;HTTP_X_FORWARDED_FOR&quot;),
-            remote = this-&gt;server-&gt;get(&quot;REMOTE_ADDR&quot;);
+        let client = this->server->get("HTTP_CLIENT_IP"),
+            forward = this->server->get("HTTP_X_FORWARDED_FOR"),
+            remote = this->server->get("REMOTE_ADDR");
 
         if filter_var(client, FILTER_VALIDATE_IP) {
             let ip = client;
@@ -298,16 +312,16 @@ class Request extends Arr implements RequestInterface
      * Gets variable from _GET superglobal applying filters if needed.
      * If no parameters are given, return all.
      *
-     * &lt;pre&gt;&lt;code&gt;
-     *  //Returns value from $_GET[&quot;id&quot;] without sanitizing
-     *  $id = $this-&gt;request-&gt;getQuery(&quot;id&quot;);
+     * <pre><code>
+     *  //Returns value from $_GET["id"] without sanitizing
+     *  $id = $this->request->getQuery("id");
      *
-     *  //Returns value from $_GET[&quot;title&quot;] with sanitizing
-     *  $title = $this-&gt;request-&gt;getQuery(&quot;title&quot;, &quot;escape|repeats&quot;);
+     *  //Returns value from $_GET["title"] with sanitizing
+     *  $title = $this->request->getQuery("title", "escape|repeats");
      *
-     *  //Returns value from $_GET[&quot;id&quot;] with a default value
-     *  $id = $this-&gt;request-&gt;getQuery(&quot;id&quot;, null, 150);
-     * &lt;/code&gt;&lt;/pre&gt;
+     *  //Returns value from $_GET["id"] with a default value
+     *  $id = $this->request->getQuery("id", null, 150);
+     * </code></pre>
      *
      * @param string key Index to get
      * @param string|array filters Filters to apply
@@ -319,12 +333,12 @@ class Request extends Arr implements RequestInterface
     {
         if !key {
             // Remove `_url` from GET
-            this-&gt;get-&gt;set(&quot;_url&quot;, null);
-            this-&gt;get-&gt;remove(&quot;_url&quot;);
+            this->get->set("_url", null);
+            this->get->remove("_url");
 
-            return this-&gt;get;
+            return this->get;
         } else {
-            return this-&gt;get-&gt;getValue(key, filters, defaultValue, allowEmpty);
+            return this->get->getValue(key, filters, defaultValue, allowEmpty);
         }
     }
 
@@ -332,16 +346,16 @@ class Request extends Arr implements RequestInterface
      * Gets variable from _POST superglobal applying filters if needed.
      * If no parameters are given, return all.
      *
-     * &lt;pre&gt;&lt;code&gt;
-     *  //Returns value from $_POST[&quot;id&quot;] without sanitizing
-     *  $id = $this-&gt;request-&gt;getPost(&quot;id&quot;);
+     * <pre><code>
+     *  //Returns value from $_POST["id"] without sanitizing
+     *  $id = $this->request->getPost("id");
      *
-     *  //Returns value from $_POST[&quot;title&quot;] with sanitizing
-     *  $title = $this-&gt;request-&gt;getPost(&quot;title&quot;, &quot;escape|repeats&quot;);
+     *  //Returns value from $_POST["title"] with sanitizing
+     *  $title = $this->request->getPost("title", "escape|repeats");
      *
-     *  //Returns value from $_POST[&quot;id&quot;] with a default value
-     *  $id = $this-&gt;request-&gt;getPost(&quot;id&quot;, null, 150);
-     * &lt;/code&gt;&lt;/pre&gt;
+     *  //Returns value from $_POST["id"] with a default value
+     *  $id = $this->request->getPost("id", null, 150);
+     * </code></pre>
      *
      * @param string key Index to get
      * @param string|array filters Filters to apply
@@ -352,9 +366,9 @@ class Request extends Arr implements RequestInterface
     public function getPost(string key = null, var filters = null, var defaultValue = null, boolean allowEmpty = true)
     {
         if !key {
-            return this-&gt;post;
+            return this->post;
         } else {
-            return this-&gt;post-&gt;getValue(key, filters, defaultValue, allowEmpty);
+            return this->post->getValue(key, filters, defaultValue, allowEmpty);
         }
     }
 
@@ -367,7 +381,7 @@ class Request extends Arr implements RequestInterface
      */
     public function getServer(string key = null, var defaultValue = null)
     {
-        return key ? this-&gt;server-&gt;get(key, defaultValue) : this-&gt;server;
+        return key ? this->server->get(key, defaultValue) : this->server;
     }
 
     /**
@@ -379,34 +393,12 @@ class Request extends Arr implements RequestInterface
      */
     public function getFiles(string key = null, var defaultValue = null)
     {
-        return key ? this-&gt;files-&gt;get(key, defaultValue) : this-&gt;files;
+        return key ? this->files->get(key, defaultValue) : this->files;
     }
 }
-</code></pre>                    </div>
+</pre>
                 </div>
             </div>
         </div>
-
-        <script src="../../../asset/static/js/jquery.min.js"></script>
-        <script src="../../../asset/static/js/bootstrap.min.js"></script>
-        <script src="../../../asset/static/js/highlight.pack.js"></script>
-        <script src="../../../asset/static/js/jquery.slimscroll.min.js"></script>
-        <script src="../../../asset/api_definition.js"></script>
-
-        <script>var ZepCurrentPath = '../../../'</script>
-        <script src="../../../asset/static/js/script.js"></script>
-        <script type="text/javascript">
-            $(window).on("load resize", function() {
-                $('#menu-wrapper').slimscroll({ height: $(window).height() - 100, size: '3px' });
-            });
-        </script>
-        <script type="text/javascript">
-            $(document).ready(function() { $('pre code').each(function(i, block) { hljs.highlightBlock(block); }); });
-            if ($('.zephir-source-file').length) {
-                $('link[id]').each(function(i, link) {
-                    link.disabled = (link.id != 'tomorrow-night');
-                });
-            }
-        </script>
-            </body>
+    </body>
 </html>

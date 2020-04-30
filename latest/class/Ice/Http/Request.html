@@ -1,39 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <link rel="stylesheet" type="text/css" href="../../../asset/static/css/bootstrap.min.css" />
-        <link rel="stylesheet" type="text/css" href="../../../asset/static/css/tomorrow.min.css" id="tomorrow" />
-        <link rel="stylesheet" type="text/css" href="../../../asset/static/css/tomorrow-night.min.css" id="tomorrow-night" disabled />
-        <link rel="stylesheet" type="text/css" href="../../../asset/static/css/style.css" />
-    </head>
-    <body>
-        <header class="navbar navbar-default navbar-fixed-top">
-            <div id="top-bar" class="container-fluid">
-                <div id="top-left" class="navbar-header">
-                    <a href="../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.4.0</span>
-                                            </a>
-                </div>
-                <div id="top-right" class="collapse navbar-collapse">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta content="ice API doc" name="description">
+    <title>
+                    ice API Documentation
+            </title>
+    <link rel="stylesheet" type="text/css" href="../../../asset/static/prettify.css" />
 
-                </div>
+<script src="../../../asset/static/prettify.js"></script>
+<script src="../../../asset/api_definition.js"></script>
+
+
+                        <link rel="stylesheet" type="text/css" href="../../../asset/static/prettify.css" />
+                    <link rel="stylesheet" type="text/css" href="../../../asset/static/zephir-theme.css" />
+            
+    
+
+                        <script src="../../../asset/static/prettify.js"></script>
+                                    <script src="../../../asset/api_definition.js"></script>
+                    <script src="../../../asset/static/jquery.min.js"></script>
+                    <script src="../../../asset/static/zephir-doc.js"></script>
+                <script type="application/javascript">let ZepCurrentPath = '../../../'</script>
+    </head>
+ <body onload="prettyPrint()">
+        <div id="top-bar">
+            <div id="top-left" style="color: #555">
+                                    <a href="https://doc.iceframework.org" title="ice framework documentation" style="color: #444"><img src="https://www.iceframework.org/img/logo.png" alt="ice framework documentation" width="30" height="30"> ice doc</a> <span class="version">v1.6.0</span>
+                            </div>
+            <div id="top-right">
             </div>
-        </header>
-        <div id="body" class="container-fluid">
-            <div class="row">
-                <div id="body-left" class="col-lg-3 col-sm-4">
-                    <div class="header-search">
-                        <input class="search-box form-control" placeholder="Search for a class or namespace " type="text" />
-                        <div id="menu-wrapper">
-                        </div>
+        </div>
+        <div id="body">
+            <div id="body-left">
+                <div class="header-search">
+                    <input class="search-box" placeholder="Search for a class or namespace " type="text" />
+                    <div id="menu-wrapper">
                     </div>
                 </div>
-                <div id="body-right" class="col-lg-9 col-sm-8">
-                    <div class="content">
-                        
-<div>
+            </div>
+            <div id="body-right">
+                <div class="content">
+                    
+<div class="breadcrumb">
     
-    <ul class="breadcrumb">
+    <ul>
         
         <li><a href="../../../index.html">Home</a></li>
         
@@ -44,1166 +56,1062 @@
     
 </div>
 <div class="class-header clearfix">
-    
-    
-    <div class="access-buttons pull-right">
-        <a class="zep-button btn btn-default" href="../../../source/Ice/Http/Request.html">Source</a>
 
-                <a class="zep-button btn btn-default" href="https://github.com/ice/framework/tree/dev/ice/http/request.zep">Github</a>
+    <div class="access-buttons">
+        <a class="zep-button" href="../../../source/Ice/Http/Request.html">Source</a>
+                <a class="zep-button"
+           href="https://github.com/ice/framework/tree/dev/ice/http/request.zep">
+            GitHub
+        </a>
             </div>
-    
-    <div class="class-full-name">
-        
-        <span class="class-type">Class</span>
-        
-                <span class="namespace-piece">
-            <a href="../../../namespace/Ice.html">Ice</a>
-        </span>
-                <span class="namespace-piece">
-            <a href="../../../namespace/Ice/Http.html">Http</a>
-        </span>
-                <h1 class="class-name">Request</h1>
-    </div>
 
+    <div class="class-full-name">
+        <span class="class-type">Class</span>
+
+                <span class="namespace-piece">
+            <a href="../../../namespace/Ice.html">
+                Ice            </a>
+        </span>
+                <span class="namespace-piece">
+            <a href="../../../namespace/Ice/Http.html">
+                Http            </a>
+        </span>
+        
+        <h1 class="class-name">Request</h1>
+    </div>
 </div>
-    <div class="text-muted">
-    Inspect the current HTTP request.    </div>
-    <div>
-        </div>
+
 
 <div class="hidden-anchor"  id="methods"></div>
 <div class="methods-summary standard-bandeau">Methods</div>
-<table class="method-summary-list table table-striped table-hover">
-    
-        
-<tr class="class-method">
-<td>
 
-    <div class="method-return">
-
-        
-                
-    </div>
+<ul class="method-summary-list">
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-__construct">__construct</a></span>(<span class="small"></span>)
-                <div class="summary-text text-muted">Request constructor. Fetch data from globals variables: _REQUEST, _SERVER, _POST, _GET and _FILES.</div>
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-__construct">__construct</a><!--
+            --></span><!--
+            -->()<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Request constructor. Fetch data from globals variables: _REQUEST, _SERVER, _POST, _GET and _FILES.                </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        bool
-                
-    </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-hasRequest">hasRequest</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$name</strong></span></span>)
-                <div class="summary-text text-muted">Check whether _REQUEST has index.</div>
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-hasRequest">hasRequest</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">string</span> <span class="variable param-name">$name</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    bool                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Check whether _REQUEST has index.                </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        bool
-                
-    </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-hasPost">hasPost</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$name</strong></span></span>)
-                <div class="summary-text text-muted">Check whether _POST has index.</div>
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-hasPost">hasPost</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">string</span> <span class="variable param-name">$name</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    bool                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Check whether _POST has index.                </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        bool
-                
-    </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-hasGet">hasGet</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$name</strong></span></span>)
-                <div class="summary-text text-muted">Check whether _GET has index.</div>
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-hasGet">hasGet</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">string</span> <span class="variable param-name">$name</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    bool                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Check whether _GET has index.                </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        bool
-                
-    </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-hasServer">hasServer</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$name</strong></span></span>)
-                <div class="summary-text text-muted">Check whether _SERVER has index.</div>
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-hasServer">hasServer</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">string</span> <span class="variable param-name">$name</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    bool                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Check whether _SERVER has index.                </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        bool
-                
-    </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-hasFile">hasFile</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$name</strong></span></span>)
-                <div class="summary-text text-muted">Check whether _FILES has index.</div>
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-hasFile">hasFile</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">string</span> <span class="variable param-name">$name</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    bool                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Check whether _FILES has index.                </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        bool
-                
-    </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-isPost">isPost</a></span>(<span class="small"></span>)
-                <div class="summary-text text-muted">Checks whether HTTP method is POST.</div>
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-isPost">isPost</a><!--
+            --></span><!--
+            -->()<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    bool                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Checks whether HTTP method is POST.                </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        bool
-                
-    </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-isGet">isGet</a></span>(<span class="small"></span>)
-                <div class="summary-text text-muted">Checks whether HTTP method is GET.</div>
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-isGet">isGet</a><!--
+            --></span><!--
+            -->()<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    bool                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Checks whether HTTP method is GET.                </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        bool
-                
-    </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-isPut">isPut</a></span>(<span class="small"></span>)
-                <div class="summary-text text-muted">Checks whether HTTP method is PUT.</div>
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-isPut">isPut</a><!--
+            --></span><!--
+            -->()<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    bool                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Checks whether HTTP method is PUT.                </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        bool
-                
-    </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-isPatch">isPatch</a></span>(<span class="small"></span>)
-                <div class="summary-text text-muted">Checks whether HTTP method is PATCH.</div>
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-isPatch">isPatch</a><!--
+            --></span><!--
+            -->()<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    bool                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Checks whether HTTP method is PATCH.                </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        bool
-                
-    </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-isHead">isHead</a></span>(<span class="small"></span>)
-                <div class="summary-text text-muted">Checks whether HTTP method is HEAD.</div>
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-isHead">isHead</a><!--
+            --></span><!--
+            -->()<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    bool                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Checks whether HTTP method is HEAD.                </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        bool
-                
-    </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-isDelete">isDelete</a></span>(<span class="small"></span>)
-                <div class="summary-text text-muted">Checks whether HTTP method is DELETE.</div>
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-isDelete">isDelete</a><!--
+            --></span><!--
+            -->()<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    bool                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Checks whether HTTP method is DELETE.                </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        bool
-                
-    </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-isOptions">isOptions</a></span>(<span class="small"></span>)
-                <div class="summary-text text-muted">Checks whether HTTP method is OPTIONS.</div>
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-isOptions">isOptions</a><!--
+            --></span><!--
+            -->()<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    bool                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Checks whether HTTP method is OPTIONS.                </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        bool
-                
-    </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-isAjax">isAjax</a></span>(<span class="small"></span>)
-                <div class="summary-text text-muted">Checks whether request has been made using AJAX.</div>
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-isAjax">isAjax</a><!--
+            --></span><!--
+            -->()<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    bool                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Checks whether request has been made using AJAX.                </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        string
-                
-    </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-getMethod">getMethod</a></span>(<span class="small"></span>)
-                <div class="summary-text text-muted">Gets HTTP method which request has been made.</div>
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-getMethod">getMethod</a><!--
+            --></span><!--
+            -->()<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    string                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Gets HTTP method which request has been made.                </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        string
-                
-    </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-getUserAgent">getUserAgent</a></span>(<span class="small"></span>)
-                <div class="summary-text text-muted">Gets HTTP user agent used to made the request.</div>
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-getUserAgent">getUserAgent</a><!--
+            --></span><!--
+            -->()<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    string                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Gets HTTP user agent used to made the request.                </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        string
-                
-    </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-getHTTPReferer">getHTTPReferer</a></span>(<span class="small"></span>)
-                <div class="summary-text text-muted">Gets web page that refers active request.</div>
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-getHTTPReferer">getHTTPReferer</a><!--
+            --></span><!--
+            -->()<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    string                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Gets web page that refers active request.                </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        string
-                
-    </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-getClientAddress">getClientAddress</a></span>(<span class="small"></span>)
-                <div class="summary-text text-muted">Gets most possible client IPv4 Address.</div>
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-getClientAddress">getClientAddress</a><!--
+            --></span><!--
+            -->()<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    string                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Gets most possible client IPv4 Address.                </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        
-                
-    </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-getQuery">getQuery</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$key</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$filters</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$defaultValue</strong></span>, <span class="param-data-type text-danger">bool</span>  <span class="param-name text-info"><strong>$allowEmpty</strong></span></span>)
-                <div class="summary-text text-muted">Gets variable from _GET superglobal applying filters if needed.</div>
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-getQuery">getQuery</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">string</span> <span class="variable param-name">$key</span>, <span class="param-data-type">variable</span> <span class="variable param-name">$filters</span>, <span class="param-data-type">variable</span> <span class="variable param-name">$defaultValue</span>, <span class="param-data-type">bool</span> <span class="variable param-name">$allowEmpty</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Gets variable from _GET superglobal applying filters if needed.                </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        
-                
-    </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-getPost">getPost</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$key</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$filters</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$defaultValue</strong></span>, <span class="param-data-type text-danger">bool</span>  <span class="param-name text-info"><strong>$allowEmpty</strong></span></span>)
-                <div class="summary-text text-muted">Gets variable from _POST superglobal applying filters if needed.</div>
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-getPost">getPost</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">string</span> <span class="variable param-name">$key</span>, <span class="param-data-type">variable</span> <span class="variable param-name">$filters</span>, <span class="param-data-type">variable</span> <span class="variable param-name">$defaultValue</span>, <span class="param-data-type">bool</span> <span class="variable param-name">$allowEmpty</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Gets variable from _POST superglobal applying filters if needed.                </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        
-                
-    </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-getServer">getServer</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$key</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$defaultValue</strong></span></span>)
-                <div class="summary-text text-muted">Gets variable from _SERVER superglobal.</div>
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-getServer">getServer</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">string</span> <span class="variable param-name">$key</span>, <span class="param-data-type">variable</span> <span class="variable param-name">$defaultValue</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Gets variable from _SERVER superglobal.                </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        
-                
-    </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-getFiles">getFiles</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$key</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$defaultValue</strong></span></span>)
-                <div class="summary-text text-muted">Gets variable from _FILES superglobal.</div>
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-getFiles">getFiles</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">string</span> <span class="variable param-name">$key</span>, <span class="param-data-type">variable</span> <span class="variable param-name">$defaultValue</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Gets variable from _FILES superglobal.                </div>
             </div>
-</td>
-</tr>
-    </table>
+            </div>
+</li>
+    </ul>
 
-<div class="hidden-anchor"  id="methods-details"></div>
+<div class="hidden-anchor" id="methods-details"></div>
 <div class="methods-summary standard-bandeau">Methods Details</div>
-<ul class="method-details-list list-unstyled">
-    
-        
+
+<ul class="method-details-list">
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-__construct"></div>
-    
+    <div class="hidden-anchor" id="method-details-__construct"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">__construct</span>(<span class="small"></span>)
-                </h3>
-                                
-                    <div class="text-muted">
-                    Request constructor. Fetch data from globals variables: _REQUEST, _SERVER, _POST, _GET and _FILES.                    </div>
-                    <div>
-                                        </div>
-                
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">__construct</span><!--
+                -->()
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Request constructor. Fetch data from globals variables: _REQUEST, _SERVER, _POST, _GET and _FILES.                    </div>
+                    <div class="description">
+                                            </div>
+                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-hasRequest"></div>
-    
+    <div class="hidden-anchor" id="method-details-hasRequest"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">hasRequest</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$name</strong></span></span>)
-                </h3>
-                                
-                    <div class="text-muted">
-                    Check whether _REQUEST has index.                    </div>
-                    <div>
-                                        </div>
-                
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">hasRequest</span><!--
+                -->(<span class="param-data-type">string</span> <span class="variable param-name">$name</span>)
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Check whether _REQUEST has index.                    </div>
+                    <div class="description">
+                                            </div>
+                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-hasPost"></div>
-    
+    <div class="hidden-anchor" id="method-details-hasPost"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">hasPost</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$name</strong></span></span>)
-                </h3>
-                                
-                    <div class="text-muted">
-                    Check whether _POST has index.                    </div>
-                    <div>
-                                        </div>
-                
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">hasPost</span><!--
+                -->(<span class="param-data-type">string</span> <span class="variable param-name">$name</span>)
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Check whether _POST has index.                    </div>
+                    <div class="description">
+                                            </div>
+                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-hasGet"></div>
-    
+    <div class="hidden-anchor" id="method-details-hasGet"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">hasGet</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$name</strong></span></span>)
-                </h3>
-                                
-                    <div class="text-muted">
-                    Check whether _GET has index.                    </div>
-                    <div>
-                                        </div>
-                
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">hasGet</span><!--
+                -->(<span class="param-data-type">string</span> <span class="variable param-name">$name</span>)
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Check whether _GET has index.                    </div>
+                    <div class="description">
+                                            </div>
+                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-hasServer"></div>
-    
+    <div class="hidden-anchor" id="method-details-hasServer"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">hasServer</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$name</strong></span></span>)
-                </h3>
-                                
-                    <div class="text-muted">
-                    Check whether _SERVER has index.                    </div>
-                    <div>
-                                        </div>
-                
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">hasServer</span><!--
+                -->(<span class="param-data-type">string</span> <span class="variable param-name">$name</span>)
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Check whether _SERVER has index.                    </div>
+                    <div class="description">
+                                            </div>
+                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-hasFile"></div>
-    
+    <div class="hidden-anchor" id="method-details-hasFile"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">hasFile</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$name</strong></span></span>)
-                </h3>
-                                
-                    <div class="text-muted">
-                    Check whether _FILES has index.                    </div>
-                    <div>
-                                        </div>
-                
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">hasFile</span><!--
+                -->(<span class="param-data-type">string</span> <span class="variable param-name">$name</span>)
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Check whether _FILES has index.                    </div>
+                    <div class="description">
+                                            </div>
+                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-isPost"></div>
-    
+    <div class="hidden-anchor" id="method-details-isPost"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">isPost</span>(<span class="small"></span>)
-                </h3>
-                                
-                    <div class="text-muted">
-                    Checks whether HTTP method is POST.                    </div>
-                    <div>
-                                        </div>
-                
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">isPost</span><!--
+                -->()
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Checks whether HTTP method is POST.                    </div>
+                    <div class="description">
+                                            </div>
+                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-isGet"></div>
-    
+    <div class="hidden-anchor" id="method-details-isGet"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">isGet</span>(<span class="small"></span>)
-                </h3>
-                                
-                    <div class="text-muted">
-                    Checks whether HTTP method is GET.                    </div>
-                    <div>
-                                        </div>
-                
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">isGet</span><!--
+                -->()
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Checks whether HTTP method is GET.                    </div>
+                    <div class="description">
+                                            </div>
+                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-isPut"></div>
-    
+    <div class="hidden-anchor" id="method-details-isPut"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">isPut</span>(<span class="small"></span>)
-                </h3>
-                                
-                    <div class="text-muted">
-                    Checks whether HTTP method is PUT.                    </div>
-                    <div>
-                                        </div>
-                
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">isPut</span><!--
+                -->()
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Checks whether HTTP method is PUT.                    </div>
+                    <div class="description">
+                                            </div>
+                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-isPatch"></div>
-    
+    <div class="hidden-anchor" id="method-details-isPatch"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">isPatch</span>(<span class="small"></span>)
-                </h3>
-                                
-                    <div class="text-muted">
-                    Checks whether HTTP method is PATCH.                    </div>
-                    <div>
-                                        </div>
-                
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">isPatch</span><!--
+                -->()
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Checks whether HTTP method is PATCH.                    </div>
+                    <div class="description">
+                                            </div>
+                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-isHead"></div>
-    
+    <div class="hidden-anchor" id="method-details-isHead"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">isHead</span>(<span class="small"></span>)
-                </h3>
-                                
-                    <div class="text-muted">
-                    Checks whether HTTP method is HEAD.                    </div>
-                    <div>
-                                        </div>
-                
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">isHead</span><!--
+                -->()
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Checks whether HTTP method is HEAD.                    </div>
+                    <div class="description">
+                                            </div>
+                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-isDelete"></div>
-    
+    <div class="hidden-anchor" id="method-details-isDelete"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">isDelete</span>(<span class="small"></span>)
-                </h3>
-                                
-                    <div class="text-muted">
-                    Checks whether HTTP method is DELETE.                    </div>
-                    <div>
-                                        </div>
-                
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">isDelete</span><!--
+                -->()
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Checks whether HTTP method is DELETE.                    </div>
+                    <div class="description">
+                                            </div>
+                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-isOptions"></div>
-    
+    <div class="hidden-anchor" id="method-details-isOptions"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">isOptions</span>(<span class="small"></span>)
-                </h3>
-                                
-                    <div class="text-muted">
-                    Checks whether HTTP method is OPTIONS.                    </div>
-                    <div>
-                                        </div>
-                
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">isOptions</span><!--
+                -->()
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Checks whether HTTP method is OPTIONS.                    </div>
+                    <div class="description">
+                                            </div>
+                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-isAjax"></div>
-    
+    <div class="hidden-anchor" id="method-details-isAjax"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">isAjax</span>(<span class="small"></span>)
-                </h3>
-                                
-                    <div class="text-muted">
-                    Checks whether request has been made using AJAX.                    </div>
-                    <div>
-                                        </div>
-                
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">isAjax</span><!--
+                -->()
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Checks whether request has been made using AJAX.                    </div>
+                    <div class="description">
+                                            </div>
+                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-getMethod"></div>
-    
+    <div class="hidden-anchor" id="method-details-getMethod"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">getMethod</span>(<span class="small"></span>)
-                </h3>
-                                
-                    <div class="text-muted">
-                    Gets HTTP method which request has been made.                    </div>
-                    <div>
-                                        </div>
-                
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">getMethod</span><!--
+                -->()
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Gets HTTP method which request has been made.                    </div>
+                    <div class="description">
+                                            </div>
+                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-getUserAgent"></div>
-    
+    <div class="hidden-anchor" id="method-details-getUserAgent"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">getUserAgent</span>(<span class="small"></span>)
-                </h3>
-                                
-                    <div class="text-muted">
-                    Gets HTTP user agent used to made the request.                    </div>
-                    <div>
-                                        </div>
-                
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">getUserAgent</span><!--
+                -->()
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Gets HTTP user agent used to made the request.                    </div>
+                    <div class="description">
+                                            </div>
+                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-getHTTPReferer"></div>
-    
+    <div class="hidden-anchor" id="method-details-getHTTPReferer"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">getHTTPReferer</span>(<span class="small"></span>)
-                </h3>
-                                
-                    <div class="text-muted">
-                    Gets web page that refers active request.                    </div>
-                    <div>
-                                        </div>
-                
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">getHTTPReferer</span><!--
+                -->()
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Gets web page that refers active request.                    </div>
+                    <div class="description">
+                                            </div>
+                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-getClientAddress"></div>
-    
+    <div class="hidden-anchor" id="method-details-getClientAddress"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">getClientAddress</span>(<span class="small"></span>)
-                </h3>
-                                
-                    <div class="text-muted">
-                    Gets most possible client IPv4 Address.                    </div>
-                    <div>
-                                        </div>
-                
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">getClientAddress</span><!--
+                -->()
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Gets most possible client IPv4 Address.                    </div>
+                    <div class="description">
+                                            </div>
+                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-getQuery"></div>
-    
+    <div class="hidden-anchor" id="method-details-getQuery"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">getQuery</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$key</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$filters</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$defaultValue</strong></span>, <span class="param-data-type text-danger">bool</span>  <span class="param-name text-info"><strong>$allowEmpty</strong></span></span>)
-                </h3>
-                                
-                    <div class="text-muted">
-                    Gets variable from _GET superglobal applying filters if needed.                    </div>
-                    <div>
-                    If no parameters are given, return all.
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">getQuery</span><!--
+                -->(<span class="param-data-type">string</span> <span class="variable param-name">$key</span>, <span class="param-data-type">variable</span> <span class="variable param-name">$filters</span>, <span class="param-data-type">variable</span> <span class="variable param-name">$defaultValue</span>, <span class="param-data-type">bool</span> <span class="variable param-name">$allowEmpty</span>)
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Gets variable from _GET superglobal applying filters if needed.                    </div>
+                    <div class="description">
+                        If no parameters are given, return all.
      
-     <pre><code class="php">
-      //Returns value from $_GET[&quot;id&quot;] without sanitizing
-      $id = $this-&gt;request-&gt;getQuery(&quot;id&quot;);
+     <pre><code>
+      //Returns value from $_GET["id"] without sanitizing
+      $id = $this->request->getQuery("id");
      
-      //Returns value from $_GET[&quot;title&quot;] with sanitizing
-      $title = $this-&gt;request-&gt;getQuery(&quot;title&quot;, &quot;escape|repeats&quot;);
+      //Returns value from $_GET["title"] with sanitizing
+      $title = $this->request->getQuery("title", "escape|repeats");
      
-      //Returns value from $_GET[&quot;id&quot;] with a default value
-      $id = $this-&gt;request-&gt;getQuery(&quot;id&quot;, null, 150);
+      //Returns value from $_GET["id"] with a default value
+      $id = $this->request->getQuery("id", null, 150);
      </code></pre>                    </div>
-                
-                                
-            </div>
+                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-getPost"></div>
-    
+    <div class="hidden-anchor" id="method-details-getPost"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">getPost</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$key</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$filters</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$defaultValue</strong></span>, <span class="param-data-type text-danger">bool</span>  <span class="param-name text-info"><strong>$allowEmpty</strong></span></span>)
-                </h3>
-                                
-                    <div class="text-muted">
-                    Gets variable from _POST superglobal applying filters if needed.                    </div>
-                    <div>
-                    If no parameters are given, return all.
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">getPost</span><!--
+                -->(<span class="param-data-type">string</span> <span class="variable param-name">$key</span>, <span class="param-data-type">variable</span> <span class="variable param-name">$filters</span>, <span class="param-data-type">variable</span> <span class="variable param-name">$defaultValue</span>, <span class="param-data-type">bool</span> <span class="variable param-name">$allowEmpty</span>)
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Gets variable from _POST superglobal applying filters if needed.                    </div>
+                    <div class="description">
+                        If no parameters are given, return all.
      
-     <pre><code class="php">
-      //Returns value from $_POST[&quot;id&quot;] without sanitizing
-      $id = $this-&gt;request-&gt;getPost(&quot;id&quot;);
+     <pre><code>
+      //Returns value from $_POST["id"] without sanitizing
+      $id = $this->request->getPost("id");
      
-      //Returns value from $_POST[&quot;title&quot;] with sanitizing
-      $title = $this-&gt;request-&gt;getPost(&quot;title&quot;, &quot;escape|repeats&quot;);
+      //Returns value from $_POST["title"] with sanitizing
+      $title = $this->request->getPost("title", "escape|repeats");
      
-      //Returns value from $_POST[&quot;id&quot;] with a default value
-      $id = $this-&gt;request-&gt;getPost(&quot;id&quot;, null, 150);
+      //Returns value from $_POST["id"] with a default value
+      $id = $this->request->getPost("id", null, 150);
      </code></pre>                    </div>
-                
-                                
-            </div>
+                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-getServer"></div>
-    
+    <div class="hidden-anchor" id="method-details-getServer"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">getServer</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$key</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$defaultValue</strong></span></span>)
-                </h3>
-                                
-                    <div class="text-muted">
-                    Gets variable from _SERVER superglobal.                    </div>
-                    <div>
-                                        </div>
-                
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">getServer</span><!--
+                -->(<span class="param-data-type">string</span> <span class="variable param-name">$key</span>, <span class="param-data-type">variable</span> <span class="variable param-name">$defaultValue</span>)
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Gets variable from _SERVER superglobal.                    </div>
+                    <div class="description">
+                                            </div>
+                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-getFiles"></div>
-    
+    <div class="hidden-anchor" id="method-details-getFiles"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">getFiles</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$key</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$defaultValue</strong></span></span>)
-                </h3>
-                                
-                    <div class="text-muted">
-                    Gets variable from _FILES superglobal.                    </div>
-                    <div>
-                                        </div>
-                
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">getFiles</span><!--
+                -->(<span class="param-data-type">string</span> <span class="variable param-name">$key</span>, <span class="param-data-type">variable</span> <span class="variable param-name">$defaultValue</span>)
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Gets variable from _FILES superglobal.                    </div>
+                    <div class="description">
+                                            </div>
+                            </div>
+
         </div>
-
     </div>
-
 </li>
-    </ul>                    </div>
+    </ul>
                 </div>
             </div>
         </div>
-
-        <script src="../../../asset/static/js/jquery.min.js"></script>
-        <script src="../../../asset/static/js/bootstrap.min.js"></script>
-        <script src="../../../asset/static/js/highlight.pack.js"></script>
-        <script src="../../../asset/static/js/jquery.slimscroll.min.js"></script>
-        <script src="../../../asset/api_definition.js"></script>
-
-        <script>var ZepCurrentPath = '../../../'</script>
-        <script src="../../../asset/static/js/script.js"></script>
-        <script type="text/javascript">
-            $(window).on("load resize", function() {
-                $('#menu-wrapper').slimscroll({ height: $(window).height() - 100, size: '3px' });
-            });
-        </script>
-        <script type="text/javascript">
-            $(document).ready(function() { $('pre code').each(function(i, block) { hljs.highlightBlock(block); }); });
-            if ($('.zephir-source-file').length) {
-                $('link[id]').each(function(i, link) {
-                    link.disabled = (link.id != 'tomorrow-night');
-                });
-            }
-        </script>
-            </body>
+    </body>
 </html>

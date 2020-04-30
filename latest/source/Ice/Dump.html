@@ -1,39 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <link rel="stylesheet" type="text/css" href="../../asset/static/css/bootstrap.min.css" />
-        <link rel="stylesheet" type="text/css" href="../../asset/static/css/tomorrow.min.css" id="tomorrow" />
-        <link rel="stylesheet" type="text/css" href="../../asset/static/css/tomorrow-night.min.css" id="tomorrow-night" disabled />
-        <link rel="stylesheet" type="text/css" href="../../asset/static/css/style.css" />
-    </head>
-    <body>
-        <header class="navbar navbar-default navbar-fixed-top">
-            <div id="top-bar" class="container-fluid">
-                <div id="top-left" class="navbar-header">
-                    <a href="../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.4.0</span>
-                                            </a>
-                </div>
-                <div id="top-right" class="collapse navbar-collapse">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta content="ice API doc" name="description">
+    <title>
+                    ice API Documentation
+            </title>
+    <link rel="stylesheet" type="text/css" href="../../asset/static/prettify.css" />
 
-                </div>
+<script src="../../asset/static/prettify.js"></script>
+<script src="../../asset/api_definition.js"></script>
+
+
+                        <link rel="stylesheet" type="text/css" href="../../asset/static/prettify.css" />
+                    <link rel="stylesheet" type="text/css" href="../../asset/static/zephir-theme.css" />
+            
+    
+
+                        <script src="../../asset/static/prettify.js"></script>
+                                    <script src="../../asset/api_definition.js"></script>
+                    <script src="../../asset/static/jquery.min.js"></script>
+                    <script src="../../asset/static/zephir-doc.js"></script>
+                <script type="application/javascript">let ZepCurrentPath = '../../'</script>
+    </head>
+ <body onload="prettyPrint()">
+        <div id="top-bar">
+            <div id="top-left" style="color: #555">
+                                    <a href="https://doc.iceframework.org" title="ice framework documentation" style="color: #444"><img src="https://www.iceframework.org/img/logo.png" alt="ice framework documentation" width="30" height="30"> ice doc</a> <span class="version">v1.6.0</span>
+                            </div>
+            <div id="top-right">
             </div>
-        </header>
-        <div id="body" class="container-fluid">
-            <div class="row">
-                <div id="body-left" class="col-lg-3 col-sm-4">
-                    <div class="header-search">
-                        <input class="search-box form-control" placeholder="Search for a class or namespace " type="text" />
-                        <div id="menu-wrapper">
-                        </div>
+        </div>
+        <div id="body">
+            <div id="body-left">
+                <div class="header-search">
+                    <input class="search-box" placeholder="Search for a class or namespace " type="text" />
+                    <div id="menu-wrapper">
                     </div>
                 </div>
-                <div id="body-right" class="col-lg-9 col-sm-8">
-                    <div class="content">
-                        
-<div>
+            </div>
+            <div id="body-right">
+                <div class="content">
+                    
+<div class="breadcrumb">
     
-    <ul class="breadcrumb">
+    <ul>
         
         <li><a href="../../index.html">Home</a></li>
         
@@ -45,28 +57,35 @@
     
 </div>
 <div class="class-header source clearfix">
-    
-    <div class="access-buttons pull-right">
-        <a class="zep-button btn btn-default" href="../../class/Ice/Dump.html">Class</a>
 
-                <a class="zep-button btn btn-default" href="https://github.com/ice/framework/tree/dev/ice/dump.zep">Github</a>
+    <div class="access-buttons">
+        <a class="zep-button" href="../../class/Ice/Dump.html">Class</a>
+
+                <a class="zep-button"
+           href="https://github.com/ice/framework/tree/dev/ice/dump.zep">
+            Github
+        </a>
             </div>
-    
+
     <div class="class-full-name">
-        
         <span class="class-type">Class</span>
-        
+
                 <span class="namespace-piece">
             <a href="../../namespace/Ice.html">Ice</a>
         </span>
-                <h1 class="class-name">Dump</h1>
+        
+        <h1 class="class-name">Dump</h1>
     </div>
-    
+
 </div>
 
-
-<pre class="zephir-source-file"><code>
+<pre class="zephir-source-file prettyprint linenums">
+    
 namespace Ice;
+
+use ReflectionClass;
+use ReflectionObject;
+use stdClass;
 
 /**
  * Dumps information about a variable(s)
@@ -74,66 +93,66 @@ namespace Ice;
  * @package     Ice/Dump
  * @category    Helper
  * @author      Ice Team
- * @copyright   (c) 2014-2018 Ice Team
+ * @copyright   (c) 2014-2020 Ice Team
  * @license     http://iceframework.org/license
  *
- * &lt;pre&gt;&lt;code&gt;
+ * <pre><code>
  *  $foo = 123;
- *  echo (new \Ice\Dump())-&gt;variable($foo, &quot;foo&quot;);
- * &lt;/code&gt;&lt;/pre&gt;
+ *  echo (new \Ice\Dump())->variable($foo, "foo");
+ * </code></pre>
  *
- * &lt;pre&gt;&lt;code&gt;
- *  $foo = &quot;string&quot;;
- *  $bar = [&quot;key&quot; =&gt; &quot;value&quot;];
+ * <pre><code>
+ *  $foo = "string";
+ *  $bar = ["key" => "value"];
  *  $baz = new stdClass();
- *  echo (new \Ice\Dump())-&gt;vars($foo, $bar, $baz);
- * &lt;/code&gt;&lt;/pre&gt;
+ *  echo (new \Ice\Dump())->vars($foo, $bar, $baz);
+ * </code></pre>
  *
  * Sleet usage:
- * &lt;pre&gt;&lt;code&gt;
- *  {{ dump(&apos;str&apos;, 1, 2.5, true, null, [&apos;key&apos;: &apos;value&apos;]) }}
- * &lt;/code&gt;&lt;/pre&gt;
+ * <pre><code>
+ *  {{ dump('str', 1, 2.5, true, null, ['key': 'value']) }}
+ * </code></pre>
  */
 class Dump
 {
-
     protected detailed = false { get, set };
     protected plain = false { get, set };
-    protected skip = [&quot;Ice\\Di&quot;] { get, set };
+    protected skip = ["Ice\\Di"] { get, set };
     protected methods = [];
+    protected objects = [];
     protected styles = [];
 
     /**
      * Dump constructor
      *
-     * @param boolean detailed debug object&apos;s private and protected properties
+     * @param boolean detailed debug object's private and protected properties
      * @param mixed styles
      */
     public function __construct(boolean detailed = false, var styles = [])
     {
-        if typeof styles == &quot;array&quot; {
-            this-&gt;setStyles(styles);
-        } elseif typeof styles == &quot;boolean&quot; {
-            let this-&gt;plain = styles;
+        if typeof styles == "array" {
+            this->setStyles(styles);
+        } elseif typeof styles == "boolean" {
+            let this->plain = styles;
         }
-        let this-&gt;detailed = detailed;
+        let this->detailed = detailed;
     }
 
 
     /**
      * Alias of vars() method
      *
-     * &lt;pre&gt;&lt;code&gt;
-     *  echo (new \Ice\Dump())-&gt;all($foo, $bar, $baz);
-     * &lt;/code&gt;&lt;/pre&gt;
+     * <pre><code>
+     *  echo (new \Ice\Dump())->all($foo, $bar, $baz);
+     * </code></pre>
      *
      * @param mixed variable
      * @param ...
      * @return string
      */
-    public function all() -&gt; string
+    public function all() -> string
     {
-        return call_user_func_array([this, &quot;vars&quot;], func_get_args());
+        return call_user_func_array([this, "vars"], func_get_args());
     }
 
     /**
@@ -142,14 +161,14 @@ class Dump
      * @param string type
      * @return string
      */
-    protected function getStyle(string! type) -&gt; string
+    protected function getStyle(string! type) -> string
     {
         var style;
 
-        if fetch style, this-&gt;styles[type] {
+        if fetch style, this->styles[type] {
             return style;
         } else {
-            return &quot;color:gray&quot;;
+            return "color:gray";
         }
     }
 
@@ -160,48 +179,48 @@ class Dump
      * @param array styles
      * @return array
      */
-    public function setStyles(array styles = []) -&gt; array
+    public function setStyles(array styles = []) -> array
     {
         var defaultStyles;
 
-        if typeof styles != &quot;array&quot; {
-            throw new Exception(&quot;The styles must be an array&quot;);
+        if typeof styles != "array" {
+            throw new Exception("The styles must be an array");
         }
 
         let defaultStyles = [
-            &quot;pre&quot;: &quot;background-color:#f9f9f9; font-size:11px; padding:10px; border:1px solid #ccc; text-align:left; color:#333&quot;,
-            &quot;arr&quot;: &quot;color:red&quot;,
-            &quot;bool&quot;: &quot;color:green&quot;,
-            &quot;float&quot;: &quot;color:fuchsia&quot;,
-            &quot;int&quot;: &quot;color:blue&quot;,
-            &quot;null&quot;: &quot;color:black&quot;,
-            &quot;num&quot;: &quot;color:navy&quot;,
-            &quot;obj&quot;: &quot;color:purple&quot;,
-            &quot;other&quot;: &quot;color:maroon&quot;,
-            &quot;res&quot;: &quot;color:lime&quot;,
-            &quot;str&quot;: &quot;color:teal&quot;,
-            &quot;line&quot;: &quot;highlight-block&quot;,
-            &quot;lines&quot;: &quot;&quot;
+            "pre": "background-color:#f9f9f9; font-size:11px; padding:10px; border:1px solid #ccc; text-align:left; color:#333",
+            "arr": "color:red",
+            "bool": "color:green",
+            "float": "color:fuchsia",
+            "int": "color:blue",
+            "null": "color:black",
+            "num": "color:navy",
+            "obj": "color:purple",
+            "other": "color:maroon",
+            "res": "color:lime",
+            "str": "color:teal",
+            "line": "highlight-block",
+            "lines": ""
         ];
 
-        let this-&gt;styles = array_merge(defaultStyles, styles);
-        return this-&gt;styles;
+        let this->styles = array_merge(defaultStyles, styles);
+        return this->styles;
     }
 
     /**
      * Alias of variable() method
      *
-     * &lt;pre&gt;&lt;code&gt;
-     *  echo (new \Ice\Dump())-&gt;one($foo, &quot;foo&quot;);
-     * &lt;/code&gt;&lt;/pre&gt;
+     * <pre><code>
+     *  echo (new \Ice\Dump())->one($foo, "foo");
+     * </code></pre>
      *
      * @param mixed variable
      * @param string name
      * @return string
      */
-    public function one(variable, string name = null) -&gt; string
+    public function one(variable, string name = null) -> string
     {
-        return this-&gt;variable(variable, name);
+        return this->variable(variable, name);
     }
 
     /**
@@ -212,164 +231,176 @@ class Dump
      * @param integer tab
      * @return  string
      */
-    protected function output(variable, name = null, tab = 1) -&gt; string
+    protected function output(variable, name = null, tab = 1) -> string
     {
         var key, value, output, space, type, attr;
 
-        let space = &quot;  &quot;,
-            output = &quot;&quot;;
+        let space = "  ",
+            output = "";
 
         if name {
-            let output = name . &quot; &quot;;
+            let output = name . " ";
         }
 
-        if typeof variable == &quot;array&quot; {
-            let output .= strtr((this-&gt;plain ? &quot;array (:count) (&quot; . PHP_EOL : &quot;&lt;b style =&apos;:style&apos;&gt;array&lt;/b&gt; (&lt;span style =&apos;:style&apos;&gt;:count&lt;/span&gt;) (&quot; . PHP_EOL), [&quot;:style&quot;: this-&gt;getStyle(&quot;arr&quot;), &quot;:count&quot;: count(variable)]);
+        if typeof variable == "array" {
+            let output .= strtr((this->plain ? "array (:count) (" . PHP_EOL : "<b style =':style'>array</b> (<span style =':style'>:count</span>) (" . PHP_EOL), [":style": this->getStyle("arr"), ":count": count(variable)]);
 
             for key, value in variable {
-                let output .= str_repeat(space, tab) . strtr((this-&gt;plain ? &quot;[:key] =&gt; &quot; : &quot;[&lt;span style=&apos;:style&apos;&gt;:key&lt;/span&gt;] =&gt; &quot;), [&quot;:style&quot;: this-&gt;getStyle(&quot;arr&quot;), &quot;:key&quot;: key]);
+                let output .= str_repeat(space, tab) . strtr((this->plain ? "[:key] => " : "[<span style=':style'>:key</span>] => "), [":style": this->getStyle("arr"), ":key": key]);
 
-                if tab == 1 &amp;&amp; name != &quot;&quot; &amp;&amp; !is_int(key) &amp;&amp; name == key {
+                if tab == 1 && name != "" && !is_int(key) && name == key {
                     continue;
                 } else {
-                    let output .= this-&gt;output(value, &quot;&quot;, tab + 1) . PHP_EOL;
+                    let output .= this->output(value, "", tab + 1) . PHP_EOL;
                 }
             }
-            return output . str_repeat(space, tab - 1) . &quot;)&quot;;
+            return output . str_repeat(space, tab - 1) . ")";
         }
 
-        if typeof variable == &quot;object&quot; {
-            var className;
+        if typeof variable == "object" {
+            var className, hash;
 
             let className = get_class(variable),
-                output .= strtr((this-&gt;plain ? &quot;object :class&quot; : &quot;&lt;b style=&apos;:style&apos;&gt;object&lt;/b&gt; :class&quot;), [&quot;:style&quot;: this-&gt;getStyle(&quot;obj&quot;), &quot;:class&quot;: className]);
+                hash = spl_object_hash(variable),
+                output .= strtr((this->plain ? "object :class" : "<b style=':style'>object</b> :class"), [":style": this->getStyle("obj"), ":class": className]);
 
             if get_parent_class(variable) {
-                let output .= strtr((this-&gt;plain ? &quot; extends :parent&quot; : &quot; &lt;b style=&apos;:style&apos;&gt;extends&lt;/b&gt; :parent&quot;), [&quot;:style&quot;: this-&gt;getStyle(&quot;obj&quot;), &quot;:parent&quot;: get_parent_class(variable)]);
+                let output .= strtr((this->plain ? " extends :parent" : " <b style=':style'>extends</b> :parent"), [":style": this->getStyle("obj"), ":parent": get_parent_class(variable)]);
             }
-            let output .= &quot; (&quot; . PHP_EOL;
+            let output .= " (" . PHP_EOL;
 
-            if in_array(className, this-&gt;skip) {
+            if in_array(className, this->skip) {
                 // Skip debuging
-                let output .= str_repeat(space, tab) . &quot;[skipped]&quot; . PHP_EOL;
-            } elseif !this-&gt;detailed {
+                let output .= str_repeat(space, tab) . "[skipped]" . PHP_EOL;
+            } elseif in_array(hash, this->objects) {
+                // Recursion
+                let output .= str_repeat(space, tab) . "[already listed]" . PHP_EOL;
+            } elseif !this->detailed {
                 // Debug only public properties
                 for key, value in get_object_vars(variable) {
-                    let output .= str_repeat(space, tab) . strtr((this-&gt;plain ? &quot;-&gt;:key (:type) = &quot; :  &quot;-&gt;&lt;span style=&apos;:style&apos;&gt;:key&lt;/span&gt; (&lt;span style=&apos;:style&apos;&gt;:type&lt;/span&gt;) = &quot;), [&quot;:style&quot;: this-&gt;getStyle(&quot;obj&quot;), &quot;:key&quot;: key, &quot;:type&quot;: &quot;public&quot;]);
-                    let output .= this-&gt;output(value, &quot;&quot;, tab + 1) . PHP_EOL;
+                    let this->objects[] = hash,
+                        output .= str_repeat(space, tab) . strtr((this->plain ? "->:key (:type) = " :  "-><span style=':style'>:key</span> (<span style=':style'>:type</span>) = "), [":style": this->getStyle("obj"), ":key": key, ":type": "public"]),
+                        output .= this->output(value, "", tab + 1) . PHP_EOL;
                 }
             } else {
                 // Debug all properties
-                var reflect = &quot;ReflectionClass&quot;;
+                var reflect;
 
-                for attr in (new {reflect}(variable))-&gt;getProperties() {
-                    let key = attr-&gt;getName(),
-                        type = &quot;public&quot;;
+                let reflect = variable instanceof stdClass ? new ReflectionObject(variable) : new ReflectionClass(variable);
 
-                    if attr-&gt;isProtected() {
-                        attr-&gt;setAccessible(true);
-                        let type = &quot;protected&quot;;
+                for attr in reflect->getProperties() {
+                    let key = attr->getName(),
+                        type = "public";
+
+                    if attr->isProtected() {
+                        attr->setAccessible(true);
+                        let type = "protected";
                     }
 
-                    if attr-&gt;isPrivate() {
-                        attr-&gt;setAccessible(true);
-                        let type = &quot;private&quot;;
+                    if attr->isPrivate() {
+                        attr->setAccessible(true);
+                        let type = "private";
                     }
 
-                    let value = attr-&gt;getValue(variable);
+                    if attr->isStatic() {
+                        let type .= " static";
+                    }
 
-                    let output .= str_repeat(space, tab) . strtr((this-&gt;plain ? &quot;-&gt;:key (:type) = &quot; : &quot;-&gt;&lt;span style=&apos;:style&apos;&gt;:key&lt;/span&gt; (&lt;span style=&apos;:style&apos;&gt;:type&lt;/span&gt;) = &quot;), [&quot;:style&quot;: this-&gt;getStyle(&quot;obj&quot;), &quot;:key&quot;: key, &quot;:type&quot;: type]),
-                        output .= this-&gt;output(value, &quot;&quot;, tab + 1) . PHP_EOL;
+                    let value = attr->getValue(variable);
+
+                    let this->objects[] = hash,
+                        output .= str_repeat(space, tab) . strtr((this->plain ? "->:key (:type) = " : "-><span style=':style'>:key</span> (<span style=':style'>:type</span>) = "), [":style": this->getStyle("obj"), ":key": key, ":type": type]),
+                        output .= this->output(value, "", tab + 1) . PHP_EOL;
                 }
             }
 
             let attr = get_class_methods(variable),
-                output .= str_repeat(space, tab) . strtr((this-&gt;plain ? &quot;:class methods: (:count) (&quot; . PHP_EOL : &quot;:class &lt;b style=&apos;:style&apos;&gt;methods&lt;/b&gt;: (&lt;span style=&apos;:style&apos;&gt;:count&lt;/span&gt;) (&quot; . PHP_EOL), [&quot;:style&quot;: this-&gt;getStyle(&quot;obj&quot;), &quot;:class&quot;: className, &quot;:count&quot;: count(attr)]);
+                output .= str_repeat(space, tab) . strtr((this->plain ? ":class methods: (:count) (" . PHP_EOL : ":class <b style=':style'>methods</b>: (<span style=':style'>:count</span>) (" . PHP_EOL), [":style": this->getStyle("obj"), ":class": className, ":count": count(attr)]);
 
-            if in_array(className, this-&gt;methods) {
-                let output .= str_repeat(space, tab) . &quot;[already listed]&quot; . PHP_EOL;
+            if in_array(className, this->methods) {
+                let output .= str_repeat(space, tab) . "[already listed]" . PHP_EOL;
             } else {
                 for value in attr {
-                    if !in_array(className, this-&gt;methods) {
-                        let this-&gt;methods[] = className;
+                    if !in_array(className, this->methods) {
+                        let this->methods[] = className;
                     }
-                    if value == &quot;__construct&quot; {
-                        let output .= str_repeat(space, tab + 1) . strtr((this-&gt;plain ? &quot;-&gt;:method(); [constructor]&quot; . PHP_EOL : &quot;-&gt;&lt;span style=&apos;:style&apos;&gt;:method&lt;/span&gt;(); [&lt;b style=&apos;:style&apos;&gt;constructor&lt;/b&gt;]&quot; . PHP_EOL), [&quot;:style&quot;: this-&gt;getStyle(&quot;obj&quot;), &quot;:method&quot;: value]);
+                    if value == "__construct" {
+                        let output .= str_repeat(space, tab + 1) . strtr((this->plain ? "->:method(); [constructor]" . PHP_EOL : "-><span style=':style'>:method</span>(); [<b style=':style'>constructor</b>]" . PHP_EOL), [":style": this->getStyle("obj"), ":method": value]);
                     } else {
-                        let output .= str_repeat(space, tab + 1) . strtr((this-&gt;plain ? &quot;-&gt;:method();&quot; . PHP_EOL : &quot;-&gt;&lt;span style=&apos;:style&apos;&gt;:method&lt;/span&gt;();&quot; . PHP_EOL), [&quot;:style&quot;: this-&gt;getStyle(&quot;obj&quot;), &quot;:method&quot;: value]);
+                        let output .= str_repeat(space, tab + 1) . strtr((this->plain ? "->:method();" . PHP_EOL : "-><span style=':style'>:method</span>();" . PHP_EOL), [":style": this->getStyle("obj"), ":method": value]);
                     }
                 }
-                let output .= str_repeat(space, tab) . &quot;)&quot; . PHP_EOL;
+                let output .= str_repeat(space, tab) . ")" . PHP_EOL;
             }
-            return output . str_repeat(space, tab - 1) . &quot;)&quot;;
+            return output . str_repeat(space, tab - 1) . ")";
         }
 
         if is_int(variable) {
-            return output . strtr((this-&gt;plain ? &quot;integer (:var)&quot; : &quot;&lt;b style=&apos;:style&apos;&gt;integer&lt;/b&gt; (&lt;span style=&apos;:style&apos;&gt;:var&lt;/span&gt;)&quot;), [&quot;:style&quot;: this-&gt;getStyle(&quot;int&quot;), &quot;:var&quot;: variable]);
+            return output . strtr((this->plain ? "integer (:var)" : "<b style=':style'>integer</b> (<span style=':style'>:var</span>)"), [":style": this->getStyle("int"), ":var": variable]);
         }
 
         if is_float(variable) {
-            return output . strtr((this-&gt;plain ? &quot;float (:var)&quot; : &quot;&lt;b style=&apos;:style&apos;&gt;float&lt;/b&gt; (&lt;span style=&apos;:style&apos;&gt;:var&lt;/span&gt;)&quot;), [&quot;:style&quot;: this-&gt;getStyle(&quot;float&quot;), &quot;:var&quot;: variable]);
+            return output . strtr((this->plain ? "float (:var)" : "<b style=':style'>float</b> (<span style=':style'>:var</span>)"), [":style": this->getStyle("float"), ":var": variable]);
         }
 
         if is_numeric(variable) {
-            return output . strtr((this-&gt;plain ? &quot;numeric string (:length) \&quot;:var\&quot;&quot; : &quot;&lt;b style=&apos;:style&apos;&gt;numeric string&lt;/b&gt; (&lt;span style=&apos;:style&apos;&gt;:length&lt;/span&gt;) \&quot;&lt;span style=&apos;:style&apos;&gt;:var&lt;/span&gt;\&quot;&quot;), [&quot;:style&quot;: this-&gt;getStyle(&quot;num&quot;), &quot;:length&quot;: strlen(variable), &quot;:var&quot;: variable]);
+            return output . strtr((this->plain ? "numeric string (:length) \":var\"" : "<b style=':style'>numeric string</b> (<span style=':style'>:length</span>) \"<span style=':style'>:var</span>\""), [":style": this->getStyle("num"), ":length": strlen(variable), ":var": variable]);
         }
 
         if is_string(variable) {
-            return output . strtr((this-&gt;plain ? &quot;string (:length) \&quot;:var\&quot;&quot; : &quot;&lt;b style=&apos;:style&apos;&gt;string&lt;/b&gt; (&lt;span style=&apos;:style&apos;&gt;:length&lt;/span&gt;) \&quot;&lt;span style=&apos;:style&apos;&gt;:var&lt;/span&gt;\&quot;&quot;), [&quot;:style&quot;: this-&gt;getStyle(&quot;str&quot;), &quot;:length&quot;: strlen(variable), &quot;:var&quot;: nl2br(htmlentities(variable, ENT_IGNORE, &quot;utf-8&quot;))]);
+            return output . strtr((this->plain ? "string (:length) \":var\"" : "<b style=':style'>string</b> (<span style=':style'>:length</span>) \"<span style=':style'>:var</span>\""), [":style": this->getStyle("str"), ":length": strlen(variable), ":var": nl2br(htmlentities(variable, ENT_IGNORE, "utf-8"))]);
         }
 
         if is_bool(variable) {
-            return output . strtr((this-&gt;plain ? &quot;boolean (:var)&quot; : &quot;&lt;b style=&apos;:style&apos;&gt;boolean&lt;/b&gt; (&lt;span style=&apos;:style&apos;&gt;:var&lt;/span&gt;)&quot;), [&quot;:style&quot;: this-&gt;getStyle(&quot;bool&quot;), &quot;:var&quot;: (variable ? &quot;true&quot; : &quot;false&quot;)]);
+            return output . strtr((this->plain ? "boolean (:var)" : "<b style=':style'>boolean</b> (<span style=':style'>:var</span>)"), [":style": this->getStyle("bool"), ":var": (variable ? "true" : "false")]);
         }
 
         if is_null(variable) {
-            return output . strtr((this-&gt;plain ? &quot;null&quot; : &quot;&lt;b style=&apos;:style&apos;&gt;null&lt;/b&gt;&quot;), [&quot;:style&quot;: this-&gt;getStyle(&quot;null&quot;)]);
+            return output . strtr((this->plain ? "null" : "<b style=':style'>null</b>"), [":style": this->getStyle("null")]);
         }
-        return output . strtr((this-&gt;plain ? &quot;(:var)&quot; : &quot;(&lt;span style=&apos;:style&apos;&gt;:var&lt;/span&gt;)&quot;), [&quot;:style&quot;: this-&gt;getStyle(&quot;other&quot;), &quot;:var&quot;: variable]);
+        return output . strtr((this->plain ? "(:var)" : "(<span style=':style'>:var</span>)"), [":style": this->getStyle("other"), ":var": variable]);
     }
 
      /**
      * Returns an HTML string of information about a single variable.
      *
-     * &lt;pre&gt;&lt;code&gt;
+     * <pre><code>
      *  $foo = 123;
-     *  echo (new \Ice\Dump())-&gt;variable($foo, &quot;foo&quot;);
-     * &lt;/code&gt;&lt;/pre&gt;
+     *  echo (new \Ice\Dump())->variable($foo, "foo");
+     * </code></pre>
      *
      * @param mixed variable
      * @param string name
      * @return string
      */
-    public function variable(variable, string name = null) -&gt; string
+    public function variable(variable, string name = null) -> string
     {
-        return strtr((this-&gt;plain ? &quot;:output&quot; : &quot;&lt;pre style=&apos;:style&apos;&gt;:output&lt;/pre&gt;&quot;), [&quot;:style&quot;: this-&gt;getStyle(&quot;pre&quot;), &quot;:output&quot;: this-&gt;output(variable, name)]);
+        return strtr((this->plain ? ":output" : "<pre style=':style'>:output</pre>"), [":style": this->getStyle("pre"), ":output": this->output(variable, name)]);
     }
 
     /**
      * Returns an HTML string of debugging information about any number of
-     * variables, each wrapped in a &quot;pre&quot; tag.
+     * variables, each wrapped in a "pre" tag.
      *
-     * &lt;pre&gt;&lt;code&gt;
-     *  $foo = &quot;string&quot;;
-     *  $bar = [&quot;key&quot; =&gt; &quot;value&quot;];
+     * <pre><code>
+     *  $foo = "string";
+     *  $bar = ["key" => "value"];
      *  $baz = new stdClass();
-     *  echo (new \Ice\Dump())-&gt;vars($foo, $bar, $baz);
-     * &lt;/code&gt;&lt;/pre&gt;
+     *  echo (new \Ice\Dump())->vars($foo, $bar, $baz);
+     * </code></pre>
      *
      * @param mixed variable
      * @param ...
      * @return string
      */
-    public function vars() -&gt; string
+    public function vars() -> string
     {
         var key, value, output;
 
-        let output = &quot;&quot;;
+        let output = "";
 
         for key, value in func_get_args() {
-            let output .= this-&gt;one(value, &quot;var &quot; . key);
+            let output .= this->one(value, "var " . key);
         }
 
         return output;
@@ -383,9 +414,9 @@ class Dump
      * @param integer padding Number of padding lines
      * @return array Source of file, false if file is unreadable
      */
-    public function source(string filename, int line, int padding = 5) -&gt; array|boolean
+    public function source(string filename, int line, int padding = 5) -> array|boolean
     {
-        var file, range, format, lines, source, row;
+        var file, range, format, lines, row;
         int i = 0;
 
         if empty filename || !is_readable(filename) {
@@ -394,17 +425,16 @@ class Dump
         }
 
         // Open the file and set the line position
-        let file = fopen(filename, &quot;r&quot;);
+        let file = fopen(filename, "r");
 
         // Set the reading range
         let range = [
-            &quot;start&quot;: line - padding,
-            &quot;end&quot;: line + padding
+            "start": line - padding,
+            "end": line + padding
         ];
 
         // Set the zero-padding amount for line numbers
-        let format = &quot;% &quot; . strlen(range[&quot;end&quot;]) . &quot;d&quot;,
-            source = &quot;&quot;,
+        let format = "% " . strlen(range["end"]) . "d",
             lines = [],
             row = fgets(file);
 
@@ -416,19 +446,19 @@ class Dump
             // Increment the line number
             let i++;
 
-            if i &gt; range[&quot;end&quot;] {
+            if i > range["end"] {
                 break;
             }
 
-            if i &gt;= range[&quot;start&quot;] {
+            if i >= range["start"] {
                 // Make the row safe for output
-                let row = htmlspecialchars(row, ENT_NOQUOTES, &quot;utf-8&quot;);
+                let row = htmlspecialchars(row, ENT_NOQUOTES, "utf-8");
 
                 if i === line {
                     // Apply highlighting to this row
-                    let lines[sprintf(format, i)] .= strtr((this-&gt;plain ? &quot;:var&quot; : &quot;&lt;div class=&apos;:class&apos;&gt;:var&lt;/div&gt;&quot;), [&quot;:class&quot;: this-&gt;getStyle(&quot;line&quot;), &quot;:var&quot;: row]);
+                    let lines[sprintf(format, i)] .= strtr((this->plain ? ":var" : "<div class=':class'>:var</div>"), [":class": this->getStyle("line"), ":var": row]);
                 } else {
-                    let lines[sprintf(format, i)] .= strtr((this-&gt;plain ? &quot;:var&quot; : &quot;&lt;div class=&apos;:class&apos;&gt;:var&lt;/div&gt;&quot;), [&quot;:class&quot;: this-&gt;getStyle(&quot;lines&quot;), &quot;:var&quot;: row]);
+                    let lines[sprintf(format, i)] .= strtr((this->plain ? ":var" : "<div class=':class'>:var</div>"), [":class": this->getStyle("lines"), ":var": row]);
                 }
             }
 
@@ -441,31 +471,9 @@ class Dump
         return lines;
     }
 }
-</code></pre>                    </div>
+</pre>
                 </div>
             </div>
         </div>
-
-        <script src="../../asset/static/js/jquery.min.js"></script>
-        <script src="../../asset/static/js/bootstrap.min.js"></script>
-        <script src="../../asset/static/js/highlight.pack.js"></script>
-        <script src="../../asset/static/js/jquery.slimscroll.min.js"></script>
-        <script src="../../asset/api_definition.js"></script>
-
-        <script>var ZepCurrentPath = '../../'</script>
-        <script src="../../asset/static/js/script.js"></script>
-        <script type="text/javascript">
-            $(window).on("load resize", function() {
-                $('#menu-wrapper').slimscroll({ height: $(window).height() - 100, size: '3px' });
-            });
-        </script>
-        <script type="text/javascript">
-            $(document).ready(function() { $('pre code').each(function(i, block) { hljs.highlightBlock(block); }); });
-            if ($('.zephir-source-file').length) {
-                $('link[id]').each(function(i, link) {
-                    link.disabled = (link.id != 'tomorrow-night');
-                });
-            }
-        </script>
-            </body>
+    </body>
 </html>

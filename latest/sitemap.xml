@@ -1,0 +1,1898 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>/index.html</loc>
+        <changefreq>daily</changefreq>
+        <priority>1</priority>
+        <lastmod>2020-04-30</lastmod>
+    </url>
+
+    <url>
+        <loc>/namespaces.html</loc>
+        <changefreq>daily</changefreq>
+        <priority>1</priority>
+        <lastmod>2020-04-30</lastmod>
+    </url>
+
+    <url>
+        <loc>/classes.html</loc>
+        <changefreq>daily</changefreq>
+        <priority>1</priority>
+        <lastmod>2020-04-30</lastmod>
+    </url>
+
+            <url>
+            <loc>/class/Ice/Arr.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Arr.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Validation/Validator.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Validation/Validator.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/I18n/Plural/PluralInterface.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/I18n/Plural/PluralInterface.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Di/Access.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Di/Access.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Mvc/Model.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Mvc/Model.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Auth/Social/SocialInterface.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Auth/Social/SocialInterface.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Auth/Social/Adapter.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Auth/Social/Adapter.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Config.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Config.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Mvc/View/Engine/EngineInterface.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Mvc/View/Engine/EngineInterface.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Auth/Driver.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Auth/Driver.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Auth/Driver/DriverInterface.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Auth/Driver/DriverInterface.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Cli/Websocket/Websocket.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Cli/Websocket/Websocket.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Db/DbInterface.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Db/DbInterface.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Dispatcher.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Dispatcher.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Log/LoggerInterface.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Log/LoggerInterface.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Mvc/Route/DataGenerator/DataGeneratorInterface.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Mvc/Route/DataGenerator/DataGeneratorInterface.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Mvc/Route/Dispatcher/DispatcherInterface.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Mvc/Route/Dispatcher/DispatcherInterface.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Mvc/View/Engine.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Mvc/View/Engine.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Config/Ini.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Config/Ini.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Http/Request/RequestInterface.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Http/Request/RequestInterface.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Http/Response/HeadersInterface.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Http/Response/HeadersInterface.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Http/Response/ResponseInterface.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Http/Response/ResponseInterface.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Image.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Image.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Log/Driver.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Log/Driver.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Mvc/Route/DataGenerator/Regex.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Mvc/Route/DataGenerator/Regex.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Mvc/Route/Dispatcher/Regex.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Mvc/Route/Dispatcher/Regex.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Mvc/Route/Parser/ParserInterface.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Mvc/Route/Parser/ParserInterface.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Mvc/View/ViewInterface.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Mvc/View/ViewInterface.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Assets.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Assets.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Auth.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Auth.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Auth/Driver/Db.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Auth/Driver/Db.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Auth/Driver/File.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Auth/Driver/File.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Auth/Driver/Model/Roles.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Auth/Driver/Model/Roles.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Auth/Driver/Model/Roles/Users.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Auth/Driver/Model/Roles/Users.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Auth/Driver/Model/Users.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Auth/Driver/Model/Users.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Auth/Driver/Model/Users/Social.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Auth/Driver/Model/Users/Social.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Auth/Driver/Model/Users/Tokens.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Auth/Driver/Model/Users/Tokens.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Auth/Social.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Auth/Social.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Auth/Social/Facebook.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Auth/Social/Facebook.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Auth/Social/Google.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Auth/Social/Google.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Auth/Social/Twitter.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Auth/Social/Twitter.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Cli/Console.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Cli/Console.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Cli/Dispatcher.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Cli/Dispatcher.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Cli/Router.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Cli/Router.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Cli/Task.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Cli/Task.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Cli/Websocket/Client.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Cli/Websocket/Client.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Cli/Websocket/Server.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Cli/Websocket/Server.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Config/Env.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Config/Env.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Config/Json.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Config/Json.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Cookies.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Cookies.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Crypt.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Crypt.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Db.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Db.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Db/Driver/Mongodb.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Db/Driver/Mongodb.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Db/Driver/Pdo.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Db/Driver/Pdo.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Di.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Di.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Dump.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Dump.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Exception.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Exception.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Filter.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Filter.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Filter/Css.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Filter/Css.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Filter/Js.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Filter/Js.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Flash.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Flash.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Http/Request.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Http/Request.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Http/Response.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Http/Response.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Http/Response/Headers.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Http/Response/Headers.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/I18n.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/I18n.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/I18n/Plural/Arabic.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/I18n/Plural/Arabic.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/I18n/Plural/Balkan.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/I18n/Plural/Balkan.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/I18n/Plural/Czech.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/I18n/Plural/Czech.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/I18n/Plural/French.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/I18n/Plural/French.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/I18n/Plural/None.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/I18n/Plural/None.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/I18n/Plural/One.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/I18n/Plural/One.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/I18n/Plural/Polish.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/I18n/Plural/Polish.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/I18n/Plural/Romanian.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/I18n/Plural/Romanian.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/I18n/Plural/Two.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/I18n/Plural/Two.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/I18n/Plural/Zero.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/I18n/Plural/Zero.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Image/Gd.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Image/Gd.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Loader.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Loader.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Log.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Log.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Log/Driver/File.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Log/Driver/File.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Mvc/App.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Mvc/App.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Mvc/Controller.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Mvc/Controller.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Mvc/Dispatcher.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Mvc/Dispatcher.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Mvc/FastRoute.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Mvc/FastRoute.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Mvc/FastRouter.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Mvc/FastRouter.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Mvc/ModuleInterface.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Mvc/ModuleInterface.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Mvc/Route.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Mvc/Route.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Mvc/Route/Collector.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Mvc/Route/Collector.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Mvc/Route/DataGenerator/GroupCount.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Mvc/Route/DataGenerator/GroupCount.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Mvc/Route/Dispatcher/GroupCount.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Mvc/Route/Dispatcher/GroupCount.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Mvc/Route/Parser/Std.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Mvc/Route/Parser/Std.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Mvc/Router.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Mvc/Router.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Mvc/Service.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Mvc/Service.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Mvc/Url.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Mvc/Url.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Mvc/View.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Mvc/View.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Mvc/View/Engine/Php.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Mvc/View/Engine/Php.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Mvc/View/Engine/Sleet.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Mvc/View/Engine/Sleet.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Mvc/View/Engine/Sleet/Compiler.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Mvc/View/Engine/Sleet/Compiler.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Mvc/View/Engine/Sleet/Parser.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Mvc/View/Engine/Sleet/Parser.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Pagination.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Pagination.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Session.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Session.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Tag.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Tag.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Text.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Text.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Validation.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Validation.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Validation/Validator/Alnum.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Validation/Validator/Alnum.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Validation/Validator/Alpha.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Validation/Validator/Alpha.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Validation/Validator/Between.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Validation/Validator/Between.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Validation/Validator/Digit.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Validation/Validator/Digit.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Validation/Validator/Email.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Validation/Validator/Email.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Validation/Validator/File.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Validation/Validator/File.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Validation/Validator/In.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Validation/Validator/In.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Validation/Validator/Length.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Validation/Validator/Length.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Validation/Validator/NotIn.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Validation/Validator/NotIn.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Validation/Validator/Regex.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Validation/Validator/Regex.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Validation/Validator/Required.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Validation/Validator/Required.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Validation/Validator/Same.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Validation/Validator/Same.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Validation/Validator/Unique.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Validation/Validator/Unique.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Validation/Validator/Url.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Validation/Validator/Url.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Validation/Validator/With.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Validation/Validator/With.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Validation/Validator/Without.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Validation/Validator/Without.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+            <url>
+            <loc>/class/Ice/Version.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+        <url>
+            <loc>/source/Ice/Version.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+
+    
+            <url>
+            <loc>/namespace/Ice.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+            <url>
+            <loc>/namespace/Ice/Validation.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+            <url>
+            <loc>/namespace/Ice/I18n.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+            <url>
+            <loc>/namespace/Ice/I18n/Plural.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+            <url>
+            <loc>/namespace/Ice/Di.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+            <url>
+            <loc>/namespace/Ice/Mvc.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+            <url>
+            <loc>/namespace/Ice/Auth.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+            <url>
+            <loc>/namespace/Ice/Auth/Social.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+            <url>
+            <loc>/namespace/Ice/Mvc/View.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+            <url>
+            <loc>/namespace/Ice/Mvc/View/Engine.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+            <url>
+            <loc>/namespace/Ice/Auth/Driver.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+            <url>
+            <loc>/namespace/Ice/Cli.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+            <url>
+            <loc>/namespace/Ice/Cli/Websocket.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+            <url>
+            <loc>/namespace/Ice/Db.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+            <url>
+            <loc>/namespace/Ice/Log.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+            <url>
+            <loc>/namespace/Ice/Mvc/Route.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+            <url>
+            <loc>/namespace/Ice/Mvc/Route/DataGenerator.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+            <url>
+            <loc>/namespace/Ice/Mvc/Route/Dispatcher.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+            <url>
+            <loc>/namespace/Ice/Config.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+            <url>
+            <loc>/namespace/Ice/Http.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+            <url>
+            <loc>/namespace/Ice/Http/Request.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+            <url>
+            <loc>/namespace/Ice/Http/Response.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+            <url>
+            <loc>/namespace/Ice/Mvc/Route/Parser.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+            <url>
+            <loc>/namespace/Ice/Auth/Driver/Model.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+            <url>
+            <loc>/namespace/Ice/Auth/Driver/Model/Roles.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+            <url>
+            <loc>/namespace/Ice/Auth/Driver/Model/Users.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+            <url>
+            <loc>/namespace/Ice/Db/Driver.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+            <url>
+            <loc>/namespace/Ice/Filter.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+            <url>
+            <loc>/namespace/Ice/Image.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+            <url>
+            <loc>/namespace/Ice/Log/Driver.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+            <url>
+            <loc>/namespace/Ice/Mvc/View/Engine/Sleet.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+            <url>
+            <loc>/namespace/Ice/Validation/Validator.html</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+            <lastmod>2020-04-30</lastmod>
+        </url>
+    
+</urlset>

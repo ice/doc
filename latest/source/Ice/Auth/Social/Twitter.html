@@ -1,39 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <link rel="stylesheet" type="text/css" href="../../../../asset/static/css/bootstrap.min.css" />
-        <link rel="stylesheet" type="text/css" href="../../../../asset/static/css/tomorrow.min.css" id="tomorrow" />
-        <link rel="stylesheet" type="text/css" href="../../../../asset/static/css/tomorrow-night.min.css" id="tomorrow-night" disabled />
-        <link rel="stylesheet" type="text/css" href="../../../../asset/static/css/style.css" />
-    </head>
-    <body>
-        <header class="navbar navbar-default navbar-fixed-top">
-            <div id="top-bar" class="container-fluid">
-                <div id="top-left" class="navbar-header">
-                    <a href="../../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.4.0</span>
-                                            </a>
-                </div>
-                <div id="top-right" class="collapse navbar-collapse">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta content="ice API doc" name="description">
+    <title>
+                    ice API Documentation
+            </title>
+    <link rel="stylesheet" type="text/css" href="../../../../asset/static/prettify.css" />
 
-                </div>
+<script src="../../../../asset/static/prettify.js"></script>
+<script src="../../../../asset/api_definition.js"></script>
+
+
+                        <link rel="stylesheet" type="text/css" href="../../../../asset/static/prettify.css" />
+                    <link rel="stylesheet" type="text/css" href="../../../../asset/static/zephir-theme.css" />
+            
+    
+
+                        <script src="../../../../asset/static/prettify.js"></script>
+                                    <script src="../../../../asset/api_definition.js"></script>
+                    <script src="../../../../asset/static/jquery.min.js"></script>
+                    <script src="../../../../asset/static/zephir-doc.js"></script>
+                <script type="application/javascript">let ZepCurrentPath = '../../../../'</script>
+    </head>
+ <body onload="prettyPrint()">
+        <div id="top-bar">
+            <div id="top-left" style="color: #555">
+                                    <a href="https://doc.iceframework.org" title="ice framework documentation" style="color: #444"><img src="https://www.iceframework.org/img/logo.png" alt="ice framework documentation" width="30" height="30"> ice doc</a> <span class="version">v1.6.0</span>
+                            </div>
+            <div id="top-right">
             </div>
-        </header>
-        <div id="body" class="container-fluid">
-            <div class="row">
-                <div id="body-left" class="col-lg-3 col-sm-4">
-                    <div class="header-search">
-                        <input class="search-box form-control" placeholder="Search for a class or namespace " type="text" />
-                        <div id="menu-wrapper">
-                        </div>
+        </div>
+        <div id="body">
+            <div id="body-left">
+                <div class="header-search">
+                    <input class="search-box" placeholder="Search for a class or namespace " type="text" />
+                    <div id="menu-wrapper">
                     </div>
                 </div>
-                <div id="body-right" class="col-lg-9 col-sm-8">
-                    <div class="content">
-                        
-<div>
+            </div>
+            <div id="body-right">
+                <div class="content">
+                    
+<div class="breadcrumb">
     
-    <ul class="breadcrumb">
+    <ul>
         
         <li><a href="../../../../index.html">Home</a></li>
         
@@ -45,17 +57,19 @@
     
 </div>
 <div class="class-header source clearfix">
-    
-    <div class="access-buttons pull-right">
-        <a class="zep-button btn btn-default" href="../../../../class/Ice/Auth/Social/Twitter.html">Class</a>
 
-                <a class="zep-button btn btn-default" href="https://github.com/ice/framework/tree/dev/ice/auth/social/twitter.zep">Github</a>
+    <div class="access-buttons">
+        <a class="zep-button" href="../../../../class/Ice/Auth/Social/Twitter.html">Class</a>
+
+                <a class="zep-button"
+           href="https://github.com/ice/framework/tree/dev/ice/auth/social/twitter.zep">
+            Github
+        </a>
             </div>
-    
+
     <div class="class-full-name">
-        
         <span class="class-type">Class</span>
-        
+
                 <span class="namespace-piece">
             <a href="../../../../namespace/Ice.html">Ice</a>
         </span>
@@ -65,13 +79,14 @@
                 <span class="namespace-piece">
             <a href="../../../../namespace/Ice/Auth/Social.html">Social</a>
         </span>
-                <h1 class="class-name">Twitter</h1>
+        
+        <h1 class="class-name">Twitter</h1>
     </div>
-    
+
 </div>
 
-
-<pre class="zephir-source-file"><code>
+<pre class="zephir-source-file prettyprint linenums">
+    
 namespace Ice\Auth\Social;
 
 /**
@@ -80,12 +95,11 @@ namespace Ice\Auth\Social;
  * @package     Ice/Auth
  * @category    Adapter
  * @author      Ice Team
- * @copyright   (c) 2014-2018 Ice Team
+ * @copyright   (c) 2014-2020 Ice Team
  * @license     http://iceframework.org/license
  */
 class Twitter extends Adapter
 {
-
     /**
      * Twitter adapter constructor.
      *
@@ -93,18 +107,18 @@ class Twitter extends Adapter
      */
     public function __construct(config = [])
     {
-        let this-&gt;provider = &quot;twitter&quot;;
+        let this->provider = "twitter";
 
         parent::__construct(config);
 
-        let this-&gt;socialFieldsMap = [
-                &quot;socialId&quot;: &quot;id&quot;,
-                &quot;email&quot;:    &quot;email&quot;,
-                &quot;name&quot;:     &quot;name&quot;,
-                &quot;sex&quot;:      &quot;sex&quot;,
-                &quot;birthday&quot;: &quot;bdate&quot;
+        let this->socialFieldsMap = [
+                "socialId": "id",
+                "email":    "email",
+                "name":     "name",
+                "sex":      "sex",
+                "birthday": "bdate"
             ],
-            this-&gt;responseType = &quot;oauth_token&quot;;
+            this->responseType = "oauth_token";
     }
 
     /**
@@ -114,22 +128,22 @@ class Twitter extends Adapter
      */
     public function getSocialPage()
     {
-        if this-&gt;has(&quot;screen_name&quot;) {
-            return &quot;http://twitter.com/&quot; . this-&gt;get(&quot;screen_name&quot;);
+        if this->has("screen_name") {
+            return "http://twitter.com/" . this->get("screen_name");
         }
 
         return null;
     }
 
     /**
-     * Get url of user&quot;s avatar or null if it is not set.
+     * Get url of user"s avatar or null if it is not set.
      *
      * @return string|null
      */
     public function getImage()
     {
-        if this-&gt;has(&quot;profile_image_url&quot;) {
-            return implode(&quot;&quot;, explode(&quot;_normal&quot;, this-&gt;get(&quot;profile_image_url&quot;)));
+        if this->has("profile_image_url") {
+            return implode("", explode("_normal", this->get("profile_image_url")));
         }
 
         return null;
@@ -148,40 +162,40 @@ class Twitter extends Adapter
         let result = false,
             tokenInfo = null;
 
-        if isset _GET[&quot;oauth_token&quot;] &amp;&amp; isset _GET[&quot;oauth_verifier&quot;] {
+        if isset _GET["oauth_token"] && isset _GET["oauth_verifier"] {
             let params = [
-                &quot;oauth_token&quot;:    _GET[&quot;oauth_token&quot;],
-                &quot;oauth_verifier&quot;: _GET[&quot;oauth_verifier&quot;]
+                "oauth_token":    _GET["oauth_token"],
+                "oauth_verifier": _GET["oauth_verifier"]
             ];
 
             // Be able to store access_token in the session
-            if !this-&gt;accessToken {
-                let accessTokenUrl = &quot;https://api.twitter.com/oauth/access_token&quot;,
-                    params = this-&gt;prepareUrlParams(accessTokenUrl, params);
+            if !this->accessToken {
+                let accessTokenUrl = "https://api.twitter.com/oauth/access_token",
+                    params = this->prepareUrlParams(accessTokenUrl, params);
 
-                parse_str(this-&gt;call(parent::GET, accessTokenUrl, params, false), tokenInfo);
+                parse_str(this->call(parent::GET, accessTokenUrl, params, false), tokenInfo);
 
-                if count(tokenInfo) &gt; 0 &amp;&amp; isset tokenInfo[&quot;oauth_token&quot;] &amp;&amp; isset tokenInfo[&quot;oauth_token_secret&quot;] &amp;&amp; isset tokenInfo[&quot;screen_name&quot;] {
-                    let this-&gt;accessToken = [
-                        &quot;oauth_token&quot;:        tokenInfo[&quot;oauth_token&quot;],
-                        &quot;oauth_token_secret&quot;: tokenInfo[&quot;oauth_token_secret&quot;],
-                        &quot;screen_name&quot;:        tokenInfo[&quot;screen_name&quot;]
+                if count(tokenInfo) > 0 && isset tokenInfo["oauth_token"] && isset tokenInfo["oauth_token_secret"] && isset tokenInfo["screen_name"] {
+                    let this->accessToken = [
+                        "oauth_token":        tokenInfo["oauth_token"],
+                        "oauth_token_secret": tokenInfo["oauth_token_secret"],
+                        "screen_name":        tokenInfo["screen_name"]
                     ];
-                } 
+                }
             }
 
-            if this-&gt;accessToken {
-                let getDataUrl = &quot;https://api.twitter.com/1.1/users/show.json&quot;,
+            if this->accessToken {
+                let getDataUrl = "https://api.twitter.com/1.1/users/show.json",
                     params = [
-                        &quot;oauth_token&quot;:      this-&gt;accessToken[&quot;oauth_token&quot;],
-                        &quot;screen_name&quot;:      this-&gt;accessToken[&quot;screen_name&quot;],
-                        &quot;include_entities&quot;: &quot;false&quot;
+                        "oauth_token":      this->accessToken["oauth_token"],
+                        "screen_name":      this->accessToken["screen_name"],
+                        "include_entities": "false"
                     ],
-                    params = this-&gt;prepareUrlParams(getDataUrl, params, this-&gt;accessToken[&quot;oauth_token_secret&quot;]),
-                    userInfo = this-&gt;call(parent::GET, getDataUrl, params);
+                    params = this->prepareUrlParams(getDataUrl, params, this->accessToken["oauth_token_secret"]),
+                    userInfo = this->call(parent::GET, getDataUrl, params);
 
-                if isset userInfo[&quot;id&quot;] {
-                    let this-&gt;userInfo = userInfo,
+                if isset userInfo["id"] {
+                    let this->userInfo = userInfo,
                         result = true;
                 }
             }
@@ -198,15 +212,15 @@ class Twitter extends Adapter
     {
         var requestTokenUrl, requestTokens, params;
 
-        let requestTokenUrl = &quot;https://api.twitter.com/oauth/request_token&quot;,
-            params = this-&gt;prepareUrlParams(requestTokenUrl, [&quot;oauth_callback&quot;: this-&gt;redirectUri]),
-            requestTokens = this-&gt;call(parent::GET, requestTokenUrl, params, false);
+        let requestTokenUrl = "https://api.twitter.com/oauth/request_token",
+            params = this->prepareUrlParams(requestTokenUrl, ["oauth_callback": this->redirectUri]),
+            requestTokens = this->call(parent::GET, requestTokenUrl, params, false);
 
         parse_str(requestTokens, requestTokens);
 
         return [
-            &quot;auth_url&quot;: &quot;https://api.twitter.com/oauth/authenticate&quot;,
-            &quot;auth_params&quot;: [&quot;oauth_token&quot;: (isset requestTokens[&quot;oauth_token&quot;] ? requestTokens[&quot;oauth_token&quot;] : null)]
+            "auth_url": "https://api.twitter.com/oauth/authenticate",
+            "auth_params": ["oauth_token": (isset requestTokens["oauth_token"] ? requestTokens["oauth_token"] : null)]
         ];
     }
 
@@ -215,53 +229,31 @@ class Twitter extends Adapter
      *
      * @return array
      */
-    private function prepareUrlParams(string url, params = [], string oauthToken = &quot;&quot;, string type = &quot;GET&quot;) 
+    private function prepareUrlParams(string url, params = [], string oauthToken = "", string type = "GET")
     {
         var sigBaseStr, key;
 
         let params = array_merge([
-            &quot;oauth_consumer_key&quot;:     this-&gt;clientId,
-            &quot;oauth_nonce&quot;:            md5(uniqid(rand(), true)),
-            &quot;oauth_signature_method&quot;: &quot;HMAC-SHA1&quot;,
-            &quot;oauth_timestamp&quot;:        time(),
-            &quot;oauth_token&quot;:            oauthToken,
-            &quot;oauth_version&quot;:          &quot;1.0&quot;
+            "oauth_consumer_key":     this->clientId,
+            "oauth_nonce":            md5(uniqid(rand(), true)),
+            "oauth_signature_method": "HMAC-SHA1",
+            "oauth_timestamp":        time(),
+            "oauth_token":            oauthToken,
+            "oauth_version":          "1.0"
         ], params);
 
         ksort(params);
 
-        let sigBaseStr = type . &quot;&amp;&quot; . urlencode(url) . &quot;&amp;&quot; . urlencode(http_build_query(params)),
-            key = this-&gt;clientSecret . &quot;&amp;&quot; . oauthToken,
-            params[&quot;oauth_signature&quot;] = base64_encode(hash_hmac(&quot;sha1&quot;, sigBaseStr, key, true)),
-            params = array_map(&quot;urlencode&quot;, params);
+        let sigBaseStr = type . "&" . urlencode(url) . "&" . urlencode(http_build_query(params)),
+            key = this->clientSecret . "&" . oauthToken,
+            params["oauth_signature"] = base64_encode(hash_hmac("sha1", sigBaseStr, key, true)),
+            params = array_map("urlencode", params);
 
         return params;
     }
-}</code></pre>                    </div>
+}</pre>
                 </div>
             </div>
         </div>
-
-        <script src="../../../../asset/static/js/jquery.min.js"></script>
-        <script src="../../../../asset/static/js/bootstrap.min.js"></script>
-        <script src="../../../../asset/static/js/highlight.pack.js"></script>
-        <script src="../../../../asset/static/js/jquery.slimscroll.min.js"></script>
-        <script src="../../../../asset/api_definition.js"></script>
-
-        <script>var ZepCurrentPath = '../../../../'</script>
-        <script src="../../../../asset/static/js/script.js"></script>
-        <script type="text/javascript">
-            $(window).on("load resize", function() {
-                $('#menu-wrapper').slimscroll({ height: $(window).height() - 100, size: '3px' });
-            });
-        </script>
-        <script type="text/javascript">
-            $(document).ready(function() { $('pre code').each(function(i, block) { hljs.highlightBlock(block); }); });
-            if ($('.zephir-source-file').length) {
-                $('link[id]').each(function(i, link) {
-                    link.disabled = (link.id != 'tomorrow-night');
-                });
-            }
-        </script>
-            </body>
+    </body>
 </html>

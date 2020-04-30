@@ -1,39 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <link rel="stylesheet" type="text/css" href="../../asset/static/css/bootstrap.min.css" />
-        <link rel="stylesheet" type="text/css" href="../../asset/static/css/tomorrow.min.css" id="tomorrow" />
-        <link rel="stylesheet" type="text/css" href="../../asset/static/css/tomorrow-night.min.css" id="tomorrow-night" disabled />
-        <link rel="stylesheet" type="text/css" href="../../asset/static/css/style.css" />
-    </head>
-    <body>
-        <header class="navbar navbar-default navbar-fixed-top">
-            <div id="top-bar" class="container-fluid">
-                <div id="top-left" class="navbar-header">
-                    <a href="../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.4.0</span>
-                                            </a>
-                </div>
-                <div id="top-right" class="collapse navbar-collapse">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta content="ice API doc" name="description">
+    <title>
+                    ice API Documentation
+            </title>
+    <link rel="stylesheet" type="text/css" href="../../asset/static/prettify.css" />
 
-                </div>
+<script src="../../asset/static/prettify.js"></script>
+<script src="../../asset/api_definition.js"></script>
+
+
+                        <link rel="stylesheet" type="text/css" href="../../asset/static/prettify.css" />
+                    <link rel="stylesheet" type="text/css" href="../../asset/static/zephir-theme.css" />
+            
+    
+
+                        <script src="../../asset/static/prettify.js"></script>
+                                    <script src="../../asset/api_definition.js"></script>
+                    <script src="../../asset/static/jquery.min.js"></script>
+                    <script src="../../asset/static/zephir-doc.js"></script>
+                <script type="application/javascript">let ZepCurrentPath = '../../'</script>
+    </head>
+ <body onload="prettyPrint()">
+        <div id="top-bar">
+            <div id="top-left" style="color: #555">
+                                    <a href="https://doc.iceframework.org" title="ice framework documentation" style="color: #444"><img src="https://www.iceframework.org/img/logo.png" alt="ice framework documentation" width="30" height="30"> ice doc</a> <span class="version">v1.6.0</span>
+                            </div>
+            <div id="top-right">
             </div>
-        </header>
-        <div id="body" class="container-fluid">
-            <div class="row">
-                <div id="body-left" class="col-lg-3 col-sm-4">
-                    <div class="header-search">
-                        <input class="search-box form-control" placeholder="Search for a class or namespace " type="text" />
-                        <div id="menu-wrapper">
-                        </div>
+        </div>
+        <div id="body">
+            <div id="body-left">
+                <div class="header-search">
+                    <input class="search-box" placeholder="Search for a class or namespace " type="text" />
+                    <div id="menu-wrapper">
                     </div>
                 </div>
-                <div id="body-right" class="col-lg-9 col-sm-8">
-                    <div class="content">
-                        
-<div>
+            </div>
+            <div id="body-right">
+                <div class="content">
+                    
+<div class="breadcrumb">
     
-    <ul class="breadcrumb">
+    <ul>
         
         <li><a href="../../index.html">Home</a></li>
         
@@ -44,1261 +56,1132 @@
     
 </div>
 <div class="class-header clearfix">
-    
-    
-    <div class="access-buttons pull-right">
-        <a class="zep-button btn btn-default" href="../../source/Ice/Validation.html">Source</a>
 
-                <a class="zep-button btn btn-default" href="https://github.com/ice/framework/tree/dev/ice/validation.zep">Github</a>
+    <div class="access-buttons">
+        <a class="zep-button" href="../../source/Ice/Validation.html">Source</a>
+                <a class="zep-button"
+           href="https://github.com/ice/framework/tree/dev/ice/validation.zep">
+            GitHub
+        </a>
             </div>
-    
-    <div class="class-full-name">
-        
-        <span class="class-type">Class</span>
-        
-                <span class="namespace-piece">
-            <a href="../../namespace/Ice.html">Ice</a>
-        </span>
-                <h1 class="class-name">Validation</h1>
-    </div>
 
+    <div class="class-full-name">
+        <span class="class-type">Class</span>
+
+                <span class="namespace-piece">
+            <a href="../../namespace/Ice.html">
+                Ice            </a>
+        </span>
+        
+        <h1 class="class-name">Validation</h1>
+    </div>
 </div>
-    <div class="text-muted">
-    Allows to validate array data.    </div>
-    <div>
-    <pre><code class="php">
-  $validation = new Ice\Validation();
-  
-  $validation-&gt;rules([
-      &apos;fullName&apos; =&gt; &apos;required&apos;,
-      &apos;email&apos; =&gt; &apos;required|email&apos;,
-      &apos;repeatEmail&apos; =&gt; &apos;same:email&apos;,
-      &apos;about&apos; =&gt; &apos;required|length:10,5000&apos;,
-  ]);
-  
-  $valid = $validation-&gt;validate($_POST);
-  
-  if (!$valid) {
-      $messages = $validation-&gt;getMessages();
-  }
- </code></pre>    </div>
+
 
 <div class="hidden-anchor"  id="methods"></div>
 <div class="methods-summary standard-bandeau">Methods</div>
-<table class="method-summary-list table table-striped table-hover">
-    
-        
-<tr class="class-method">
-<td>
 
-    <div class="method-return">
-
-        
-                
-    </div>
+<ul class="method-summary-list">
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-getDi">getDi</a></span>(<span class="small"></span>)
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-getDi">getDi</a><!--
+            --></span><!--
+            -->()<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        
-                
-    </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-getData">getData</a></span>(<span class="small"></span>)
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-getData">getData</a><!--
+            --></span><!--
+            -->()<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        
-                
-    </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-setRules">setRules</a></span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$rules</strong></span></span>)
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-setRules">setRules</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">variable</span> <span class="variable param-name">$rules</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        
-                
-    </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-getRules">getRules</a></span>(<span class="small"></span>)
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-getRules">getRules</a><!--
+            --></span><!--
+            -->()<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        
-                
-    </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-setFilters">setFilters</a></span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$filters</strong></span></span>)
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-setFilters">setFilters</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">variable</span> <span class="variable param-name">$filters</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        
-                
-    </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-setLabels">setLabels</a></span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$labels</strong></span></span>)
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-setLabels">setLabels</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">variable</span> <span class="variable param-name">$labels</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        
-                
-    </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-setAliases">setAliases</a></span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$aliases</strong></span></span>)
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-setAliases">setAliases</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">variable</span> <span class="variable param-name">$aliases</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        
-                
-    </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-setTranslate">setTranslate</a></span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$translate</strong></span></span>)
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-setTranslate">setTranslate</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">variable</span> <span class="variable param-name">$translate</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        
-                
-    </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-getTranslate">getTranslate</a></span>(<span class="small"></span>)
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-getTranslate">getTranslate</a><!--
+            --></span><!--
+            -->()<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        
-                
-    </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-setHumanLabels">setHumanLabels</a></span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$humanLabels</strong></span></span>)
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-setHumanLabels">setHumanLabels</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">variable</span> <span class="variable param-name">$humanLabels</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        
-                
-    </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-__construct">__construct</a></span>(<span class="small"><span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$data</strong></span></span>)
-                <div class="summary-text text-muted">Validation constructor. Fetch Di and set the data if given.</div>
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-__construct">__construct</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">array</span> <span class="variable param-name">$data</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Validation constructor. Fetch Di and set the data if given.                </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        
-                
-    </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-resolve">resolve</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$alias</strong></span>, <span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$field</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$options</strong></span></span>)
-                <div class="summary-text text-muted">Resolve one rule.</div>
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-resolve">resolve</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">string</span> <span class="variable param-name">$alias</span>, <span class="param-data-type">string</span> <span class="variable param-name">$field</span>, <span class="param-data-type">variable</span> <span class="variable param-name">$options</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Resolve one rule.                </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        
-                
-    </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-rule">rule</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$field</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$validators</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$options</strong></span></span>)
-                <div class="summary-text text-muted">Add one rule.</div>
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-rule">rule</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">string</span> <span class="variable param-name">$field</span>, <span class="param-data-type">variable</span> <span class="variable param-name">$validators</span>, <span class="param-data-type">variable</span> <span class="variable param-name">$options</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Add one rule.                </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        
-                
-    </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-rules">rules</a></span>(<span class="small"><span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$validators</strong></span>, <span class="param-data-type text-danger">bool</span>  <span class="param-name text-info"><strong>$merge</strong></span></span>)
-                <div class="summary-text text-muted">Add multiple rules at once.</div>
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-rules">rules</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">array</span> <span class="variable param-name">$validators</span>, <span class="param-data-type">bool</span> <span class="variable param-name">$merge</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Add multiple rules at once.                </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        bool
-                
-    </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-validate">validate</a></span>(<span class="small"><span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$data</strong></span>, <span class="param-data-type text-danger">bool</span>  <span class="param-name text-info"><strong>$clear</strong></span></span>)
-                <div class="summary-text text-muted">Validate the data.</div>
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-validate">validate</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">array</span> <span class="variable param-name">$data</span>, <span class="param-data-type">bool</span> <span class="variable param-name">$clear</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    bool                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Validate the data.                </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        bool
-                
-    </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-valid">valid</a></span>(<span class="small"></span>)
-                <div class="summary-text text-muted">Check if validation passed.</div>
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-valid">valid</a><!--
+            --></span><!--
+            -->()<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    bool                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Check if validation passed.                </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        bool
-                
-    </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-hasValue">hasValue</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$field</strong></span></span>)
-                <div class="summary-text text-muted">Whether or not a value exists by field.</div>
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-hasValue">hasValue</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">string</span> <span class="variable param-name">$field</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    bool                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Whether or not a value exists by field.                </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        
-                
-    </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-getValue">getValue</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$field</strong></span>, <span class="param-data-type text-danger">bool</span>  <span class="param-name text-info"><strong>$filtered</strong></span></span>)
-                <div class="summary-text text-muted">Get a value by field.</div>
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-getValue">getValue</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">string</span> <span class="variable param-name">$field</span>, <span class="param-data-type">bool</span> <span class="variable param-name">$filtered</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Get a value by field.                </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        
-                
-    </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-getValues">getValues</a></span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$fields</strong></span>, <span class="param-data-type text-danger">bool</span>  <span class="param-name text-info"><strong>$filtered</strong></span></span>)
-                <div class="summary-text text-muted">Get the values by fields.</div>
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-getValues">getValues</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">variable</span> <span class="variable param-name">$fields</span>, <span class="param-data-type">bool</span> <span class="variable param-name">$filtered</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Get the values by fields.                </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        string
-                
-    </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-getLabel">getLabel</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$field</strong></span></span>)
-                <div class="summary-text text-muted">Get the label of a field.</div>
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-getLabel">getLabel</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">string</span> <span class="variable param-name">$field</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    string                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Get the label of a field.                </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        
-                
-    </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-setDefaultMessages">setDefaultMessages</a></span>(<span class="small"><span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$messages</strong></span></span>)
-                <div class="summary-text text-muted">Set the default messages.</div>
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-setDefaultMessages">setDefaultMessages</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">array</span> <span class="variable param-name">$messages</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Set the default messages.                </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        string
-                
-    </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-getDefaultMessage">getDefaultMessage</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$type</strong></span></span>)
-                <div class="summary-text text-muted">Get a default message for the type.</div>
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-getDefaultMessage">getDefaultMessage</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">string</span> <span class="variable param-name">$type</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    string                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Get a default message for the type.                </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        
-                
-    </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-addMessage">addMessage</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$field</strong></span>, <span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$message</strong></span></span>)
-                <div class="summary-text text-muted">Add a message to the field.</div>
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-addMessage">addMessage</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">string</span> <span class="variable param-name">$field</span>, <span class="param-data-type">string</span> <span class="variable param-name">$message</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Add a message to the field.                </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        <a href='../../class/Ice/Arr.html'>Ice\Arr</a>
-                
-    </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-getMessages">getMessages</a></span>(<span class="small"></span>)
-                <div class="summary-text text-muted">Get the validation's messages.</div>
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-getMessages">getMessages</a><!--
+            --></span><!--
+            -->()<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    <a href="../../class/Ice/Arr.html">Ice\Arr</a>                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Get the validation's messages.                </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        
-                
-    </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-zephir_init_properties_Ice_Validation">zephir_init_properties_Ice_Validation</a></span>(<span class="small"></span>)
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-zephir_init_properties_Ice_Validation">zephir_init_properties_Ice_Validation</a><!--
+            --></span><!--
+            -->()<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
             </div>
-</td>
-</tr>
-    </table>
+</li>
+    </ul>
 
-<div class="hidden-anchor"  id="methods-details"></div>
+<div class="hidden-anchor" id="methods-details"></div>
 <div class="methods-summary standard-bandeau">Methods Details</div>
-<ul class="method-details-list list-unstyled">
-    
-        
+
+<ul class="method-details-list">
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-getDi"></div>
-    
+    <div class="hidden-anchor" id="method-details-getDi"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">getDi</span>(<span class="small"></span>)
-                </h3>
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">getDi</span><!--
+                -->()
+            </p>
+
+            <div class="method-doc">
+                                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-getData"></div>
-    
+    <div class="hidden-anchor" id="method-details-getData"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">getData</span>(<span class="small"></span>)
-                </h3>
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">getData</span><!--
+                -->()
+            </p>
+
+            <div class="method-doc">
+                                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-setRules"></div>
-    
+    <div class="hidden-anchor" id="method-details-setRules"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">setRules</span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$rules</strong></span></span>)
-                </h3>
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">setRules</span><!--
+                -->(<span class="param-data-type">variable</span> <span class="variable param-name">$rules</span>)
+            </p>
+
+            <div class="method-doc">
+                                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-getRules"></div>
-    
+    <div class="hidden-anchor" id="method-details-getRules"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">getRules</span>(<span class="small"></span>)
-                </h3>
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">getRules</span><!--
+                -->()
+            </p>
+
+            <div class="method-doc">
+                                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-setFilters"></div>
-    
+    <div class="hidden-anchor" id="method-details-setFilters"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">setFilters</span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$filters</strong></span></span>)
-                </h3>
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">setFilters</span><!--
+                -->(<span class="param-data-type">variable</span> <span class="variable param-name">$filters</span>)
+            </p>
+
+            <div class="method-doc">
+                                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-setLabels"></div>
-    
+    <div class="hidden-anchor" id="method-details-setLabels"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">setLabels</span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$labels</strong></span></span>)
-                </h3>
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">setLabels</span><!--
+                -->(<span class="param-data-type">variable</span> <span class="variable param-name">$labels</span>)
+            </p>
+
+            <div class="method-doc">
+                                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-setAliases"></div>
-    
+    <div class="hidden-anchor" id="method-details-setAliases"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">setAliases</span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$aliases</strong></span></span>)
-                </h3>
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">setAliases</span><!--
+                -->(<span class="param-data-type">variable</span> <span class="variable param-name">$aliases</span>)
+            </p>
+
+            <div class="method-doc">
+                                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-setTranslate"></div>
-    
+    <div class="hidden-anchor" id="method-details-setTranslate"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">setTranslate</span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$translate</strong></span></span>)
-                </h3>
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">setTranslate</span><!--
+                -->(<span class="param-data-type">variable</span> <span class="variable param-name">$translate</span>)
+            </p>
+
+            <div class="method-doc">
+                                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-getTranslate"></div>
-    
+    <div class="hidden-anchor" id="method-details-getTranslate"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">getTranslate</span>(<span class="small"></span>)
-                </h3>
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">getTranslate</span><!--
+                -->()
+            </p>
+
+            <div class="method-doc">
+                                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-setHumanLabels"></div>
-    
+    <div class="hidden-anchor" id="method-details-setHumanLabels"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">setHumanLabels</span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$humanLabels</strong></span></span>)
-                </h3>
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">setHumanLabels</span><!--
+                -->(<span class="param-data-type">variable</span> <span class="variable param-name">$humanLabels</span>)
+            </p>
+
+            <div class="method-doc">
+                                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-__construct"></div>
-    
+    <div class="hidden-anchor" id="method-details-__construct"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">__construct</span>(<span class="small"><span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$data</strong></span></span>)
-                </h3>
-                                
-                    <div class="text-muted">
-                    Validation constructor. Fetch Di and set the data if given.                    </div>
-                    <div>
-                                        </div>
-                
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">__construct</span><!--
+                -->(<span class="param-data-type">array</span> <span class="variable param-name">$data</span>)
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Validation constructor. Fetch Di and set the data if given.                    </div>
+                    <div class="description">
+                                            </div>
+                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-resolve"></div>
-    
+    <div class="hidden-anchor" id="method-details-resolve"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">resolve</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$alias</strong></span>, <span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$field</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$options</strong></span></span>)
-                </h3>
-                                
-                    <div class="text-muted">
-                    Resolve one rule.                    </div>
-                    <div>
-                                        </div>
-                
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">resolve</span><!--
+                -->(<span class="param-data-type">string</span> <span class="variable param-name">$alias</span>, <span class="param-data-type">string</span> <span class="variable param-name">$field</span>, <span class="param-data-type">variable</span> <span class="variable param-name">$options</span>)
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Resolve one rule.                    </div>
+                    <div class="description">
+                                            </div>
+                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-rule"></div>
-    
+    <div class="hidden-anchor" id="method-details-rule"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">rule</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$field</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$validators</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$options</strong></span></span>)
-                </h3>
-                                
-                    <div class="text-muted">
-                    Add one rule.                    </div>
-                    <div>
-                    <pre><code class="php">
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">rule</span><!--
+                -->(<span class="param-data-type">string</span> <span class="variable param-name">$field</span>, <span class="param-data-type">variable</span> <span class="variable param-name">$validators</span>, <span class="param-data-type">variable</span> <span class="variable param-name">$options</span>)
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Add one rule.                    </div>
+                    <div class="description">
+                        <pre><code>
       $validation = new Ice\Validation();
-      
-      $validation-&gt;rule(&apos;email&apos;, &apos;required|email&apos;);
-      $validation-&gt;rule(&apos;content&apos;, [
-          &apos;length&apos; =&gt; [
-              &apos;max&apos; =&gt; 1000,
-              &apos;messageMin&apos; =&gt; &apos;Too long!&apos;,
-              &apos;label&apos; =&gt; &apos;Desctiption&apos;
+     
+      $validation->rule('email', 'required|email');
+      $validation->rule('content', [
+          'length' => [
+              'max' => 1000,
+              'messageMin' => 'Too long!',
+              'label' => 'Desctiption'
           ]
       ]);
      </code></pre>                    </div>
-                
-                                
-            </div>
+                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-rules"></div>
-    
+    <div class="hidden-anchor" id="method-details-rules"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">rules</span>(<span class="small"><span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$validators</strong></span>, <span class="param-data-type text-danger">bool</span>  <span class="param-name text-info"><strong>$merge</strong></span></span>)
-                </h3>
-                                
-                    <div class="text-muted">
-                    Add multiple rules at once.                    </div>
-                    <div>
-                    <pre><code class="php">
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">rules</span><!--
+                -->(<span class="param-data-type">array</span> <span class="variable param-name">$validators</span>, <span class="param-data-type">bool</span> <span class="variable param-name">$merge</span>)
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Add multiple rules at once.                    </div>
+                    <div class="description">
+                        <pre><code>
       $validation = new Ice\Validation();
-      
-      $validation-&gt;rules([
-          &apos;username&apos; =&gt; &apos;required|length:4,24|notIn:admin,user,root|unique:users&apos;,
-          &apos;password&apos;  =&gt; &apos;required|length:5,32&apos;,
-          &apos;repeatPassword&apos;  =&gt; &apos;same:password&apos;,
-          &apos;email&apos;  =&gt; &apos;email&apos;,
-          &apos;status&apos;  =&gt; &apos;required|digit|in:0,1,2&apos;,
-          &apos;website&apos;  =&gt; &apos;url&apos;,
-          &apos;title&apos;  =&gt; &apos;length:,100&apos;,
-          &apos;age&apos;  =&gt; &apos;required|between:18,21&apos;,
+     
+      $validation->rules([
+          'username' => 'required|length:4,24|notIn:admin,user,root|unique:users',
+          'password'  => 'required|length:5,32',
+          'repeatPassword'  => 'same:password',
+          'email'  => 'email',
+          'status'  => 'required|digit|in:0,1,2',
+          'website'  => 'url',
+          'title'  => 'length:,100',
+          'age'  => 'required|between:18,21',
       ]);
      </code></pre>                    </div>
-                
-                                
-            </div>
+                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-validate"></div>
-    
+    <div class="hidden-anchor" id="method-details-validate"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">validate</span>(<span class="small"><span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$data</strong></span>, <span class="param-data-type text-danger">bool</span>  <span class="param-name text-info"><strong>$clear</strong></span></span>)
-                </h3>
-                                
-                    <div class="text-muted">
-                    Validate the data.                    </div>
-                    <div>
-                                        </div>
-                
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">validate</span><!--
+                -->(<span class="param-data-type">array</span> <span class="variable param-name">$data</span>, <span class="param-data-type">bool</span> <span class="variable param-name">$clear</span>)
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Validate the data.                    </div>
+                    <div class="description">
+                                            </div>
+                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-valid"></div>
-    
+    <div class="hidden-anchor" id="method-details-valid"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">valid</span>(<span class="small"></span>)
-                </h3>
-                                
-                    <div class="text-muted">
-                    Check if validation passed.                    </div>
-                    <div>
-                                        </div>
-                
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">valid</span><!--
+                -->()
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Check if validation passed.                    </div>
+                    <div class="description">
+                                            </div>
+                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-hasValue"></div>
-    
+    <div class="hidden-anchor" id="method-details-hasValue"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">hasValue</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$field</strong></span></span>)
-                </h3>
-                                
-                    <div class="text-muted">
-                    Whether or not a value exists by field.                    </div>
-                    <div>
-                                        </div>
-                
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">hasValue</span><!--
+                -->(<span class="param-data-type">string</span> <span class="variable param-name">$field</span>)
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Whether or not a value exists by field.                    </div>
+                    <div class="description">
+                                            </div>
+                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-getValue"></div>
-    
+    <div class="hidden-anchor" id="method-details-getValue"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">getValue</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$field</strong></span>, <span class="param-data-type text-danger">bool</span>  <span class="param-name text-info"><strong>$filtered</strong></span></span>)
-                </h3>
-                                
-                    <div class="text-muted">
-                    Get a value by field.                    </div>
-                    <div>
-                                        </div>
-                
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">getValue</span><!--
+                -->(<span class="param-data-type">string</span> <span class="variable param-name">$field</span>, <span class="param-data-type">bool</span> <span class="variable param-name">$filtered</span>)
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Get a value by field.                    </div>
+                    <div class="description">
+                                            </div>
+                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-getValues"></div>
-    
+    <div class="hidden-anchor" id="method-details-getValues"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">getValues</span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$fields</strong></span>, <span class="param-data-type text-danger">bool</span>  <span class="param-name text-info"><strong>$filtered</strong></span></span>)
-                </h3>
-                                
-                    <div class="text-muted">
-                    Get the values by fields.                    </div>
-                    <div>
-                    Values are automatically filtered out if filters have been setted.
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">getValues</span><!--
+                -->(<span class="param-data-type">variable</span> <span class="variable param-name">$fields</span>, <span class="param-data-type">bool</span> <span class="variable param-name">$filtered</span>)
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Get the values by fields.                    </div>
+                    <div class="description">
+                        Values are automatically filtered out if filters have been setted.
      
-     <pre><code class="php">
+     <pre><code>
       // Get value for one field
-      $validation-&gt;getValues(&apos;password&apos;);
-      
+      $validation->getValues('password');
+     
       // Get values for multiple fields
-      $validation-&gt;getValues([&apos;fullName&apos;, &apos;about&apos;]);
-      
+      $validation->getValues(['fullName', 'about']);
+     
       // Get all values
-      $validation-&gt;getValues();
+      $validation->getValues();
      </code></pre>                    </div>
-                
-                                
-            </div>
+                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-getLabel"></div>
-    
+    <div class="hidden-anchor" id="method-details-getLabel"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">getLabel</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$field</strong></span></span>)
-                </h3>
-                                
-                    <div class="text-muted">
-                    Get the label of a field.                    </div>
-                    <div>
-                    Humanize a label if humanLabels attribute and filter service is available                    </div>
-                
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">getLabel</span><!--
+                -->(<span class="param-data-type">string</span> <span class="variable param-name">$field</span>)
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Get the label of a field.                    </div>
+                    <div class="description">
+                        Humanize a label if humanLabels attribute and filter service is available                    </div>
+                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-setDefaultMessages"></div>
-    
+    <div class="hidden-anchor" id="method-details-setDefaultMessages"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">setDefaultMessages</span>(<span class="small"><span class="param-data-type text-danger">array</span>  <span class="param-name text-info"><strong>$messages</strong></span></span>)
-                </h3>
-                                
-                    <div class="text-muted">
-                    Set the default messages.                    </div>
-                    <div>
-                                        </div>
-                
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">setDefaultMessages</span><!--
+                -->(<span class="param-data-type">array</span> <span class="variable param-name">$messages</span>)
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Set the default messages.                    </div>
+                    <div class="description">
+                                            </div>
+                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-getDefaultMessage"></div>
-    
+    <div class="hidden-anchor" id="method-details-getDefaultMessage"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">getDefaultMessage</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$type</strong></span></span>)
-                </h3>
-                                
-                    <div class="text-muted">
-                    Get a default message for the type.                    </div>
-                    <div>
-                                        </div>
-                
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">getDefaultMessage</span><!--
+                -->(<span class="param-data-type">string</span> <span class="variable param-name">$type</span>)
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Get a default message for the type.                    </div>
+                    <div class="description">
+                                            </div>
+                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-addMessage"></div>
-    
+    <div class="hidden-anchor" id="method-details-addMessage"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">addMessage</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$field</strong></span>, <span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$message</strong></span></span>)
-                </h3>
-                                
-                    <div class="text-muted">
-                    Add a message to the field.                    </div>
-                    <div>
-                                        </div>
-                
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">addMessage</span><!--
+                -->(<span class="param-data-type">string</span> <span class="variable param-name">$field</span>, <span class="param-data-type">string</span> <span class="variable param-name">$message</span>)
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Add a message to the field.                    </div>
+                    <div class="description">
+                                            </div>
+                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-getMessages"></div>
-    
+    <div class="hidden-anchor" id="method-details-getMessages"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">getMessages</span>(<span class="small"></span>)
-                </h3>
-                                
-                    <div class="text-muted">
-                    Get the validation's messages.                    </div>
-                    <div>
-                                        </div>
-                
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">getMessages</span><!--
+                -->()
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Get the validation's messages.                    </div>
+                    <div class="description">
+                                            </div>
+                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-zephir_init_properties_Ice_Validation"></div>
-    
+    <div class="hidden-anchor" id="method-details-zephir_init_properties_Ice_Validation"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-internal">internal</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">zephir_init_properties_Ice_Validation</span>(<span class="small"></span>)
-                </h3>
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-internal keyword">internal</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">zephir_init_properties_Ice_Validation</span><!--
+                -->()
+            </p>
+
+            <div class="method-doc">
+                                            </div>
+
         </div>
-
     </div>
-
 </li>
-    </ul>                    </div>
+    </ul>
                 </div>
             </div>
         </div>
-
-        <script src="../../asset/static/js/jquery.min.js"></script>
-        <script src="../../asset/static/js/bootstrap.min.js"></script>
-        <script src="../../asset/static/js/highlight.pack.js"></script>
-        <script src="../../asset/static/js/jquery.slimscroll.min.js"></script>
-        <script src="../../asset/api_definition.js"></script>
-
-        <script>var ZepCurrentPath = '../../'</script>
-        <script src="../../asset/static/js/script.js"></script>
-        <script type="text/javascript">
-            $(window).on("load resize", function() {
-                $('#menu-wrapper').slimscroll({ height: $(window).height() - 100, size: '3px' });
-            });
-        </script>
-        <script type="text/javascript">
-            $(document).ready(function() { $('pre code').each(function(i, block) { hljs.highlightBlock(block); }); });
-            if ($('.zephir-source-file').length) {
-                $('link[id]').each(function(i, link) {
-                    link.disabled = (link.id != 'tomorrow-night');
-                });
-            }
-        </script>
-            </body>
+    </body>
 </html>

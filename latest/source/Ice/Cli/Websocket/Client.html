@@ -1,39 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <link rel="stylesheet" type="text/css" href="../../../../asset/static/css/bootstrap.min.css" />
-        <link rel="stylesheet" type="text/css" href="../../../../asset/static/css/tomorrow.min.css" id="tomorrow" />
-        <link rel="stylesheet" type="text/css" href="../../../../asset/static/css/tomorrow-night.min.css" id="tomorrow-night" disabled />
-        <link rel="stylesheet" type="text/css" href="../../../../asset/static/css/style.css" />
-    </head>
-    <body>
-        <header class="navbar navbar-default navbar-fixed-top">
-            <div id="top-bar" class="container-fluid">
-                <div id="top-left" class="navbar-header">
-                    <a href="../../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.4.0</span>
-                                            </a>
-                </div>
-                <div id="top-right" class="collapse navbar-collapse">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta content="ice API doc" name="description">
+    <title>
+                    ice API Documentation
+            </title>
+    <link rel="stylesheet" type="text/css" href="../../../../asset/static/prettify.css" />
 
-                </div>
+<script src="../../../../asset/static/prettify.js"></script>
+<script src="../../../../asset/api_definition.js"></script>
+
+
+                        <link rel="stylesheet" type="text/css" href="../../../../asset/static/prettify.css" />
+                    <link rel="stylesheet" type="text/css" href="../../../../asset/static/zephir-theme.css" />
+            
+    
+
+                        <script src="../../../../asset/static/prettify.js"></script>
+                                    <script src="../../../../asset/api_definition.js"></script>
+                    <script src="../../../../asset/static/jquery.min.js"></script>
+                    <script src="../../../../asset/static/zephir-doc.js"></script>
+                <script type="application/javascript">let ZepCurrentPath = '../../../../'</script>
+    </head>
+ <body onload="prettyPrint()">
+        <div id="top-bar">
+            <div id="top-left" style="color: #555">
+                                    <a href="https://doc.iceframework.org" title="ice framework documentation" style="color: #444"><img src="https://www.iceframework.org/img/logo.png" alt="ice framework documentation" width="30" height="30"> ice doc</a> <span class="version">v1.6.0</span>
+                            </div>
+            <div id="top-right">
             </div>
-        </header>
-        <div id="body" class="container-fluid">
-            <div class="row">
-                <div id="body-left" class="col-lg-3 col-sm-4">
-                    <div class="header-search">
-                        <input class="search-box form-control" placeholder="Search for a class or namespace " type="text" />
-                        <div id="menu-wrapper">
-                        </div>
+        </div>
+        <div id="body">
+            <div id="body-left">
+                <div class="header-search">
+                    <input class="search-box" placeholder="Search for a class or namespace " type="text" />
+                    <div id="menu-wrapper">
                     </div>
                 </div>
-                <div id="body-right" class="col-lg-9 col-sm-8">
-                    <div class="content">
-                        
-<div>
+            </div>
+            <div id="body-right">
+                <div class="content">
+                    
+<div class="breadcrumb">
     
-    <ul class="breadcrumb">
+    <ul>
         
         <li><a href="../../../../index.html">Home</a></li>
         
@@ -45,17 +57,19 @@
     
 </div>
 <div class="class-header source clearfix">
-    
-    <div class="access-buttons pull-right">
-        <a class="zep-button btn btn-default" href="../../../../class/Ice/Cli/Websocket/Client.html">Class</a>
 
-                <a class="zep-button btn btn-default" href="https://github.com/ice/framework/tree/dev/ice/cli/websocket/client.zep">Github</a>
+    <div class="access-buttons">
+        <a class="zep-button" href="../../../../class/Ice/Cli/Websocket/Client.html">Class</a>
+
+                <a class="zep-button"
+           href="https://github.com/ice/framework/tree/dev/ice/cli/websocket/client.zep">
+            Github
+        </a>
             </div>
-    
+
     <div class="class-full-name">
-        
         <span class="class-type">Class</span>
-        
+
                 <span class="namespace-piece">
             <a href="../../../../namespace/Ice.html">Ice</a>
         </span>
@@ -65,13 +79,14 @@
                 <span class="namespace-piece">
             <a href="../../../../namespace/Ice/Cli/Websocket.html">Websocket</a>
         </span>
-                <h1 class="class-name">Client</h1>
+        
+        <h1 class="class-name">Client</h1>
     </div>
-    
+
 </div>
 
-
-<pre class="zephir-source-file"><code>
+<pre class="zephir-source-file prettyprint linenums">
+    
 namespace Ice\Cli\Websocket;
 
 use Ice\Exception;
@@ -82,12 +97,11 @@ use Ice\Exception;
  * @package     Ice/Cli
  * @category    Component
  * @author      Ice Team
- * @copyright   (c) 2014-2018 Ice Team
+ * @copyright   (c) 2014-2020 Ice Team
  * @license     http://iceframework.org/license
  */
 class Client extends Websocket
 {
-
     protected socket = null;
     protected message = null;
     protected tick = null;
@@ -99,60 +113,60 @@ class Client extends Websocket
      * @param array headers Optional array of headers to pass when connecting
      * @return self
      */
-    public function connect(string address = &quot;ws://127.0.0.1:8080&quot;, var headers = []) -&gt; &lt;self&gt;
+    public function connect(string address = "ws://127.0.0.1:8080", var headers = [])
     {
         var addr, key, name, value, res, data, matches;
 
         let addr = parse_url(address);
 
-        if addr === false || !isset addr[&quot;host&quot;] || !isset addr[&quot;port&quot;] {
-            throw new Exception(&quot;Invalid address&quot;);
+        if addr === false || !isset addr["host"] || !isset addr["port"] {
+            throw new Exception("Invalid address");
         }
 
-        let this-&gt;socket = fsockopen(
-            (isset addr[&quot;scheme&quot;] &amp;&amp; in_array(addr[&quot;scheme&quot;], [&quot;ssl&quot;, &quot;tls&quot;, &quot;wss&quot;]) ? &quot;tls://&quot; : &quot;&quot;) . addr[&quot;host&quot;],
-            addr[&quot;port&quot;]
+        let this->socket = fsockopen(
+            (isset addr["scheme"] && in_array(addr["scheme"], ["ssl", "tls", "wss"]) ? "tls://" : "") . addr["host"],
+            addr["port"]
         );
 
-        if this-&gt;socket === false {
-            throw new Exception(&quot;Could not connect&quot;);
+        if this->socket === false {
+            throw new Exception("Could not connect");
         }
 
-        let key = this-&gt;generateKey(),
+        let key = this->generateKey(),
             headers = array_merge(
-                this-&gt;normalizeHeaders([
-                    &quot;Host&quot;: addr[&quot;host&quot;] . &quot;:&quot; . addr[&quot;port&quot;],
-                    &quot;Connection&quot;: &quot;Upgrade&quot;,
-                    &quot;Upgrade&quot;: &quot;websocket&quot;,
-                    &quot;Sec-Websocket-Key&quot;: key,
-                    &quot;Sec-Websocket-Version&quot;: &quot;13&quot;
+                this->normalizeHeaders([
+                    "Host": addr["host"] . ":" . addr["port"],
+                    "Connection": "Upgrade",
+                    "Upgrade": "websocket",
+                    "Sec-Websocket-Key": key,
+                    "Sec-Websocket-Version": "13"
                 ]),
-                this-&gt;normalizeHeaders(headers)
+                this->normalizeHeaders(headers)
             );
 
-        let key = headers[&quot;Sec-Websocket-Key&quot;];
+        let key = headers["Sec-Websocket-Key"];
 
         for name, value in headers {
-            let headers[name] = name . &quot;: &quot; . value;
+            let headers[name] = name . ": " . value;
         }
 
-        if !empty addr[&quot;path&quot;] {
-            let res = addr[&quot;path&quot;] . (empty addr[&quot;query&quot;] ? &quot;&quot; : &quot;?&quot; . addr[&quot;query&quot;]);
+        if isset addr["path"] && strlen(addr["path"]) {
+            let res = addr["path"] . (empty addr["query"] ? "" : "?" . addr["query"]);
         } else {
-            let res = &quot;/&quot;;
+            let res = "/";
         }
 
-        array_unshift(headers, &quot;GET &quot; . res . &quot; HTTP/1.1&quot;);
-        this-&gt;sendClear(this-&gt;socket, implode(&quot;\r\n&quot;, headers).&quot;\r\n&quot;);
+        array_unshift(headers, "GET " . res . " HTTP/1.1");
+        this->sendClear(this->socket, implode("\r\n", headers)."\r\n");
 
-        let data = this-&gt;receiveClear(this-&gt;socket);
+        let data = this->receiveClear(this->socket);
 
-        if !preg_match(&quot;(Sec-Websocket-Accept:\s*(.*)$)mUi&quot;, data, matches) {
-            throw new Exception(&quot;Bad response&quot;);
+        if !preg_match("(Sec-Websocket-Accept:\s*(.*)$)mUi", data, matches) {
+            throw new Exception("Bad response");
         }
 
-        if trim(matches[1]) !== base64_encode(pack(&quot;H*&quot;, sha1(key . self::magic))) {
-            throw new Exception(sprintf(&quot;Bad key `%s` `%s`&quot;, trim(matches[1]), base64_encode(pack(&quot;H*&quot;, sha1(key . self::magic)))));
+        if trim(matches[1]) !== base64_encode(pack("H*", sha1(key . self::magic))) {
+            throw new Exception(sprintf("Bad key `%s` `%s`", trim(matches[1]), base64_encode(pack("H*", sha1(key . self::magic)))));
         }
 
         return this;
@@ -163,16 +177,17 @@ class Client extends Websocket
      *
      * @return string
      */
-    protected function generateKey() -&gt; string
+    protected function generateKey() -> string
     {
-        var chars, key, length;
+        string chars, key;
+        var length;
         int i = 0;
 
-        let chars = &quot;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!\&quot;$&amp;/()=[]{}0123456789&quot;,
-            key = &quot;&quot;,
+        let chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!\"$&/()=[]{}0123456789",
+            key = "",
             length = strlen(chars) - 1;
 
-        while i &lt; 16 {
+        while i < 16 {
             let key .= chars[mt_rand(0, length)],
                 i++;
         }
@@ -186,23 +201,23 @@ class Client extends Websocket
      * @param array headers headers to normalize
      * @return array
      */
-    protected function normalizeHeaders(array headers) -&gt; array
+    protected function normalizeHeaders(array headers) -> array
     {
         var cleaned, name, value;
 
         let cleaned = [];
 
         for name, value in headers {
-            if strncmp(name, &quot;HTTP_&quot;, 5) === 0 {
+            if strncmp(name, "HTTP_", 5) === 0 {
                 let name = substr(name, 5);
             }
 
             if name !== false {
                 let name = ucwords(str_replace(
-                     [&quot;_&quot;, &quot;-&quot;, &quot; &quot;],
-                     [&quot; &quot;, &quot; &quot;, &quot;-&quot;],
-                     strtolower(name)
-                 ),  &quot;-&quot;),
+                    ["_", "-", " "],
+                    [" ", " ", "-"],
+                    strtolower(name)
+                 ),  "-"),
                     cleaned[name] = value;
             }
         }
@@ -217,9 +232,9 @@ class Client extends Websocket
      * @param string opcode The data opcode, defaults to `text`
      * @return boolean Was the send successful
      */
-    public function send(string data, string opcode = &quot;text&quot;) -&gt; boolean
+    public function send(string data, string opcode = "text") -> boolean
     {
-        return parent::sendData(this-&gt;socket, data, opcode, true);
+        return parent::sendData(this->socket, data, opcode, true);
     }
 
     /**
@@ -227,31 +242,31 @@ class Client extends Websocket
      *
      * @return void
      */
-    public function run() -&gt; void
+    public function run() -> void
     {
         var changed, write, except, socket, message;
 
         while 1 {
-            if isset this-&gt;tick {
-                if call_user_func(this-&gt;tick, this) === false {
+            if isset this->tick {
+                if call_user_func(this->tick, this) === false {
                     break;
                 }
             }
 
-            let changed = [this-&gt;socket],
+            let changed = [this->socket],
                 write = [],
                 except = [];
 
-            if stream_select(changed, null, null, (isset this-&gt;tick ? 0 : null)) &gt; 0 {
+            if stream_select(changed, null, null, (isset this->tick ? 0 : null)) > 0 {
                 for socket in changed {
-                    let message = this-&gt;receive(socket);
+                    let message = this->receive(socket);
 
-                    if message !== false &amp;&amp; isset this-&gt;message {
-                        call_user_func(this-&gt;message, message, this);
+                    if message !== false && isset this->message {
+                        call_user_func(this->message, message, this);
                     }
                 }
             }
-            usleep(this-&gt;getParam(&quot;sleep&quot;, 5000));
+            usleep(this->getParam("sleep", 5000));
         }
     }
 
@@ -262,9 +277,9 @@ class Client extends Websocket
      * @param callable callback The callback
      * @return self
      */
-    public function onMessage(callable callback) -&gt; &lt;self&gt;
+    public function onMessage(callable callback)
     {
-        let this-&gt;message = callback;
+        let this->message = callback;
 
         return this;
     }
@@ -276,38 +291,16 @@ class Client extends Websocket
      * @param callable callback The callback
      * @return self
      */
-    public function onTick(callable callback) -&gt; &lt;self&gt;
+    public function onTick(callable callback)
     {
-        let this-&gt;tick = callback;
+        let this->tick = callback;
 
         return this;
     }
 }
-</code></pre>                    </div>
+</pre>
                 </div>
             </div>
         </div>
-
-        <script src="../../../../asset/static/js/jquery.min.js"></script>
-        <script src="../../../../asset/static/js/bootstrap.min.js"></script>
-        <script src="../../../../asset/static/js/highlight.pack.js"></script>
-        <script src="../../../../asset/static/js/jquery.slimscroll.min.js"></script>
-        <script src="../../../../asset/api_definition.js"></script>
-
-        <script>var ZepCurrentPath = '../../../../'</script>
-        <script src="../../../../asset/static/js/script.js"></script>
-        <script type="text/javascript">
-            $(window).on("load resize", function() {
-                $('#menu-wrapper').slimscroll({ height: $(window).height() - 100, size: '3px' });
-            });
-        </script>
-        <script type="text/javascript">
-            $(document).ready(function() { $('pre code').each(function(i, block) { hljs.highlightBlock(block); }); });
-            if ($('.zephir-source-file').length) {
-                $('link[id]').each(function(i, link) {
-                    link.disabled = (link.id != 'tomorrow-night');
-                });
-            }
-        </script>
-            </body>
+    </body>
 </html>

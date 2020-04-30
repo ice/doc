@@ -1,39 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <link rel="stylesheet" type="text/css" href="../../asset/static/css/bootstrap.min.css" />
-        <link rel="stylesheet" type="text/css" href="../../asset/static/css/tomorrow.min.css" id="tomorrow" />
-        <link rel="stylesheet" type="text/css" href="../../asset/static/css/tomorrow-night.min.css" id="tomorrow-night" disabled />
-        <link rel="stylesheet" type="text/css" href="../../asset/static/css/style.css" />
-    </head>
-    <body>
-        <header class="navbar navbar-default navbar-fixed-top">
-            <div id="top-bar" class="container-fluid">
-                <div id="top-left" class="navbar-header">
-                    <a href="../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.4.0</span>
-                                            </a>
-                </div>
-                <div id="top-right" class="collapse navbar-collapse">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta content="ice API doc" name="description">
+    <title>
+                    ice API Documentation
+            </title>
+    <link rel="stylesheet" type="text/css" href="../../asset/static/prettify.css" />
 
-                </div>
+<script src="../../asset/static/prettify.js"></script>
+<script src="../../asset/api_definition.js"></script>
+
+
+                        <link rel="stylesheet" type="text/css" href="../../asset/static/prettify.css" />
+                    <link rel="stylesheet" type="text/css" href="../../asset/static/zephir-theme.css" />
+            
+    
+
+                        <script src="../../asset/static/prettify.js"></script>
+                                    <script src="../../asset/api_definition.js"></script>
+                    <script src="../../asset/static/jquery.min.js"></script>
+                    <script src="../../asset/static/zephir-doc.js"></script>
+                <script type="application/javascript">let ZepCurrentPath = '../../'</script>
+    </head>
+ <body onload="prettyPrint()">
+        <div id="top-bar">
+            <div id="top-left" style="color: #555">
+                                    <a href="https://doc.iceframework.org" title="ice framework documentation" style="color: #444"><img src="https://www.iceframework.org/img/logo.png" alt="ice framework documentation" width="30" height="30"> ice doc</a> <span class="version">v1.6.0</span>
+                            </div>
+            <div id="top-right">
             </div>
-        </header>
-        <div id="body" class="container-fluid">
-            <div class="row">
-                <div id="body-left" class="col-lg-3 col-sm-4">
-                    <div class="header-search">
-                        <input class="search-box form-control" placeholder="Search for a class or namespace " type="text" />
-                        <div id="menu-wrapper">
-                        </div>
+        </div>
+        <div id="body">
+            <div id="body-left">
+                <div class="header-search">
+                    <input class="search-box" placeholder="Search for a class or namespace " type="text" />
+                    <div id="menu-wrapper">
                     </div>
                 </div>
-                <div id="body-right" class="col-lg-9 col-sm-8">
-                    <div class="content">
-                        
-<div>
+            </div>
+            <div id="body-right">
+                <div class="content">
+                    
+<div class="breadcrumb">
     
-    <ul class="breadcrumb">
+    <ul>
         
         <li><a href="../../index.html">Home</a></li>
         
@@ -45,27 +57,30 @@
     
 </div>
 <div class="class-header source clearfix">
-    
-    <div class="access-buttons pull-right">
-        <a class="zep-button btn btn-default" href="../../class/Ice/Tag.html">Class</a>
 
-                <a class="zep-button btn btn-default" href="https://github.com/ice/framework/tree/dev/ice/tag.zep">Github</a>
+    <div class="access-buttons">
+        <a class="zep-button" href="../../class/Ice/Tag.html">Class</a>
+
+                <a class="zep-button"
+           href="https://github.com/ice/framework/tree/dev/ice/tag.zep">
+            Github
+        </a>
             </div>
-    
+
     <div class="class-full-name">
-        
         <span class="class-type">Class</span>
-        
+
                 <span class="namespace-piece">
             <a href="../../namespace/Ice.html">Ice</a>
         </span>
-                <h1 class="class-name">Tag</h1>
+        
+        <h1 class="class-name">Tag</h1>
     </div>
-    
+
 </div>
 
-
-<pre class="zephir-source-file"><code>
+<pre class="zephir-source-file prettyprint linenums">
+    
 namespace Ice;
 
 /**
@@ -74,13 +89,12 @@ namespace Ice;
  * @package     Ice/Tag
  * @category    Helper
  * @author      Ice Team
- * @copyright   (c) 2014-2018 Ice Team
+ * @copyright   (c) 2014-2020 Ice Team
  * @license     http://iceframework.org/license
  * @uses        Ice\Mvc\Url
  */
 class Tag
 {
-
     const HTML32 = 1;
     const HTML401_STRICT = 2;
     const HTML401_TRANSITIONAL = 3;
@@ -97,7 +111,7 @@ class Tag
     protected values { get };
     protected docType = 5 { set };
     protected title = null { set, get };
-    protected titleSeparator = &quot; - &quot; { set, get };
+    protected titleSeparator = " - " { set, get };
     protected meta = [] { set, get };
     protected escape = true { set };
 
@@ -106,7 +120,7 @@ class Tag
      */
     public function __construct()
     {
-        let this-&gt;di = Di::$fetch();
+        let this->di = Di::$fetch();
     }
 
     /**
@@ -118,8 +132,8 @@ class Tag
      */
     public function appendTitle(string title, string separator = null)
     {
-        let this-&gt;title = this-&gt;title . (separator ? separator : this-&gt;titleSeparator) . title;
-        
+        let this->title = this->title . (separator ? separator : this->titleSeparator) . title;
+
         return this;
     }
 
@@ -132,8 +146,8 @@ class Tag
      */
     public function prependTitle(string title, string separator = null)
     {
-        let this-&gt;title = title . (separator ? separator : this-&gt;titleSeparator) . this-&gt;title;
-        
+        let this->title = title . (separator ? separator : this->titleSeparator) . this->title;
+
         return this;
     }
 
@@ -143,169 +157,169 @@ class Tag
      * @param array parameters
      * @return object this
      */
-    public function addMeta(array parameters) -&gt; object
+    public function addMeta(array parameters) -> object
     {
-        let this-&gt;meta[] = this-&gt;meta(parameters);
+        let this->meta[] = this->meta(parameters);
 
         return this;
     }
 
     /**
-     * Builds a HTML INPUT[type=&quot;text&quot;] tag.
+     * Builds a HTML INPUT[type="text"] tag.
      *
-     * &lt;pre&gt;&lt;code&gt;
-     *  // Phtml &lt;input type=&quot;text&quot; id=&quot;some&quot; name=&quot;some&quot; value=&quot;some_value&quot;&gt;
-     *  $this-&gt;tag-&gt;textField([&apos;some&apos;, &apos;some_value&apos;]);
-     *  
-     *  // Sleet &lt;input type=&quot;text&quot; id=&quot;some1&quot; name=&quot;some&quot; value=&quot;some_value&quot; class=&quot;field&quot; style=&quot;width: 100%&quot;&gt;
-     *  {{ text_field([&apos;some&apos;, &apos;some_value&apos;, &apos;id&apos; =&gt; &apos;some1&apos;, &apos;class&apos; =&gt; &apos;field&apos;, &apos;style&apos; =&gt; &apos;width: 100%&apos;]) }}
-     * &lt;/code&gt;&lt;/pre&gt;
+     * <pre><code>
+     *  // Phtml <input type="text" id="some" name="some" value="some_value">
+     *  $this->tag->textField(['some', 'some_value']);
+     *
+     *  // Sleet <input type="text" id="some1" name="some" value="some_value" class="field" style="width: 100%">
+     *  {{ text_field(['some', 'some_value', 'id' => 'some1', 'class' => 'field', 'style' => 'width: 100%']) }}
+     * </code></pre>
      *
      * @param array parameters
      * @return string
      */
-    public function textField(array parameters) -&gt; string
+    public function textField(array parameters) -> string
     {
-        return this-&gt;input(&quot;text&quot;, parameters);
+        return this->input("text", parameters);
     }
 
     /**
-     * Builds a HTML INPUT[type=&quot;password&quot;] tag.
+     * Builds a HTML INPUT[type="password"] tag.
      *
-     * &lt;pre&gt;&lt;code&gt;
-     *  // Phtml &lt;input type=&quot;password&quot; id=&quot;pass&quot; name=&quot;pass&quot; class=&quot;form-control&quot;&gt;
-     *  $this-&gt;tag-&gt;passwordField([&apos;pass&apos;, &apos;class&apos;: &apos;form-control&apos;]);
-     *  
-     *  // Sleet &lt;input type=&quot;password&quot; id=&quot;pass&quot; name=&quot;pass&quot; placeholder=&quot;My secret password&quot;&gt;
-     *  {{ password_field([&apos;pass&apos;, &apos;placeholder&apos;: &apos;My secret password&apos;]) }}
-     * &lt;/code&gt;&lt;/pre&gt;
+     * <pre><code>
+     *  // Phtml <input type="password" id="pass" name="pass" class="form-control">
+     *  $this->tag->passwordField(['pass', 'class': 'form-control']);
+     *
+     *  // Sleet <input type="password" id="pass" name="pass" placeholder="My secret password">
+     *  {{ password_field(['pass', 'placeholder': 'My secret password']) }}
+     * </code></pre>
      *
      * @param array parameters
      * @return string
      */
-    public function passwordField(array parameters) -&gt; string
+    public function passwordField(array parameters) -> string
     {
-        return this-&gt;input(&quot;password&quot;, parameters);
+        return this->input("password", parameters);
     }
 
     /**
-     * Builds a HTML INPUT[type=&quot;hidden&quot;] tag.
+     * Builds a HTML INPUT[type="hidden"] tag.
      *
-     * &lt;pre&gt;&lt;code&gt;
-     *  // Phtml &lt;input type=&quot;hidden&quot; id=&quot;secret&quot; name=&quot;secret&quot; value=&quot;some value&quot;&gt;
-     *  $this-&gt;tag-&gt;hiddenField([&apos;secret&apos;, &apos;some value&apos;]);
-     *  
-     *  // Sleet &lt;input type=&quot;hidden&quot; id=&quot;my_id&quot; name=&quot;secret&quot; value=&quot;hidden value&quot;&gt;
-     *  {{ hidden_field([&apos;secret&apos;, &apos;hidden value&apos;, &apos;id&apos;: &apos;my_id&apos;]) }}
-     * &lt;/code&gt;&lt;/pre&gt;
+     * <pre><code>
+     *  // Phtml <input type="hidden" id="secret" name="secret" value="some value">
+     *  $this->tag->hiddenField(['secret', 'some value']);
+     *
+     *  // Sleet <input type="hidden" id="my_id" name="secret" value="hidden value">
+     *  {{ hidden_field(['secret', 'hidden value', 'id': 'my_id']) }}
+     * </code></pre>
      *
      * @param array parameters
      * @return string
      */
-    public function hiddenField(array parameters) -&gt; string
+    public function hiddenField(array parameters) -> string
     {
-        return this-&gt;input(&quot;hidden&quot;, parameters);
+        return this->input("hidden", parameters);
     }
 
     /**
-     * Builds a HTML INPUT[type=&quot;file&quot;] tag.
+     * Builds a HTML INPUT[type="file"] tag.
      *
-     * &lt;pre&gt;&lt;code&gt;
-     *  // Sleet &lt;input type=&quot;file&quot; id=&quot;some&quot; name=&quot;some&quot; &gt;
-     *  {{ file_field([&apos;some&apos;]) }}
-     * &lt;/code&gt;&lt;/pre&gt;
+     * <pre><code>
+     *  // Sleet <input type="file" id="some" name="some" >
+     *  {{ file_field(['some']) }}
+     * </code></pre>
      *
      * @param array parameters
      * @return string
      */
-    public function fileField(array parameters) -&gt; string
+    public function fileField(array parameters) -> string
     {
-        return this-&gt;input(&quot;file&quot;, parameters);
+        return this->input("file", parameters);
     }
 
     /**
-     * Builds a HTML INPUT[type=&quot;submit&quot;] tag.
+     * Builds a HTML INPUT[type="submit"] tag.
      *
-     * &lt;pre&gt;&lt;code&gt;
-     *  // Phtml &lt;input type=&quot;submit&quot; id=&quot;some&quot; name=&quot;some&quot; value=&quot;Submit&quot;&gt;
-     *  $this-&gt;tag-&gt;submitButton([&apos;some&apos;, &apos;Submit&apos;]);
-     *  
-     *  // Sleet &lt;input type=&quot;submit&quot; id=&quot;some1&quot; name=&quot;some&quot; value=&quot;Submit&quot; class=&quot;btn&quot;&gt;
-     *  {{ submit_button([&apos;some&apos;, &apos;value&apos; =&gt; &apos;Submit&apos;, &apos;id&apos; =&gt; &apos;some1&apos;, &apos;class&apos; =&gt; &apos;btn&apos;]) }}
-     * &lt;/code&gt;&lt;/pre&gt;
+     * <pre><code>
+     *  // Phtml <input type="submit" id="some" name="some" value="Submit">
+     *  $this->tag->submitButton(['some', 'Submit']);
+     *
+     *  // Sleet <input type="submit" id="some1" name="some" value="Submit" class="btn">
+     *  {{ submit_button(['some', 'value' => 'Submit', 'id' => 'some1', 'class' => 'btn']) }}
+     * </code></pre>
      *
      * @param array parameters
      * @return string
      */
-    public function submitButton(array parameters) -&gt; string
+    public function submitButton(array parameters) -> string
     {
-        return this-&gt;input(&quot;submit&quot;, parameters);
+        return this->input("submit", parameters);
     }
 
     /**
      * Builds a HTML BUTTON tag.
      *
-     * &lt;pre&gt;&lt;code&gt;
-     *  // Phtml &lt;button type=&quot;submit&quot; id=&quot;some&quot; name=&quot;some&quot;&gt;content&lt;/button&gt;
-     *  $this-&gt;tag-&gt;button([&apos;some&apos;, &apos;content&apos;]);
-     *  
-     *  // Sleet &lt;button type=&quot;button&quot; id=&quot;some1&quot; name=&quot;some&quot;&gt;&lt;i class=&quot;icon&quot;&gt;+&lt;/i&gt; Submit&lt;/button&gt;
-     *  {{ button([&apos;some&apos;, &apos;&lt;i class=&quot;icon&quot;&gt;+&lt;/i&gt; &apos; . &apos;Submit&apos;, &apos;type&apos; =&gt; &apos;button&apos;, &apos;id&apos; =&gt; &apos;some1&apos;]) }}
-     * &lt;/code&gt;&lt;/pre&gt;
+     * <pre><code>
+     *  // Phtml <button type="submit" id="some" name="some">content</button>
+     *  $this->tag->button(['some', 'content']);
+     *
+     *  // Sleet <button type="button" id="some1" name="some"><i class="icon">+</i> Submit</button>
+     *  {{ button(['some', '<i class="icon">+</i> ' . 'Submit', 'type' => 'button', 'id' => 'some1']) }}
+     * </code></pre>
      *
      * @param array parameters
      * @return string
      */
-    public function button(array parameters) -&gt; string
+    public function button(array parameters) -> string
     {
         var defaultParams;
 
         let defaultParams = [
-            &quot;id&quot;: 0,
-            &quot;name&quot;: 0,
-            &quot;content&quot;: 1,
-            &quot;type&quot;: &quot;submit&quot;
+            "id": 0,
+            "name": 0,
+            "content": 1,
+            "type": "submit"
         ];
 
-        return this-&gt;tagHtml(&quot;button&quot;, parameters, defaultParams, [&quot;content&quot;], &quot;content&quot;, true);
+        return this->tagHtml("button", parameters, defaultParams, ["content"], "content", true);
     }
 
     /**
-     * Builds a HTML INPUT[type=&quot;checkbox&quot;] tag.
+     * Builds a HTML INPUT[type="checkbox"] tag.
      *
-     * &lt;pre&gt;&lt;code&gt;
-     *  // Phtml &lt;input type=&quot;checkbox&quot; id=&quot;agree&quot; name=&quot;agree&quot; value=&quot;yes&quot;&gt;
-     *  $this-&gt;tag-&gt;checkField([&apos;agree&apos;, &apos;yes&apos;]);
-     *  
-     *  // Sleet &lt;input type=&quot;checkbox&quot; id=&quot;remember&quot; name=&quot;remember&quot; value=&quot;on&quot; checked=&quot;checked&quot;&gt;
-     *  {{ check_field([&apos;remember&apos;, &apos;on&apos;, &apos;checked&apos;: &apos;checked&apos;]) }}
-     * &lt;/code&gt;&lt;/pre&gt;
+     * <pre><code>
+     *  // Phtml <input type="checkbox" id="agree" name="agree" value="yes">
+     *  $this->tag->checkField(['agree', 'yes']);
+     *
+     *  // Sleet <input type="checkbox" id="remember" name="remember" value="on" checked="checked">
+     *  {{ check_field(['remember', 'on', 'checked': 'checked']) }}
+     * </code></pre>
      *
      * @param array parameters
      * @return string
      */
-    public function checkField(array parameters) -&gt; string
+    public function checkField(array parameters) -> string
     {
-        return this-&gt;input(&quot;checkbox&quot;, parameters);
+        return this->input("checkbox", parameters);
     }
 
     /**
-     * Builds a HTML INPUT[type=&quot;radio&quot;] tag.
+     * Builds a HTML INPUT[type="radio"] tag.
      *
-     * &lt;pre&gt;&lt;code&gt;
-     *  // Phtml &lt;input type=&quot;radio&quot; id=&quot;sex&quot; name=&quot;sex&quot; value=&quot;male&quot;&gt;
-     *  $this-&gt;tag-&gt;radioField([&apos;sex&apos;, &apos;male&apos;]);
-     *  
-     *  // Sleet &lt;input type=&quot;radio&quot; id=&quot;sex&quot; name=&quot;sex&quot; value=&quot;female&quot; checked=&quot;checked&quot;&gt;
-     *  {{ radio_field([&apos;sex&apos;, &apos;female&apos;, &apos;checked&apos;: &apos;checked&apos;]) }}
-     * &lt;/code&gt;&lt;/pre&gt;
+     * <pre><code>
+     *  // Phtml <input type="radio" id="sex" name="sex" value="male">
+     *  $this->tag->radioField(['sex', 'male']);
+     *
+     *  // Sleet <input type="radio" id="sex" name="sex" value="female" checked="checked">
+     *  {{ radio_field(['sex', 'female', 'checked': 'checked']) }}
+     * </code></pre>
      *
      * @param array parameters
      * @return string
      */
-    public function radioField(array parameters) -&gt; string
+    public function radioField(array parameters) -> string
     {
-        return this-&gt;input(&quot;radio&quot;, parameters);
+        return this->input("radio", parameters);
     }
 
     /**
@@ -315,65 +329,65 @@ class Tag
      * @param array parameters
      * @return string
      */
-    public function input(string type, array parameters) -&gt; string
+    public function input(string type, array parameters) -> string
     {
         var defaultParams;
 
         let defaultParams = [
-            &quot;id&quot;: 0,
-            &quot;name&quot;: 0,
-            &quot;value&quot;: 1,
-            &quot;type&quot;: type
+            "id": 0,
+            "name": 0,
+            "value": 1,
+            "type": type
         ];
 
-        return this-&gt;tagHtml(&quot;input&quot;, parameters, defaultParams, [], null, false, false, true);
+        return this->tagHtml("input", parameters, defaultParams, [], null, false, false, true);
     }
 
     /**
      * Builds a HTML FORM tag.
      *
-     * &lt;pre&gt;&lt;code&gt;
-     *  // Phtml &lt;form action=&quot;/post/add&quot; method=&quot;post&quot;&gt;
-     *  $this-&gt;tag-&gt;form([&apos;post/add&apos;]);
-     *  
-     *  // &lt;form action=&quot;http://example.com&quot; method=&quot;post&quot;&gt;
-     *  $this-&gt;tag-&gt;form([&apos;http://example.com&apos;, &apos;local&apos; =&gt; false]);
-     *  
-     *  // Sleet &lt;form method=&quot;post&quot;&gt;
+     * <pre><code>
+     *  // Phtml <form action="/post/add" method="post">
+     *  $this->tag->form(['post/add']);
+     *
+     *  // <form action="http://example.com" method="post">
+     *  $this->tag->form(['http://example.com', 'local' => false]);
+     *
+     *  // Sleet <form method="post">
      *  {{ form([false]) }}
-     *  
-     *  // &lt;form action=&quot;/post/add&quot; class=&quot;form-horizontal&quot; method=&quot;post&quot; enctype=&quot;multipart/form-data&quot;&gt;
-     *  {{ form([&apos;post/add&apos;, &apos;enctype&apos; =&gt; &apos;multipart/form-data&apos;, &apos;class&apos; =&gt; &apos;form-horizontal&apos;]) }}
-     * &lt;/code&gt;&lt;/pre&gt;
+     *
+     *  // <form action="/post/add" class="form-horizontal" method="post" enctype="multipart/form-data">
+     *  {{ form(['post/add', 'enctype' => 'multipart/form-data', 'class' => 'form-horizontal']) }}
+     * </code></pre>
      *
      * @param array parameters
      * @return string
      */
-    public function form(array parameters) -&gt; string
+    public function form(array parameters) -> string
     {
         var defaultParams, action, local;
 
         let defaultParams = [
-            &quot;action&quot;: 0,
-            &quot;method&quot;: &quot;post&quot;
+            "action": 0,
+            "method": "post"
         ];
 
-        if !fetch local, parameters[&quot;local&quot;] {
+        if !fetch local, parameters["local"] {
             let local = true;
         }
 
         if local {
-            if !fetch action, parameters[&quot;action&quot;] {
-                fetch action, parameters[defaultParams[&quot;action&quot;]];
+            if !fetch action, parameters["action"] {
+                fetch action, parameters[defaultParams["action"]];
             }
 
             // Send to current URL if action is false
             if action !== false {
-                let parameters[&quot;action&quot;] = this-&gt;di-&gt;get(&quot;url&quot;)-&gt;get(action);
+                let parameters["action"] = this->di->get("url")->get(action);
             }
         }
 
-        return this-&gt;tagHtml(&quot;form&quot;, parameters, defaultParams, [&quot;local&quot;]);
+        return this->tagHtml("form", parameters, defaultParams, ["local"]);
     }
 
     /**
@@ -381,266 +395,266 @@ class Tag
      *
      * @return string
      */
-    public function endForm() -&gt; string
+    public function endForm() -> string
     {
-        return this-&gt;endTag(&quot;form&quot;);
+        return this->endTag("form");
     }
 
     /**
      * Builds a HTML TEXTAREA tag.
      *
-     * &lt;pre&gt;&lt;code&gt;
-     *  // Phtml &lt;textarea id=&quot;description&quot; name=&quot;description&quot;&gt;content&lt;/textarea&gt;
-     *  $this-&gt;tag-&gt;textArea([&apos;description&apos;, &apos;content&apos;]);
-     *  
-     *  // Sleet &lt;textarea id=&quot;some&quot; name=&quot;some&quot; placeholder=&quot;Say something&quot;&gt;&lt;/textarea&gt;
-     *  {{ text_area([&apos;some&apos;, &apos;placeholder&apos; =&gt; &apos;Say something&apos;]) }}
-     * &lt;/code&gt;&lt;/pre&gt;
+     * <pre><code>
+     *  // Phtml <textarea id="description" name="description">content</textarea>
+     *  $this->tag->textArea(['description', 'content']);
+     *
+     *  // Sleet <textarea id="some" name="some" placeholder="Say something"></textarea>
+     *  {{ text_area(['some', 'placeholder' => 'Say something']) }}
+     * </code></pre>
      *
      * @param array parameters
      * @return string
      */
-    public function textArea(array parameters) -&gt; string
+    public function textArea(array parameters) -> string
     {
         var defaultParams;
 
         let defaultParams = [
-            &quot;id&quot;: 0,
-            &quot;name&quot;: 0,
-            &quot;content&quot;: 1
+            "id": 0,
+            "name": 0,
+            "content": 1
         ];
 
-        return this-&gt;tagHtml(&quot;textarea&quot;, parameters, defaultParams, [&quot;content&quot;, &quot;value&quot;], &quot;content&quot;, true);
+        return this->tagHtml("textarea", parameters, defaultParams, ["content", "value"], "content", true);
     }
 
     /**
      * Alias of the `img` method.
      */
-    public function image(array parameters) -&gt; string
+    public function image(array parameters) -> string
     {
-        return this-&gt;img(parameters);
+        return this->img(parameters);
     }
 
     /**
      * Builds HTML IMG tags.
      *
-     * &lt;pre&gt;&lt;code&gt;
-     *  // Phtml &lt;img src=&quot;/img/logo.png&quot; alt=&quot;Logo&quot;&gt;
-     *  $this-&gt;tag-&gt;img([&apos;img/logo.png&apos;, &apos;Logo&apos;]);
-     *  
-     *  // Sleet &lt;img src=&quot;http://example.com/img/logo.png&quot; alt=&quot;Logo&quot;&gt;
-     *  {{ image([&apos;http://example.com/img/logo.png&apos;, &apos;Logo&apos;, &apos;local&apos; =&gt; false]) }}
-     * &lt;/code&gt;&lt;/pre&gt;
+     * <pre><code>
+     *  // Phtml <img src="/img/logo.png" alt="Logo">
+     *  $this->tag->img(['img/logo.png', 'Logo']);
+     *
+     *  // Sleet <img src="http://example.com/img/logo.png" alt="Logo">
+     *  {{ image(['http://example.com/img/logo.png', 'Logo', 'local' => false]) }}
+     * </code></pre>
      *
      * @param array parameters
      * @return string
      */
-    public function img(array parameters) -&gt; string
+    public function img(array parameters) -> string
     {
         var defaultParams, src, local;
 
         let defaultParams = [
-            &quot;src&quot;: 0,
-            &quot;alt&quot;: 1
+            "src": 0,
+            "alt": 1
         ];
 
-        if !fetch local, parameters[&quot;local&quot;] {
+        if !fetch local, parameters["local"] {
             let local = true;
         }
 
         if local {
-            if !fetch src, parameters[&quot;src&quot;] {
-                fetch src, parameters[defaultParams[&quot;src&quot;]];
+            if !fetch src, parameters["src"] {
+                fetch src, parameters[defaultParams["src"]];
             }
 
-            let parameters[&quot;src&quot;] = this-&gt;di-&gt;get(&quot;url&quot;)-&gt;getStatic(src);
+            let parameters["src"] = this->di->get("url")->getStatic(src);
         }
 
-        return this-&gt;tagHtml(&quot;img&quot;, parameters, defaultParams, [&quot;local&quot;], null, false, false, true);
+        return this->tagHtml("img", parameters, defaultParams, ["local"], null, false, false, true);
     }
 
     /**
      * Alias of the `a` method.
      */
-    public function linkTo(array parameters) -&gt; string
+    public function linkTo(array parameters) -> string
     {
-        return this-&gt;a(parameters);
+        return this->a(parameters);
     }
 
     /**
      * Builds a HTML A tag using framework conventions.
      *
-     * &lt;pre&gt;&lt;code&gt;
-     *  // Phtml &lt;a href=&quot;/post/add&quot; title=&quot;Add a post&quot;&gt;Add&lt;/a&gt;
-     *  $this-&gt;tag-&gt;a([&apos;post/add&apos;, &apos;Add&apos;, &apos;Add a post&apos;]);
-     *  
-     *  // Sleet &lt;a href=&quot;http://google.com&quot;&gt;Google&lt;/a&gt;
-     *  {{ link_to([&apos;http://google.com&apos;, &apos;Google&apos;, &apos;local&apos; =&gt; false]) }}
-     * &lt;/code&gt;&lt;/pre&gt;
+     * <pre><code>
+     *  // Phtml <a href="/post/add" title="Add a post">Add</a>
+     *  $this->tag->a(['post/add', 'Add', 'Add a post']);
+     *
+     *  // Sleet <a href="http://google.com">Google</a>
+     *  {{ link_to(['http://google.com', 'Google', 'local' => false]) }}
+     * </code></pre>
      *
      * @param array parameters
      * @return string
      */
-    public function a(array parameters) -&gt; string
+    public function a(array parameters) -> string
     {
         var defaultParams, href, local, query;
 
         let defaultParams = [
-            &quot;href&quot;: 0,
-            &quot;text&quot;: 1,
-            &quot;title&quot;: 2
+            "href": 0,
+            "text": 1,
+            "title": 2
         ];
 
-        if !fetch href, parameters[&quot;href&quot;] {
-            fetch href, parameters[defaultParams[&quot;href&quot;]];
+        if !fetch href, parameters["href"] {
+            fetch href, parameters[defaultParams["href"]];
         }
 
-        if !fetch local, parameters[&quot;local&quot;] {
+        if !fetch local, parameters["local"] {
             let local = true;
         }
 
-        fetch query, parameters[&quot;query&quot;];
+        fetch query, parameters["query"];
 
-        let parameters[&quot;href&quot;] = this-&gt;di-&gt;get(&quot;url&quot;)-&gt;get(href, query, local);
+        let parameters["href"] = this->di->get("url")->get(href, query, local);
 
-        return this-&gt;tagHtml(&quot;a&quot;, parameters, defaultParams, [&quot;text&quot;, &quot;local&quot;, &quot;query&quot;], &quot;text&quot;, true);
+        return this->tagHtml("a", parameters, defaultParams, ["text", "local", "query"], "text", true);
     }
 
     /**
-     * Builds a LINK[rel=&quot;stylesheet&quot;] tag.
+     * Builds a LINK[rel="stylesheet"] tag.
      *
-     * &lt;pre&gt;&lt;code&gt;
-     *  // Phtml &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/css/app.css&quot;&gt;
-     *  $this-&gt;tag-&gt;link([&apos;css/app.css&apos;]);
-     *  
-     *  // Sleet &lt;link rel=&quot;icon&quot; type=&quot;image/x-icon&quot; href=&quot;http://example.com/favicon.ico&quot;&gt;
-     *  {{ link([&apos;http://example.com/favicon.ico&apos;, &apos;type&apos; =&gt; &apos;image/x-icon&apos;, &apos;rel&apos; =&gt; &apos;icon&apos;, &apos;local&apos; =&gt; false]) }}
-     * &lt;/code&gt;&lt;/pre&gt;
+     * <pre><code>
+     *  // Phtml <link rel="stylesheet" type="text/css" href="/css/app.css">
+     *  $this->tag->link(['css/app.css']);
+     *
+     *  // Sleet <link rel="icon" type="image/x-icon" href="http://example.com/favicon.ico">
+     *  {{ link(['http://example.com/favicon.ico', 'type' => 'image/x-icon', 'rel' => 'icon', 'local' => false]) }}
+     * </code></pre>
      *
      * @param array parameters
      * @return string
      */
-    public function link(array parameters) -&gt; string
+    public function link(array parameters) -> string
     {
         var defaultParams, href, local;
 
         let defaultParams = [
-            &quot;href&quot;: 0,
-            &quot;type&quot;: &quot;text/css&quot;,
-            &quot;rel&quot;: &quot;stylesheet&quot;
+            "href": 0,
+            "type": "text/css",
+            "rel": "stylesheet"
         ];
 
-        if !fetch local, parameters[&quot;local&quot;] {
+        if !fetch local, parameters["local"] {
             let local = true;
         }
 
         if local {
-            if !fetch href, parameters[&quot;href&quot;] {
-                fetch href, parameters[defaultParams[&quot;href&quot;]];
+            if !fetch href, parameters["href"] {
+                fetch href, parameters[defaultParams["href"]];
             }
 
-            let parameters[&quot;href&quot;] = this-&gt;di-&gt;get(&quot;url&quot;)-&gt;getStatic(href);
+            let parameters["href"] = this->di->get("url")->getStatic(href);
         }
 
-        return this-&gt;tagHtml(&quot;link&quot;, parameters, defaultParams, [&quot;local&quot;], null, false, true, true);
+        return this->tagHtml("link", parameters, defaultParams, ["local"], null, false, true, true);
     }
 
     /**
-     * Builds a SCRIPT[type=&quot;javascript&quot;] tag.
+     * Builds a SCRIPT[type="javascript"] tag.
      *
-     * &lt;pre&gt;&lt;code&gt;
-     *  // Phtml &lt;script type=&quot;text/javascript&quot; src=&quot;/js/plugins.js&quot;&gt;&lt;/script&gt;
-     *  $this-&gt;tag-&gt;script([&apos;js/plugins.js&apos;]);
-     *  
-     *  // Sleet &lt;script type=&quot;text/javascript&quot;&gt;alert(&quot;OK&quot;);&lt;/script&gt;
-     *  {{ script([&apos;content&apos; =&gt; &apos;alert(&quot;OK&quot;);&apos;]) }}
-     * &lt;/code&gt;&lt;/pre&gt;
+     * <pre><code>
+     *  // Phtml <script type="text/javascript" src="/js/plugins.js"></script>
+     *  $this->tag->script(['js/plugins.js']);
+     *
+     *  // Sleet <script type="text/javascript">alert("OK");</script>
+     *  {{ script(['content' => 'alert("OK");']) }}
+     * </code></pre>
      *
      * @param array parameters
      * @return string
      */
-    public function script(array parameters) -&gt; string
+    public function script(array parameters) -> string
     {
         var defaultParams, src, local;
 
         let defaultParams = [
-            &quot;src&quot;: 0,
-            &quot;type&quot;: &quot;text/javascript&quot;
+            "src": 0,
+            "type": "text/javascript"
         ];
 
-        if !fetch local, parameters[&quot;local&quot;] {
+        if !fetch local, parameters["local"] {
             let local = true;
         }
 
         if local {
-            if !fetch src, parameters[&quot;src&quot;] {
-                fetch src, parameters[defaultParams[&quot;src&quot;]];
+            if !fetch src, parameters["src"] {
+                fetch src, parameters[defaultParams["src"]];
             }
 
             if src {
-                let parameters[&quot;src&quot;] = this-&gt;di-&gt;get(&quot;url&quot;)-&gt;getStatic(src);
+                let parameters["src"] = this->di->get("url")->getStatic(src);
             }
         }
 
-        return this-&gt;tagHtml(&quot;script&quot;, parameters, defaultParams, [&quot;local&quot;, &quot;content&quot;], &quot;content&quot;, true) . PHP_EOL;
+        return this->tagHtml("script", parameters, defaultParams, ["local", "content"], "content", true) . PHP_EOL;
     }
 
     /**
      * Builds a STYLE tag.
      *
-     * &lt;pre&gt;&lt;code&gt;
-     *  // Sleet &lt;style type=&quot;text/css&quot;&gt;body { color: #444 }&lt;/style&gt;
-     *  {{ style([&apos;body { color: #444 }&apos;]) }}
-     * &lt;/code&gt;&lt;/pre&gt;
+     * <pre><code>
+     *  // Sleet <style type="text/css">body { color: #444 }</style>
+     *  {{ style(['body { color: #444 }']) }}
+     * </code></pre>
      *
      * @param array parameters
      * @return string
      */
-    public function style(array parameters) -&gt; string
+    public function style(array parameters) -> string
     {
         var defaultParams;
 
         let defaultParams = [
-            &quot;content&quot;: 0,
-            &quot;type&quot;: &quot;text/css&quot;
+            "content": 0,
+            "type": "text/css"
         ];
 
-        return this-&gt;tagHtml(&quot;style&quot;, parameters, defaultParams, [&quot;content&quot;], &quot;content&quot;, true, true);
+        return this->tagHtml("style", parameters, defaultParams, ["content"], "content", true, true);
     }
 
     /**
      * Builds a META tag.
      *
-     * &lt;pre&gt;&lt;code&gt;
-     *  // Phtml &lt;meta name=&quot;keywords&quot; content=&quot;ice, framework&quot;&gt;
-     *  $this-&gt;tag-&gt;meta([&apos;ice, framework&apos;, &apos;keywords&apos;]);
-     *  
-     *  // Sleet &lt;meta property=&quot;og:description&quot; content=&quot;Your description&quot;&gt;
-     *  {{ meta([&apos;Your description&apos;, &apos;property&apos;: &apos;og:description&apos;]) }}
-     * &lt;/code&gt;&lt;/pre&gt;
+     * <pre><code>
+     *  // Phtml <meta name="keywords" content="ice, framework">
+     *  $this->tag->meta(['ice, framework', 'keywords']);
+     *
+     *  // Sleet <meta property="og:description" content="Your description">
+     *  {{ meta(['Your description', 'property': 'og:description']) }}
+     * </code></pre>
      *
      * @param array parameters
      * @return string
      */
-    public function meta(array parameters) -&gt; string
+    public function meta(array parameters) -> string
     {
         var defaultParams;
 
         let defaultParams = [
-            &quot;content&quot;: 0,
-            &quot;name&quot;: 1
+            "content": 0,
+            "name": 1
         ];
 
-        return this-&gt;tagHtml(&quot;meta&quot;, parameters, defaultParams, [], null, false, true, true);
+        return this->tagHtml("meta", parameters, defaultParams, [], null, false, true, true);
     }
 
     /**
      * Builds a SELECT tag.
      *
-     * &lt;pre&gt;&lt;code&gt;
-     *  $countries = [1 =&gt; &apos;England&apos;, 2 =&gt; &apos;Poland&apos;];
-     *  $this-&gt;tag-&gt;select(&apos;country&apos;, $countries);
-     * &lt;/code&gt;&lt;/pre&gt;
+     * <pre><code>
+     *  $countries = [1 => 'England', 2 => 'Poland'];
+     *  $this->tag->select('country', $countries);
+     * </code></pre>
      *
      * @param array parameters
      * @return string
@@ -650,27 +664,27 @@ class Tag
         var defaultParams, name, options, option, selected, tmp, value, text, group, subvalue, subtext, suboptions;
 
         let defaultParams = [
-            &quot;id&quot;: 0,
-            &quot;name&quot;: 0,
-            &quot;options&quot;: 1
+            "id": 0,
+            "name": 0,
+            "options": 1
         ];
 
-        if !fetch name, parameters[&quot;name&quot;] {
-            fetch name, parameters[defaultParams[&quot;name&quot;]];
+        if !fetch name, parameters["name"] {
+            fetch name, parameters[defaultParams["name"]];
         }
 
-        if !fetch options, parameters[&quot;options&quot;] {
-            fetch options, parameters[defaultParams[&quot;options&quot;]];
+        if !fetch options, parameters["options"] {
+            fetch options, parameters[defaultParams["options"]];
         }
 
-        let selected = this-&gt;hasValue(name) ? this-&gt;getValue(name) : null;
+        let selected = this->hasValue(name) ? this->getValue(name) : null;
 
-        if typeof selected == &quot;array&quot; {
+        if typeof selected == "array" {
             // This is a multi-select, god save us!
-            let parameters[&quot;multiple&quot;] = &quot;multiple&quot;;
+            let parameters["multiple"] = "multiple";
         }
 
-        if typeof selected != &quot;array&quot; {
+        if typeof selected != "array" {
             if selected === null {
                 // Use an empty array
                 let selected = [];
@@ -683,12 +697,12 @@ class Tag
 
         if empty options {
             // There are no options
-            let options = &quot;&quot;;
+            let options = "";
         } else {
             for value, text in options {
-                if typeof text == &quot;array&quot; {
+                if typeof text == "array" {
                     // Create a new optgroup
-                    let group = [&quot;label&quot;: value];
+                    let group = ["label": value];
 
                     // Create a new list of options
                     let suboptions = [];
@@ -698,44 +712,44 @@ class Tag
                         let subvalue = (string) subvalue;
 
                         // Create a new attribute set for this option
-                        let option = [&quot;value&quot;: subvalue];
+                        let option = ["value": subvalue];
 
                         if in_array(subvalue, selected) {
                             // This option is selected
-                            let option[&quot;selected&quot;] = &quot;selected&quot;;
+                            let option["selected"] = "selected";
                         }
 
                         // Change the option to the HTML string
-                        let option[&quot;content&quot;] = subtext,
-                            suboptions[] = this-&gt;tagHtml(&quot;option&quot;, option, [], [&quot;content&quot;], &quot;content&quot;, true);
+                        let option["content"] = subtext,
+                            suboptions[] = this->tagHtml("option", option, [], ["content"], "content", true);
                     }
 
                     // Compile the options into a string
-                    let group[&quot;content&quot;] = PHP_EOL . implode(PHP_EOL, suboptions) . PHP_EOL,
-                        options[value] = this-&gt;tagHtml(&quot;optgroup&quot;, group, [], [&quot;content&quot;], &quot;content&quot;, true);
+                    let group["content"] = PHP_EOL . implode(PHP_EOL, suboptions) . PHP_EOL,
+                        options[value] = this->tagHtml("optgroup", group, [], ["content"], "content", true);
                 } else {
                     // Force value to be string
                     let value = (string) value;
 
                     // Create a new attribute set for this option
-                    let option = [&quot;value&quot;: value];
+                    let option = ["value": value];
 
                     if in_array(value, selected) {
                         // This option is selected
-                        let option[&quot;selected&quot;] = &quot;selected&quot;;
+                        let option["selected"] = "selected";
                     }
 
                     // Change the option to the HTML string
-                    let option[&quot;content&quot;] = text,
-                        options[value] = this-&gt;tagHtml(&quot;option&quot;, option, [], [&quot;content&quot;], &quot;content&quot;, true);
+                    let option["content"] = text,
+                        options[value] = this->tagHtml("option", option, [], ["content"], "content", true);
                 }
             }
 
             // Compile the options into a single string
-            let parameters[&quot;content&quot;] = implode(PHP_EOL, options);
+            let parameters["content"] = implode(PHP_EOL, options);
         }
 
-        return this-&gt;tagHtml(&quot;select&quot;, parameters, defaultParams, [&quot;content&quot;, &quot;options&quot;, &quot;value&quot;], &quot;content&quot;, true, true);
+        return this->tagHtml("select", parameters, defaultParams, ["content", "options", "value"], "content", true, true);
     }
 
     /**
@@ -748,10 +762,10 @@ class Tag
      * @param string content Parameter name to append content
      * @param boolean close Close tag
      * @param boolean eol Add end of line
-     * @param boolean single Void element, close a tag by &quot; /&gt;&quot; (depending on doctype)
+     * @param boolean single Void element, close a tag by " />" (depending on doctype)
      * @return string
      */
-    public function tagHtml(string name, array! parameters = [], array defaultParams = [], array skip = [], string content = null, boolean close = false, boolean eol = false, boolean single = false) -&gt; string
+    public function tagHtml(string name, array! parameters = [], array defaultParams = [], array skip = [], string content = null, boolean close = false, boolean eol = false, boolean single = false) -> string
     {
         var params, param, key, value, attributes, code;
 
@@ -773,7 +787,7 @@ class Tag
         }
 
         let attributes = array_merge(attributes, params),
-            code = this-&gt;prepareTag(name, attributes, skip, single);
+            code = this->prepareTag(name, attributes, skip, single);
 
         if eol {
             let code .= PHP_EOL;
@@ -781,8 +795,8 @@ class Tag
 
         if content {
             // Check if textarea has a value
-            if name == &quot;textarea&quot; &amp;&amp; isset attributes[&quot;name&quot;] &amp;&amp; this-&gt;hasValue(attributes[&quot;name&quot;]) {
-                let value = this-&gt;getValue(attributes[&quot;name&quot;]);
+            if name == "textarea" && isset attributes["name"] && this->hasValue(attributes["name"]) {
+                let value = this->getValue(attributes["name"]);
             } else {
                 fetch value, attributes[content];
             }
@@ -791,7 +805,7 @@ class Tag
         }
 
         if close {
-            let code .= (eol ? PHP_EOL : &quot;&quot;) . this-&gt;endTag(name, eol);
+            let code .= (eol ? PHP_EOL : "") . this->endTag(name, eol);
         }
 
         return code;
@@ -800,18 +814,18 @@ class Tag
     /**
      * Builds a HTML close tag.
      *
-     * &lt;pre&gt;&lt;code&gt;
-     *  // Sleet &lt;/form&gt;
-     *  {{ end_tag(&apos;form&apos;) }}
-     * &lt;/code&gt;&lt;/pre&gt;
+     * <pre><code>
+     *  // Sleet </form>
+     *  {{ end_tag('form') }}
+     * </code></pre>
      *
      * @param string name
      * @param boolean eol
      * @return string
      */
-    public function endTag(string name, boolean eol = true) -&gt; string
+    public function endTag(string name, boolean eol = true) -> string
     {
-        return &quot;&lt;/&quot; . name . &quot;&gt;&quot; . (eol ? PHP_EOL : &quot;&quot;);
+        return "</" . name . ">" . (eol ? PHP_EOL : "");
     }
 
     /**
@@ -823,48 +837,48 @@ class Tag
      * @param boolean single
      * @return string
      */
-    public function prepareTag(string! name, array! attributes, array skip = [], boolean single = false) -&gt; string
+    public function prepareTag(string! name, array! attributes, array skip = [], boolean single = false) -> string
     {
         var order, keys, attrs, code, type, tmp, value, key;
 
-        let order = [&quot;rel&quot;, &quot;type&quot;, &quot;for&quot;, &quot;src&quot;, &quot;href&quot;, &quot;action&quot;, &quot;id&quot;, &quot;name&quot;, &quot;value&quot;, &quot;class&quot;, &quot;style&quot;],
+        let order = ["rel", "type", "for", "src", "href", "action", "id", "name", "value", "class", "style"],
             keys = array_intersect_key(array_flip(order), attributes),
             attrs = array_merge(keys, attributes),
-            code = &quot;&lt;&quot; . name;
+            code = "<" . name;
 
-        if fetch tmp, attrs[&quot;name&quot;] {
-            if this-&gt;hasValue(tmp) {
+        if fetch tmp, attrs["name"] {
+            if this->hasValue(tmp) {
                 // Set the value from values property or _post
-                fetch type, attrs[&quot;type&quot;];
+                fetch type, attrs["type"];
 
                 switch type {
-                    case &quot;radio&quot;:
-                    case &quot;checkbox&quot;:
-                        // Don&apos;t overwrite values for radio/checkbox
-                        if isset attrs[&quot;value&quot;] &amp;&amp; attrs[&quot;value&quot;] == this-&gt;getValue(tmp) {
-                            let attrs[&quot;checked&quot;] = &quot;checked&quot;;
+                    case "radio":
+                    case "checkbox":
+                        // Don't overwrite values for radio/checkbox
+                        if isset attrs["value"] && attrs["value"] == this->getValue(tmp) {
+                            let attrs["checked"] = "checked";
                         }
                     break;
                     default:
-                        let attrs[&quot;value&quot;] = this-&gt;getValue(tmp);
+                        let attrs["value"] = this->getValue(tmp);
                     break;
                 }
             }
         }
 
         for key, value in attrs {
-            if typeof key == &quot;string&quot; &amp;&amp; value !== null &amp;&amp; value !== false &amp;&amp; !in_array(key, skip) {
-                if this-&gt;escape {
-                    let value = this-&gt;di-&gt;get(&quot;filter&quot;)-&gt;sanitize(value, &quot;escape&quot;);
+            if typeof key == "string" && value !== null && value !== false && !in_array(key, skip) {
+                if this->escape {
+                    let value = this->di->get("filter")->sanitize(value, "escape");
                 }
-                let code .= &quot; &quot; . key . &quot;=\&quot;&quot; . value. &quot;\&quot;&quot;;
+                let code .= " " . key . "=\"" . value. "\"";
             }
         }
 
         if single {
-            let code .= this-&gt;docType &gt; self::HTML5 ? &quot; /&gt;&quot; : &quot;&gt;&quot;;
+            let code .= this->docType > self::HTML5 ? " />" : ">";
         } else {
-            let code .= &quot;&gt;&quot;;
+            let code .= ">";
         }
 
         return code;
@@ -876,14 +890,14 @@ class Tag
      * @param string name
      * @return boolean
      */
-    public function hasValue(string name) -&gt; boolean
+    public function hasValue(string name) -> boolean
     {
         // Check if there is a post value for the item
         if isset _POST[name] {
             return true;
         } else {
             // Check if there is a predefined value for it
-            if isset this-&gt;values[name] {
+            if isset this->values[name] {
                 return true;
             }
         }
@@ -901,12 +915,12 @@ class Tag
     public function setValue(string! id, value)
     {
         if value !== null {
-            if typeof value == &quot;array&quot; || typeof value == &quot;object&quot; {
-                throw new Exception(&quot;Only scalar values can be assigned to UI components&quot;);
+            if typeof value == "array" || typeof value == "object" {
+                throw new Exception("Only scalar values can be assigned to UI components");
             }
         }
-        let this-&gt;values[id] = value;
-        
+        let this->values[id] = value;
+
         return this;
     }
 
@@ -921,21 +935,21 @@ class Tag
     {
         var current;
 
-        if typeof values != &quot;array&quot; {
-            throw new Exception(&quot;An array is required as default values&quot;);
+        if typeof values != "array" {
+            throw new Exception("An array is required as default values");
         }
 
         if merge {
-            let current = this-&gt;values;
-            if typeof current == &quot;array&quot; {
-                let this-&gt;values = array_merge(current, values);
+            let current = this->values;
+            if typeof current == "array" {
+                let this->values = array_merge(current, values);
             } else {
-                let this-&gt;values = values;
+                let this->values = values;
             }
         } else {
-            let this-&gt;values = values;
+            let this->values = values;
         }
-        
+
         return this;
     }
 
@@ -953,7 +967,7 @@ class Tag
         // Check if there is a predefined value for it
         if !fetch value, _POST[name] {
             // Check if there is a post value for the item
-            if !fetch value, this-&gt;values[name] {
+            if !fetch value, this->values[name] {
                 return null;
             }
         }
@@ -964,11 +978,11 @@ class Tag
     /**
      * Converts texts into URL-friendly titles.
      *
-     * &lt;pre&gt;&lt;code&gt;
-     *  $title = &quot;Mess&apos;d up --text-- just (to) stress /test/ ?our! `little` \\clean\\ url fun.ction!?--&gt;&quot;;
-     *  // &apos;messd-up-text-just-to-stress-test-our-little-clean-url-function&apos;
-     *  $friendly = $this-&gt;tag-&gt;friendlyTitle($title);
-     * &lt;/code&gt;&lt;/pre&gt;
+     * <pre><code>
+     *  $title = "Mess'd up --text-- just (to) stress /test/ ?our! `little` \\clean\\ url fun.ction!?-->";
+     *  // 'messd-up-text-just-to-stress-test-our-little-clean-url-function'
+     *  $friendly = $this->tag->friendlyTitle($title);
+     * </code></pre>
      *
      * @param string text
      * @param string separator
@@ -976,41 +990,41 @@ class Tag
      * @param mixed replace
      * @return string
      */
-    public function friendlyTitle(string text, string separator = &quot;-&quot;, boolean lowercase = true, var replace = null) -&gt; string
+    public function friendlyTitle(string text, string separator = "-", boolean lowercase = true, var replace = null) -> string
     {
         var friendly, locale, search;
 
-        if extension_loaded(&quot;iconv&quot;) {
+        if extension_loaded("iconv") {
             // Save the old locale and set the new locale to UTF-8
-            let locale = setlocale(LC_ALL, &quot;en_US.UTF-8&quot;),
-                text = iconv(&quot;UTF-8&quot;, &quot;ASCII//TRANSLIT&quot;, text);
+            let locale = setlocale(LC_ALL, "en_US.UTF-8"),
+                text = iconv("UTF-8", "ASCII//TRANSLIT", text);
         }
 
         if replace {
             // Replace some additional chars
-            if typeof replace != &quot;array&quot; &amp;&amp; typeof replace != &quot;string&quot; {
-                throw new Exception(&quot;Parameter replace must be an array or a string&quot;);
+            if typeof replace != "array" && typeof replace != "string" {
+                throw new Exception("Parameter replace must be an array or a string");
             }
 
-            if typeof replace == &quot;array&quot; {
+            if typeof replace == "array" {
                 for search in replace {
-                    let text = str_replace(search, &quot; &quot;, text);      
+                    let text = str_replace(search, " ", text);
                 }
             } else {
-                let text = str_replace(replace, &quot; &quot;, text);
+                let text = str_replace(replace, " ", text);
             }
         }
 
-        let friendly = preg_replace(&quot;/[^a-zA-Z0-9\\/_|+ -]/&quot;, &quot;&quot;, text);
+        let friendly = preg_replace("/[^a-zA-Z0-9\\/_|+ -]/", "", text);
 
         if lowercase {
             let friendly = strtolower(friendly);
         }
 
-        let friendly = preg_replace(&quot;/[\\/_|+ -]+/&quot;, separator, friendly),
+        let friendly = preg_replace("/[\\/_|+ -]+/", separator, friendly),
             friendly = trim(friendly, separator);
 
-        if extension_loaded(&quot;iconv&quot;) {
+        if extension_loaded("iconv") {
             // Revert back to the old locale
             setlocale(LC_ALL, locale);
         }
@@ -1022,50 +1036,28 @@ class Tag
      *
      * @return string
      */
-    public function getDocType() -&gt; string
+    public function getDocType() -> string
     {
-        switch this-&gt;docType {
-            case self::HTML32:  return &quot;&lt;!DOCTYPE html PUBLIC \&quot;-//W3C//DTD HTML 3.2 Final//EN\&quot;&gt;&quot; . PHP_EOL;
-            case self::HTML401_STRICT:  return &quot;&lt;!DOCTYPE html PUBLIC \&quot;-//W3C//DTD HTML 4.01//EN\&quot;&quot; . PHP_EOL . &quot;\t\&quot;http://www.w3.org/TR/html4/strict.dtd\&quot;&gt;&quot; . PHP_EOL;
-            case self::HTML401_TRANSITIONAL:  return &quot;&lt;!DOCTYPE html PUBLIC \&quot;-//W3C//DTD HTML 4.01 Transitional//EN\&quot;&quot; . PHP_EOL . &quot;\t\&quot;http://www.w3.org/TR/html4/loose.dtd\&quot;&gt;&quot; . PHP_EOL;
-            case self::HTML401_FRAMESET:  return &quot;&lt;!DOCTYPE html PUBLIC \&quot;-//W3C//DTD HTML 4.01 Frameset//EN\&quot;&quot; . PHP_EOL . &quot;\t\&quot;http://www.w3.org/TR/html4/frameset.dtd\&quot;&gt;&quot; . PHP_EOL;
-            case self::HTML5:  return &quot;&lt;!DOCTYPE html&gt;&quot; . PHP_EOL;
-            case self::XHTML10_STRICT:  return &quot;&lt;!DOCTYPE html PUBLIC \&quot;-//W3C//DTD XHTML 1.0 Strict//EN\&quot;&quot; . PHP_EOL . &quot;\t\&quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\&quot;&gt;&quot; . PHP_EOL;
-            case self::XHTML10_TRANSITIONAL:  return &quot;&lt;!DOCTYPE html PUBLIC \&quot;-//W3C//DTD XHTML 1.0 Transitional//EN\&quot;&quot; . PHP_EOL.&quot;\t\&quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\&quot;&gt;&quot; . PHP_EOL;
-            case self::XHTML10_FRAMESET:  return &quot;&lt;!DOCTYPE html PUBLIC \&quot;-//W3C//DTD XHTML 1.0 Frameset//EN\&quot;&quot; . PHP_EOL . &quot;\t\&quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd\&quot;&gt;&quot; . PHP_EOL;
-            case self::XHTML11:  return &quot;&lt;!DOCTYPE html PUBLIC \&quot;-//W3C//DTD XHTML 1.1//EN\&quot;&quot; . PHP_EOL . &quot;\t\&quot;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd\&quot;&gt;&quot; . PHP_EOL;
-            case self::XHTML20: return &quot;&lt;!DOCTYPE html PUBLIC \&quot;-//W3C//DTD XHTML 2.0//EN\&quot;&quot; . PHP_EOL . &quot;\t\&quot;http://www.w3.org/MarkUp/DTD/xhtml2.dtd\&quot;&gt;&quot; . PHP_EOL;
-            case self::XHTML5:  return &quot;&lt;!DOCTYPE html&gt;&quot; . PHP_EOL;
+        switch this->docType {
+            case self::HTML32:  return "<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">" . PHP_EOL;
+            case self::HTML401_STRICT:  return "<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01//EN\"" . PHP_EOL . "\t\"http://www.w3.org/TR/html4/strict.dtd\">" . PHP_EOL;
+            case self::HTML401_TRANSITIONAL:  return "<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\"" . PHP_EOL . "\t\"http://www.w3.org/TR/html4/loose.dtd\">" . PHP_EOL;
+            case self::HTML401_FRAMESET:  return "<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Frameset//EN\"" . PHP_EOL . "\t\"http://www.w3.org/TR/html4/frameset.dtd\">" . PHP_EOL;
+            case self::HTML5:  return "<!DOCTYPE html>" . PHP_EOL;
+            case self::XHTML10_STRICT:  return "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\"" . PHP_EOL . "\t\"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">" . PHP_EOL;
+            case self::XHTML10_TRANSITIONAL:  return "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\"" . PHP_EOL."\t\"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">" . PHP_EOL;
+            case self::XHTML10_FRAMESET:  return "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Frameset//EN\"" . PHP_EOL . "\t\"http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd\">" . PHP_EOL;
+            case self::XHTML11:  return "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.1//EN\"" . PHP_EOL . "\t\"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd\">" . PHP_EOL;
+            case self::XHTML20: return "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 2.0//EN\"" . PHP_EOL . "\t\"http://www.w3.org/MarkUp/DTD/xhtml2.dtd\">" . PHP_EOL;
+            case self::XHTML5:  return "<!DOCTYPE html>" . PHP_EOL;
         }
 
-        return &quot;&quot;;
+        return "";
     }
 }
-</code></pre>                    </div>
+</pre>
                 </div>
             </div>
         </div>
-
-        <script src="../../asset/static/js/jquery.min.js"></script>
-        <script src="../../asset/static/js/bootstrap.min.js"></script>
-        <script src="../../asset/static/js/highlight.pack.js"></script>
-        <script src="../../asset/static/js/jquery.slimscroll.min.js"></script>
-        <script src="../../asset/api_definition.js"></script>
-
-        <script>var ZepCurrentPath = '../../'</script>
-        <script src="../../asset/static/js/script.js"></script>
-        <script type="text/javascript">
-            $(window).on("load resize", function() {
-                $('#menu-wrapper').slimscroll({ height: $(window).height() - 100, size: '3px' });
-            });
-        </script>
-        <script type="text/javascript">
-            $(document).ready(function() { $('pre code').each(function(i, block) { hljs.highlightBlock(block); }); });
-            if ($('.zephir-source-file').length) {
-                $('link[id]').each(function(i, link) {
-                    link.disabled = (link.id != 'tomorrow-night');
-                });
-            }
-        </script>
-            </body>
+    </body>
 </html>

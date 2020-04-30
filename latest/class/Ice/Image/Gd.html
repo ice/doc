@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta content="ice API doc" name="description">
+    <title>
+                    ice API Documentation
+            </title>
+    <link rel="stylesheet" type="text/css" href="../../../asset/static/prettify.css" />
+
+<script src="../../../asset/static/prettify.js"></script>
+<script src="../../../asset/api_definition.js"></script>
+
+
+                        <link rel="stylesheet" type="text/css" href="../../../asset/static/prettify.css" />
+                    <link rel="stylesheet" type="text/css" href="../../../asset/static/zephir-theme.css" />
+            
+    
+
+                        <script src="../../../asset/static/prettify.js"></script>
+                                    <script src="../../../asset/api_definition.js"></script>
+                    <script src="../../../asset/static/jquery.min.js"></script>
+                    <script src="../../../asset/static/zephir-doc.js"></script>
+                <script type="application/javascript">let ZepCurrentPath = '../../../'</script>
+    </head>
+ <body onload="prettyPrint()">
+        <div id="top-bar">
+            <div id="top-left" style="color: #555">
+                                    <a href="https://doc.iceframework.org" title="ice framework documentation" style="color: #444"><img src="https://www.iceframework.org/img/logo.png" alt="ice framework documentation" width="30" height="30"> ice doc</a> <span class="version">v1.6.0</span>
+                            </div>
+            <div id="top-right">
+            </div>
+        </div>
+        <div id="body">
+            <div id="body-left">
+                <div class="header-search">
+                    <input class="search-box" placeholder="Search for a class or namespace " type="text" />
+                    <div id="menu-wrapper">
+                    </div>
+                </div>
+            </div>
+            <div id="body-right">
+                <div class="content">
+                    
+<div class="breadcrumb">
+    
+    <ul>
+        
+        <li><a href="../../../index.html">Home</a></li>
+        
+                <li><a href="../../../classes.html">Classes</a></li>
+                <li><a >Ice\Image\Gd</a></li>
+                
+    </ul>
+    
+</div>
+<div class="class-header clearfix">
+
+    <div class="access-buttons">
+        <a class="zep-button" href="../../../source/Ice/Image/Gd.html">Source</a>
+                <a class="zep-button"
+           href="https://github.com/ice/framework/tree/dev/ice/image/gd.zep">
+            GitHub
+        </a>
+            </div>
+
+    <div class="class-full-name">
+        <span class="class-type">Class</span>
+
+                <span class="namespace-piece">
+            <a href="../../../namespace/Ice.html">
+                Ice            </a>
+        </span>
+                <span class="namespace-piece">
+            <a href="../../../namespace/Ice/Image.html">
+                Image            </a>
+        </span>
+        
+        <h1 class="class-name">Gd</h1>
+    </div>
+</div>
+
+
+<div class="hidden-anchor"  id="methods"></div>
+<div class="methods-summary standard-bandeau">Methods</div>
+
+<ul class="method-summary-list">
+            
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-__construct">__construct</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">string</span> <span class="variable param-name">$file</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Run install check and load the image.                </div>
+            </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-check">check</a><!--
+            --></span><!--
+            -->()<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    bool                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Checks if GD is enabled and bundled. Bundled GD is required for some methods to work.                </div>
+            </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-__destruct">__destruct</a><!--
+            --></span><!--
+            -->()<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Destroys the loaded image to free up resources.                </div>
+            </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-loadImage">loadImage</a><!--
+            --></span><!--
+            -->()<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Loads an image into GD.                </div>
+            </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-doResize">doResize</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">int</span> <span class="variable param-name">$width</span>, <span class="param-data-type">int</span> <span class="variable param-name">$height</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Execute a resize.                </div>
+            </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-doCrop">doCrop</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">int</span> <span class="variable param-name">$width</span>, <span class="param-data-type">int</span> <span class="variable param-name">$height</span>, <span class="param-data-type">int</span> <span class="variable param-name">$offsetX</span>, <span class="param-data-type">int</span> <span class="variable param-name">$offsetY</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Execute a crop.                </div>
+            </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-doRotate">doRotate</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">int</span> <span class="variable param-name">$degrees</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Execute a rotation.                </div>
+            </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-doFlip">doFlip</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">int</span> <span class="variable param-name">$direction</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Execute a flip.                </div>
+            </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-doSharpen">doSharpen</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">int</span> <span class="variable param-name">$amount</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Execute a sharpen.                </div>
+            </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-doReflection">doReflection</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">int</span> <span class="variable param-name">$height</span>, <span class="param-data-type">int</span> <span class="variable param-name">$opacity</span>, <span class="param-data-type">bool</span> <span class="variable param-name">$fadeIn</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Execute a reflection.                </div>
+            </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-doWatermark">doWatermark</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">variable</span> <span class="variable param-name">$watermark</span>, <span class="param-data-type">int</span> <span class="variable param-name">$offsetX</span>, <span class="param-data-type">int</span> <span class="variable param-name">$offsetY</span>, <span class="param-data-type">int</span> <span class="variable param-name">$opacity</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Execute a watermarking.                </div>
+            </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-doBackground">doBackground</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">int</span> <span class="variable param-name">$r</span>, <span class="param-data-type">int</span> <span class="variable param-name">$g</span>, <span class="param-data-type">int</span> <span class="variable param-name">$b</span>, <span class="param-data-type">int</span> <span class="variable param-name">$opacity</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Execute a background.                </div>
+            </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-doSave">doSave</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">string</span> <span class="variable param-name">$file</span>, <span class="param-data-type">variable</span> <span class="variable param-name">$quality</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    bool                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Execute a save.                </div>
+            </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-doRender">doRender</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">string</span> <span class="variable param-name">$type</span>, <span class="param-data-type">variable</span> <span class="variable param-name">$quality</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    string                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Execute a render.                </div>
+            </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-saveFunction">saveFunction</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">string</span> <span class="variable param-name">$extension</span>, <span class="param-data-type">int</span> <span class="variable param-name">$quality</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    array                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Get the GD saving function and image type for this extension.                </div>
+            </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-create">create</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">int</span> <span class="variable param-name">$width</span>, <span class="param-data-type">int</span> <span class="variable param-name">$height</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    resource                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Create an empty image with the given width and height.                </div>
+            </div>
+            </div>
+</li>
+    </ul>
+
+<div class="hidden-anchor" id="methods-details"></div>
+<div class="methods-summary standard-bandeau">Methods Details</div>
+
+<ul class="method-details-list">
+            
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-__construct"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">__construct</span><!--
+                -->(<span class="param-data-type">string</span> <span class="variable param-name">$file</span>)
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Run install check and load the image.                    </div>
+                    <div class="description">
+                                            </div>
+                            </div>
+
+        </div>
+    </div>
+</li>
+            
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-check"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                    <span class="visibility-static keyword">static</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">check</span><!--
+                -->()
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Checks if GD is enabled and bundled. Bundled GD is required for some methods to work.                    </div>
+                    <div class="description">
+                        Exceptions will be thrown from those methods when GD is not bundled.                    </div>
+                            </div>
+
+        </div>
+    </div>
+</li>
+            
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-__destruct"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">__destruct</span><!--
+                -->()
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Destroys the loaded image to free up resources.                    </div>
+                    <div class="description">
+                                            </div>
+                            </div>
+
+        </div>
+    </div>
+</li>
+            
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-loadImage"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+
+            <p class="method-signature">
+                                    <span class="visibility-protected keyword">protected</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">loadImage</span><!--
+                -->()
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Loads an image into GD.                    </div>
+                    <div class="description">
+                                            </div>
+                            </div>
+
+        </div>
+    </div>
+</li>
+            
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-doResize"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+
+            <p class="method-signature">
+                                    <span class="visibility-protected keyword">protected</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">doResize</span><!--
+                -->(<span class="param-data-type">int</span> <span class="variable param-name">$width</span>, <span class="param-data-type">int</span> <span class="variable param-name">$height</span>)
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Execute a resize.                    </div>
+                    <div class="description">
+                                            </div>
+                            </div>
+
+        </div>
+    </div>
+</li>
+            
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-doCrop"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+
+            <p class="method-signature">
+                                    <span class="visibility-protected keyword">protected</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">doCrop</span><!--
+                -->(<span class="param-data-type">int</span> <span class="variable param-name">$width</span>, <span class="param-data-type">int</span> <span class="variable param-name">$height</span>, <span class="param-data-type">int</span> <span class="variable param-name">$offsetX</span>, <span class="param-data-type">int</span> <span class="variable param-name">$offsetY</span>)
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Execute a crop.                    </div>
+                    <div class="description">
+                                            </div>
+                            </div>
+
+        </div>
+    </div>
+</li>
+            
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-doRotate"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+
+            <p class="method-signature">
+                                    <span class="visibility-protected keyword">protected</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">doRotate</span><!--
+                -->(<span class="param-data-type">int</span> <span class="variable param-name">$degrees</span>)
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Execute a rotation.                    </div>
+                    <div class="description">
+                                            </div>
+                            </div>
+
+        </div>
+    </div>
+</li>
+            
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-doFlip"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+
+            <p class="method-signature">
+                                    <span class="visibility-protected keyword">protected</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">doFlip</span><!--
+                -->(<span class="param-data-type">int</span> <span class="variable param-name">$direction</span>)
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Execute a flip.                    </div>
+                    <div class="description">
+                                            </div>
+                            </div>
+
+        </div>
+    </div>
+</li>
+            
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-doSharpen"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+
+            <p class="method-signature">
+                                    <span class="visibility-protected keyword">protected</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">doSharpen</span><!--
+                -->(<span class="param-data-type">int</span> <span class="variable param-name">$amount</span>)
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Execute a sharpen.                    </div>
+                    <div class="description">
+                                            </div>
+                            </div>
+
+        </div>
+    </div>
+</li>
+            
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-doReflection"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+
+            <p class="method-signature">
+                                    <span class="visibility-protected keyword">protected</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">doReflection</span><!--
+                -->(<span class="param-data-type">int</span> <span class="variable param-name">$height</span>, <span class="param-data-type">int</span> <span class="variable param-name">$opacity</span>, <span class="param-data-type">bool</span> <span class="variable param-name">$fadeIn</span>)
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Execute a reflection.                    </div>
+                    <div class="description">
+                                            </div>
+                            </div>
+
+        </div>
+    </div>
+</li>
+            
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-doWatermark"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+
+            <p class="method-signature">
+                                    <span class="visibility-protected keyword">protected</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">doWatermark</span><!--
+                -->(<span class="param-data-type">variable</span> <span class="variable param-name">$watermark</span>, <span class="param-data-type">int</span> <span class="variable param-name">$offsetX</span>, <span class="param-data-type">int</span> <span class="variable param-name">$offsetY</span>, <span class="param-data-type">int</span> <span class="variable param-name">$opacity</span>)
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Execute a watermarking.                    </div>
+                    <div class="description">
+                                            </div>
+                            </div>
+
+        </div>
+    </div>
+</li>
+            
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-doBackground"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+
+            <p class="method-signature">
+                                    <span class="visibility-protected keyword">protected</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">doBackground</span><!--
+                -->(<span class="param-data-type">int</span> <span class="variable param-name">$r</span>, <span class="param-data-type">int</span> <span class="variable param-name">$g</span>, <span class="param-data-type">int</span> <span class="variable param-name">$b</span>, <span class="param-data-type">int</span> <span class="variable param-name">$opacity</span>)
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Execute a background.                    </div>
+                    <div class="description">
+                                            </div>
+                            </div>
+
+        </div>
+    </div>
+</li>
+            
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-doSave"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+
+            <p class="method-signature">
+                                    <span class="visibility-protected keyword">protected</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">doSave</span><!--
+                -->(<span class="param-data-type">string</span> <span class="variable param-name">$file</span>, <span class="param-data-type">variable</span> <span class="variable param-name">$quality</span>)
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Execute a save.                    </div>
+                    <div class="description">
+                                            </div>
+                            </div>
+
+        </div>
+    </div>
+</li>
+            
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-doRender"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+
+            <p class="method-signature">
+                                    <span class="visibility-protected keyword">protected</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">doRender</span><!--
+                -->(<span class="param-data-type">string</span> <span class="variable param-name">$type</span>, <span class="param-data-type">variable</span> <span class="variable param-name">$quality</span>)
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Execute a render.                    </div>
+                    <div class="description">
+                                            </div>
+                            </div>
+
+        </div>
+    </div>
+</li>
+            
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-saveFunction"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+
+            <p class="method-signature">
+                                    <span class="visibility-protected keyword">protected</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">saveFunction</span><!--
+                -->(<span class="param-data-type">string</span> <span class="variable param-name">$extension</span>, <span class="param-data-type">int</span> <span class="variable param-name">$quality</span>)
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Get the GD saving function and image type for this extension.                    </div>
+                    <div class="description">
+                        Also normalizes the quality setting                    </div>
+                            </div>
+
+        </div>
+    </div>
+</li>
+            
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-create"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+
+            <p class="method-signature">
+                                    <span class="visibility-protected keyword">protected</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">create</span><!--
+                -->(<span class="param-data-type">int</span> <span class="variable param-name">$width</span>, <span class="param-data-type">int</span> <span class="variable param-name">$height</span>)
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Create an empty image with the given width and height.                    </div>
+                    <div class="description">
+                                            </div>
+                            </div>
+
+        </div>
+    </div>
+</li>
+    </ul>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

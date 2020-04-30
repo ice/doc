@@ -1,39 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <link rel="stylesheet" type="text/css" href="../../asset/static/css/bootstrap.min.css" />
-        <link rel="stylesheet" type="text/css" href="../../asset/static/css/tomorrow.min.css" id="tomorrow" />
-        <link rel="stylesheet" type="text/css" href="../../asset/static/css/tomorrow-night.min.css" id="tomorrow-night" disabled />
-        <link rel="stylesheet" type="text/css" href="../../asset/static/css/style.css" />
-    </head>
-    <body>
-        <header class="navbar navbar-default navbar-fixed-top">
-            <div id="top-bar" class="container-fluid">
-                <div id="top-left" class="navbar-header">
-                    <a href="../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.4.0</span>
-                                            </a>
-                </div>
-                <div id="top-right" class="collapse navbar-collapse">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta content="ice API doc" name="description">
+    <title>
+                    ice API Documentation
+            </title>
+    <link rel="stylesheet" type="text/css" href="../../asset/static/prettify.css" />
 
-                </div>
+<script src="../../asset/static/prettify.js"></script>
+<script src="../../asset/api_definition.js"></script>
+
+
+                        <link rel="stylesheet" type="text/css" href="../../asset/static/prettify.css" />
+                    <link rel="stylesheet" type="text/css" href="../../asset/static/zephir-theme.css" />
+            
+    
+
+                        <script src="../../asset/static/prettify.js"></script>
+                                    <script src="../../asset/api_definition.js"></script>
+                    <script src="../../asset/static/jquery.min.js"></script>
+                    <script src="../../asset/static/zephir-doc.js"></script>
+                <script type="application/javascript">let ZepCurrentPath = '../../'</script>
+    </head>
+ <body onload="prettyPrint()">
+        <div id="top-bar">
+            <div id="top-left" style="color: #555">
+                                    <a href="https://doc.iceframework.org" title="ice framework documentation" style="color: #444"><img src="https://www.iceframework.org/img/logo.png" alt="ice framework documentation" width="30" height="30"> ice doc</a> <span class="version">v1.6.0</span>
+                            </div>
+            <div id="top-right">
             </div>
-        </header>
-        <div id="body" class="container-fluid">
-            <div class="row">
-                <div id="body-left" class="col-lg-3 col-sm-4">
-                    <div class="header-search">
-                        <input class="search-box form-control" placeholder="Search for a class or namespace " type="text" />
-                        <div id="menu-wrapper">
-                        </div>
+        </div>
+        <div id="body">
+            <div id="body-left">
+                <div class="header-search">
+                    <input class="search-box" placeholder="Search for a class or namespace " type="text" />
+                    <div id="menu-wrapper">
                     </div>
                 </div>
-                <div id="body-right" class="col-lg-9 col-sm-8">
-                    <div class="content">
-                        
-<div>
+            </div>
+            <div id="body-right">
+                <div class="content">
+                    
+<div class="breadcrumb">
     
-    <ul class="breadcrumb">
+    <ul>
         
         <li><a href="../../index.html">Home</a></li>
         
@@ -44,988 +56,885 @@
     
 </div>
 <div class="class-header clearfix">
-    
-    
-    <div class="access-buttons pull-right">
-        <a class="zep-button btn btn-default" href="../../source/Ice/Cookies.html">Source</a>
 
-                <a class="zep-button btn btn-default" href="https://github.com/ice/framework/tree/dev/ice/cookies.zep">Github</a>
+    <div class="access-buttons">
+        <a class="zep-button" href="../../source/Ice/Cookies.html">Source</a>
+                <a class="zep-button"
+           href="https://github.com/ice/framework/tree/dev/ice/cookies.zep">
+            GitHub
+        </a>
             </div>
-    
-    <div class="class-full-name">
-        
-        <span class="class-type">Class</span>
-        
-                <span class="namespace-piece">
-            <a href="../../namespace/Ice.html">Ice</a>
-        </span>
-                <h1 class="class-name">Cookies</h1>
-    </div>
 
+    <div class="class-full-name">
+        <span class="class-type">Class</span>
+
+                <span class="namespace-piece">
+            <a href="../../namespace/Ice.html">
+                Ice            </a>
+        </span>
+        
+        <h1 class="class-name">Cookies</h1>
+    </div>
 </div>
-    <div class="text-muted">
-    Cookie helper.    </div>
-    <div>
-        </div>
+
 
 <div class="hidden-anchor"  id="methods"></div>
 <div class="methods-summary standard-bandeau">Methods</div>
-<table class="method-summary-list table table-striped table-hover">
-    
-        
-<tr class="class-method">
-<td>
 
-    <div class="method-return">
-
-        
-                
-    </div>
+<ul class="method-summary-list">
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-getSalt">getSalt</a></span>(<span class="small"></span>)
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-getSalt">getSalt</a><!--
+            --></span><!--
+            -->()<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        
-                
-    </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-setSalt">setSalt</a></span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$salt</strong></span></span>)
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-setSalt">setSalt</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">variable</span> <span class="variable param-name">$salt</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        
-                
-    </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-getExpiration">getExpiration</a></span>(<span class="small"></span>)
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-getExpiration">getExpiration</a><!--
+            --></span><!--
+            -->()<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        
-                
-    </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-setExpiration">setExpiration</a></span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$expiration</strong></span></span>)
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-setExpiration">setExpiration</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">variable</span> <span class="variable param-name">$expiration</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        
-                
-    </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-getPath">getPath</a></span>(<span class="small"></span>)
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-getPath">getPath</a><!--
+            --></span><!--
+            -->()<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        
-                
-    </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-setPath">setPath</a></span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$path</strong></span></span>)
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-setPath">setPath</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">variable</span> <span class="variable param-name">$path</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        
-                
-    </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-getDomain">getDomain</a></span>(<span class="small"></span>)
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-getDomain">getDomain</a><!--
+            --></span><!--
+            -->()<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        
-                
-    </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-setDomain">setDomain</a></span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$domain</strong></span></span>)
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-setDomain">setDomain</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">variable</span> <span class="variable param-name">$domain</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        
-                
-    </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-getSecure">getSecure</a></span>(<span class="small"></span>)
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-getSecure">getSecure</a><!--
+            --></span><!--
+            -->()<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        
-                
-    </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-setSecure">setSecure</a></span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$secure</strong></span></span>)
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-setSecure">setSecure</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">variable</span> <span class="variable param-name">$secure</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        
-                
-    </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-getHttpOnly">getHttpOnly</a></span>(<span class="small"></span>)
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-getHttpOnly">getHttpOnly</a><!--
+            --></span><!--
+            -->()<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        
-                
-    </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-setHttpOnly">setHttpOnly</a></span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$httpOnly</strong></span></span>)
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-setHttpOnly">setHttpOnly</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">variable</span> <span class="variable param-name">$httpOnly</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        
-                
-    </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-getEncrypt">getEncrypt</a></span>(<span class="small"></span>)
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-getEncrypt">getEncrypt</a><!--
+            --></span><!--
+            -->()<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        
-                
-    </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-setEncrypt">setEncrypt</a></span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$encrypt</strong></span></span>)
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-setEncrypt">setEncrypt</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">variable</span> <span class="variable param-name">$encrypt</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        
-                
-    </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-__construct">__construct</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$salt</strong></span></span>)
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-__construct">__construct</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">string</span> <span class="variable param-name">$salt</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        bool
-                
-    </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-has">has</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$key</strong></span></span>)
-                <div class="summary-text text-muted">Does cookie contain a key</div>
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-has">has</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">string</span> <span class="variable param-name">$key</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    bool                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Does cookie contain a key                </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        
-                
-    </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-get">get</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$key</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$defaultValue</strong></span></span>)
-                <div class="summary-text text-muted">Gets the value of a signed cookie.</div>
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-get">get</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">string</span> <span class="variable param-name">$key</span>, <span class="param-data-type">variable</span> <span class="variable param-name">$defaultValue</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Gets the value of a signed cookie.                </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        
-                
-    </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-set">set</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$key</strong></span>, <span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$value</strong></span>, <span class="param-data-type text-danger">int</span>  <span class="param-name text-info"><strong>$lifetime</strong></span></span>)
-                <div class="summary-text text-muted">Sets a signed cookie.</div>
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-set">set</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">string</span> <span class="variable param-name">$key</span>, <span class="param-data-type">string</span> <span class="variable param-name">$value</span>, <span class="param-data-type">int</span> <span class="variable param-name">$lifetime</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Sets a signed cookie.                </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        bool
-                
-    </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-remove">remove</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$key</strong></span></span>)
-                <div class="summary-text text-muted">Deletes a cookie by making the value NULL and expiring it.</div>
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-remove">remove</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">string</span> <span class="variable param-name">$key</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    bool                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Deletes a cookie by making the value NULL and expiring it.                </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        string
-                
-    </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-salt">salt</a></span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$name</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$value</strong></span></span>)
-                <div class="summary-text text-muted">Generates a salt string for a cookie based on the name and value.</div>
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-salt">salt</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">variable</span> <span class="variable param-name">$name</span>, <span class="param-data-type">variable</span> <span class="variable param-name">$value</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    string                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Generates a salt string for a cookie based on the name and value.                </div>
             </div>
-</td>
-</tr>
-    
-        
-<tr class="class-method">
-<td>
-
-    <div class="method-return">
-
-        
-                
-    </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="method-summary">
-        <span class="method-name"><a href="#method-details-setcookie">setcookie</a></span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$name</strong></span>, <span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$value</strong></span>, <span class="param-data-type text-danger">int</span>  <span class="param-name text-info"><strong>$expire</strong></span>, <span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$path</strong></span>, <span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$domain</strong></span>, <span class="param-data-type text-danger">bool</span>  <span class="param-name text-info"><strong>$secure</strong></span>, <span class="param-data-type text-danger">bool</span>  <span class="param-name text-info"><strong>$httpOnly</strong></span></span>)
-                <div class="summary-text text-muted">Proxy for the native setcookie function - to allow mocking in unit tests so that they do not fail when headers</div>
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-setcookie">setcookie</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">string</span> <span class="variable param-name">$name</span>, <span class="param-data-type">string</span> <span class="variable param-name">$value</span>, <span class="param-data-type">int</span> <span class="variable param-name">$expire</span>, <span class="param-data-type">string</span> <span class="variable param-name">$path</span>, <span class="param-data-type">string</span> <span class="variable param-name">$domain</span>, <span class="param-data-type">bool</span> <span class="variable param-name">$secure</span>, <span class="param-data-type">bool</span> <span class="variable param-name">$httpOnly</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Proxy for the native setcookie function - to allow mocking in unit tests so that they do not fail when headers                </div>
             </div>
-</td>
-</tr>
-    </table>
+            </div>
+</li>
+    </ul>
 
-<div class="hidden-anchor"  id="methods-details"></div>
+<div class="hidden-anchor" id="methods-details"></div>
 <div class="methods-summary standard-bandeau">Methods Details</div>
-<ul class="method-details-list list-unstyled">
-    
-        
+
+<ul class="method-details-list">
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-getSalt"></div>
-    
+    <div class="hidden-anchor" id="method-details-getSalt"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">getSalt</span>(<span class="small"></span>)
-                </h3>
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">getSalt</span><!--
+                -->()
+            </p>
+
+            <div class="method-doc">
+                                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-setSalt"></div>
-    
+    <div class="hidden-anchor" id="method-details-setSalt"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">setSalt</span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$salt</strong></span></span>)
-                </h3>
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">setSalt</span><!--
+                -->(<span class="param-data-type">variable</span> <span class="variable param-name">$salt</span>)
+            </p>
+
+            <div class="method-doc">
+                                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-getExpiration"></div>
-    
+    <div class="hidden-anchor" id="method-details-getExpiration"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">getExpiration</span>(<span class="small"></span>)
-                </h3>
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">getExpiration</span><!--
+                -->()
+            </p>
+
+            <div class="method-doc">
+                                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-setExpiration"></div>
-    
+    <div class="hidden-anchor" id="method-details-setExpiration"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">setExpiration</span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$expiration</strong></span></span>)
-                </h3>
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">setExpiration</span><!--
+                -->(<span class="param-data-type">variable</span> <span class="variable param-name">$expiration</span>)
+            </p>
+
+            <div class="method-doc">
+                                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-getPath"></div>
-    
+    <div class="hidden-anchor" id="method-details-getPath"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">getPath</span>(<span class="small"></span>)
-                </h3>
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">getPath</span><!--
+                -->()
+            </p>
+
+            <div class="method-doc">
+                                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-setPath"></div>
-    
+    <div class="hidden-anchor" id="method-details-setPath"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">setPath</span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$path</strong></span></span>)
-                </h3>
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">setPath</span><!--
+                -->(<span class="param-data-type">variable</span> <span class="variable param-name">$path</span>)
+            </p>
+
+            <div class="method-doc">
+                                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-getDomain"></div>
-    
+    <div class="hidden-anchor" id="method-details-getDomain"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">getDomain</span>(<span class="small"></span>)
-                </h3>
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">getDomain</span><!--
+                -->()
+            </p>
+
+            <div class="method-doc">
+                                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-setDomain"></div>
-    
+    <div class="hidden-anchor" id="method-details-setDomain"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">setDomain</span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$domain</strong></span></span>)
-                </h3>
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">setDomain</span><!--
+                -->(<span class="param-data-type">variable</span> <span class="variable param-name">$domain</span>)
+            </p>
+
+            <div class="method-doc">
+                                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-getSecure"></div>
-    
+    <div class="hidden-anchor" id="method-details-getSecure"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">getSecure</span>(<span class="small"></span>)
-                </h3>
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">getSecure</span><!--
+                -->()
+            </p>
+
+            <div class="method-doc">
+                                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-setSecure"></div>
-    
+    <div class="hidden-anchor" id="method-details-setSecure"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">setSecure</span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$secure</strong></span></span>)
-                </h3>
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">setSecure</span><!--
+                -->(<span class="param-data-type">variable</span> <span class="variable param-name">$secure</span>)
+            </p>
+
+            <div class="method-doc">
+                                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-getHttpOnly"></div>
-    
+    <div class="hidden-anchor" id="method-details-getHttpOnly"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">getHttpOnly</span>(<span class="small"></span>)
-                </h3>
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">getHttpOnly</span><!--
+                -->()
+            </p>
+
+            <div class="method-doc">
+                                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-setHttpOnly"></div>
-    
+    <div class="hidden-anchor" id="method-details-setHttpOnly"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">setHttpOnly</span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$httpOnly</strong></span></span>)
-                </h3>
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">setHttpOnly</span><!--
+                -->(<span class="param-data-type">variable</span> <span class="variable param-name">$httpOnly</span>)
+            </p>
+
+            <div class="method-doc">
+                                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-getEncrypt"></div>
-    
+    <div class="hidden-anchor" id="method-details-getEncrypt"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">getEncrypt</span>(<span class="small"></span>)
-                </h3>
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">getEncrypt</span><!--
+                -->()
+            </p>
+
+            <div class="method-doc">
+                                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-setEncrypt"></div>
-    
+    <div class="hidden-anchor" id="method-details-setEncrypt"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">setEncrypt</span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$encrypt</strong></span></span>)
-                </h3>
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">setEncrypt</span><!--
+                -->(<span class="param-data-type">variable</span> <span class="variable param-name">$encrypt</span>)
+            </p>
+
+            <div class="method-doc">
+                                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-__construct"></div>
-    
+    <div class="hidden-anchor" id="method-details-__construct"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">__construct</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$salt</strong></span></span>)
-                </h3>
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">__construct</span><!--
+                -->(<span class="param-data-type">string</span> <span class="variable param-name">$salt</span>)
+            </p>
+
+            <div class="method-doc">
+                                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-has"></div>
-    
+    <div class="hidden-anchor" id="method-details-has"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">has</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$key</strong></span></span>)
-                </h3>
-                                
-                    <div class="text-muted">
-                    Does cookie contain a key                    </div>
-                    <div>
-                                        </div>
-                
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">has</span><!--
+                -->(<span class="param-data-type">string</span> <span class="variable param-name">$key</span>)
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Does cookie contain a key                    </div>
+                    <div class="description">
+                                            </div>
+                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-get"></div>
-    
+    <div class="hidden-anchor" id="method-details-get"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">get</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$key</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$defaultValue</strong></span></span>)
-                </h3>
-                                
-                    <div class="text-muted">
-                    Gets the value of a signed cookie.                    </div>
-                    <div>
-                    Cookies without signatures will not be returned. If the cookie signature is present, but invalid, the cookie
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">get</span><!--
+                -->(<span class="param-data-type">string</span> <span class="variable param-name">$key</span>, <span class="param-data-type">variable</span> <span class="variable param-name">$defaultValue</span>)
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Gets the value of a signed cookie.                    </div>
+                    <div class="description">
+                        Cookies without signatures will not be returned. If the cookie signature is present, but invalid, the cookie
      will be deleted.                    </div>
-                
-                                
-            </div>
+                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-set"></div>
-    
+    <div class="hidden-anchor" id="method-details-set"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">set</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$key</strong></span>, <span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$value</strong></span>, <span class="param-data-type text-danger">int</span>  <span class="param-name text-info"><strong>$lifetime</strong></span></span>)
-                </h3>
-                                
-                    <div class="text-muted">
-                    Sets a signed cookie.                    </div>
-                    <div>
-                    Note that all cookie values must be strings and no automatic serialization will be performed!                    </div>
-                
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">set</span><!--
+                -->(<span class="param-data-type">string</span> <span class="variable param-name">$key</span>, <span class="param-data-type">string</span> <span class="variable param-name">$value</span>, <span class="param-data-type">int</span> <span class="variable param-name">$lifetime</span>)
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Sets a signed cookie.                    </div>
+                    <div class="description">
+                        Note that all cookie values must be strings and no automatic serialization will be performed!                    </div>
+                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-remove"></div>
-    
+    <div class="hidden-anchor" id="method-details-remove"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">remove</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$key</strong></span></span>)
-                </h3>
-                                
-                    <div class="text-muted">
-                    Deletes a cookie by making the value NULL and expiring it.                    </div>
-                    <div>
-                                        </div>
-                
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">remove</span><!--
+                -->(<span class="param-data-type">string</span> <span class="variable param-name">$key</span>)
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Deletes a cookie by making the value NULL and expiring it.                    </div>
+                    <div class="description">
+                                            </div>
+                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-salt"></div>
-    
+    <div class="hidden-anchor" id="method-details-salt"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-public">public</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">salt</span>(<span class="small"><span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$name</strong></span>, <span class="param-data-type text-danger">variable</span>  <span class="param-name text-info"><strong>$value</strong></span></span>)
-                </h3>
-                                
-                    <div class="text-muted">
-                    Generates a salt string for a cookie based on the name and value.                    </div>
-                    <div>
-                                        </div>
-                
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">salt</span><!--
+                -->(<span class="param-data-type">variable</span> <span class="variable param-name">$name</span>, <span class="param-data-type">variable</span> <span class="variable param-name">$value</span>)
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Generates a salt string for a cookie based on the name and value.                    </div>
+                    <div class="description">
+                                            </div>
+                            </div>
+
         </div>
-
     </div>
-
 </li>
-    
-        
+            
 <li class="class-method clearfix">
-
-    <div class="hidden-anchor"  id="method-details-setcookie"></div>
-    
+    <div class="hidden-anchor" id="method-details-setcookie"></div>
     <div class="method-details">
-        
-
-        
-
         <div class="method-details-details">
-            <div class="method-signature">
 
-                <h3>
-                                <span class="small visibility-protected">protected</span>
-                
-                                
-                <span class="small">function</span> <span class="method-name">setcookie</span>(<span class="small"><span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$name</strong></span>, <span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$value</strong></span>, <span class="param-data-type text-danger">int</span>  <span class="param-name text-info"><strong>$expire</strong></span>, <span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$path</strong></span>, <span class="param-data-type text-danger">string</span>  <span class="param-name text-info"><strong>$domain</strong></span>, <span class="param-data-type text-danger">bool</span>  <span class="param-name text-info"><strong>$secure</strong></span>, <span class="param-data-type text-danger">bool</span>  <span class="param-name text-info"><strong>$httpOnly</strong></span></span>)
-                </h3>
-                                
-                    <div class="text-muted">
-                    Proxy for the native setcookie function - to allow mocking in unit tests so that they do not fail when headers                    </div>
-                    <div>
-                    have been sent.                    </div>
-                
-                                
-            </div>
+            <p class="method-signature">
+                                    <span class="visibility-protected keyword">protected</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">setcookie</span><!--
+                -->(<span class="param-data-type">string</span> <span class="variable param-name">$name</span>, <span class="param-data-type">string</span> <span class="variable param-name">$value</span>, <span class="param-data-type">int</span> <span class="variable param-name">$expire</span>, <span class="param-data-type">string</span> <span class="variable param-name">$path</span>, <span class="param-data-type">string</span> <span class="variable param-name">$domain</span>, <span class="param-data-type">bool</span> <span class="variable param-name">$secure</span>, <span class="param-data-type">bool</span> <span class="variable param-name">$httpOnly</span>)
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Proxy for the native setcookie function - to allow mocking in unit tests so that they do not fail when headers                    </div>
+                    <div class="description">
+                        have been sent.                    </div>
+                            </div>
+
         </div>
-
     </div>
-
 </li>
-    </ul>                    </div>
+    </ul>
                 </div>
             </div>
         </div>
-
-        <script src="../../asset/static/js/jquery.min.js"></script>
-        <script src="../../asset/static/js/bootstrap.min.js"></script>
-        <script src="../../asset/static/js/highlight.pack.js"></script>
-        <script src="../../asset/static/js/jquery.slimscroll.min.js"></script>
-        <script src="../../asset/api_definition.js"></script>
-
-        <script>var ZepCurrentPath = '../../'</script>
-        <script src="../../asset/static/js/script.js"></script>
-        <script type="text/javascript">
-            $(window).on("load resize", function() {
-                $('#menu-wrapper').slimscroll({ height: $(window).height() - 100, size: '3px' });
-            });
-        </script>
-        <script type="text/javascript">
-            $(document).ready(function() { $('pre code').each(function(i, block) { hljs.highlightBlock(block); }); });
-            if ($('.zephir-source-file').length) {
-                $('link[id]').each(function(i, link) {
-                    link.disabled = (link.id != 'tomorrow-night');
-                });
-            }
-        </script>
-            </body>
+    </body>
 </html>

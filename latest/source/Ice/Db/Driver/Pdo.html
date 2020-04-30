@@ -1,39 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <link rel="stylesheet" type="text/css" href="../../../../asset/static/css/bootstrap.min.css" />
-        <link rel="stylesheet" type="text/css" href="../../../../asset/static/css/tomorrow.min.css" id="tomorrow" />
-        <link rel="stylesheet" type="text/css" href="../../../../asset/static/css/tomorrow-night.min.css" id="tomorrow-night" disabled />
-        <link rel="stylesheet" type="text/css" href="../../../../asset/static/css/style.css" />
-    </head>
-    <body>
-        <header class="navbar navbar-default navbar-fixed-top">
-            <div id="top-bar" class="container-fluid">
-                <div id="top-left" class="navbar-header">
-                    <a href="../../../../index.html" class="navbar-brand">
-                                                    ice Documentation <span class="version">v1.4.0</span>
-                                            </a>
-                </div>
-                <div id="top-right" class="collapse navbar-collapse">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta content="ice API doc" name="description">
+    <title>
+                    ice API Documentation
+            </title>
+    <link rel="stylesheet" type="text/css" href="../../../../asset/static/prettify.css" />
 
-                </div>
+<script src="../../../../asset/static/prettify.js"></script>
+<script src="../../../../asset/api_definition.js"></script>
+
+
+                        <link rel="stylesheet" type="text/css" href="../../../../asset/static/prettify.css" />
+                    <link rel="stylesheet" type="text/css" href="../../../../asset/static/zephir-theme.css" />
+            
+    
+
+                        <script src="../../../../asset/static/prettify.js"></script>
+                                    <script src="../../../../asset/api_definition.js"></script>
+                    <script src="../../../../asset/static/jquery.min.js"></script>
+                    <script src="../../../../asset/static/zephir-doc.js"></script>
+                <script type="application/javascript">let ZepCurrentPath = '../../../../'</script>
+    </head>
+ <body onload="prettyPrint()">
+        <div id="top-bar">
+            <div id="top-left" style="color: #555">
+                                    <a href="https://doc.iceframework.org" title="ice framework documentation" style="color: #444"><img src="https://www.iceframework.org/img/logo.png" alt="ice framework documentation" width="30" height="30"> ice doc</a> <span class="version">v1.6.0</span>
+                            </div>
+            <div id="top-right">
             </div>
-        </header>
-        <div id="body" class="container-fluid">
-            <div class="row">
-                <div id="body-left" class="col-lg-3 col-sm-4">
-                    <div class="header-search">
-                        <input class="search-box form-control" placeholder="Search for a class or namespace " type="text" />
-                        <div id="menu-wrapper">
-                        </div>
+        </div>
+        <div id="body">
+            <div id="body-left">
+                <div class="header-search">
+                    <input class="search-box" placeholder="Search for a class or namespace " type="text" />
+                    <div id="menu-wrapper">
                     </div>
                 </div>
-                <div id="body-right" class="col-lg-9 col-sm-8">
-                    <div class="content">
-                        
-<div>
+            </div>
+            <div id="body-right">
+                <div class="content">
+                    
+<div class="breadcrumb">
     
-    <ul class="breadcrumb">
+    <ul>
         
         <li><a href="../../../../index.html">Home</a></li>
         
@@ -45,17 +57,19 @@
     
 </div>
 <div class="class-header source clearfix">
-    
-    <div class="access-buttons pull-right">
-        <a class="zep-button btn btn-default" href="../../../../class/Ice/Db/Driver/Pdo.html">Class</a>
 
-                <a class="zep-button btn btn-default" href="https://github.com/ice/framework/tree/dev/ice/db/driver/pdo.zep">Github</a>
+    <div class="access-buttons">
+        <a class="zep-button" href="../../../../class/Ice/Db/Driver/Pdo.html">Class</a>
+
+                <a class="zep-button"
+           href="https://github.com/ice/framework/tree/dev/ice/db/driver/pdo.zep">
+            Github
+        </a>
             </div>
-    
+
     <div class="class-full-name">
-        
         <span class="class-type">Class</span>
-        
+
                 <span class="namespace-piece">
             <a href="../../../../namespace/Ice.html">Ice</a>
         </span>
@@ -65,13 +79,14 @@
                 <span class="namespace-piece">
             <a href="../../../../namespace/Ice/Db/Driver.html">Driver</a>
         </span>
-                <h1 class="class-name">Pdo</h1>
+        
+        <h1 class="class-name">Pdo</h1>
     </div>
-    
+
 </div>
 
-
-<pre class="zephir-source-file"><code>
+<pre class="zephir-source-file prettyprint linenums">
+    
 namespace Ice\Db\Driver;
 
 use Ice\Arr;
@@ -84,19 +99,18 @@ use Ice\Db\DbInterface;
  * @package     Ice/Db
  * @category    Component
  * @author      Ice Team
- * @copyright   (c) 2014-2018 Ice Team
+ * @copyright   (c) 2014-2020 Ice Team
  * @license     http://iceframework.org/license
  */
 class Pdo implements DbInterface
 {
-
-    protected id = &quot;id&quot; { get };
-    protected type = &quot;SQL&quot; { get };
+    protected id = "id" { get };
+    protected type = "SQL" { get };
     protected error;
     protected client { get };
     protected driverName { get };
 
-    protected identifier = &quot;\&quot;%s\&quot;&quot;;
+    protected identifier = "\"%s\"";
 
     /**
      * Instantiate pdo connection.
@@ -108,28 +122,28 @@ class Pdo implements DbInterface
      */
     public function __construct(string dsn, string user = NULL, string password = NULL, array options = [])
     {
-        let this-&gt;driverName = explode(&quot;:&quot;, dsn, 2)[0];
+        let this->driverName = explode(":", dsn, 2)[0];
 
-        switch this-&gt;driverName {
-            case &quot;mysql&quot;:
-                let this-&gt;identifier = &quot;`%s`&quot;;
-                let dsn = dsn . &quot;;charset=utf8&quot;;
+        switch this->driverName {
+            case "mysql":
+                let this->identifier = "`%s`";
+                let dsn = dsn . ";charset=utf8";
             break;
-            case &quot;sqlsrv&quot;:
-                let this-&gt;identifier = &quot;[%s]&quot;;
+            case "sqlsrv":
+                let this->identifier = "[%s]";
             break;
-            case &quot;sqlite&quot;:
-                let this-&gt;identifier = &quot;[%s]&quot;;
+            case "sqlite":
+                let this->identifier = "[%s]";
             break;
-            case &quot;oci&quot;:
-                let this-&gt;identifier = &quot;\&quot;%s\&quot;&quot;;
+            case "oci":
+                let this->identifier = "\"%s\"";
             break;
-            case &quot;pgsql&quot;:
-                let this-&gt;identifier = &quot;\&quot;%s\&quot;&quot;;
+            case "pgsql":
+                let this->identifier = "\"%s\"";
             break;
         }
 
-        let this-&gt;client = new \PDO(dsn, user, password, options);
+        let this->client = new \PDO(dsn, user, password, options);
     }
 
     /**
@@ -138,7 +152,7 @@ class Pdo implements DbInterface
      * @param string id
      * @return int
      */
-    public function getIdValue(id) -&gt; int
+    public function getIdValue(id) -> int
     {
         return (int) id;
     }
@@ -154,14 +168,14 @@ class Pdo implements DbInterface
     {
         var date;
 
-        if typeof value == &quot;integer&quot; {
-            let value = &quot;@&quot; . value;
+        if typeof value == "integer" {
+            let value = "@" . value;
         }
 
         let date = new \DateTime(value);
 
         if model {
-            return date-&gt;format(&quot;Y-m-d H:i:s.u&quot;);
+            return date->format("Y-m-d H:i:s.u");
         }
 
         return date;
@@ -170,10 +184,10 @@ class Pdo implements DbInterface
     /**
      * Find one row that match criteria.
      *
-     * &lt;pre&gt;&lt;code&gt;
+     * <pre><code>
      *  //SELECT x, y FROM users WHERE a=1 or b=2 ORDER BY a desc,b asc Limit 1
-     *  $db-&gt;findOne(&quot;users&quot;, [&quot;OR&quot; =&gt; [[&quot;a&quot; =&gt; 1], [&quot;b&quot; =&gt; 2]]], [&quot;order&quot; =&gt; [&quot;a desc&quot;, &quot;b asc&quot;]], [&quot;x&quot;,&quot;y&quot;]);
-     * &lt;/code&gt;&lt;/pre&gt;
+     *  $db->findOne("users", ["OR" => [["a" => 1], ["b" => 2]]], ["order" => ["a desc", "b asc"]], ["x","y"]);
+     * </code></pre>
      *
      * @param string from Table name
      * @param mixed filters Filters to create WHERE conditions
@@ -185,25 +199,25 @@ class Pdo implements DbInterface
     {
         var result;
 
-        let options[&quot;limit&quot;] = 1,
-            result = this-&gt;select(from, filters, options, fields);
+        let options["limit"] = 1,
+            result = this->select(from, filters, options, fields);
 
-        return result-&gt;rowCount() ? new Arr(result-&gt;$fetch(\Pdo::FETCH_ASSOC)) : false;
+        return result->rowCount() ? new Arr(result->$fetch(\Pdo::FETCH_ASSOC)) : false;
     }
 
     /**
      * Find all records that match criteria.
      *
-     * &lt;pre&gt;&lt;code&gt;
-     *  //SELECT * FROM users WHERE a=1 and b=&quot;q&quot;
-     *  $db-&gt;find(&quot;users&quot;, [&quot;a&quot; =&gt; 1, &quot;b&quot; =&gt; &quot;q&quot;]);
+     * <pre><code>
+     *  //SELECT * FROM users WHERE a=1 and b="q"
+     *  $db->find("users", ["a" => 1, "b" => "q"]);
      *
-     *  //SELECT * FROM users WHERE age&gt;33
-     *  $db-&gt;find(&quot;users&quot;, [&quot;age&quot; =&gt; [&quot;&gt;&quot; =&gt; 33]]);
+     *  //SELECT * FROM users WHERE age>33
+     *  $db->find("users", ["age" => [">" => 33]]);
      *
      *  //SELECT x, y FROM users WHERE a=1 or b=2 ORDER BY a desc,b asc
-     *  $db-&gt;find(&quot;users&quot;, [&quot;OR&quot; =&gt; [[&quot;a&quot; =&gt; 1], [&quot;b&quot; =&gt; 2]]], [&quot;order&quot; =&gt; [&quot;a desc&quot;, &quot;b asc&quot;]], [&quot;x&quot;,&quot;y&quot;]);
-     * &lt;/code&gt;&lt;/pre&gt;
+     *  $db->find("users", ["OR" => [["a" => 1], ["b" => 2]]], ["order" => ["a desc", "b asc"]], ["x","y"]);
+     * </code></pre>
      *
      * @param string from Table name
      * @param mixed filters Filters to create WHERE conditions
@@ -215,9 +229,9 @@ class Pdo implements DbInterface
     {
         var result;
 
-        let result = this-&gt;select(from, filters, options, fields);
+        let result = this->select(from, filters, options, fields);
 
-        return new Arr(result-&gt;fetchAll(\Pdo::FETCH_ASSOC));
+        return new Arr(result->fetchAll(\Pdo::FETCH_ASSOC));
     }
 
     /**
@@ -226,37 +240,37 @@ class Pdo implements DbInterface
      * @params mixed filters
      * @params array values
      */
-    protected function where(var filters = [], array values = []) -&gt; array
+    protected function where(var filters = [], array values = []) -> array
     {
         var and, data, operator, key, item, value, or, is, index, i, sql, condition;
 
         let and = [],
-            sql = &quot;&quot;,
-            i = &quot;&quot;;
+            sql = "",
+            i = "";
 
         if is_numeric(filters) {
             let filters = (int) filters;
         }
 
         switch typeof filters {
-            case &quot;array&quot;:
+            case "array":
                 for operator, data in filters {
                     switch operator {
-                        case &quot;OR&quot;:
-                        case &quot;or&quot;:
-                        case &quot;$or&quot;:
+                        case "OR":
+                        case "or":
+                        case "$or":
                             let or = [],
-                                operator = &quot;OR&quot;;
+                                operator = "OR";
                         break;
-                        case &quot;AND&quot;:
-                        case &quot;and&quot;:
-                        case &quot;$and&quot;:
-                            let operator = &quot;AND&quot;;
+                        case "AND":
+                        case "and":
+                        case "$and":
+                            let operator = "AND";
                         break;
-                        default: // short &quot;AND&quot;
+                        default: // short "AND"
                             var tmp = data;
-                            let data = [&quot;AND&quot;: [operator: tmp]],
-                                operator = &quot;AND&quot;;
+                            let data = ["AND": [operator: tmp]],
+                                operator = "AND";
                         break;
                     }
 
@@ -264,23 +278,23 @@ class Pdo implements DbInterface
                         let key = key(item),
                             value = current(item);
 
-                        if typeof value == &quot;array&quot; {
+                        if typeof value == "array" {
                             let is = key(value),
                                 value = current(value);
                         } else {
-                            let is = &quot;=&quot;;
+                            let is = "=";
                         }
 
                         do {
-                            let index = &quot;:&quot; . key . i,
+                            let index = ":" . key . i,
                                 i = i ? (int) i + 1 : 1;
                         } while isset values[index];
 
                         switch is {
-                            case &quot;IN&quot;:
-                            case &quot;in&quot;:
-                            case &quot;$in&quot;:
-                                if typeof value == &quot;array&quot; {
+                            case "IN":
+                            case "in":
+                            case "$in":
+                                if typeof value == "array" {
                                     var j, id, ids = [];
                                     // Bind all values
                                     for j, id in value {
@@ -288,45 +302,45 @@ class Pdo implements DbInterface
                                             values[index . j] = id;
                                     }
 
-                                    let value = &quot;(&quot; . implode(&quot;, &quot;, ids) . &quot;)&quot;;
+                                    let value = "(" . implode(", ", ids) . ")";
                                 }
-                                let condition = sprintf(this-&gt;identifier, key) . is . &quot; &quot; . value;
+                                let condition = sprintf(this->identifier, key) . is . " " . value;
                             break;
-                            case &quot;IS&quot;:
-                            case &quot;is&quot;:
-                            case &quot;IS NOT&quot;:
-                            case &quot;is not&quot;:
-                                // Don&apos;t bind value
-                                let condition = sprintf(this-&gt;identifier, key) . is . &quot; &quot; . value;
+                            case "IS":
+                            case "is":
+                            case "IS NOT":
+                            case "is not":
+                                // Don't bind value
+                                let condition = sprintf(this->identifier, key) . is . " " . value;
                             break;
                             default:
                                 // Bind value
-                                let condition = sprintf(this-&gt;identifier, key) . is . &quot; &quot; . index,
+                                let condition = sprintf(this->identifier, key) . is . " " . index,
                                     values[index] = value;
                             break;
                         }
 
-                        if operator == &quot;AND&quot; {
+                        if operator == "AND" {
                             let and[] = condition;
                         } else {
                             let or[] = condition;
                         }
                     }
 
-                    if operator == &quot;OR&quot; {
-                        let and[] = &quot;(&quot; . implode(&quot; OR &quot;, or) . &quot;)&quot;;
+                    if operator == "OR" {
+                        let and[] = "(" . implode(" OR ", or) . ")";
                     }
                 }
-                let sql .= implode(&quot; AND &quot;, and);
+                let sql .= implode(" AND ", and);
             break;
-            case &quot;integer&quot;:
-                let sql .= sprintf(this-&gt;identifier, this-&gt;id) . &quot;=&quot; . filters;
+            case "integer":
+                let sql .= sprintf(this->identifier, this->id) . "=" . filters;
             break;
-            case &quot;string&quot;:
+            case "string":
                 let sql .= filters;
             break;
             default:
-                let sql .= &quot;TRUE&quot;;
+                let sql .= "TRUE";
             break;
         }
 
@@ -336,15 +350,15 @@ class Pdo implements DbInterface
     /**
      * SELECT record(s) that match criteria.
      *
-     * &lt;pre&gt;&lt;code&gt;
+     * <pre><code>
      *  // MySQL: SELECT * FROM users WHERE a=1 or b=2 ORDER BY a desc,b asc LIMIT 10
      *  // MSSQL: SELECT TOP 10 * FROM users WHERE a=1 or b=2 ORDER BY a desc,b asc
-     *  $db-&gt;select(&quot;users&quot;, [&quot;OR&quot; =&gt; [[&quot;a&quot; =&gt; 1], [&quot;b&quot; =&gt; 2]]], [&quot;order&quot; =&gt; [&quot;a desc&quot;, &quot;b asc&quot;], &quot;limit&quot; =&gt; 10]);
+     *  $db->select("users", ["OR" => [["a" => 1], ["b" => 2]]], ["order" => ["a desc", "b asc"], "limit" => 10]);
      *
      *  // MySQL: SELECT x, y FROM users WHERE a=1 or b=2 ORDER BY a desc,b asc LIMIT 10 offset 50
      *  // MSSQL: SELECT x, y FROM users WHERE a=1 or b=2 ORDER BY a desc,b asc offset 50 ROWS FETCH NEXT 10 ROWS ONLY
-     *  $db-&gt;select(&quot;users&quot;, [&quot;OR&quot; =&gt; [[&quot;a&quot; =&gt; 1], [&quot;b&quot; =&gt; 2]]], [&quot;order&quot; =&gt; [&quot;a desc&quot;, &quot;b asc&quot;], &quot;limit&quot; =&gt; 10, &quot;offset&quot; =&gt; 50], [&quot;x&quot;,&quot;y&quot;]);
-     * &lt;/code&gt;&lt;/pre&gt;
+     *  $db->select("users", ["OR" => [["a" => 1], ["b" => 2]]], ["order" => ["a desc", "b asc"], "limit" => 10, "offset" => 50], ["x","y"]);
+     * </code></pre>
      *
      * @param string from Table name
      * @param mixed filters Filters to create WHERE conditions
@@ -353,66 +367,70 @@ class Pdo implements DbInterface
      */
     public function select(string! from, var filters = [], array options = [], array fields = [])
     {
-        var columns, filtered, values, query, sql = &quot;SELECT &quot;;
+        var columns, filtered, values, query, sql = "SELECT ";
 
         if count(fields) {
-            let columns = implode(&quot;, &quot;, fields);
+            let columns = implode(", ", fields);
         } else {
-            let columns = &quot;*&quot;;
+            let columns = "*";
         }
 
-        if isset options[&quot;limit&quot;] {
+        if isset options["limit"] {
             // ms sql server only
-            if this-&gt;driverName == &quot;sqlsrv&quot; {
-                if isset options[&quot;offset&quot;] {
+            if this->driverName == "sqlsrv" {
+                if isset options["offset"] {
                     // SQL Server 2012+ ONLY
-                    let options[&quot;offset&quot;] .= &quot; ROWS FETCH NEXT &quot;. options[&quot;limit&quot;] . &quot; ROWS ONLY&quot;;
+                    let options["offset"] .= " ROWS FETCH NEXT ". options["limit"] . " ROWS ONLY";
                 } else {
-                    let sql .= &quot;TOP &quot; . options[&quot;limit&quot;] . &quot; &quot;;
+                    let sql .= "TOP " . options["limit"] . " ";
                 }
-                unset options[&quot;limit&quot;];
-            } elseif this-&gt;driverName == &quot;oci&quot; {
-                if isset options[&quot;offset&quot;] {
-                    let options[&quot;offset&quot;] .= &quot; ROWS FETCH NEXT &quot;. options[&quot;limit&quot;] . &quot; ROWS ONLY&quot;;
+                unset options["limit"];
+            } elseif this->driverName == "oci" {
+                if isset options["offset"] {
+                    let options["offset"] .= " ROWS FETCH NEXT ". options["limit"] . " ROWS ONLY";
                 } else {
                     if empty filters {
-                        let filters = &quot;rownum = &quot; . options[&quot;limit&quot;];
+                        let filters = "rownum = " . options["limit"];
                     } else {
-                        let filters = [&quot;AND&quot;: [filters, [&quot;rownum&quot;, options[&quot;limit&quot;]]]];
+                        let filters = ["AND": [filters, ["rownum", options["limit"]]]];
                     }
                 }
-                unset options[&quot;limit&quot;];
+                unset options["limit"];
             }
         }
 
-        let filtered = this-&gt;where(filters),
-            sql .= columns . &quot; FROM &quot; . sprintf(this-&gt;identifier, from) . &quot; WHERE &quot; . filtered[0],
+        let filtered = this->where(filters),
+            sql .= columns . " FROM " . sprintf(this->identifier, from),
             values = filtered[1];
 
-        if isset options[&quot;group&quot;] {
-            if typeof options[&quot;group&quot;] == &quot;array&quot; {
-                let sql .= &quot; GROUP BY &quot; . implode(&quot;, &quot;, options[&quot;group&quot;]);
-            } else {
-                let sql .= &quot; GROUP BY &quot; . options[&quot;group&quot;];
-            }
-        }
-        if isset options[&quot;order&quot;] {
-            if typeof options[&quot;order&quot;] == &quot;array&quot; {
-                let sql .= &quot; ORDER BY &quot; . implode(&quot;, &quot;, options[&quot;order&quot;]);
-            } else {
-                let sql .= &quot; ORDER BY &quot; . options[&quot;order&quot;];
-            }
-        }
-        if isset options[&quot;limit&quot;] {
-            let sql .= &quot; LIMIT &quot; . options[&quot;limit&quot;];
-        }
-        if isset options[&quot;offset&quot;] {
-            let sql .= &quot; OFFSET &quot; . options[&quot;offset&quot;];
+        if !empty filtered[0] {
+            let sql .= " WHERE " . filtered[0];
         }
 
-        let query = this-&gt;client-&gt;prepare(sql);
+        if isset options["group"] {
+            if typeof options["group"] == "array" {
+                let sql .= " GROUP BY " . implode(", ", options["group"]);
+            } else {
+                let sql .= " GROUP BY " . options["group"];
+            }
+        }
+        if isset options["order"] {
+            if typeof options["order"] == "array" {
+                let sql .= " ORDER BY " . implode(", ", options["order"]);
+            } else {
+                let sql .= " ORDER BY " . options["order"];
+            }
+        }
+        if isset options["limit"] {
+            let sql .= " LIMIT " . options["limit"];
+        }
+        if isset options["offset"] {
+            let sql .= " OFFSET " . options["offset"];
+        }
 
-        let this-&gt;error = query-&gt;execute(values) ? null : query-&gt;errorInfo();
+        let query = this->client->prepare(sql);
+
+        let this->error = query->execute(values) ? null : query->errorInfo();
 
         return query;
     }
@@ -420,10 +438,10 @@ class Pdo implements DbInterface
     /**
      * INSERT record into table.
      *
-     * &lt;pre&gt;&lt;code&gt;
+     * <pre><code>
      *  //INSERT INTO users (a,b) VALUES (1, 2)
-     *  $db-&gt;insert(&quot;users&quot;, [[&quot;a&quot; =&gt; 1], [&quot;b&quot; =&gt; 2]]);
-     * &lt;/code&gt;&lt;/pre&gt;
+     *  $db->insert("users", [["a" => 1], ["b" => 2]]);
+     * </code></pre>
      *
      * @param string from Table name
      * @param array fields Fields to insert, keys are the column names
@@ -436,14 +454,14 @@ class Pdo implements DbInterface
             values = [];
 
         for key, value in fields {
-            let columns[] = sprintf(this-&gt;identifier, key),
-                values[&quot;:&quot; . key] = value;
+            let columns[] = sprintf(this->identifier, key),
+                values[":" . key] = value;
         }
 
-        let sql = &quot;INSERT INTO &quot; . sprintf(this-&gt;identifier, from) . &quot; (&quot; . implode(&quot;, &quot;, columns) . &quot;) VALUES (&quot; . implode(&quot;, &quot;, array_keys(values)) . &quot;)&quot;,
-            query = this-&gt;client-&gt;prepare(sql),
-            status = query-&gt;execute(values),
-            this-&gt;error = status ? null : query-&gt;errorInfo();
+        let sql = "INSERT INTO " . sprintf(this->identifier, from) . " (" . implode(", ", columns) . ") VALUES (" . implode(", ", array_keys(values)) . ")",
+            query = this->client->prepare(sql),
+            status = query->execute(values),
+            this->error = status ? null : query->errorInfo();
 
         return status;
     }
@@ -451,10 +469,10 @@ class Pdo implements DbInterface
     /**
      * UPDATE records in the table.
      *
-     * &lt;pre&gt;&lt;code&gt;
-     *  //UPDATE users SET a=1, b=2 WHERE id=10 OR foo=&quot;bar&quot;
-     *  $db-&gt;update(&quot;users&quot;, [&quot;OR&quot; =&gt; [&quot;id&quot; =&gt; 10, &quot;foo&quot; =&gt; &quot;bar&quot;]], [[&quot;a&quot; =&gt; 1], [&quot;b&quot; =&gt; 2]]);
-     * &lt;/code&gt;&lt;/pre&gt;
+     * <pre><code>
+     *  //UPDATE users SET a=1, b=2 WHERE id=10 OR foo="bar"
+     *  $db->update("users", ["OR" => ["id" => 10, "foo" => "bar"]], [["a" => 1], ["b" => 2]]);
+     * </code></pre>
      *
      * @param string from Table name
      * @param mixed filters Filters to create WHERE conditions
@@ -468,16 +486,16 @@ class Pdo implements DbInterface
             values = [];
 
         for key, value in fields {
-            let values[&quot;:&quot; . key] = value,
-                columns[] = sprintf(this-&gt;identifier, key) . &quot; = :&quot; . key;
+            let values[":" . key] = value,
+                columns[] = sprintf(this->identifier, key) . " = :" . key;
         }
 
-        let filtered = this-&gt;where(filters, values),
-            sql = &quot;UPDATE &quot; . sprintf(this-&gt;identifier, from) . &quot; SET &quot; . implode(&quot;, &quot;, columns) . &quot; WHERE &quot; . filtered[0],
+        let filtered = this->where(filters, values),
+            sql = "UPDATE " . sprintf(this->identifier, from) . " SET " . implode(", ", columns) . " WHERE " . filtered[0],
             values = array_merge(values, filtered[1]),
-            query = this-&gt;client-&gt;prepare(sql),
-            status = query-&gt;execute(values),
-            this-&gt;error = status ? null : query-&gt;errorInfo();
+            query = this->client->prepare(sql),
+            status = query->execute(values),
+            this->error = status ? null : query->errorInfo();
 
         return status;
     }
@@ -485,10 +503,10 @@ class Pdo implements DbInterface
     /**
      * Remove records from the table.
      *
-     * &lt;pre&gt;&lt;code&gt;
-     *  //DELETE FROM users WHERE id=10 OR foo=&quot;bar&quot;
-     *  $db-&gt;delete(&quot;users&quot;, [&quot;OR&quot; =&gt; [&quot;id&quot; =&gt; 10, &quot;foo&quot; =&gt; &quot;bar&quot;]]);
-     * &lt;/code&gt;&lt;/pre&gt;
+     * <pre><code>
+     *  //DELETE FROM users WHERE id=10 OR foo="bar"
+     *  $db->delete("users", ["OR" => ["id" => 10, "foo" => "bar"]]);
+     * </code></pre>
      *
      * @param string from Table name
      * @param mixed filters Filters to create WHERE conditions
@@ -497,12 +515,12 @@ class Pdo implements DbInterface
     {
         var filtered, sql, values, query, status;
 
-        let filtered = this-&gt;where(filters),
-            sql = &quot;DELETE FROM &quot; . sprintf(this-&gt;identifier, from) . &quot; WHERE &quot; . filtered[0],
+        let filtered = this->where(filters),
+            sql = "DELETE FROM " . sprintf(this->identifier, from) . " WHERE " . filtered[0],
             values = filtered[1],
-            query = this-&gt;client-&gt;prepare(sql),
-            status = query-&gt;execute(values),
-            this-&gt;error = status ? null : query-&gt;errorInfo();
+            query = this->client->prepare(sql),
+            status = query->execute(values),
+            this->error = status ? null : query->errorInfo();
 
         return status;
     }
@@ -510,13 +528,13 @@ class Pdo implements DbInterface
     /**
      * Query sql statement. execute the statement and populate into Model object:
      *
-     * &lt;pre&gt;&lt;code&gt;
+     * <pre><code>
      *  //select * from t where id=1
-     *  $m = $this-&gt;db-&gt;query(&apos;select * from t where id=:id&apos;, [&apos;:id&apos; =&gt; 1], new stdClass);
+     *  $m = $this->db->query('select * from t where id=:id', [':id' => 1], new stdClass);
      *
-     *  //select * from t where id=1 OR foo=&apos;bar&apos;
-     *  $m = $this-&gt;db-&gt;query(&apos;select * from t where id=? OR foo=?&apos;, [1, &quot;bar&quot;], &apos;\Ice\Arr&apos;);
-     * &lt;/code&gt;&lt;/pre&gt;
+     *  //select * from t where id=1 OR foo='bar'
+     *  $m = $this->db->query('select * from t where id=? OR foo=?', [1, "bar"], '\Ice\Arr');
+     * </code></pre>
      *
      * @param string sql SQL with kinda of placeholders
      * @param array values Replace placeholders in the sql
@@ -527,18 +545,18 @@ class Pdo implements DbInterface
     {
         var query, result, status;
 
-        let query = this-&gt;client-&gt;prepare(sql),
-            status = query-&gt;execute(values),
-            this-&gt;error = status ? null : query-&gt;errorInfo();
+        let query = this->client->prepare(sql),
+            status = query->execute(values),
+            this->error = status ? null : query->errorInfo();
 
-        if status &amp;&amp; obj {
-            if typeof obj == &quot;string&quot; {
-                return query-&gt;fetchObject(obj);
+        if status && obj {
+            if typeof obj == "string" {
+                return query->fetchObject(obj);
             }
-            let result = query-&gt;$fetch(\Pdo::FETCH_ASSOC);
+            let result = query->$fetch(\Pdo::FETCH_ASSOC);
             if result {
                 if obj instanceof Arr {
-                    obj-&gt;replace(result);
+                    obj->replace(result);
                 } else {
                     let obj = new Arr(result);
                 }
@@ -556,9 +574,9 @@ class Pdo implements DbInterface
      *
      * @return int
      */
-    public function getLastInsertId() -&gt; int
+    public function getLastInsertId() -> int
     {
-        return (int) this-&gt;client-&gt;lastInsertId();
+        return (int) this->client->lastInsertId();
     }
 
     /**
@@ -570,36 +588,14 @@ class Pdo implements DbInterface
     {
         var error;
 
-        fetch error, this-&gt;error[0];
+        fetch error, this->error[0];
 
         return error;
     }
 }
-</code></pre>                    </div>
+</pre>
                 </div>
             </div>
         </div>
-
-        <script src="../../../../asset/static/js/jquery.min.js"></script>
-        <script src="../../../../asset/static/js/bootstrap.min.js"></script>
-        <script src="../../../../asset/static/js/highlight.pack.js"></script>
-        <script src="../../../../asset/static/js/jquery.slimscroll.min.js"></script>
-        <script src="../../../../asset/api_definition.js"></script>
-
-        <script>var ZepCurrentPath = '../../../../'</script>
-        <script src="../../../../asset/static/js/script.js"></script>
-        <script type="text/javascript">
-            $(window).on("load resize", function() {
-                $('#menu-wrapper').slimscroll({ height: $(window).height() - 100, size: '3px' });
-            });
-        </script>
-        <script type="text/javascript">
-            $(document).ready(function() { $('pre code').each(function(i, block) { hljs.highlightBlock(block); }); });
-            if ($('.zephir-source-file').length) {
-                $('link[id]').each(function(i, link) {
-                    link.disabled = (link.id != 'tomorrow-night');
-                });
-            }
-        </script>
-            </body>
+    </body>
 </html>
