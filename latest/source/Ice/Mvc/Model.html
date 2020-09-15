@@ -27,7 +27,7 @@
  <body onload="prettyPrint()">
         <div id="top-bar">
             <div id="top-left" style="color: #555">
-                                    <a href="https://doc.iceframework.org" title="ice framework documentation" style="color: #444"><img src="https://www.iceframework.org/img/logo.png" alt="ice framework documentation" width="30" height="30"> ice doc</a> <span class="version">v1.6.0</span>
+                                    <a href="https://doc.iceframework.org" title="ice framework documentation" style="color: #444"><img src="https://www.iceframework.org/img/logo.png" alt="ice framework documentation" width="30" height="30"> ice doc</a> <span class="version">v1.6.2</span>
                             </div>
             <div id="top-right">
             </div>
@@ -632,6 +632,16 @@ abstract class Model extends Arr implements \Serializable
     }
 
     /**
+     * Check whether model is loaded.
+     *
+     * @return boolean
+     */
+    public function loaded() -> boolean
+    {
+        return this->isLoaded ? true : false;
+    }
+
+    /**
      * Get the last Db error.
      *
      * @return mixed
@@ -792,7 +802,7 @@ abstract class Model extends Arr implements \Serializable
                 let filters[referencedField] = this->{field},
                     result = create_instance_params(referenceModel, [filters, null, options]);
 
-                if !result->count() {
+                if !result->loaded() {
                     return false;
                 }
 
