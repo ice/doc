@@ -50,7 +50,7 @@
         <li><a href="../../../../index.html">Home</a></li>
         
                 <li><a href="../../../../classes.html">Classes</a></li>
-                <li><a >Ice\I18n\Plural\None</a></li>
+                <li><a >Ice\Validation\Validator\Exists</a></li>
                 
     </ul>
     
@@ -58,9 +58,9 @@
 <div class="class-header clearfix">
 
     <div class="access-buttons">
-        <a class="zep-button" href="../../../../source/Ice/I18n/Plural/None.html">Source</a>
+        <a class="zep-button" href="../../../../source/Ice/Validation/Validator/Exists.html">Source</a>
                 <a class="zep-button"
-           href="https://github.com/ice/framework/tree/dev/ice/i18n/plural/none.zep">
+           href="https://github.com/ice/framework/tree/dev/ice/validation/validator/exists.zep">
             GitHub
         </a>
             </div>
@@ -73,15 +73,15 @@
                 Ice            </a>
         </span>
                 <span class="namespace-piece">
-            <a href="../../../../namespace/Ice/I18n.html">
-                I18n            </a>
+            <a href="../../../../namespace/Ice/Validation.html">
+                Validation            </a>
         </span>
                 <span class="namespace-piece">
-            <a href="../../../../namespace/Ice/I18n/Plural.html">
-                Plural            </a>
+            <a href="../../../../namespace/Ice/Validation/Validator.html">
+                Validator            </a>
         </span>
         
-        <h1 class="class-name">None</h1>
+        <h1 class="class-name">Exists</h1>
     </div>
 </div>
 
@@ -97,13 +97,17 @@
             <!-- method-summary -->
             <!-- Do not remove comments below. It's a trick to remove the spaces. -->
             <span class="method-name">
-                <a href="#method-details-getCategory">getCategory</a><!--
+                <a href="#method-details-validate">validate</a><!--
             --></span><!--
-            -->(<span class="param-data-type">int</span> <span class="variable param-name">$count</span>)<!--
+            -->(<span class="param-data-type">variable</span> <span class="variable param-name">$validation</span>, <span class="param-data-type">string</span> <span class="variable param-name">$field</span>)<!--
             --><span class="method-return">
                 <strong>:</strong>
-                                    string                            </span>
+                                    bool                            </span>
         </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Validate the validator                </div>
+            </div>
             </div>
 </li>
     </ul>
@@ -114,7 +118,7 @@
 <ul class="method-details-list">
             
 <li class="class-method clearfix">
-    <div class="hidden-anchor" id="method-details-getCategory"></div>
+    <div class="hidden-anchor" id="method-details-validate"></div>
     <div class="method-details">
         <div class="method-details-details">
 
@@ -123,12 +127,16 @@
                                 <span class="keyword">function</span>
                 <!-- method-details -->
                 <!-- Do not remove comments below. It's a trick to remove the spaces. -->
-                <span class="method-name">getCategory</span><!--
-                -->(<span class="param-data-type">int</span> <span class="variable param-name">$count</span>)
+                <span class="method-name">validate</span><!--
+                -->(<span class="param-data-type">variable</span> <span class="variable param-name">$validation</span>, <span class="param-data-type">string</span> <span class="variable param-name">$field</span>)
             </p>
 
             <div class="method-doc">
-                                            </div>
+                                                    <div class="summary">
+                        Validate the validator                    </div>
+                    <div class="description">
+                        Options: from (0), custom (1), insensitive (2), label, message                    </div>
+                            </div>
 
         </div>
     </div>

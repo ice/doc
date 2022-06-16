@@ -27,7 +27,7 @@
  <body onload="prettyPrint()">
         <div id="top-bar">
             <div id="top-left" style="color: #555">
-                                    <a href="https://doc.iceframework.org" title="ice framework documentation" style="color: #444"><img src="https://www.iceframework.org/img/logo.png" alt="ice framework documentation" width="30" height="30"> ice doc</a> <span class="version">v1.6.2</span>
+                                    <a href="https://doc.iceframework.org" title="ice framework documentation" style="color: #444"><img src="https://www.iceframework.org/img/logo.png" alt="ice framework documentation" width="30" height="30"> ice doc</a> <span class="version">v1.9.0</span>
                             </div>
             <div id="top-right">
             </div>
@@ -189,7 +189,7 @@
             <!-- method-summary -->
             <!-- Do not remove comments below. It's a trick to remove the spaces. -->
             <span class="method-name">
-                <a href="#method-details-replace">replace</a><!--
+                <a href="#method-details-merge">merge</a><!--
             --></span><!--
             -->(<span class="param-data-type">array</span> <span class="variable param-name">$data</span>)<!--
             --><span class="method-return">
@@ -200,6 +200,27 @@
                     <div class="method-doc">
                 <div class="summary-text">
                     Add data to set, replaces the existing data.                </div>
+            </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-replace">replace</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">array</span> <span class="variable param-name">$data</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    void
+                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Alias of the `merge` method.                </div>
             </div>
             </div>
 </li>
@@ -740,6 +761,31 @@
 </li>
             
 <li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-merge"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">merge</span><!--
+                -->(<span class="param-data-type">array</span> <span class="variable param-name">$data</span>)
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Add data to set, replaces the existing data.                    </div>
+                    <div class="description">
+                                            </div>
+                            </div>
+
+        </div>
+    </div>
+</li>
+            
+<li class="class-method clearfix">
     <div class="hidden-anchor" id="method-details-replace"></div>
     <div class="method-details">
         <div class="method-details-details">
@@ -755,7 +801,7 @@
 
             <div class="method-doc">
                                                     <div class="summary">
-                        Add data to set, replaces the existing data.                    </div>
+                        Alias of the `merge` method.                    </div>
                     <div class="description">
                                             </div>
                             </div>

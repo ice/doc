@@ -27,7 +27,7 @@
  <body onload="prettyPrint()">
         <div id="top-bar">
             <div id="top-left" style="color: #555">
-                                    <a href="https://doc.iceframework.org" title="ice framework documentation" style="color: #444"><img src="https://www.iceframework.org/img/logo.png" alt="ice framework documentation" width="30" height="30"> ice doc</a> <span class="version">v1.6.2</span>
+                                    <a href="https://doc.iceframework.org" title="ice framework documentation" style="color: #444"><img src="https://www.iceframework.org/img/logo.png" alt="ice framework documentation" width="30" height="30"> ice doc</a> <span class="version">v1.9.0</span>
                             </div>
             <div id="top-right">
             </div>
@@ -89,7 +89,7 @@ namespace Ice;
  * @package     Ice/Version
  * @category    Helper
  * @author      Ice Team
- * @copyright   (c) 2014-2020 Ice Team
+ * @copyright   (c) 2014-2021 Ice Team
  * @license     http://iceframework.org/license
  * @see         http://semver.org (Semantic Versioning 2.0.0)
  */
@@ -102,8 +102,8 @@ class Version
     const STABLE = 4;
     // Don't forget to update config.json and run zephir fullclean
     const MAJOR = 1;
-    const MINOR = 6;
-    const PATCH = 2;
+    const MINOR = 9;
+    const PATCH = 0;
     const STAGE = self::STABLE;
     const BUILD = 0;
 
@@ -132,6 +132,7 @@ class Version
      * 1.0.0-rc.5
      * 1.0.0
      *
+     * @see https://semver.org/spec/v2.0.0.html
      * @return string
      */
     public static function get() -> string

@@ -50,7 +50,7 @@
         <li><a href="../../../../index.html">Home</a></li>
         
                 <li><a href="../../../../classes.html">Classes</a></li>
-                <li><a href="../../../../class/Ice/Validation/Validator/In.html">Ice\Validation\Validator\In</a></li>
+                <li><a href="../../../../class/Ice/Validation/Validator/Exists.html">Ice\Validation\Validator\Exists</a></li>
                 <li><a >Source</a></li>
                 
     </ul>
@@ -59,10 +59,10 @@
 <div class="class-header source clearfix">
 
     <div class="access-buttons">
-        <a class="zep-button" href="../../../../class/Ice/Validation/Validator/In.html">Class</a>
+        <a class="zep-button" href="../../../../class/Ice/Validation/Validator/Exists.html">Class</a>
 
                 <a class="zep-button"
-           href="https://github.com/ice/framework/tree/dev/ice/validation/validator/in.zep">
+           href="https://github.com/ice/framework/tree/dev/ice/validation/validator/exists.zep">
             Github
         </a>
             </div>
@@ -80,7 +80,7 @@
             <a href="../../../../namespace/Ice/Validation/Validator.html">Validator</a>
         </span>
         
-        <h1 class="class-name">In</h1>
+        <h1 class="class-name">Exists</h1>
     </div>
 
 </div>
@@ -89,12 +89,13 @@
     
 namespace Ice\Validation\Validator;
 
-use Ice\Exception;
+use Ice\Di;
 use Ice\Validation;
 use Ice\Validation\Validator;
+use Ice\Db\Driver\Mongodb;
 
 /**
- * In validator.
+ * Exists validator.
  *
  * @package     Ice/Validation
  * @category    Security
@@ -106,7 +107,12 @@ use Ice\Validation\Validator;
  *  $validation = new Ice\Validation();
  *
  *  $validation->rules([
- *      'status' => 'in:1,2,3,4'
+ *      'userName' => [
+ *          'exists' => [
+ *              'from' => 'users',
+ *              'custom' => 'username'
+ *          ],
+ *      ]
  *  ]);
  *
  *  $valid = $validation->validate($_POST);
@@ -116,11 +122,11 @@ use Ice\Validation\Validator;
  *  }
  * </code></pre>
  */
-class $In extends Validator
+class Exists extends Validator
 {
     /**
      * Validate the validator
-     * Options: values (0,1,2..), label, message
+     * Options: from (0), custom (1), insensitive (2), label, message
      *
      * @param Validation validation
      * @param string field
@@ -128,7 +134,7 @@ class $In extends Validator
      */
     public function validate(<Validation> validation, string! field) -> boolean
     {
-        var value, label, message, i18n, replace, values;
+        var value, label, message, i18n, replace, di, db, from, custom, insensitive, options, result;
 
         let value = validation->getValue(field);
 
@@ -136,17 +142,37 @@ class $In extends Validator
             return true;
         }
 
-        let values = this->getOptions(Validator::NUMERIC);
+        let di = Di::$fetch(),
+            db = di->get("db");
 
-        if empty values {
-            let values = this->get("values");
+        if this->has(0) {
+            let from = this->get(0);
+        } else {
+            let from = this->get("from");
         }
 
-        if typeof values != "array" {
-            throw new Exception("Values must be an array");
+        // Specifying a custom column name
+        if this->has(1) {
+            let custom = this->get(1);
+        } else {
+            let custom = this->get("custom");
         }
 
-        if !in_array(value, values) {
+        if empty custom {
+            let custom = field;
+        }
+
+        // Case insensitive
+        if this->has(2) {
+            let insensitive = this->get(2);
+        } else {
+            let insensitive = this->get("insensitive");
+        }
+
+        let options = insensitive ? ["insensitive": true] : [],
+            result = db->findOne(from, [custom: value], options);
+
+        if !result {
             if this->has("label") {
                 let label = this->get("label");
             } else {
@@ -156,7 +182,7 @@ class $In extends Validator
             if this->has("message") {
                 let message = this->get("message");
             } else {
-                let message = validation->getDefaultMessage("in");
+                let message = validation->getDefaultMessage("exists");
             }
 
             // Translate strings
@@ -166,7 +192,7 @@ class $In extends Validator
                     message = i18n->translate(message);
             }
 
-            let replace = [":field": label, ":values":  join(", ", values)];
+            let replace = [":field": label];
 
             validation->addMessage(field, strtr(message, replace));
             return false;

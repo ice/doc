@@ -27,7 +27,7 @@
  <body onload="prettyPrint()">
         <div id="top-bar">
             <div id="top-left" style="color: #555">
-                                    <a href="https://doc.iceframework.org" title="ice framework documentation" style="color: #444"><img src="https://www.iceframework.org/img/logo.png" alt="ice framework documentation" width="30" height="30"> ice doc</a> <span class="version">v1.6.2</span>
+                                    <a href="https://doc.iceframework.org" title="ice framework documentation" style="color: #444"><img src="https://www.iceframework.org/img/logo.png" alt="ice framework documentation" width="30" height="30"> ice doc</a> <span class="version">v1.9.0</span>
                             </div>
             <div id="top-right">
             </div>
@@ -100,7 +100,7 @@ use Ice\Db\Driver\Mongodb;
  * @package     Ice/Validation
  * @category    Security
  * @author      Ice Team
- * @copyright   (c) 2014-2020 Ice Team
+ * @copyright   (c) 2014-2021 Ice Team
  * @license     http://iceframework.org/license
  *
  * <pre><code>
@@ -126,7 +126,7 @@ class Unique extends Validator
 {
     /**
      * Validate the validator
-     * Options: from (0), custom (1), except (2), caseInsensitive (3), label, message
+     * Options: from (0), custom (1), except (2), insensitive (3), label, message
      *
      * @param Validation validation
      * @param string field
@@ -134,7 +134,7 @@ class Unique extends Validator
      */
     public function validate(<Validation> validation, string! field) -> boolean
     {
-        var value, label, message, i18n, replace, di, db, from, custom, except, tmp, caseInsensitive, result, id;
+        var value, label, message, i18n, replace, di, db, from, custom, except, insensitive, options, result, id;
 
         let value = validation->getValue(field);
 
@@ -157,6 +157,7 @@ class Unique extends Validator
         } else {
             let custom = this->get("custom");
         }
+
         if empty custom {
             let custom = field;
         }
@@ -170,31 +171,18 @@ class Unique extends Validator
 
         // Case insensitive
         if this->has(3) {
-            let caseInsensitive = this->get(3);
+            let insensitive = this->get(3);
         } else {
-            let caseInsensitive = this->get("caseInsensitive");
+            let insensitive = this->get("insensitive");
         }
 
-        if caseInsensitive {
-            let tmp = value;
-
-            if db->getType() == "NOSQL" {
-                if db->getDriver() instanceof Mongodb {
-                    let value = new \MongoDB\BSON\Regex("^" . tmp . "$", "i");
-                } else {
-                    let value = new \MongoRegex("/^" . tmp . "$/i");
-                }
-            } else {
-                // TODO: LOWER column name
-                let value = strtolower(tmp);
-            }
-        }
+        let options = insensitive ? ["insensitive": true] : [];
 
         if except {
             let id = ["!=": db->getIdValue(except)],
-                result = db->findOne(from, [custom: value, db->getId(): id]);
+                result = db->findOne(from, [custom: value, db->getId(): id], options);
         } else {
-            let result = db->findOne(from, [custom: value]);
+            let result = db->findOne(from, [custom: value], options);
         }
 
         if result {

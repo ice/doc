@@ -27,7 +27,7 @@
  <body onload="prettyPrint()">
         <div id="top-bar">
             <div id="top-left" style="color: #555">
-                                    <a href="https://doc.iceframework.org" title="ice framework documentation" style="color: #444"><img src="https://www.iceframework.org/img/logo.png" alt="ice framework documentation" width="30" height="30"> ice doc</a> <span class="version">v1.6.2</span>
+                                    <a href="https://doc.iceframework.org" title="ice framework documentation" style="color: #444"><img src="https://www.iceframework.org/img/logo.png" alt="ice framework documentation" width="30" height="30"> ice doc</a> <span class="version">v1.9.0</span>
                             </div>
             <div id="top-right">
             </div>
@@ -259,6 +259,26 @@
                     <div class="method-doc">
                 <div class="summary-text">
                     Find all documents that match criteria.                </div>
+            </div>
+            </div>
+</li>
+            
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <!-- method-summary -->
+            <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+            <span class="method-name">
+                <a href="#method-details-count">count</a><!--
+            --></span><!--
+            -->(<span class="param-data-type">string</span> <span class="variable param-name">$from</span>, <span class="param-data-type">variable</span> <span class="variable param-name">$filters</span>)<!--
+            --><span class="method-return">
+                <strong>:</strong>
+                                    int                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                    Count rows that match criteria.                </div>
             </div>
             </div>
 </li>
@@ -580,6 +600,33 @@
       $db->find("users", array("a" => 1, "b" => "q"));
       $db->find("users", array("age" => array(">" => 33)));
       $db->find("users", array("OR" => array(array("a" => 1), array("b" => 2))));
+     </code></pre>                    </div>
+                            </div>
+
+        </div>
+    </div>
+</li>
+            
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-count"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+
+            <p class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>
+                <!-- method-details -->
+                <!-- Do not remove comments below. It's a trick to remove the spaces. -->
+                <span class="method-name">count</span><!--
+                -->(<span class="param-data-type">string</span> <span class="variable param-name">$from</span>, <span class="param-data-type">variable</span> <span class="variable param-name">$filters</span>)
+            </p>
+
+            <div class="method-doc">
+                                                    <div class="summary">
+                        Count rows that match criteria.                    </div>
+                    <div class="description">
+                        <pre><code>
+      $db->count("users", ["a" => 1]);
      </code></pre>                    </div>
                             </div>
 

@@ -27,7 +27,7 @@
  <body onload="prettyPrint()">
         <div id="top-bar">
             <div id="top-left" style="color: #555">
-                                    <a href="https://doc.iceframework.org" title="ice framework documentation" style="color: #444"><img src="https://www.iceframework.org/img/logo.png" alt="ice framework documentation" width="30" height="30"> ice doc</a> <span class="version">v1.6.2</span>
+                                    <a href="https://doc.iceframework.org" title="ice framework documentation" style="color: #444"><img src="https://www.iceframework.org/img/logo.png" alt="ice framework documentation" width="30" height="30"> ice doc</a> <span class="version">v1.9.0</span>
                             </div>
             <div id="top-right">
             </div>
@@ -91,7 +91,7 @@ use Ice\Validation\Validator;
  * @package     Ice/Validation
  * @category    Security
  * @author      Ice Team
- * @copyright   (c) 2014-2020 Ice Team
+ * @copyright   (c) 2014-2021 Ice Team
  * @license     http://iceframework.org/license
  * @uses        Ice\Filter (if service is available)
  * @uses        Ice\I18n (if service is available)
@@ -133,6 +133,7 @@ class Validation
         "digit": "Field :field must be numeric",
         "default": "Field :field is not valid",
         "email": "Field :field must be an email address",
+        "exists": "Field :field must exist",
         "fileEmpty": "Field :field must not be empty",
         "fileIniSize": "File :field exceeds the maximum file size",
         "fileMaxResolution": "File :field must not exceed :max resolution",
@@ -168,10 +169,10 @@ class Validation
      *
      * @param string alias
      * @param string field
-     * @param mixed options
+     * @param array options
      * @return object Validation
      */
-    public function resolve(string alias, string field, var options = null)
+    public function resolve(string alias, string field, array options = [])
     {
         var rule;
 
@@ -220,13 +221,18 @@ class Validation
             case "array":
                 for validator, options in validators {
                     if typeof validator == "integer" {
-                        let validator = options;
+                        let validator = options,
+                            options = [];
                     }
                     this->rule(field, validator, options);
                 }
             break;
             case "string":
                 if strpos(validators, "|") === false && strpos(validators, ":") === false {
+                    if typeof options == "null" {
+                        let options = [];
+                    }
+
                     this->resolve(validators, field, options);
                 } else {
                     let rules = explode("|", validators);

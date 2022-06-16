@@ -27,7 +27,7 @@
  <body onload="prettyPrint()">
         <div id="top-bar">
             <div id="top-left" style="color: #555">
-                                    <a href="https://doc.iceframework.org" title="ice framework documentation" style="color: #444"><img src="https://www.iceframework.org/img/logo.png" alt="ice framework documentation" width="30" height="30"> ice doc</a> <span class="version">v1.6.2</span>
+                                    <a href="https://doc.iceframework.org" title="ice framework documentation" style="color: #444"><img src="https://www.iceframework.org/img/logo.png" alt="ice framework documentation" width="30" height="30"> ice doc</a> <span class="version">v1.9.0</span>
                             </div>
             <div id="top-right">
             </div>
@@ -92,7 +92,7 @@ use ReflectionParameter;
  * @package     Ice/Di
  * @category    Component
  * @author      Ice Team
- * @copyright   (c) 2014-2020 Ice Team
+ * @copyright   (c) 2014-2021 Ice Team
  * @license     http://iceframework.org/license
  */
 class Di extends Arr
@@ -152,7 +152,7 @@ class Di extends Arr
     {
         var service;
 
-        let service = this->resolve(value),
+        let service = this->resolve(value, key),
             this->data[key] = service;
 
         return service;
@@ -165,8 +165,9 @@ class Di extends Arr
      */
     public function getDefaults()
     {
-        return array_merge([
+        var defaults = [
             "assets": "Ice\\Assets",
+            "config": "Ice\\Config",
             "cookies": "Ice\\Cookies",
             "crypt": "Ice\\Crypt",
             "dispatcher": "Ice\\Mvc\\Dispatcher",
@@ -182,16 +183,26 @@ class Di extends Arr
             "text": "Ice\\Text",
             "url": "Ice\\Mvc\\Url",
             "view": "Ice\\Mvc\\View"
-        ], this->defaults);
+        ];
+
+        if PHP_SAPI === "cli" {
+            let defaults = array_merge(defaults, [
+                "dispatcher": "Ice\\Cli\\Dispatcher",
+                "router": "Ice\\Cli\\Router"
+            ]);
+        }
+
+        return array_merge(defaults, this->defaults);
     }
 
     /**
      * Resolve service.
      *
      * @param mixed service Definition
-     * @return object Service
+     * @return object service
+     * @return string key
      */
-    public function resolve(var service)
+    public function resolve(var service, string key)
     {
         var params;
 
@@ -207,10 +218,19 @@ class Di extends Arr
                     let service = call_user_func(service);
                 }
             } else {
-                // Array definitions store class name at first parameter
+                // Array definitions class name as a key
                 if typeof service == "array" {
+                    var name;
+
+                    let name = key(service);
+
+                    // Check the defaults
+                    if is_numeric(name) {
+                        fetch name, this->getDefaults()[key];
+                    }
+
                     let params = current(service),
-                        service = this->build(key(service), typeof params == "array" ? params : [params]);
+                        service = this->build(name, [params]);
                 }
             }
         }
@@ -293,7 +313,7 @@ class Di extends Arr
         let dependencies = [];
 
         for parameter in parameters {
-            let dependency = parameter->getClass();
+            let dependency = parameter->getType() && !parameter->getType()->isBuiltin() ? new ReflectionClass(parameter->getType()->getName()) : null;
 
             if array_key_exists(parameter->name, primitives) {
                 let dependencies[] = primitives[parameter->name];
