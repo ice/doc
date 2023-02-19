@@ -27,7 +27,7 @@
  <body onload="prettyPrint()">
         <div id="top-bar">
             <div id="top-left" style="color: #555">
-                                    <a href="https://doc.iceframework.org" title="ice framework documentation" style="color: #444"><img src="https://www.iceframework.org/img/logo.png" alt="ice framework documentation" width="30" height="30"> ice doc</a> <span class="version">v1.9.0</span>
+                                    <a href="https://doc.iceframework.org" title="ice framework documentation" style="color: #444"><img src="https://www.iceframework.org/img/logo.png" alt="ice framework documentation" width="30" height="30"> ice doc</a> <span class="version">v1.10.1</span>
                             </div>
             <div id="top-right">
             </div>
@@ -89,7 +89,7 @@ namespace Ice;
  * @package     Ice/Cookies
  * @category    Helper
  * @author      Ice Team
- * @copyright   (c) 2014-2021 Ice Team
+ * @copyright   (c) 2014-2023 Ice Team
  * @license     http://iceframework.org/license
  */
 class Cookies
@@ -187,7 +187,7 @@ class Cookies
         // Add the salt to the cookie value
         let value = this->salt(key, value) . "~" . value;
 
-        return this->setcookie(key, value, lifetime, this->path, this->domain, this->secure, this->httpOnly);
+        return this->setcookie(key, value, lifetime, this->path, (string) this->domain, this->secure, this->httpOnly);
     }
 
     /**
@@ -202,7 +202,7 @@ class Cookies
         unset _COOKIE[key];
 
         // Nullify the cookie and make it expire
-        return this->setcookie(key, null, -86400, this->path, this->domain, this->secure, this->httpOnly);
+        return this->setcookie(key, "", -86400, this->path, (string) this->domain, this->secure, this->httpOnly);
     }
 
     /**

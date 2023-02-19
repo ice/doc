@@ -27,7 +27,7 @@
  <body onload="prettyPrint()">
         <div id="top-bar">
             <div id="top-left" style="color: #555">
-                                    <a href="https://doc.iceframework.org" title="ice framework documentation" style="color: #444"><img src="https://www.iceframework.org/img/logo.png" alt="ice framework documentation" width="30" height="30"> ice doc</a> <span class="version">v1.9.0</span>
+                                    <a href="https://doc.iceframework.org" title="ice framework documentation" style="color: #444"><img src="https://www.iceframework.org/img/logo.png" alt="ice framework documentation" width="30" height="30"> ice doc</a> <span class="version">v1.10.1</span>
                             </div>
             <div id="top-right">
             </div>
@@ -91,7 +91,7 @@ use ArrayIterator;
  * @package     Ice/Arr
  * @category    Helper
  * @author      Ice Team
- * @copyright   (c) 2014-2021 Ice Team
+ * @copyright   (c) 2014-2023 Ice Team
  * @license     http://iceframework.org/license
  */
 class Arr implements \ArrayAccess, \Countable, \IteratorAggregate
@@ -438,7 +438,7 @@ class Arr implements \ArrayAccess, \Countable, \IteratorAggregate
      * @return boolean
      * @abstracting ArrayAccess
      */
-    public function offsetExists(offset) -> boolean
+    public function offsetExists(mixed offset) -> boolean
     {
         return this->has(offset);
     }
@@ -450,7 +450,7 @@ class Arr implements \ArrayAccess, \Countable, \IteratorAggregate
      * @return mixed
      * @abstracting ArrayAccess
      */
-    public function offsetGet(offset)
+    public function offsetGet(mixed offset) -> mixed
     {
         return this->get(offset);
     }
@@ -463,7 +463,7 @@ class Arr implements \ArrayAccess, \Countable, \IteratorAggregate
      * @return void
      * @abstracting ArrayAccess
      */
-    public function offsetSet(offset, var value) -> void
+    public function offsetSet(mixed offset, var value) -> void
     {
         this->set(offset, value);
     }
@@ -475,7 +475,7 @@ class Arr implements \ArrayAccess, \Countable, \IteratorAggregate
      * @return void
      * @abstracting ArrayAccess
      */
-    public function offsetUnset(offset) -> void
+    public function offsetUnset(mixed offset) -> void
     {
         this->remove(offset);
     }

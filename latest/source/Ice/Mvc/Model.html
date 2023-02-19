@@ -27,7 +27,7 @@
  <body onload="prettyPrint()">
         <div id="top-bar">
             <div id="top-left" style="color: #555">
-                                    <a href="https://doc.iceframework.org" title="ice framework documentation" style="color: #444"><img src="https://www.iceframework.org/img/logo.png" alt="ice framework documentation" width="30" height="30"> ice doc</a> <span class="version">v1.9.0</span>
+                                    <a href="https://doc.iceframework.org" title="ice framework documentation" style="color: #444"><img src="https://www.iceframework.org/img/logo.png" alt="ice framework documentation" width="30" height="30"> ice doc</a> <span class="version">v1.10.1</span>
                             </div>
             <div id="top-right">
             </div>
@@ -98,10 +98,10 @@ use Ice\Validation;
  * @package     Ice/Db
  * @category    Component
  * @author      Ice Team
- * @copyright   (c) 2014-2021 Ice Team
+ * @copyright   (c) 2014-2023 Ice Team
  * @license     http://iceframework.org/license
  */
-abstract class Model extends Arr implements \Serializable
+abstract class Model extends Arr
 {
     protected di { get };
     protected db { get };
@@ -877,21 +877,25 @@ abstract class Model extends Arr implements \Serializable
     /**
      * Serialize the model's data.
      *
-     * @return string
+     * @return array
      */
-    public function serialize() -> string
+    public function __serialize() -> array
     {
-        return base64_encode(serialize(this->data));
+        return [
+            "data": base64_encode(serialize(this->data))
+        ];
     }
 
     /**
      * Unserialize and set the data.
+     *
+     * @param array serialized
      * @return object Model
      */
-    public function unserialize(serialized)
+    public function __unserialize(array serialized)
     {
         this->__construct();
-        let this->data = unserialize(base64_decode(serialized));
+        let this->data = unserialize(base64_decode(serialized["data"]));
 
         return this;
     }
